@@ -23,4 +23,9 @@ Tada! You now can move stuff, rename stuff and all kinds of other fun things to 
 
 Thats it for now, I'm gona go and play Altis Life a little :)
 
+Notes:
+- Arma 3 Linux installation guide: http://erictgrubaugh.com/play/games/arma/installation-and-configuration-of-an-arma-3-linux-dedicated-server/
+
 Disclaimer: This is not a fork of the original Altis Life repo you can find at https://github.com/TAWTonic/Altis-Life, all credit for this mod goes to the guys there especially Tonic himself. Depending on how things are going I might consider putting in the work to merge this into a fork but no guarantees.
+
+Altis Life / Altis Life RPG is developed by Tonic / TAW_Tonic. This contains primarily the release contain and on-going development changes to the mission. Altis Life RPG by Tonic is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US
