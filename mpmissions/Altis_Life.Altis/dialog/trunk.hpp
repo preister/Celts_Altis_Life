@@ -119,7 +119,7 @@ class TrunkMenu
 			h = (1 / 25);
 		};
 
-		class TakeItem : Life_RscButtonMenu
+		class TakeAllItem : Life_RscButtonMenu
 		{
 			idc = -1;
 			text = "$STR_Trunk_Take_All";
@@ -141,7 +141,7 @@ class TrunkMenu
 			h = (1 / 25);
 		};
 		
-		class StoreItem : Life_RscButtonMenu
+		class StoreAllItem : Life_RscButtonMenu
 		{
 			idc = -1;
 			text = "$STR_Trunk_Store_All";
