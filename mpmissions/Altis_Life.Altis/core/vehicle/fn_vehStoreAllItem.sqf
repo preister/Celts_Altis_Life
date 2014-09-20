@@ -10,6 +10,7 @@
 private["_ctrl","_num","_totalWeight","_itemWeight","_veh_data","_inv","_index","_val"];
 disableSerialization;
 
+if((lbCurSel 3503) == -1) exitWith {hint "You need to select an item!";};
 _ctrl = ctrlSelData(3503);
 _num = 1;
 
@@ -25,7 +26,7 @@ _veh_data = life_trunk_vehicle getVariable ["Trunk",[[],0]];
 _inv = _veh_data select 0;
 
 if(_ctrl == "goldbar" && {!(life_trunk_vehicle isKindOf "LandVehicle" OR life_trunk_vehicle isKindOf "House_F")}) exitWith {hint "You cannot store that in anything but a land vehicle!"};
-hint "Storing selected items ..."
+hint "Storing selected items ...";
 while {true} do
 	if(_ctrl == "money") then
 	{

@@ -21,7 +21,7 @@ _data = (life_trunk_vehicle getVariable "Trunk") select 0;
 _old = life_trunk_vehicle getVariable "Trunk";
 if(_index == -1) exitWith {};
 _value = _data select _index select 1;
-hint "Storing all selected items ..."
+hint "Storing all selected items ...";
 while {true} do
 {
 	if(_num > _value) exitWith {hint "The vehicle doesn't have that many of that item."};
@@ -46,24 +46,20 @@ while {true} do
 	}
 		else
 	{
-		if([true,_ctrl,_num] call life_fnc_handleInv) then
+		
+		if(![true,_ctrl,_num] call life_fnc_handleInv) exitWith {hint "Couldn't add to your inventory, are you full?";}
+
+		if(_num == _value) then
 		{
-			if(_num == _value) then
-			{
-				_data set[_index,-1];
-				_data = _data - [-1];
-			}
-				else
-			{
-				_data set[_index,[_ctrl,(_value - _num)]];
-			};
-			life_trunk_vehicle setVariable["Trunk",[_data,(_old select 1) - _weight],true];
-			[life_trunk_vehicle] call life_fnc_vehInventory;
+			_data set[_index,-1];
+			_data = _data - [-1];
 		}
 			else
 		{
-			hint "Couldn't add to your inventory, are you full?";
+			_data set[_index,[_ctrl,(_value - _num)]];
 		};
+		life_trunk_vehicle setVariable["Trunk",[_data,(_old select 1) - _weight],true];
+		[life_trunk_vehicle] call life_fnc_vehInventory;
 	};
 };
 hint "... what happend?";
