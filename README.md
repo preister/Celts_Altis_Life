@@ -26,11 +26,38 @@ Notes:
 
 How To Test:
 ================
-The only way of actually testing this seems to be to run a full server but I really dont want to clutter up my machine with MySQL and stuff so we'll have to go the virtual way :) and until I can actually make sure the stuff I change works this is only half the fun.
-Luckily I already found a nice guide for setting up a basic Arma 3 sever on linux: http://erictgrubaugh.com/play/games/arma/installation-and-configuration-of-an-arma-3-linux-dedicated-server/ - plan is to just throw this roughtly into a Docker container running on a Boot2Docker VirtualBox and then layer a 2nd Image over it with the necessary additions to get Altis Life running and just have the mission folder exposed via a smb share, meaning I dont have to worry if the Server crashes hard - its just a container. (This will happen in another repo will throw the link later on in here.)
+The only way of actually testing this seems to be to run a full server and while I'm not a fan of installing all kinds of server hardware on to my machine just for testing purposes any other way seems a bit out of scope at this stage (see Extras). Will update this readme as soon as I have figured out a good way of doing this.
+
+Notes:
+- Altis Life Install guide: http://www.altisliferpg.com/topic/3783-tutorial-server-setup-extdb/
+- Arma Server Monitor Linux: http://www.armaholic.com/page.php?id=26694
 
 License and Stuff: 
 ================
 This is not a fork of the original Altis Life repo you can find at https://github.com/TAWTonic/Altis-Life, all credit for this mod goes to the guys there especially Tonic himself. Depending on how things are going I might consider putting in the work to merge this into a fork but no guarantees.
 
 Altis Life / Altis Life RPG is developed by Tonic / TAW_Tonic. This contains primarily the release contain and on-going development changes to the mission. Altis Life RPG by Tonic is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US
+
+
+Extras:
+================
+ToDo: Find a better place for this
+
+I've been giving it a run at setting up a Arma 3 Server in a Docker Container and overall it went quite well for the few hours I put into it, following the Linux Server guide I managed to get up to:
+```
+./arma3server -world=empty
+```
+Befor me calling it a day:
+```
+../lib/Network/networkServer.cpp ClearNetServer:NOT IMPLEMENTED - briefing!
+[ERROR] cannot save. [filename]=/root/.local/share/Arma 3\Saved\steam\meta\cacheItems.map
+File , line 0: '.': '▒' encountered instead of '='
+```
+However my suspicion is that this is related to a borked steam installation so whenever I take another look at this I should maybe take a look at this first https://developer.valvesoftware.com/wiki/SteamCMD#Linux.2FOS_X
+
+The general idea behind this is to have a simple and easy to spin up Arma 3 Server with an additional layer for Altis Life which can be used to easily test changes to the mission and especially doesnt cause havok when crashing due to a borked script etc. Later on this could be expanded to a proper multi-container setup but just getting it all running in a single container would be already amazing.
+
+Resources:
+- Boot2Docker: https://github.com/boot2docker/boot2docker
+- baseimage-docker: https://github.com/phusion/baseimage-docker
+- Arma3 Linux Server Setup Guide: http://erictgrubaugh.com/play/games/arma/installation-and-configuration-of-an-arma-3-linux-dedicated-server/
