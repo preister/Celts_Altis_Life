@@ -276,6 +276,8 @@ class Life_Client_Core
 		class vehicleOwners {};
 		class vehStoreItem {};
 		class vehTakeItem {};
+		class vehStoreAllItem {};
+		class vehTakeAllItem {};
 		class vehInventory {};
 		class vInteractionMenu {};
 		class vehicleWeight {};

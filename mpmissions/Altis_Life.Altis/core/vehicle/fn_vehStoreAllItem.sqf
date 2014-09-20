@@ -1,6 +1,6 @@
 #define ctrlSelData(ctrl) (lbData[##ctrl,(lbCurSel ##ctrl)])
 /*
-	File: fn_vehStoreItem.sqf
+	File: fn_vehStoreAllItem.sqf
 	Author: Bryan "Tonic" Boardwine
 	
 	Description:
