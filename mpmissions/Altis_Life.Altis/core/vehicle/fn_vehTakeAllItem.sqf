@@ -66,4 +66,4 @@ while {true} do
 		};
 	};
 };
-hint "... what happend?"
+hint "... what happend?";

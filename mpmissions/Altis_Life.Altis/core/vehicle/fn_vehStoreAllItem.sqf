@@ -65,4 +65,4 @@ while {true} do
 		[life_trunk_vehicle] call life_fnc_vehInventory;
 	};
 };
-hint "... what happend?"
+hint "... what happend?";
