@@ -58,4 +58,3 @@ waitUntil{isNull (findDisplay 38500)}; //Wait for the spawn selection to be done
 };
 
 [] execVM "scripts\fusionsmenu\admin\activate.sqf";
-};
