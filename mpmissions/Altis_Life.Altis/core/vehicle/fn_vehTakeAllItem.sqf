@@ -22,7 +22,7 @@ _old = life_trunk_vehicle getVariable "Trunk";
 if(_index == -1) exitWith {};
 _value = _data select _index select 1;
 hint "Storing all selected items ...";
-while {true} do
+while {true} do 
 {
 	if(_num > _value) exitWith {hint "The vehicle doesn't have that many of that item."};
 	_num = [_ctrl,_num,life_carryWeight,life_maxWeight] call life_fnc_calWeightDiff;
@@ -61,5 +61,5 @@ while {true} do
 		life_trunk_vehicle setVariable["Trunk",[_data,(_old select 1) - _weight],true];
 		[life_trunk_vehicle] call life_fnc_vehInventory;
 	};
+	sleep 0.09;
 };
-hint "... what happend?";

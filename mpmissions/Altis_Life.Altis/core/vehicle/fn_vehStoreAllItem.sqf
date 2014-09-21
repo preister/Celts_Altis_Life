@@ -27,7 +27,8 @@ _inv = _veh_data select 0;
 
 if(_ctrl == "goldbar" && {!(life_trunk_vehicle isKindOf "LandVehicle" OR life_trunk_vehicle isKindOf "House_F")}) exitWith {hint "You cannot store that in anything but a land vehicle!"};
 hint "Storing selected items ...";
-while {true} do
+while {true} do 
+{
 	if(_ctrl == "money") then
 	{
 		_index = [_ctrl,_inv] call fnc_index;
@@ -65,5 +66,5 @@ while {true} do
 		life_trunk_vehicle setVariable["Trunk",[_inv,(_veh_data select 1) + _itemWeight],true];
 		[life_trunk_vehicle] call life_fnc_vehInventory;
 	};
+	sleep 0.09;
 };
-hint "... what happend?";
