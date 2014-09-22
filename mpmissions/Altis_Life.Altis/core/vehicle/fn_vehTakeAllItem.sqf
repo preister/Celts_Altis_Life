@@ -1,65 +1,61 @@
 #define ctrlSelData(ctrl) (lbData[##ctrl,(lbCurSel ##ctrl)])
 /*
 	File: fn_vehTakeAllItem.sqf
-	Author: Bryan "Tonic" Boardwine
+	Author: Patrick "SrgFlip" Reister
 	
 	Description:
 	Used in the vehicle trunk menu, takes the selected item and puts it in the players virtual inventory
 	if the player has room.
 */
-private["_ctrl","_num","_index","_data","_old","_value","_weight","_diff"];
+private["_ctrl","_itemstotake","_index","_data","_old","_value","_weight","_diff", "_freeweight", "_itemweight"];
 disableSerialization;
+
 if(isNull life_trunk_vehicle OR !alive life_trunk_vehicle) exitWith {hint "The vehicle either doesn't exist or is destroyed."};
 if(!alive player) exitwith {closeDialog 0;};
 
 if((lbCurSel 3502) == -1) exitWith {hint "You need to select an item!";};
 _ctrl = ctrlSelData(3502);
-_num = 1;
+//this doesn't deal with money for now to keep it simple
+if(_ctrl == "money") exitWith {hint "Store All does not work for money ... yet"};
 
 _index = [_ctrl,((life_trunk_vehicle getVariable "Trunk") select 0)] call fnc_index;
 _data = (life_trunk_vehicle getVariable "Trunk") select 0;
 _old = life_trunk_vehicle getVariable "Trunk";
-if(_index == -1) exitWith {};
+if(_index == -1) exitWith { };
 _value = _data select _index select 1;
-hint "Storing all selected items ...";
-while {true} do 
+_freeweight = life_maxWeight - life_carryWeight;
+_itemweight = ([_ctrl] call life_fnc_itemWeight);
+_itemstotake = _freeweight / _itemweight;
+
+//if we can take more items then there are we just take as many as possible
+if( _value < _itemstotake ) then
 {
-	if(_num > _value) exitWith {hint "The vehicle doesn't have that many of that item."};
-	_num = [_ctrl,_num,life_carryWeight,life_maxWeight] call life_fnc_calWeightDiff;
-	if(_num == 0) exitWith {hint "Your inventory is full."};
-	_weight = ([_ctrl] call life_fnc_itemWeight) * _num;
-	if(_ctrl == "money") then
+	_itemstotake = _value;
+};
+
+// if there is less than 1 item to take we can already stop here
+if( _itemstotake == 0 ) exitWith 
+{ 
+	hint "Not enough space left in your inventory.";
+};
+
+_weight = ([_ctrl] call life_fnc_itemWeight) * _itemstotake;
+
+if([true,_ctrl,_itemstotake] call life_fnc_handleInv) then
+{
+	if(_itemstotake == _value) then
 	{
-		if(_num == _value) then
-		{
-			_data set[_index,-1];
-			_data = _data - [-1];
-		}
-			else
-		{
-			_data set[_index,[_ctrl,(_value - _num)]];
-		};
-		
-		life_cash = life_cash + _num;
-		life_trunk_vehicle setVariable["Trunk",[_data,(_old select 1) - _weight],true];
-		[life_trunk_vehicle] call life_fnc_vehInventory;
+		_data set[_index,-1];
+		_data = _data - [-1];
 	}
 		else
 	{
-		
-		if(![true,_ctrl,_num] call life_fnc_handleInv) exitWith {hint "Couldn't add to your inventory, are you full?";}
-
-		if(_num == _value) then
-		{
-			_data set[_index,-1];
-			_data = _data - [-1];
-		}
-			else
-		{
-			_data set[_index,[_ctrl,(_value - _num)]];
-		};
-		life_trunk_vehicle setVariable["Trunk",[_data,(_old select 1) - _weight],true];
-		[life_trunk_vehicle] call life_fnc_vehInventory;
+		_data set[_index,[_ctrl,(_value - _itemstotake)]];
 	};
-	sleep 0.09;
+	life_trunk_vehicle setVariable["Trunk",[_data,(_old select 1) - (_weight)],true];
+	[life_trunk_vehicle] call life_fnc_vehInventory;
+}
+	else
+{ 
+	hint "Couldn't add to your inventory, are you full?"; 
 };
