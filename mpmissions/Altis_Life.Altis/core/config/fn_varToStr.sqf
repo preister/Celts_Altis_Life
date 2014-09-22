@@ -62,9 +62,10 @@ switch (_var) do
 	case "life_inv_storagesmall": {"Small Storage Box"};
 	case "life_inv_storagebig": {"Large Storage Box"};
 	case "life_inv_zipties": {"zipties"};
-	case "life_inv_methu": {"Unprocessed Methamphetamine"};
-	case "life_inv_methp": {"Pure Methamphetamine"};
-	case "life_inv_speedbomb": {"Speed Bomb"};
+	case "life_inv_methu": {"Meth Ingredients"};
+	case "life_inv_methp": {"Pure Meth"};
+	case "life_inv_corn": {"Corn"};
+	case "life_inv_moonshine": {"Moonshine"};
 	
 	//License Block
 	case "license_civ_driver": {"Driver License"};
@@ -91,4 +92,5 @@ switch (_var) do
 	case "license_med_air": {"Pilot License"};
 	case "license_civ_home": {"Home Owners License"};
 	case "license_civ_meth": {"Methamphetamine Training"};
+	case "license_civ_moonshine": {"Moonshine Training"};
 };

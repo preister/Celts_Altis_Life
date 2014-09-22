@@ -54,9 +54,7 @@ switch (_code) do
 	};
 			case independent: {if(!visibleMap) then {[] spawn life_fnc_medicMarkers;}};
 		};
-			case civilian: {if(!visibleMap) then {[] spawn life_fnc_groupMarkers;}};
 	};
-	
 	
 	//Holster / recall weapon.
 	case 35:
@@ -216,7 +214,7 @@ switch (_code) do
 case 24:
 {
   if(_shift) then {_handled = true;};
-  if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget in [civilian,independent]) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
+  if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget in [civilian,independent]) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && (cursorTarget getVariable "surrender") && speed cursorTarget < 1) then
   {
    if([false,"zipties",1] call life_fnc_handleInv) then
     {
@@ -249,12 +247,12 @@ case 24:
 						_veh setVariable[format["bis_disabled_Door_%1",_door],1,true];
 						_veh animate [format["door_%1_rot",_door],0];
 						systemChat "You have locked that door, Motherfucker!";
-						player say3D "unlock";
+						player say3D "car_lock";
 					} else {
 						_veh setVariable[format["bis_disabled_Door_%1",_door],0,true];
 						_veh animate [format["door_%1_rot",_door],1];
 						systemChat "You have unlocked that door, Motherfucker!.";
-						player say3D "unlock";
+						player say3D "car_lock";
 						
 					};
 				};
@@ -268,7 +266,7 @@ case 24:
 							[[_veh,0],"life_fnc_lockVehicle",_veh,false] spawn life_fnc_MP;
 						};
 						systemChat "You have unlocked your vehicle, Motherfucker!.";
-						player say3D "car_lock";
+						player say3D "unlock";
 					} else {
 						if(local _veh) then {
 							_veh lock 2;
@@ -276,7 +274,7 @@ case 24:
 							[[_veh,2],"life_fnc_lockVehicle",_veh,false] spawn life_fnc_MP;
 						};	
 						systemChat "You have locked your vehicle, Motherfucker!.";
-						player say3D "car_lock";
+						player say3D "unlock";
 						
 					};
 				};

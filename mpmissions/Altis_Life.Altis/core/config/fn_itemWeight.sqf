@@ -59,6 +59,7 @@ switch (_item) do
 	case "zipties": {1};
 	case "methu": {6};
 	case "methp": {3};
-	case "speedbomb": {10};
+	case "corn": {2};
+	case "moonshine": {1};
 	default {1};
 };

@@ -172,7 +172,8 @@ life_inv_items =
 	"life_inv_zipties",
 	"life_inv_methu",
 	"life_inv_methp",
-	"life_inv_speedbomb"
+	"life_inv_corn",
+	"life_inv_moonshine"
 ];
 
 //Setup variable inv vars.
@@ -203,7 +204,8 @@ life_licenses =
 	["license_civ_cement","civ"],
 	["license_med_air","med"],
 	["license_civ_home","civ"],
-	["license_civ_meth","civ"]
+	["license_civ_meth","civ"],
+	["license_civ_moonshine","civ"]
 ];
 
 //Setup License Variables
@@ -256,7 +258,7 @@ sell_array =
 	["zipties",2],
 	["methu",650],
 	["methp",6500],
-	["speedbomb",400000]
+	["moonshine",500]
 ];
 __CONST__(sell_array,sell_array);
 
@@ -288,7 +290,7 @@ buy_array =
 	["storagesmall",75000],
 	["storagebig",150000],
 	["zipties",5],
-	["speedbomb",500000]
+	["moonshine",1000]
 ];
 __CONST__(buy_array,buy_array);
 

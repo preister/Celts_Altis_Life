@@ -121,6 +121,7 @@ class Life_Client_Core
 		class robShops {}; //Rob Gas Station & Shops Script
 		class surrender {}; //surrender action
 		class gatherMeth {};
+		class gatherCorn {};
 	};
 	
 	class Housing
@@ -370,7 +371,7 @@ class Life_Client_Core
 		class defuseKit {};
 		class storageBox {};
 		class weed {};
-		class speedBomb {};
+		class moonshine {};
 	};
 	
 	class Dialog_Controls

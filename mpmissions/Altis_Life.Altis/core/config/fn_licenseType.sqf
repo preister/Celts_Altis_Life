@@ -41,6 +41,7 @@ switch (_mode) do
 			case "mair": {_var = "license_med_air"};
 			case "home": {_var = "license_civ_home"};
 			case "meth": {_var = "license_civ_meth"};  // in the upper field
+			case "moonshine": {_var = "license_civ_moonshine"};
 			default {_var = ""};
 		};
 	};
@@ -74,6 +75,7 @@ switch (_mode) do
 			case "license_med_air": {_var = "mair"};
 			case "license_civ_home": {_var = "home"};
 			case "license_civ_meth": {_var = "meth"};  // in the lower field
+			case "license_civ_moonshine": {_var = "moonshine"};
 			default {_var = ""};
 		};
 	};

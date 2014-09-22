@@ -68,7 +68,8 @@ switch (_mode) do
 			case "zipties": {"life_inv_zipties"};
 			case "methu": {"life_inv_methu"};
 			case "methp": {"life_inv_methp"};   // into case 0 field 
-			case "speedbomb": {"life_inv_speedbomb"};
+			case "corn": {"life_inv_corn"};
+			case "moonshine": {"life_inv_moonshine"};
 		};
 	};
 	
@@ -128,7 +129,8 @@ switch (_mode) do
 			case "life_inv_zipties": {"zipties"};
 			case "life_inv_methu": {"methu"};
 			case "life_inv_methp": {"methp"}; // in the case 1 field 
-			case "life_inv_speedbomb": {"speedbomb"};
+			case "life_inv_corn": {"corn"};
+			case "life_inv_moonshine": {"moonshine"};
 		};
 	};
 };

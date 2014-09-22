@@ -37,7 +37,7 @@ switch (_side) do
 		if(license_civ_rebel) then
 		{
 			_return set[count _return,
-			["reb_spawn_1","Rebel Base","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]];
+			["reb_spawn_1","Rebel HQ","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]];
 		};
 
 		if(count life_houses > 0) then {
