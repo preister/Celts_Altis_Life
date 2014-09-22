@@ -34,21 +34,29 @@ _inv = _veh_data select 0;
 _itemstostore = ((_totalWeight select 0) - (_totalWeight select 1))  / _itemWeight;
 _itemsstored = 0;
 //while there is still a item of this type in the player inventory we need to continue
-while{( (_itemsstored < _itemstostore) && ([false,_ctrl,1] call life_fnc_handleInv) ) } do
+while{ (_itemsstored < _itemstostore) } do
 {
-	//increase the weight currently stored
-	_index = [_ctrl,_inv] call fnc_index;
-	if(_index == -1) then
+	//only take an item if there is actually one left in the player inventory
+	if ([false,_ctrl,1] call life_fnc_handleInv) then 
 	{
-		_inv set[count _inv,[_ctrl, 1]];
+		_index = [_ctrl,_inv] call fnc_index;
+		if(_index == -1) then
+		{
+			_inv set[count _inv,[_ctrl, 1]];
+		}
+			else
+		{
+			_val = _inv select _index select 1;
+			_inv set[_index,[_ctrl,_val + 1]];
+		};
+		
+		_itemsstored = _itemsstored + 1;
 	}
 		else
 	{
-		_val = _inv select _index select 1;
-		_inv set[_index,[_ctrl,_val + 1]];
+		//if no item is left in the inventory then thats how many we could take
+		_itemstostore = _itemsstored;	
 	};
-	
-	_itemsstored = _itemsstored + 1;
 };
 life_trunk_vehicle setVariable["Trunk",[_inv,(_veh_data select 1) + (_itemWeight * _itemsstored)],true];
 [life_trunk_vehicle] call life_fnc_vehInventory;
