@@ -77,10 +77,13 @@ class Life_Client_Core
 	{
 		file = "core\actions";
 		class buyLicense {};
+		class chemlightUse {};
+		class heal {};
 		class healHospital {};
 		class pushVehicle {};
 		class repairTruck {};
 		class serviceChopper {};
+		class serviceTruck {};
 		class catchFish {};
 		class catchTurtle {};
 		class dpFinish {};
@@ -88,6 +91,8 @@ class Life_Client_Core
 		class getDPMission {};
 		class postBail {};
 		class processAction {};
+		class sellOil {};
+		class suicideBomb {};
 		class arrestAction {};
 		class escortAction {};
 		class impoundAction {};
@@ -101,10 +106,15 @@ class Life_Client_Core
 		class pickupItem {};
 		class pickupMoney {};
 		class ticketAction {};
+		class pumpRepair {};
 		class packupSpikes {};
 		class storeVehicle {};
 		class robAction {};
+		class sellTurtle {};
+		class sellGoldBars {};
 		class captureHideout {};
+		class robShops {}; //Rob Gas Station & Shops Script
+		class surrender {}; //surrender action
 		class gather {};
 	};
 	
