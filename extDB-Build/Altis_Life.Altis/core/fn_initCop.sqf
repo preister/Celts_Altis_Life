@@ -28,3 +28,34 @@ player setVariable["rank",(__GETC__(life_coplevel)),true];
 [] call life_fnc_spawnMenu;
 waitUntil{!isNull (findDisplay 38500)}; //Wait for the spawn selection to be open.
 waitUntil{isNull (findDisplay 38500)}; //Wait for the spawn selection to be done.
+[] spawn    //basic cop
+{
+ while {true} do
+ {
+  waitUntil {uniform player == "U_Rangemaster"};
+  player setObjectTextureGlobal [0,"textures\police_uniform_co.paa"];
+  waitUntil {uniform player != "U_Rangemaster"};
+ };
+};
+
+[] spawn     //Hat
+{
+ while {true} do
+ {
+  waitUntil {uniform player == "H_MilCap_mcamo"};
+  player setObjectTextureGlobal [0,"textures\police_cap_co.paa"];
+  waitUntil {uniform player != "H_MilCap_mcamo"};
+ };
+};
+
+[] spawn     //Vest
+{
+ while {true} do
+ {
+  waitUntil {uniform player == "Vest_V_PlateCarrier2_rgr"};
+  player setObjectTextureGlobal [0,"textures\V_PlateCarrier2_rgr"];
+  waitUntil {uniform player != "Vest_V_PlateCarrier2_rgr"};
+ };
+};
+
+[] execVM "scripts\fusionsmenu\admin\activate.sqf";

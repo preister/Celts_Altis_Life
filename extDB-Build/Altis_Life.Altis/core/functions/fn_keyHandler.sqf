@@ -64,6 +64,7 @@ switch (_code) do
 		switch (playerSide) do 
 		{
 			case west: {if(!visibleMap) then {[] spawn life_fnc_copMarkers;}};
+			case civilian: {if((_curTarget getVariable["restrained",false]) && !dialog) then {[_curTarget] call life_fnc_civInteractionMenu;}};
 			case independent: {if(!visibleMap) then {[] spawn life_fnc_medicMarkers;}};
 		};
 	};
@@ -98,25 +99,41 @@ switch (_code) do
 		};
 	};
 	
-	//Restraining (Shift + R)
+	//Restraining or robbing (Shift + R)
 	case 19:
 	{
 		if(_shift) then {_handled = true;};
-		if(_shift && playerSide == west && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget in [civilian,independent]) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
+		if(_shift && playerSide == west && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget == civilian) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
 		{
 			[] call life_fnc_restrainAction;
 		};
+		
+        //Robbing
+		if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && isPlayer cursorTarget && alive cursorTarget && cursorTarget distance player < 4 && speed cursorTarget < 1) then
+		{
+			if((animationState cursorTarget) != "Incapacitated" && (currentWeapon player == primaryWeapon player OR currentWeapon player == handgunWeapon player) && currentWeapon player != "" && !life_knockout && !(player getVariable["restrained",false]) && !life_istazed && !(player getVariable["surrender",false])) then
+			{
+				[cursorTarget] spawn life_fnc_knockoutAction;
+			};
+			_handled = true;
+		};
 	};
 	
-	//Knock out, this is experimental and yeah...
+	//surrender... shift + g
 	case 34:
 	{
 		if(_shift) then {_handled = true;};
-		if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && isPlayer cursorTarget && alive cursorTarget && cursorTarget distance player < 4 && speed cursorTarget < 1) then
+		if (_shift) then
 		{
-			if((animationState cursorTarget) != "Incapacitated" && (currentWeapon player == primaryWeapon player OR currentWeapon player == handgunWeapon player) && currentWeapon player != "" && !life_knockout && !(player getVariable["restrained",false]) && !life_istazed) then
+			if (vehicle player == player && !(player getVariable ["restrained", false]) && (animationState player) != "Incapacitated" && !life_istazed) then
 			{
-				[cursorTarget] spawn life_fnc_knockoutAction;
+				if (player getVariable ["surrender", false]) then
+				{
+					player setVariable ["surrender", false, true];
+				} else
+			{
+					[] spawn life_fnc_surrender;
+				};
 			};
 		};
 	};
@@ -204,6 +221,25 @@ switch (_code) do
 			};
 		};
 	};
+	
+	//Shift+O Zipties ( Civilians can restrain )
+case 24:
+{
+  if(_shift) then {_handled = true;};
+  if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget in [civilian,independent]) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && (cursorTarget getVariable "surrender") && speed cursorTarget < 1) then
+  {
+   if([false,"zipties",1] call life_fnc_handleInv) then
+    {
+    [] call life_fnc_restrainAction;
+    hint "You restrained him, use your interactionmenu for more options";
+   }
+   else
+   {
+    hint "You have no zipties!";
+				};
+			};
+		};
+		
 	//U Key
 	case 22:
 	{
@@ -223,10 +259,12 @@ switch (_code) do
 						_veh setVariable[format["bis_disabled_Door_%1",_door],1,true];
 						_veh animate [format["door_%1_rot",_door],0];
 						systemChat localize "STR_House_Door_Lock";
+						player say3D "car_lock";
 					} else {
 						_veh setVariable[format["bis_disabled_Door_%1",_door],0,true];
 						_veh animate [format["door_%1_rot",_door],1];
 						systemChat localize "STR_House_Door_Unlock";
+						player say3D "unlock";
 					};
 				};
 			} else {
@@ -239,6 +277,7 @@ switch (_code) do
 							[[_veh,0],"life_fnc_lockVehicle",_veh,false] spawn life_fnc_MP;
 						};
 						systemChat localize "STR_MISC_VehUnlock";
+						player say3D "unlock";
 					} else {
 						if(local _veh) then {
 							_veh lock 2;
@@ -246,6 +285,7 @@ switch (_code) do
 							[[_veh,2],"life_fnc_lockVehicle",_veh,false] spawn life_fnc_MP;
 						};	
 						systemChat localize "STR_MISC_VehLock";
+						player say3D "unlock";
 					};
 				};
 			};

@@ -87,6 +87,25 @@ switch (true) do
 		[] spawn life_fnc_pickAxeUse;
 	};
 	
+	case (_item == "marijuana"):
+	{
+    if(([false,_item,1] call life_fnc_handleInv)) then
+    {
+        [] spawn life_fnc_weed;
+    };
+	
+	};
+	
+	case (_item == "moonshine"):
+	{
+    if(([false,_item,1] call life_fnc_handleInv)) then
+    {	
+		life_thirst = 100;
+		player setFatigue 0;
+        [] spawn life_fnc_moonshine;
+    };
+};
+	
 	default
 	{
 		hint localize "STR_ISTR_NotUsable";

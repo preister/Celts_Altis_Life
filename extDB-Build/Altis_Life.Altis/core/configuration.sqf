@@ -24,7 +24,7 @@ life_bail_paid = false;
 life_impound_inuse = false;
 life_action_inUse = false;
 life_spikestrip = ObjNull;
-life_respawn_timer = 2; //Scaled in minutes
+life_respawn_timer = 0.5; //Scaled in minutes
 life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
@@ -36,10 +36,10 @@ __CONST__(life_save_yinv,FALSE); //Save Y-Inventory for players?
 
 //Revive constant variables.
 __CONST__(life_revive_cops,TRUE); //Set to false if you don't want cops to be able to revive downed players.
-__CONST__(life_revive_fee,250); //Fee for players to pay when revived.
+__CONST__(life_revive_fee,5000); //Fee for players to pay when revived.
 
 //House Limit
-__CONST__(life_houseLimit,5); //Maximum amount of houses a player can buy (TODO: Make Tiered licenses).
+__CONST__(life_houseLimit,6); //Maximum amount of houses a player can buy (TODO: Make Tiered licenses).
 
 //Gang related stuff?
 __CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persistent so keep it high to avoid 345345345 gangs).
@@ -53,7 +53,7 @@ life_clothing_purchase = [-1,-1,-1,-1,-1];
 ****** Weight Variables *****
 *****************************
 */
-life_maxWeight = 24; //Identifies the max carrying weight (gets adjusted throughout game when wearing different types of clothing).
+life_maxWeight = 50; //Identifies the max carrying weight (gets adjusted throughout game when wearing different types of clothing).
 life_maxWeightT = 24; //Static variable representing the players max carrying weight on start.
 life_carryWeight = 0; //Represents the players current inventory weight (MUST START AT 0).
 
@@ -78,6 +78,7 @@ __CONST__(life_impound_car,350);
 __CONST__(life_impound_boat,250);
 __CONST__(life_impound_air,850);
 life_istazed = false;
+life_isdowned = false;
 life_my_gang = ObjNull;
 
 life_vehicles = [];
@@ -86,18 +87,18 @@ switch (playerSide) do
 {
 	case west: 
 	{
-		life_atmcash = 7000; //Starting Bank Money
-		life_paycheck = 500; //Paycheck Amount
+		life_atmcash = 50000; //Starting Bank Money
+		life_paycheck = 1000; //Paycheck Amount
 	};
 	case civilian: 
 	{
-		life_atmcash = 3000; //Starting Bank Money
+		life_atmcash = 50000; //Starting Bank Money
 		life_paycheck = 350; //Paycheck Amount
 	};
 	
 	case independent: {
-		life_atmcash = 6500;
-		life_paycheck = 450;
+		life_atmcash = 50000;
+		life_paycheck = 1000;
 	};
 };
 
@@ -156,7 +157,12 @@ life_inv_items =
 	"life_inv_boltcutter",
 	"life_inv_defusekit",
 	"life_inv_storagesmall",
-	"life_inv_storagebig"
+	"life_inv_storagebig",
+	"life_inv_zipties",
+	"life_inv_methu",
+	"life_inv_methp",
+	"life_inv_corn",
+	"life_inv_moonshine"
 ];
 
 //Setup variable inv vars.
@@ -186,7 +192,9 @@ life_licenses =
 	["license_civ_salt","civ"],
 	["license_civ_cement","civ"],
 	["license_med_air","med"],
-	["license_civ_home","civ"]
+	["license_civ_home","civ"],
+	["license_civ_meth","civ"],
+	["license_civ_moonshine","civ"]
 ];
 
 //Setup License Variables
@@ -194,7 +202,7 @@ life_licenses =
 
 life_dp_points = ["dp_1","dp_2","dp_3","dp_4","dp_5","dp_6","dp_7","dp_8","dp_9","dp_10","dp_11","dp_12","dp_13","dp_14","dp_15","dp_15","dp_16","dp_17","dp_18","dp_19","dp_20","dp_21","dp_22","dp_23","dp_24","dp_25"];
 //[shortVar,reward]
-life_illegal_items = [["heroinu",1200],["heroinp",2500],["cocaine",1500],["cocainep",3500],["marijuana",2000],["turtle",3000],["blastingcharge",10000],["boltcutter",500]];
+life_illegal_items = [["heroinu",1200],["heroinp",2500],["cocaine",1500],["cocainep",3500],["cannabis",200],["marijuana",2000],["turtle",3000],["blastingcharge",10000],["boltcutter",500],["methu",650],["methp",6500]];
 
 
 /*
@@ -203,8 +211,8 @@ life_illegal_items = [["heroinu",1200],["heroinp",2500],["cocaine",1500],["cocai
 sell_array = 
 [
 	["apple",50],
-	["heroinu",1850],
-	["heroinp",2650],
+	["heroinu",2500],
+	["heroinp",4000],
 	["salema",45],
 	["ornate",40],
 	["mackerel",175],
@@ -226,8 +234,8 @@ sell_array =
 	["peach",55],
 	["cocaine",3000],
 	["cocainep",5000],
-	["diamond",750],
-	["diamondc",2000],
+	["diamond",1500],
+	["diamondc",3000],
 	["iron_r",3200],
 	["copper_r",1500],
 	["salt_r",1650],
@@ -235,7 +243,11 @@ sell_array =
 	["fuelF",500],
 	["spikeStrip",1200],
 	["cement",1950],
-	["goldbar",95000]
+	["goldbar",95000],
+	["zipties",2],
+	["methu",650],
+	["methp",6500],
+	["moonshine",500]
 ];
 __CONST__(sell_array,sell_array);
 
@@ -257,7 +269,7 @@ buy_array =
 	["tbacon",75],
 	["lockpick",150],
 	["pickaxe",1200],
-	["redgull",1500],
+	["redgull",750],
 	["fuelF",850],
 	["peach",68],
 	["spikeStrip",2500],
@@ -265,7 +277,9 @@ buy_array =
 	["boltcutter",7500],
 	["defusekit",2500],
 	["storagesmall",75000],
-	["storagebig",150000]
+	["storagebig",150000],
+	["zipties",5],
+	["moonshine",1000]
 ];
 __CONST__(buy_array,buy_array);
 
@@ -316,30 +330,32 @@ __CONST__(life_weapon_shop_array,life_weapon_shop_array);
 
 life_garage_prices =
 [
-	["B_QuadBike_01_F",550],
+	["B_QuadBike_01_F",5],
 	["C_Hatchback_01_F",1500],
 	["C_Offroad_01_F", 2500],
 	["B_G_Offroad_01_F",3500],
 	["C_SUV_01_F",5250],
-	["C_Van_01_transport_F",7890],
+	["C_Van_01_transport_F",5000],
 	["C_Hatchback_01_sport_F",2350],
-	["C_Van_01_fuel_F",4500],
-	["I_Heli_Transport_02_F",100000],
-	["C_Van_01_box_F",9000],
-	["I_Truck_02_transport_F",12000],
-	["I_Truck_02_covered_F",14500],
-	["B_Truck_01_transport_F",25650],
-	["B_Truck_01_box_F", 35000],
-	["O_MRAP_02_F",45000],
-	["B_Heli_Light_01_F",45000],
-	["O_Heli_Light_02_unarmed_F",65000],
+	["C_Van_01_fuel_F",3000],
+	["I_Heli_Transport_02_F",15000],
+	["C_Van_01_box_F",5000],
+	["I_Truck_02_transport_F",7500],
+	["I_Truck_02_covered_F",8000],
+	["B_Truck_01_transport_F",12500],
+	["B_Truck_01_box_F", 15000],
+	["O_MRAP_02_F",15000],
+	["B_Heli_Light_01_F",10000],
+	["O_Heli_Light_02_unarmed_F",15000],
 	["C_Rubberboat",400],
 	["C_Boat_Civil_01_F",4500],
 	["B_Boat_Transport_01_F",450],
 	["C_Boat_Civil_01_police_F",3500],
 	["B_Boat_Armed_01_minigun_F",16500],
 	["B_SDV_01_F",25000],
-	["B_MRAP_01_F",7500]
+	["B_MRAP_01_F",7500],
+	["B_MRAP_01_hmg_F",30000],
+	["B_G_Offroad_01_armed_F",50000]
 ];
 __CONST__(life_garage_prices,life_garage_prices);
 
@@ -368,6 +384,8 @@ life_garage_sell =
 	["C_Boat_Civil_01_police_F",4950],
 	["B_Boat_Armed_01_minigun_F",21000],
 	["B_SDV_01_F",45000],
-	["B_MRAP_01_F",10000]
+	["B_MRAP_01_F",100000],
+	["B_MRAP_01_hmg_F",600000],
+	["B_G_Offroad_01_armed_F",600000]
 ];
 __CONST__(life_garage_sell,life_garage_sell);
