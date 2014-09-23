@@ -259,6 +259,8 @@ class Life_Client_Core
 		class removeLicenses {};
 		class demoChargeTimer {};
 		class civLoadout {};
+		class handleDowned {};
+		class civInteractionMenu {};
 	};
 	
 	class Vehicle
@@ -305,6 +307,9 @@ class Life_Client_Core
 		class fedCamDisplay {};
 		class copLoadout {};
 		class ticketPaid {};
+		class seizeObjects {};
+		class seizePlayerWeapon {};
+		class seizePlayerWeaponAction {};
 	};
 	
 	class Gangs
