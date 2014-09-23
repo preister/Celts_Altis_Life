@@ -11,6 +11,7 @@ enableSaving[false,false];
 life_versionInfo = "Altis Life RPG v3.1.4.5";
 [] execVM "briefing.sqf"; //Load Briefing
 [] execVM "KRON_Strings.sqf";
+[] execVM "zlt_fastrope.sqf";
 
 StartProgress = true;
 

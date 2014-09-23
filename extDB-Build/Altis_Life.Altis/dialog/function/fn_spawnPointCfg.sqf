@@ -34,6 +34,12 @@ switch (_side) do
 			["civ_spawn_4","Sofia","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]
 		];
 		
+		if(license_civ_rebel) then
+		{
+			_return set[count _return,
+			["reb_spawn_1","Rebel HQ","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]];
+		};
+
 		if(count life_houses > 0) then {
 			{
 				_pos = call compile format["%1",_x select 0];

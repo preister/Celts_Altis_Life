@@ -114,8 +114,19 @@ class TrunkMenu
 			text = "$STR_Trunk_Take";
 			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
 			onButtonClick = "[] call life_fnc_vehTakeItem;";
-			x = 0.19; y = 0.78;
-			w = (6.25 / 40);
+			x = 0.11; y = 0.78;
+			w = 0.14;
+			h = (1 / 25);
+		};
+
+		class TakeAllItem : Life_RscButtonMenu
+		{
+			idc = -1;
+			text = "$STR_Trunk_Take_All";
+			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
+			onButtonClick = "[] call life_fnc_vehTakeAllItem;";
+			x = 0.27; y = 0.78;
+			w = 0.14;
 			h = (1 / 25);
 		};
 		
@@ -125,8 +136,19 @@ class TrunkMenu
 			text = "$STR_Trunk_Store";
 			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
 			onButtonClick = "[] call life_fnc_vehStoreItem;";
-			x = 0.57; y = 0.78;
-			w = (6.25 / 40);
+			x = 0.49; y = 0.78;
+			w = 0.14;
+			h = (1 / 25);
+		};
+		
+		class StoreAllItem : Life_RscButtonMenu
+		{
+			idc = -1;
+			text = "$STR_Trunk_Store_All";
+			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
+			onButtonClick = "[] call life_fnc_vehStoreAllItem;";
+			x = 0.65; y = 0.78;
+			w = 0.14;
 			h = (1 / 25);
 		};
 		

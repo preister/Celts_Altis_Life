@@ -34,7 +34,7 @@ class Life_atm_management {
 			x = 0.39;
 			y = 0.26;
 			w = 0.3;
-			h = .14;
+			h = 0.14;
 		};
 		
 		class Title : Life_RscTitle {
