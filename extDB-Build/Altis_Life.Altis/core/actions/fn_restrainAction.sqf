@@ -9,8 +9,15 @@ private["_unit"];
 _unit = cursorTarget;
 if(isNull _unit) exitWith {}; //Not valid
 if((_unit getVariable "restrained")) exitWith {};
-if(side _unit == west) exitWith {};
 if(player == _unit) exitWith {};
+if (side player == west) then {	
+if(side _unit == west) exitWith {};
+	};
+if (side player == civilian) then {
+	if(life_inv_zipties < 1) exitWith { hint "You have no zipties."; };
+	life_inv_zipties = life_inv_zipties - 1;
+	hint "You have ziptied the citizen";
+};
 if(!isPlayer _unit) exitWith {};
 //Broadcast!
 
