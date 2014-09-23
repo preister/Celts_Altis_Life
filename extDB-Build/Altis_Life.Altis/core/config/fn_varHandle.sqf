@@ -65,6 +65,11 @@ switch (_mode) do
 			case "defusekit": {"life_inv_defusekit"};
 			case "storagesmall": {"life_inv_storagesmall"};
 			case "storagebig": {"life_inv_storagebig"};
+			case "zipties": {"life_inv_zipties"};
+			case "methu": {"life_inv_methu"};
+			case "methp": {"life_inv_methp"};   // into case 0 field 
+			case "corn": {"life_inv_corn"};
+			case "moonshine": {"life_inv_moonshine"};
 		};
 	};
 	
@@ -121,6 +126,11 @@ switch (_mode) do
 			case "life_inv_defusekit": {"defusekit"};
 			case "life_inv_storagesmall": {"storagesmall"};
 			case "life_inv_storagebig": {"storagebig"};
+			case "life_inv_zipties": {"zipties"};
+			case "life_inv_methu": {"methu"};
+			case "life_inv_methp": {"methp"}; // in the case 1 field 
+			case "life_inv_corn": {"corn"};
+			case "life_inv_moonshine": {"moonshine"};
 		};
 	};
 };

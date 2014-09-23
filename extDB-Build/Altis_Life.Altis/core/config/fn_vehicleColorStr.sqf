@@ -54,6 +54,7 @@ switch (_vehicle) do
 			case 4: {_color = "Tan"};
 			case 5: {_color = "Green"};
 			case 6: {_color = "Cop"};
+			case 7: {_color = "Barbie"};
 		};
 	};
 	
@@ -66,6 +67,7 @@ switch (_vehicle) do
 			case 2: {_color = "Silver";};
 			case 3: {_color = "Orange";};
 			case 4: {_color = "Cop";};
+			case 5: {_color = "Makaveli";};
 		};
 	};
 	
@@ -131,6 +133,8 @@ switch (_vehicle) do
 			case 12: {_color = "Waves Blue"};
 			case 13: {_color = "Rebel Digital"};
 			case 14: {_color = "EMS White"};
+			case 15: {_color = "CeltS Chopper"};
+			
 		};
 	};
 	
@@ -152,6 +156,7 @@ switch (_vehicle) do
 		{
 			case 0: {_color = "Regular"};
 			case 1: {_color = "Black"};
+			case 2: {_color = "SWAT"};
 		};
 	};
 	
@@ -193,6 +198,7 @@ switch (_vehicle) do
 	{
 		switch (_index) do
 		{
+			case 0: {_color = "Rebel"};
 			case 0: {_color = "Ion"};
 			case 1: {_color = "Dahoman"};
 		};

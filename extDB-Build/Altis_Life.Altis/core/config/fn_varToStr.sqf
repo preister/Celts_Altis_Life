@@ -61,6 +61,11 @@ switch (_var) do
 	case "life_inv_defusekit": {(localize "STR_Item_DefuseKit")};
 	case "life_inv_storagesmall": {(localize "STR_Item_StorageBS")};
 	case "life_inv_storagebig": {(localize "STR_Item_StorageBL")};
+	case "life_inv_zipties": {"zipties"};
+	case "life_inv_methu": {"Meth Ingredients"};
+	case "life_inv_methp": {"Pure Meth"};
+	case "life_inv_corn": {"Corn"};
+	case "life_inv_moonshine": {"Moonshine"};
 	
 	//License Block
 	case "license_civ_driver": {(localize "STR_License_Driver")};
@@ -85,4 +90,7 @@ switch (_var) do
 	case "license_civ_cement": {(localize "STR_License_Cement")};
 	case "license_med_air": {(localize "STR_License_Pilot")};
 	case "license_civ_home": {(localize "STR_License_Home")};
+	case "license_civ_home": {"Home Owners License"};
+	case "license_civ_meth": {"Methamphetamine Training"};
+	case "license_civ_moonshine": {"Moonshine Training"};
 };

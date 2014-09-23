@@ -35,7 +35,7 @@ switch(_shop) do
 						["HandGrenade_Stone","Flashbang",1700],
 						["Binocular",nil,150],
 						["ItemGPS",nil,100],
-						["ToolKit",nil,250],
+						["ToolKit",nil,5000],
 						["muzzle_snds_L",nil,650],
 						["FirstAidKit",nil,150],
 						["Medikit",nil,1000],
@@ -58,7 +58,7 @@ switch(_shop) do
 					[
 						["ItemGPS",nil,100],
 						["Binocular",nil,150],
-						["ToolKit",nil,250],
+						["ToolKit",nil,5000],
 						["FirstAidKit",nil,150],
 						["Medikit",nil,500],
 						["NVGoggles",nil,1200],
@@ -80,15 +80,14 @@ switch(_shop) do
 				["Altis Patrol Officer Shop",
 					[
 						["arifle_MX_F",nil,35000],
-						["SMG_02_ACO_F",nil,30000],
-						["HandGrenade_Stone","Flashbang",1700],
+						["30Rnd_65x39_caseless_mag",nil,150],
+						["30Rnd_65x39_caseless_mag_Tracer",nil,130],
+						["muzzle_snds_H",nil,2750],	
+						["HandGrenade_Stone","Flashbang",2500],
 						["MineDetector",nil,1000],
 						["acc_flashlight",nil,750],
 						["optic_Holosight",nil,1200],
-						["optic_Arco",nil,2500],
-						["muzzle_snds_H",nil,2750],
-						["30Rnd_65x39_caseless_mag",nil,130],
-						["30Rnd_9x21_Mag",nil,250]
+						["optic_Arco",nil,2500]										
 					]
 				];
 			};
@@ -105,15 +104,15 @@ switch(_shop) do
 			{
 				["Altis Sergeant Officer Shop",
 					[
-						["SMG_02_ACO_F",nil,15000],
-						["hgun_ACPC2_F",nil,17500],
-						["HandGrenade_Stone","Flashbang",1700],
-						["arifle_MXC_F",nil,30000],
-						["optic_Arco",nil,2500],
+						["arifle_MX_F",nil,35000],
+						["30Rnd_65x39_caseless_mag",nil,150],
+						["30Rnd_65x39_caseless_mag_Tracer",nil,130],
 						["muzzle_snds_H",nil,2750],
-						["30Rnd_65x39_caseless_mag",nil,100],
-						["30Rnd_9x21_Mag",nil,60],
-						["9Rnd_45ACP_Mag",nil,200]
+						["HandGrenade_Stone","Flashbang",2500],
+						["MineDetector",nil,1000],
+						["acc_flashlight",nil,750],
+						["optic_Holosight",nil,1200],
+						["optic_Arco",nil,2500]		
 					]
 				];
 			};
@@ -128,21 +127,33 @@ switch(_shop) do
 			case (!license_civ_rebel): {"You don't have a Rebel training license!"};
 			default
 			{
-				["Mohammed's Jihadi Shop",
+				["Muhammad's Jihad Shop",
 					[
+						["hgun_Rook40_F",nil,6500],
+						["16Rnd_9x21_Mag",nil,25],
+						["hgun_ACPC2_F",nil,11500],
+						["9Rnd_45ACP_Mag",nil,45],
 						["arifle_TRG20_F",nil,25000],
+						["30Rnd_556x45_Stanag",nil,300],
 						["arifle_Katiba_F",nil,30000],
+						["30Rnd_65x39_caseless_green",nil,275],
 						["srifle_DMR_01_F",nil,50000],
+						["10Rnd_762x51_Mag",nil,500],
+						["arifle_MXC_F",nil,30000],
+						["30Rnd_65x39_caseless_mag",nil,100],
+						["muzzle_snds_H",nil,20000],
 						["arifle_SDAR_F",nil,20000],
+						["20Rnd_556x45_UW_mag",nil,125],
 						["optic_ACO_grn",nil,3500],
+						["srifle_LRR_SOS_F",nil,200000],
+						["7Rnd_408_Mag",nil,10000],
 						["optic_Holosight",nil,3600],
-						["acc_flashlight",nil,1000],
 						["optic_Hamr",nil,7500],
 						["30Rnd_9x21_Mag",nil,200],
-						["20Rnd_556x45_UW_mag",nil,125],
-						["30Rnd_556x45_Stanag",nil,300],
-						["10Rnd_762x51_Mag",nil,500],
-						["30Rnd_65x39_caseless_green",nil,275]
+				        ["ItemGPS",nil,100],
+				        ["ToolKit",nil,5000],
+				        ["FirstAidKit",nil,150],
+				        ["NVGoggles",nil,2000]
 					]
 				];
 			};
@@ -206,7 +217,7 @@ switch(_shop) do
 			[
 				["Binocular",nil,150],
 				["ItemGPS",nil,100],
-				["ToolKit",nil,250],
+				["ToolKit",nil,5000],
 				["FirstAidKit",nil,150],
 				["NVGoggles",nil,2000],
 				["Chemlight_red",nil,300],

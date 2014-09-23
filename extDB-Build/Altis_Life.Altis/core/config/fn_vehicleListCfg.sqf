@@ -46,7 +46,8 @@ switch (_shop) do
 			["C_Hatchback_01_F",9500],
 			["C_Offroad_01_F",12500],
 			["C_SUV_01_F",35000],
-			["C_Van_01_transport_F",40000]
+			["C_Van_01_transport_F",40000],
+			["C_Hatchback_01_sport_F",50000]
 		];
 	};
 	
@@ -73,7 +74,8 @@ switch (_shop) do
 			["B_Quadbike_01_F",2500],
 			["B_G_Offroad_01_F",15000],
 			["O_MRAP_02_F",150000],
-			["B_Heli_Light_01_F",325000]
+			["B_Heli_Light_01_F",325000],
+			["I_Heli_Transport_02_F",1200000]
 		];
 		
 		if(license_civ_rebel) then
@@ -89,6 +91,8 @@ switch (_shop) do
 		["C_Offroad_01_F",5000]];
 		_return set[count _return,
 		["C_SUV_01_F",20000]];
+		_return set[count _return,
+		["C_Hatchback_01_sport_F",20000]];
 		if(__GETC__(life_coplevel) > 2) then
 		{
 			_return set[count _return,
