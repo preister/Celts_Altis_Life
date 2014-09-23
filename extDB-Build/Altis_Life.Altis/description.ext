@@ -8,6 +8,7 @@ disabledAI = true;
 disableChannels[]={0,1,2};
 enableDebugConsole = 1;
 respawnDialog = 0;
+LoadScreen  = "welcomeimage\altiswelcome.jpg";
 
 class Header
 {
@@ -40,6 +41,13 @@ class CfgFunctions
 class CfgSounds
 {
 	sounds[] = {};
+	class bombarm
+	{
+		name = "bombarm";
+		sound[] = {"\sounds\bombarm.ogg", 1.0, 1};
+		titles[] = {};
+	}; 
+	
 	class SirenLong
 	{
 		name = "SirenLong";
@@ -59,6 +67,66 @@ class CfgSounds
 		name = "flashbang";
 		sound[] = {"\sounds\flashbang.ogg", 1.0, 1};
 		titles[] = {};
+	};
+	
+	class car_lock
+  {
+    name = "car_lock";
+    sound[] = {"\sounds\car_lock.ogg", 1.0, 1};
+    titles[] = {};
+  };
+
+ 	class unlock
+  {
+    name = "unlock";
+    sound[] = {"\sounds\unlock.ogg", 1.0, 1};
+    titles[] = {};
+  };
+	
+	class dog_whine
+	{
+		name = "dog_whine";
+		sound[] = {"sounds\dog_whine.ogg", 1, 1};
+		titles[] = {};
+		
+	};
+	class dog_growl
+	{
+		name = "dog_growl";
+		sound[] = {"sounds\dog_growl.ogg", 1, 1};
+		titles[] = {};
+		
+	};
+	class dog_ruff
+	{
+		name = "dog_ruff";
+		sound[] = {"sounds\dog_ruff.ogg", 1, 1};
+		titles[] = {};
+		
+	};
+	
+	class whistle
+	{
+		name = "whistle";
+		sound[] = {"sounds\whistle.ogg", 1, 1};
+		titles[] = {};
+		
+	};
+
+	class dog_close
+	{
+		name = "dog_close";
+		sound[] = {"sounds\dog_close.ogg", 1, 1};
+		titles[] = {};
+		
+	};
+	
+	class dog_one
+	{
+		name = "dog_one";
+		sound[] = {"sounds\dog_one.ogg", 1, 1};
+		titles[] = {};
+		
 	};
 };
 

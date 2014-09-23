@@ -1326,6 +1326,12 @@
 			<Italian>Deposita</Italian>
 			<Portuguese>Loja</Portuguese>
 		</Key>
+		<Key ID="STR_Trunk_Take_All">
+			<Original>Take All</Original>
+		</Key>
+		<Key ID="STR_Trunk_Store_All">
+			<Original>Store All</Original>
+		</Key>
 	</Package>
 	<Package name="Wanted_Menu">
 		<Key ID="STR_Wanted_Title">
