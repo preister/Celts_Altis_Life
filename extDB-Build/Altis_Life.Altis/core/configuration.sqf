@@ -31,8 +31,8 @@ life_respawned = false;
 life_removeWanted = false;
 
 //Persistent Saving
-__CONST__(life_save_civ,FALSE); //Save weapons for civs?
-__CONST__(life_save_yinv,FALSE); //Save Y-Inventory for players?
+__CONST__(life_save_civ,TRUE); //Save weapons for civs?
+__CONST__(life_save_yinv,TRUE); //Save Y-Inventory for players?
 
 //Revive constant variables.
 __CONST__(life_revive_cops,TRUE); //Set to false if you don't want cops to be able to revive downed players.
