@@ -7,7 +7,7 @@
 	Used in the vehicle trunk menu, stores the selected item and puts it in the vehicles virtual inventory
 	if the vehicle has room for the item.
 */
-private["_ctrl","_itemsstored","_totalWeight","_itemWeight","_veh_data","_inv","_index","_val","_itemstostore"];
+private["_ctrl","_itemsStored","_totalWeight","_itemWeight","_veh_data","_inv","_index","_val","_itemsToStore", "_itemsToStore_float"];
 disableSerialization;
 
 if((lbCurSel 3503) == -1) exitWith {hint "You need to select an item!";};
@@ -31,12 +31,21 @@ if(life_trunk_vehicle isKindOf "House_F") then
 _itemWeight = ([_ctrl] call life_fnc_itemWeight);
 _veh_data = life_trunk_vehicle getVariable ["Trunk",[[],0]];
 _inv = _veh_data select 0;
-_itemstostore = ((_totalWeight select 0) - (_totalWeight select 1))  / _itemWeight;
-_itemsstored = 0;
-//while there is still a item of this type in the player inventory we need to continue
-while{ (_itemsstored < _itemstostore) } do
+_itemsToStore_float = ((_totalWeight select 0) - (_totalWeight select 1))  / _itemWeight;
+//ok and now we need to round it down
+_itemsToStore = round _itemsToStore_float;
+//but we need to round down not just round
+if (_itemsToStore_float < _itemsToStore) then
 {
-	//only take an item if there is actually one left in the player inventory
+	_itemsToStore = _itemsToStore - 1;
+};
+//if there are no items to store we are done here
+if (_itemsToStore < 1) exitWith {hint "The vehicle is already full!";};
+_itemsStored = 0;
+//while there is still a item of this type in the player inventory we need to continue
+while{ (_itemsStored < _itemsToStore) } do
+{
+	//only take an item if there is actually one left in the player inventory and there is actually space for another item
 	if ([false,_ctrl,1] call life_fnc_handleInv) then 
 	{
 		_index = [_ctrl,_inv] call TON_fnc_index;
@@ -50,13 +59,13 @@ while{ (_itemsstored < _itemstostore) } do
 			_inv set[_index,[_ctrl,_val + 1]];
 		};
 		
-		_itemsstored = _itemsstored + 1;
+		_itemsStored = _itemsStored + 1;
 	}
 		else
 	{
 		//if no item is left in the inventory then thats how many we could take
-		_itemstostore = _itemsstored;	
+		_itemsToStore = _itemsStored;	
 	};
 };
-life_trunk_vehicle setVariable["Trunk",[_inv,(_veh_data select 1) + (_itemWeight * _itemsstored)],true];
+life_trunk_vehicle setVariable["Trunk",[_inv,(_veh_data select 1) + (_itemWeight * _itemsStored)],true];
 [life_trunk_vehicle] call life_fnc_vehInventory;
