@@ -11,7 +11,7 @@ if(life_inv_goldbar == 0) exitWith {
 	titleText["You don't have any gold bar(s) to sell.","PLAIN"];
 };
 
-_index = ["goldbar",__GETC__(sell_array)] call fnc_index;
+_index = ["goldbar",__GETC__(sell_array)] call TON_fnc_index;
 _price = (__GETC__(sell_array) select _index) select 1;
 _val = life_inv_goldbar;
 _price = _price * _val;
