@@ -57,5 +57,3 @@ waitUntil{isNull (findDisplay 38500)}; //Wait for the spawn selection to be done
   waitUntil {uniform player != "Vest_V_PlateCarrier2_rgr"};
  };
 };
-
-[] execVM "scripts\fusionsmenu\admin\activate.sqf";
