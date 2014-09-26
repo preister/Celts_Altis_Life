@@ -6,7 +6,7 @@
 	Removes the players weapons client side
 */
 removeAllWeapons player;
-[] call life_fnc_civFetchGear;
-[] call life_fnc_sessionUpdate; //Should make weapon remove persistent
-[] call life_fnc_civLoadGear;
+[] call life_fnc_saveGear;
+[] call SOCK_fnc_updateRequest; //Should make weapon remove persistent
+[] call life_fnc_loadGear;
 titleText["The weapons have been confiscated.","PLAIN"];
