@@ -25,6 +25,7 @@ switch (_vehicle) do
 			case 6: {_color = "Black"};
 			case 7: {_color = "Black"};
 			case 8: {_color = "Taxi"};
+			case 9: {_color = "Medic"};
 		};
 	};
 	
@@ -68,6 +69,7 @@ switch (_vehicle) do
 			case 3: {_color = "Orange";};
 			case 4: {_color = "Cop";};
 			case 5: {_color = "Makaveli";};
+			case 6: {_color = "Medic"};
 		};
 	};
 	
