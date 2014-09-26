@@ -170,7 +170,8 @@ if(count (handGunItems player) > 0) then
     ["life_inv_spikeStrip", life_inv_spikeStrip],
     ["life_inv_defusekit", life_inv_defusekit],
     ["life_inv_storagesmall", life_inv_storagesmall],
-    ["life_inv_storagebig", life_inv_storagebig]
+    ["life_inv_storagebig", life_inv_storagebig],
+	["life_inv_zipties", life_inv_zipties]
 ];
 
 _return set[count _return,_uItems];
