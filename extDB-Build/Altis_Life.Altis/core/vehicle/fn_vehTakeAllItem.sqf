@@ -7,7 +7,7 @@
 	Used in the vehicle trunk menu, takes the selected item and puts it in the players virtual inventory
 	if the player has room.
 */
-private["_ctrl","_itemstotake","_index","_data","_old","_value","_weight","_diff", "_freeweight", "_itemweight"];
+private["_ctrl","_itemstotake", "_itemstotake_float", "_index","_data","_old","_value","_weight","_diff", "_freeweight", "_itemweight"];
 disableSerialization;
 
 if(isNull life_trunk_vehicle OR !alive life_trunk_vehicle) exitWith {hint "The vehicle either doesn't exist or is destroyed."};
@@ -25,7 +25,11 @@ if(_index == -1) exitWith { };
 _value = _data select _index select 1;
 _freeweight = life_maxWeight - life_carryWeight;
 _itemweight = ([_ctrl] call life_fnc_itemWeight);
-_itemstotake = _freeweight / _itemweight;
+_itemstotake_float = _freeweight / _itemweight;
+//ok and now we need to round it down
+_itemstotake = round _itemstotake_float;
+//but we need to round down not just round
+if (_itemstotake_float < _itemstotake) then {_itemstotake = _itemstotake - 1;};
 
 //if we can take more items then there are we just take as many as possible
 if( _value < _itemstotake ) then
