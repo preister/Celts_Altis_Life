@@ -17,7 +17,6 @@ switch (_filter) do
 	//Uniforms
 	case 0:
 	{
-		_ret = 
 		[	
 			["U_I_HeliPilotCoveralls",nil,3000],
 			["U_B_HeliPilotCoveralls",nil,3000],
@@ -28,7 +27,6 @@ switch (_filter) do
 	//Hats
 	case 1:
 	{
-		_ret = 
 		[
 			["H_PilotHelmetHeli_B",nil,750],
 			["H_CrewHelmetHeli_B",nil,2500],
@@ -39,7 +37,6 @@ switch (_filter) do
 	//Glasses
 	case 2:
 	{	
-		_ret = 
 		[
 			["G_Shades_Black",nil,25],
 			["G_Shades_Blue",nil,20],
@@ -67,7 +64,6 @@ switch (_filter) do
 	//Backpacks
 	case 4:
 	{
-		_ret = 
 		[
 			["B_AssaultPack_cbr",nil,2500],
 			["B_Kitbag_mcamo",nil,4500],
