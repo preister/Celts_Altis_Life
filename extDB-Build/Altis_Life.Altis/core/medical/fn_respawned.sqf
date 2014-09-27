@@ -26,8 +26,7 @@ switch(playerSide) do
 {
 	//cops keep their gear
 	case west: {
-		[] spawn life_fnc_loadGear;
-		[] call life_fnc_saveGear;
+		_handle = [] spawn life_fnc_loadGear;
 	};
 	case civilian: {
 		_handle = [] spawn life_fnc_civLoadout;
