@@ -79,15 +79,12 @@ switch(_shop) do
 			{
 				["Altis Patrol Officer Shop",
 					[
-						["arifle_MX_F",nil,35000],
-						["30Rnd_65x39_caseless_mag",nil,150],
-						["30Rnd_65x39_caseless_mag_Tracer",nil,130],
-						["muzzle_snds_H",nil,2750],	
-						["HandGrenade_Stone","Flashbang",2500],
-						["MineDetector",nil,1000],
+						["SMG_02_F","Stun Gun",30000],
+						["30Rnd_9x21_Mag","Rubber bullets",150],
+						["muzzle_snds_L",nil,650],
 						["acc_flashlight",nil,750],
-						["optic_Holosight",nil,1200],
-						["optic_Arco",nil,2500]										
+						["optic_Aco_smg",nil,1200],
+						["HandGrenade_Stone","Flashbang",2500]
 					]
 				];
 			};
@@ -104,15 +101,17 @@ switch(_shop) do
 			{
 				["Altis Sergeant Officer Shop",
 					[
-						["arifle_MX_F",nil,35000],
-						["30Rnd_65x39_caseless_mag",nil,150],
-						["30Rnd_65x39_caseless_mag_Tracer",nil,130],
-						["muzzle_snds_H",nil,2750],
+						["SMG_02_F","Stun Gun",30000],
+						["30Rnd_9x21_Mag","Rubber bullets",150],
+						["muzzle_snds_L",nil,650],
+						["arifle_Katiba_C_F",nil,35000],
+						["30Rnd_65x39_caseless_green",nil,250],
 						["HandGrenade_Stone","Flashbang",2500],
 						["MineDetector",nil,1000],
 						["acc_flashlight",nil,750],
-						["optic_Holosight",nil,1200],
-						["optic_Arco",nil,2500]		
+						["optic_Aco_smg",nil,1200],
+						["optic_Hamr",nil,2500],
+						["acc_pointer_IR",nil,1500]
 					]
 				];
 			};
@@ -127,7 +126,7 @@ switch(_shop) do
 			case (!license_civ_rebel): {"You don't have a Rebel training license!"};
 			default
 			{
-				["Muhammad's Jihad Shop",
+				["Guns 'R' Us",
 					[
 						["hgun_Rook40_F",nil,6500],
 						["16Rnd_9x21_Mag",nil,25],
@@ -141,7 +140,6 @@ switch(_shop) do
 						["10Rnd_762x51_Mag",nil,500],
 						["arifle_MXC_F",nil,30000],
 						["30Rnd_65x39_caseless_mag",nil,100],
-						["muzzle_snds_H",nil,20000],
 						["arifle_SDAR_F",nil,20000],
 						["20Rnd_556x45_UW_mag",nil,125],
 						["optic_ACO_grn",nil,3500],
@@ -150,6 +148,7 @@ switch(_shop) do
 						["optic_Holosight",nil,3600],
 						["optic_Hamr",nil,7500],
 						["30Rnd_9x21_Mag",nil,200],
+						["HandGrenade",nil,50000],
 				        ["ItemGPS",nil,100],
 				        ["ToolKit",nil,5000],
 				        ["FirstAidKit",nil,150],
