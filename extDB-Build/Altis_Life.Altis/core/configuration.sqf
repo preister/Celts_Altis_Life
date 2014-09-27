@@ -204,6 +204,27 @@ life_dp_points = ["dp_1","dp_2","dp_3","dp_4","dp_5","dp_6","dp_7","dp_8","dp_9"
 //[shortVar,reward]
 life_illegal_items = [["heroinu",1200],["heroinp",2500],["cocaine",1500],["cocainep",3500],["cannabis",200],["marijuana",2000],["turtle",3000],["blastingcharge",10000],["boltcutter",500],["methu",650],["methp",6500]];
 
+/*
+	Resources list
+	
+	to remove the ability to gather a specific resource just comment it out on the list (all zones will be deactivated)
+*/
+resource_list = [
+	"apple", 
+	"peach", 
+	"heroinu", 
+	"cocaine", 
+	"cannabis", 
+	"methu", 
+	"corn", 
+	"copperore",
+	"ironore",
+	"salt",
+	"sand",
+    "diamond",
+    "oilu",
+	"rock"
+];
 
 /*
 	Sell / buy arrays

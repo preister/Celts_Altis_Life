@@ -148,6 +148,7 @@ class Life_Client_Core
 		class varToStr {};
 		class impoundPrice {};
 		class itemWeight {};
+		class resourceCfg {};
 		class taxRate {};
 		class virt_shops {};
 		class vehShopLicenses {};
@@ -358,7 +359,6 @@ class Life_Client_Core
 	class Items
 	{
 		file = "core\items";
-		class pickaxeUse {};
 		class lockpick {};
 		class spikeStrip {};
 		class jerryRefuel {};
