@@ -25,10 +25,10 @@ player setVariable["Reviving",nil,TRUE];
 switch(playerSide) do
 {
 	//cops keep their gear
-	//case west: {
-	//	_handle = [] spawn life_fnc_copLoadout;
-	//  life_carryWeight = 0;
-	//};
+	case west: {
+		[] spawn life_fnc_loadGear;
+		[] call life_fnc_saveGear;
+	};
 	case civilian: {
 		_handle = [] spawn life_fnc_civLoadout;
 		life_carryWeight = 0;
