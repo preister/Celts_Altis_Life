@@ -5,7 +5,7 @@
 	Description:
 	Main functionality for gathering. - rewritten to work with a more user friendly configuration, as well as allowing easily to configure necessary items like pickaxe
 */
-private["_gather","_itemWeight","_diff","_itemName","_batchSize","_resourceZones","_resourceCfg", "_zone", "_x", "_valRequiredItem", "_requiredItem", "_zoneSize"];
+private["_gather","_itemWeight","_diff","_itemName","_batchSize","_resourceZones","_resourceCfg", "_zone", "_x", "_valRequiredItem", "_requiredItem", "_zoneSize", "_varItem", "_valItem"];
 //Action is in use, exit before we do anything to prevent spamming. 
 if(life_action_inUse) exitWith { hint "Don't spam the button!"; }; 
 //we have a heavy loop ahead so we want to prevent people from spamming
@@ -23,7 +23,7 @@ _zone = "";
 	_batchSize = _resourceCfg select 2;
 	_requiredItem = _resourceCfg select 3;
 	{
-		if(player distance (getMarkerPos _x) < _zoneSize) exitWith {_zone = _x;};
+		if((player distance (getMarkerPos _x)) < _zoneSize) exitWith {_zone = _x;};
 	} forEach _resourceZones;
 	//if we found a zone we are done here as well
 	if(_zone != "") exitWith {};
@@ -34,16 +34,24 @@ if(_zone == "") exitWith {
 	life_action_inUse = false;
 };
 
-_valRequiredItem = missionNamespace getVariable ([_requiredItem,0] call life_fnc_varHandle);
-
-//If we have none of the required items this is over
-if(isNull _valRequiredItem || _valRequiredItem < 1) exitWith { 
-	hint format["A %1 is required to gather %2.", _requiredItem, _gather];
+// if an item is required we need to check if we have that particular item in our inventory
+if(_requiredItem == "") then {
+	//to make the exitWith easier we assume that you have one
+	_valItem = 1;
+}
+else {
+	_varItem = [_requiredItem,0] call life_fnc_varHandle;
+	_valItem = missionNamespace getVariable _varItem;
+};
+//lets check and exit with a nice message
+if (_valItem < 1) exitWith {
+	//TODO add translation string
+	titleText[format["A %1 is required to gather %2.", _requiredItem, _gather],"PLAIN"];
 	life_action_inUse = false;
 };
 
 //gather check??
-if(vehicle player != player) exitWith {/*hint localize "STR_NOTF_GatherVeh";*/};
+if((vehicle player) != player) exitWith {/*hint localize "STR_NOTF_GatherVeh";*/};
 
 _diff = [_gather,_batchSize,life_carryWeight,life_maxWeight] call life_fnc_calWeightDiff;
 if(_diff == 0) exitWith {
