@@ -62,40 +62,15 @@ _unit selectWeapon (primaryWeapon _unit);
 if(isNil "_handgunItems") then {_handgunItems = ["","",""];};
 
 //and the yitems, or rather whats left of them after dropping
+//TODO: Check if this giant list is really necessary of if we can just run against life_inv_items
 {
-    _name = (_x select 0);
-    _val = (_x select 1);
+	_val = missionNamespace getVariable _x;
+	_name = [_x,1] call life_fnc_varHandle;
     if (_val > 0) then {
         for "_i" from 1 to _val do {
             _yitems = _yitems + [_name];
         };
     };
-} forEach [
-    ["life_inv_apple", life_inv_apple],
-    ["life_inv_rabbit", life_inv_rabbit],
-    ["life_inv_salema", life_inv_salema],
-    ["life_inv_ornate", life_inv_ornate],
-    ["life_inv_mackerel", life_inv_mackerel],
-    ["life_inv_tuna", life_inv_tuna],
-    ["life_inv_mullet", life_inv_mullet],
-    ["life_inv_catshark", life_inv_catshark],
-    ["life_inv_fishingpoles", life_inv_fishingpoles],
-    ["life_inv_water", life_inv_water],
-    ["life_inv_donuts", life_inv_donuts],
-    ["life_inv_turtlesoup", life_inv_turtlesoup],
-    ["life_inv_coffee", life_inv_coffee],
-    ["life_inv_fuelF", life_inv_fuelF],
-    ["life_inv_fuelE", life_inv_fuelE],
-    ["life_inv_pickaxe", life_inv_pickaxe],
-    ["life_inv_tbacon", life_inv_tbacon],
-    ["life_inv_lockpick", life_inv_lockpick],
-    ["life_inv_redgull", life_inv_redgull],
-    ["life_inv_peach", life_inv_peach],
-    ["life_inv_spikeStrip", life_inv_spikeStrip],
-    ["life_inv_defusekit", life_inv_defusekit],
-    ["life_inv_storagesmall", life_inv_storagesmall],
-    ["life_inv_storagebig", life_inv_storagebig],
-	["life_inv_zipties", life_inv_zipties]
-];
+} forEach life_inv_items;
 
 [_primary,_launcher,_handgun,_magazines,_uniform,_vest,_backpack,_items,_primitems,_secitems,_handgunitems,_uitems,_vitems,_bitems,_yitems,_headgear,_goggles];
