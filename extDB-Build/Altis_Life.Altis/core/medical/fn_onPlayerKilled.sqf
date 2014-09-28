@@ -107,7 +107,6 @@ if(life_cash > 0) then
 	_obj setVariable["item",["money",life_cash],true];
 	_obj setPos _pos;
 	[[_obj],"life_fnc_simDisable",nil,true] spawn life_fnc_MP;
-	missionNamespace setVariable[_x,0];
 };
 life_cash = 0;	
 life_hunger = 100;

@@ -5,7 +5,7 @@
 	Description:
 	Does something but I won't know till I write it...
 */
-private["_unit","_corpse"];
+private["_unit","_corpse","_handle"];
 _unit = _this select 0;
 _corpse = _this select 1;
 life_corpse = _corpse;
@@ -23,8 +23,7 @@ _unit setVariable["steam64id",(getPlayerUID player),true]; //Reset the UID.
 _unit setVariable["realname",profileName,true]; //Reset the players name.
 //Load our gear as a cop in case something horrible happens
 if(playerSide == west) then {
-	_handle = [] spawn life_fnc_loadGear;
-	waitUntil {scriptDone _handle};
+	[] spawn life_fnc_loadGear;
 };
 
 _unit addRating 9999999999999999; //Set our rating to a high value, this is for a ARMA engine thing.
