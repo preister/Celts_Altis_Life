@@ -43,11 +43,12 @@ switch(_resource) do {
 	};
 	
 	case  ("corn") : {
+		_batchSize = 5;
 		_resourceZones = ["corn_1"];
 	};
 	
 	case ("copperore") : {
-		_batchSize = 2;
+		_batchSize = 3;
 		_requiredItem = "pickaxe";
 		_resourceZones = ["lead_1"];
 	};
@@ -59,7 +60,7 @@ switch(_resource) do {
 	};
 	
 	case ("salt") : {
-		_batchSize = 4;
+		_batchSize = 3;
 		_requiredItem = "pickaxe";
 		_resourceZones = ["salt_1"];
 		_zoneSize = 120;
