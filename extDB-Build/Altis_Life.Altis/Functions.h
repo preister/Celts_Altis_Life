@@ -216,7 +216,6 @@ class Life_Client_Core
 		class actionKeyHandler {};
 		class playerCount {};
 		class fetchDeadGear {};
-		class loadDeadGear {};
 		class isnumeric {};
 		class escInterupt {};
 		class onTakeItem {};
