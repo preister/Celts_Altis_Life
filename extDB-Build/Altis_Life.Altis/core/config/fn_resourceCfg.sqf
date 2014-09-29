@@ -4,7 +4,7 @@
 // _zoneSize : the diameter of the resource zone in meters
 // _batchSize : how many items should be gathererd in one go
 // _requiredItem : is an item required to grather this resource?
-private["_var", "_zoneSize", "_batchSize", "_requiredItem"];
+private["_resource","_zoneSize", "_batchSize", "_requiredItem","_resourceZones"];
 _resource = [_this,0,"",[""]] call BIS_fnc_param;
 
 //default values
