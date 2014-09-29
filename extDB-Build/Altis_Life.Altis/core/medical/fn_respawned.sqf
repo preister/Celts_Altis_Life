@@ -10,7 +10,6 @@ private["_handle"];
 life_use_atm = TRUE;
 life_hunger = 100;
 life_thirst = 100;
-life_carryWeight = 0;
 life_cash = 0; //Make sure we don't get our cash back.
 life_respawned = false;
 player playMove "amovpercmstpsnonwnondnon";
@@ -25,14 +24,17 @@ player setVariable["Reviving",nil,TRUE];
 //Load gear for a 'new life'
 switch(playerSide) do
 {
+	//cops keep their gear
 	case west: {
-		_handle = [] spawn life_fnc_copLoadout;
+		_handle = [] spawn life_fnc_loadGear;
 	};
 	case civilian: {
 		_handle = [] spawn life_fnc_civLoadout;
+		life_carryWeight = 0;
 	};
 	case independent: {
 		_handle = [] spawn life_fnc_medicLoadout;
+		life_carryWeight = 0;
 	};
 	waitUntil {scriptDone _handle};
 };

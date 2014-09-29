@@ -5,7 +5,7 @@
 	Description:
 	Fetches gear off of a body.
 */
-private["_primary,_launcher","_handgun","_magazines","_uniform","_vest","_backpack","_items","_primitems","_secitems","_handgunitems","_uitems","_vitems","_bitems","_headgear","_goggles","_unit"];
+private["_primary,_launcher","_handgun","_magazines","_uniform","_vest","_backpack","_items","_primitems","_secitems","_handgunitems","_uitems","_vitems","_bitems", "_yitems","_headgear","_goggles","_unit"];
 _unit = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 if(isNull _unit) exitWith {};
 _primitems = [];
@@ -26,6 +26,7 @@ _goggles = goggles _unit;
 _uitems = [];
 _vitems = [];
 _bitems = [];
+_yitems = [];
 if(_uniform != "") then {{_uitems set[count _uitems,_x];} foreach (uniformItems _unit);};
 if(_vest != "") then {{_vitems set[count _vitems,_x];} foreach (vestItems _unit);};
 if(_backpack != "") then {{_bitems set[count _bitems,_x];} foreach (backPackItems _unit);};
@@ -59,4 +60,17 @@ if(handgunWeapon _unit != "") then
 _unit selectWeapon (primaryWeapon _unit);
 
 if(isNil "_handgunItems") then {_handgunItems = ["","",""];};
-[_primary,_launcher,_handgun,_magazines,_uniform,_vest,_backpack,_items,_primitems,_secitems,_handgunitems,_uitems,_vitems,_bitems,_headgear,_goggles];
+
+//and the yitems, or rather whats left of them after dropping
+//TODO: Check if this giant list is really necessary of if we can just run against life_inv_items
+{
+	_val = missionNamespace getVariable _x;
+	_name = [_x,1] call life_fnc_varHandle;
+    if (_val > 0) then {
+        for "_i" from 1 to _val do {
+            _yitems = _yitems + [_name];
+        };
+    };
+} forEach life_inv_items;
+
+[_primary,_launcher,_handgun,_magazines,_uniform,_vest,_backpack,_items,_primitems,_secitems,_handgunitems,_uitems,_vitems,_bitems,_yitems,_headgear,_goggles];

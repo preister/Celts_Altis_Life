@@ -89,13 +89,29 @@ if(!isNull _killer && {_killer != _unit}) then {
 	life_removeWanted = true;
 };
 
-_handle = [_unit] spawn life_fnc_dropItems;
-waitUntil {scriptDone _handle};
+//cops dont drop stuff
+if(playerSide != west) then {
+	_handle = [_unit] spawn life_fnc_dropItems;
+	waitUntil {scriptDone _handle};
+	life_carryWeight = 0;
+};
 
+//dropping the cash
+//moved this out of dropItems, it was already a special case there and we want everybody to drop
+//cash even cops
+if(life_cash > 0) then
+{
+	_pos = _unit modelToWorld[0,3,0];
+	_pos = [_pos select 0, _pos select 1, 0];
+	_obj = "Land_Money_F" createVehicle _pos;
+	_obj setVariable["item",["money",life_cash],true];
+	_obj setPos _pos;
+	[[_obj],"life_fnc_simDisable",nil,true] spawn life_fnc_MP;
+};
+life_cash = 0;	
 life_hunger = 100;
 life_thirst = 100;
-life_carryWeight = 0;
-life_cash = 0;
+
 
 [] call life_fnc_hudUpdate; //Get our HUD updated.
 [[player,life_sidechat,playerSide],"TON_fnc_managesc",false,false] spawn life_fnc_MP;
