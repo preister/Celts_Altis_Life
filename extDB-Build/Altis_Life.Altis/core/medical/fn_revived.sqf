@@ -25,10 +25,12 @@ if(life_atmcash > (call life_revive_fee)) then {
 	life_atmcash = 0;
 };
 
-//Retexturing of units clothing
-switch(playerSide) do {
-	case independent: {[[player,0,"textures\medic_uniform.jpg"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;};
-	case west: {[[player,0,"textures\police_uniform_co.paa"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;};
+//if the unit is wearing a Rangemaster shirt we might need to re-skin it
+if (uniform player == "U_Rangemaster") then {
+	switch(playerSide) do {
+		case independent: {[[player,0,"textures\medic_uniform.jpg"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;};
+		case west: {[[player,0,"textures\police_uniform_co.paa"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;};
+	};
 };
 
 //Bring me back to life.
