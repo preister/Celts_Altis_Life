@@ -53,15 +53,16 @@ if(playerSide == west || playerSide == civilian && {(call life_save_civ)}) then 
 			_handgunMag = ((handgunMagazine player) select 0);
 		};
 	};
-	_secondary = secondaryWeapon player;
-	if(_secondary != "") then
-	{
-		//secondaries don't have additional items it seems
-		if((count (secondaryWeaponMagazineplayer player) > 0) && (alive player)) then
-		{
-			_secondaryMag = ((secondaryWeaponMagazineplayer player) select 0);
-		};
-	};
+	//secondary seems to be broken?
+	//_secondary = secondaryWeapon player;
+	//if(_secondary != "") then
+	//{
+	//	//secondaries don't have additional items it seems
+	//	if((count (secondaryWeaponMagazineplayer player) > 0) && (alive player)) then
+	//	{
+	//		_secondaryMag = ((secondaryWeaponMagazineplayer player) select 0);
+	//	};
+	//};
 };
 //take care of carried items, and especially before we store any additional items in them
 if(_uniform != "") then {_uniformItems = uniformItems player;};

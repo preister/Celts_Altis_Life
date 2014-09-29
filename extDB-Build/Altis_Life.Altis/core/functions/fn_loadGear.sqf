@@ -23,7 +23,10 @@ waitUntil {scriptDone _handle};
 // If adding new items ALWAYS add them to the end of the list otherwise you need to clear
 // the gear of all players in the db to prevent failures
 /////////////////////////////////////////////////////////////////////////////////////////
-private ["_uniform","_vest","_backpack","_goggles","_headgear","_gear","_primary","_handgun","_uniformItems","_backpackItems","_vestItems","_primaryItems","_handgunItems","_yItems","_secondary"];
+private ["_uniform","_vest","_backpack","_goggles","_headgear","_gear","_primary","_handgun",
+	"_uniformItems","_backpackItems","_vestItems","_primaryItems","_handgunItems","_yItems",
+	"_secondary","_uniformMags","_backpackMags","_vestMags"
+];
 _uniform = [_itemArray,0,"",[""]] call BIS_fnc_param;
 _vest = [_itemArray,1,"",[""]] call BIS_fnc_param;
 _backpack = [_itemArray,2,"",[""]] call BIS_fnc_param;
@@ -33,11 +36,11 @@ _gear = [_itemArray,5,[],[[]]] call BIS_fnc_param;
 _primary = [_itemArray,6,"",[""]] call BIS_fnc_param;
 _handgun = [_itemArray,7,"",[""]] call BIS_fnc_param;
 _uniformItems = [_itemArray,8,[],[[]]] call BIS_fnc_param;
-//_uniformMags = [_itemArray,9,[],[[]]] call BIS_fnc_param; //UNUSED
+_uniformMags = [_itemArray,9,[],[[]]] call BIS_fnc_param; //UNUSED
 _backpackItems = [_itemArray,10,[],[[]]] call BIS_fnc_param;
-//_backpackMags = [_itemArray,11,[],[[]]] call BIS_fnc_param; //UNUSED
+_backpackMags = [_itemArray,11,[],[[]]] call BIS_fnc_param; //UNUSED
 _vestItems = [_itemArray,12,[],[[]]] call BIS_fnc_param;
-//_vestMags = [_itemArray,13,[],[[]]] call BIS_fnc_param; //UNUSED
+_vestMags = [_itemArray,13,[],[[]]] call BIS_fnc_param; //UNUSED
 _primaryItems = [_itemArray,14,[],[[]]] call BIS_fnc_param;
 _handgunItems = [_itemArray,15,[],[[]]] call BIS_fnc_param;
 _yItems = [_itemArray,16,[],[[]]] call BIS_fnc_param;
@@ -68,12 +71,12 @@ if(_backpack != "") then {_handle = [_backpack,true,false,false,false] spawn lif
 {player addItemToVest _x;} foreach (_vestItems);
 {player addItemToBackpack _x;} foreach (_backpackItems);
 //and add the yitems up to the absolute maximum weight of 100
-private["_currentMaxWeight"];
+private["_currentMaxWeight", "_item"];
 _currentMaxWeight = life_maxWeight;
 life_maxWeight = 100;
 {
     _item = [_x,1] call life_fnc_varHandle;
-    _handle = [true,_item,1] call life_fnc_handleInv;{scriptDone _handle};
+    [true,_item,1] call life_fnc_handleInv;
 } foreach (_yItems);
 life_maxWeight = _currentMaxWeight;
 
