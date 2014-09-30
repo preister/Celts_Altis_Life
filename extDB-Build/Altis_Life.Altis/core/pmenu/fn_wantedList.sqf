@@ -39,7 +39,7 @@ lbClear _ctrl;
 } forEach playableUnits;
 
 
-//ok lets fill the dropdown box with the available crimes
+//fill the dropdown box with the available crimes
 _ctrl = getControl(2400,2406);
 lbClear _ctrl;
 _crimesList = crimes_list;
