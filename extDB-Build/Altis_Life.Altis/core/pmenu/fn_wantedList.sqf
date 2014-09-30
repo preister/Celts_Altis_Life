@@ -31,6 +31,7 @@ _units = [];
 _ctrl = getControl(2400,2405);
 lbClear _ctrl;
 {
+	//only civilians can be charged with a crime currently
 	if(alive _x && (side _x == civilian)) then
 	{
 		_ctrl lbAdd format["%1",_x getVariable["realname",name _x]];
