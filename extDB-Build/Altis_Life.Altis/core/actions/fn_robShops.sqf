@@ -42,31 +42,31 @@ _cP = 0.01;
  
 if(_rip) then
 {
-while{true} do
-{
-sleep 0.85;
-_cP = _cP + 0.01;
-_progress progressSetPosition _cP;
-_pgText ctrlSetText format["Robbery in Progress, stay close (3m) (%1%2)...",round(_cP * 100),"%"];
+	while{true} do
+	{
+		sleep 0.85;
+		_cP = _cP + 0.01;
+		_progress progressSetPosition _cP;
+		_pgText ctrlSetText format["Robbery in Progress, stay close (3m) (%1%2)...",round(_cP * 100),"%"];
 
-if(_cP >= 1) exitWith {};
-if(_robber distance _shop > 3.5) exitWith { };
-if!(alive _robber) exitWith {};
-};
-if!(alive _robber) exitWith { _rip = false; };
-if(_robber distance _shop > 3.5) exitWith { _shop switchMove ""; hint "You need to stay within 3m to Rob registry! - Now the registry is locked."; 5 cutText ["","PLAIN"]; _rip = false; };
-5 cutText ["","PLAIN"];
+		if(_cP >= 1) exitWith {};
+		if(_robber distance _shop > 3.5) exitWith { };
+		if!(alive _robber) exitWith {};
+	};
+	if!(alive _robber) exitWith { _rip = false; };
+	if(_robber distance _shop > 3.5) exitWith { _shop switchMove ""; hint "You need to stay within 3m to Rob registry! - Now the registry is locked."; 5 cutText ["","PLAIN"]; _rip = false; };
+	5 cutText ["","PLAIN"];
 
-titleText[format["You have stolen $%1, now get away before the cops arrive!",[_kassa] call life_fnc_numberText],"PLAIN"];
-life_cash = life_cash + _kassa;
-[[1,format["911 - Gasstation: %1 was just robbed by %2 for a total of $%3", _shop, _robber, [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",west,false] spawn life_fnc_MP;
-_rip = false;
-life_use_atm = false;
-sleep (10);
-life_use_atm = true;
-if!(alive _robber) exitWith {};
-[[1,format["NEWS: Gasstation: %1 was just robbed for a total of $%2", _shop, [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",civilian,false] spawn life_fnc_MP;
-[[getPlayerUID _robber,name _robber,"211"],"life_fnc_wantedAdd",false,false] spawn life_fnc_MP;
+	titleText[format["You have stolen $%1, now get away before the cops arrive!",[_kassa] call life_fnc_numberText],"PLAIN"];
+	life_cash = life_cash + _kassa;
+	[[1,format["911 - Gasstation: %1 was just robbed by %2 for a total of $%3", _shop, _robber, [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",west,false] spawn life_fnc_MP;
+	_rip = false;
+	life_use_atm = false;
+	sleep (10);
+	life_use_atm = true;
+	if!(alive _robber) exitWith {};
+	[[1,format["NEWS: Gasstation: %1 was just robbed for a total of $%2", _shop, [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",civilian,false] spawn life_fnc_MP;
+	[_robber, "211"] call life_fnc_chargeCrime;
 };
 sleep 300;
 _action = _shop addAction["Rob the Gas Station",life_fnc_robShops];
