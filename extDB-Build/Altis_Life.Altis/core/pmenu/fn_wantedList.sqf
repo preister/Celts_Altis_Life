@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	Copyright © 2013 Bryan "Tonic" Boardwine, All rights reserved
 	See http://armafiles.info/life/list.txt for servers that are permitted to use this code.
@@ -25,6 +26,20 @@ _units = [];
 		_list lbSetData [(lbSize _list)-1,str(_entry)];
 	};
 } foreach _info;
+
+//lets add all civs to the crime list
+_ctrl = getControl(2400,2405);
+lbClear _ctrl;
+{
+	//Todo activate this line before checking in, just for testing purposes I need to be able to add myself
+	//if(alive _x && (side _x == civilian)) then
+	if(alive _x) then
+	{
+		_ctrl lbAdd format["%1",_x getVariable["realname",name _x]];
+		_ctrl lbSetData [(lbSize _ctrl)-1,str(_x)];
+	};
+} forEach playableUnits;
+
 
 //ok lets fill the dropdown box with the available crimes
 _ctrl = getControl(2400,2406);
