@@ -31,9 +31,7 @@ _units = [];
 _ctrl = getControl(2400,2405);
 lbClear _ctrl;
 {
-	//Todo activate this line before checking in, just for testing purposes I need to be able to add myself
-	//if(alive _x && (side _x == civilian)) then
-	if(alive _x) then
+	if(alive _x && (side _x == civilian)) then
 	{
 		_ctrl lbAdd format["%1",_x getVariable["realname",name _x]];
 		_ctrl lbSetData [(lbSize _ctrl)-1,str(_x)];
