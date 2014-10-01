@@ -59,7 +59,7 @@ if(_rip) then
 
 	titleText[format["You have stolen $%1, now get away before the cops arrive!",[_kassa] call life_fnc_numberText],"PLAIN"];
 	life_cash = life_cash + _kassa;
-	[[1,format["911 - Gasstation: %1 was just robbed by %2 for a total of $%3", _shop, _robber, [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",west,false] spawn life_fnc_MP;
+	[[1,format["911 - Gasstation: %1 was just robbed by %2 for a total of $%3", _shop, _robber getVariable["realname",name _robber], [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",west,false] spawn life_fnc_MP;
 	_rip = false;
 	life_use_atm = false;
 	sleep (10);
