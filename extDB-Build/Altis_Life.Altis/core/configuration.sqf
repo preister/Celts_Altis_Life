@@ -228,9 +228,24 @@ resource_list = [
 /*
 	crimes code list, see fn_crimesCfg.sqf for the configuration for each resource
 	to remove the ability to charge somebody for a specific crime just comment it out here
+	The crimes will show in the order they are below on the charge suspect list
 */
 crimes_list = [
+	"101", //Evading Arrest
+	"102", //Possession of an illegal weapon
+	"103", //Possession of an illegal vehicle
+	"104", //Threatening an officer
+	"105", //Bank Robbery
+	"106", //Possession of explosives
+	"107", //Disobeying an Officer
+	"108", //Assault
+	"108P", //Assault on Police
+	"109", //Disturbing the peace
+	"110", //Trespassing
+	"111", //Driving without headlights
+	"112", //Driving without a license
 	"187V", //Vehicular Manslaughter
+	"187A", //Attempted Murder
 	"187", //Manslaughter
 	"901", //Escaping Jail
 	"215", //Attempted Auto Theft

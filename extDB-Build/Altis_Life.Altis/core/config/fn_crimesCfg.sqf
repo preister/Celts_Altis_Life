@@ -78,6 +78,62 @@ switch(_crime) do {
 		_description = "Burglary";
 		_ticket = 25000;
 	};
+	case ("187A") : {
+		_description = "Attempted murder";
+		_ticket = 40000;
+	};
+	case ("101") : {
+		_description = "Evading Arrest";
+		_ticket = 20000;
+	};
+	case ("102") : {
+		_description = "Possession of an illegal weapon";
+		_ticket = 30000;
+	};
+	case ("103") : {
+		_description = "Possession of an illegal vehicle";
+		_ticket = 30000;
+	};
+	case ("104") : {
+		_description = "Threatening an officer";
+		_ticket = 15000;
+	};
+	case ("105") : {
+		_description = "Bank Robbery";
+		_ticket = 75000;
+	};
+	case ("106") : {
+		_description = "Possession of explosives";
+		_ticket = 40000;
+	};
+	case ("107") : {
+		_description = "Disobeying an Officer";
+		_ticket = 5000;
+	};
+	case ("108") : {
+		_description = "Assault";
+		_ticket = 20000;
+	};
+	case ("108P") : {
+		_description = "Assault on Police";
+		_ticket = 30000;
+	};
+	case ("109") : {
+		_description = "Disturbing the peace";
+		_ticket = 2500;
+	};
+	case ("110") : {
+		_description = "Trespassing";
+		_ticket = 2500;
+	};
+	case ("111") : {
+		_description = "Driving without headlights";
+		_ticket = 1000;
+	};
+	case ("112") : {
+		_description = "Driving without a license";
+		_ticket = 1000;
+	};
 };
 
 [_description,_ticket];
