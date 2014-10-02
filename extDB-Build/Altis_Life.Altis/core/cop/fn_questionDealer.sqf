@@ -15,8 +15,9 @@ _names = "";
 	{
 		_val = round((_x select 2) / 16);
 	};
-	[_x select 0, "483"] call life_fnc_chargeCrime;
-	_names = _names + format["%1<br/>",_x select 1];
+	_seller = _x select 0
+	[_seller, "483"] call life_fnc_chargeCrime;
+	_names = _names + format["%1<br/>",_seller getVariable["realname", name _seller]];
 } foreach _sellers;
 
 hint parseText format[(localize "STR_Cop_DealerMSG")+ "<br/><br/>%1",_names];
