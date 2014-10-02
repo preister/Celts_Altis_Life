@@ -15,7 +15,7 @@ _names = "";
 	{
 		_val = round((_x select 2) / 16);
 	};
-	_seller = _x select 0
+	_seller = _x select 0;
 	[_seller, "483"] call life_fnc_chargeCrime;
 	_names = _names + format["%1<br/>",_seller getVariable["realname", name _seller]];
 } foreach _sellers;
