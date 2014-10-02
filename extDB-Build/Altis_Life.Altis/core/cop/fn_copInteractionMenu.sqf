@@ -15,7 +15,7 @@
 #define Btn8 37457
 #define Title 37401
 
-private["_display","_curTarget","_Btn1","_Btn2","_Btn3","_Btn4","_Btn5","_Btn6","_Btn7"];
+private["_display","_curTarget","_Btn1","_Btn2","_Btn3","_Btn4","_Btn5","_Btn6","_Btn7","_arrestEnabled"];
 if(!dialog) then {
 	createDialog "pInteraction_Menu";
 };
@@ -93,8 +93,15 @@ _Btn7 ctrlSetText localize "STR_pInAct_PutInCar";
 _Btn7 buttonSetAction "[life_pInact_curTarget] call life_fnc_putInCar;";
 
 //Check that you are near a place to jail them.
-if(!((player distance (getMarkerPos "police_hq_1") < 30) OR  (player distance (getMarkerPos "police_hq_2") < 30) OR (player distance (getMarkerPos "cop_spawn_3") < 30) OR (player distance (getMarkerPos "cop_spawn_5") < 30))) then 
+_arrestEnabled = false;
 {
-	_Btn6 ctrlEnable false;
-};
-		
+	if(player distance (getMarkerPos _x) < 30) exitWith {_arrestEnabled = true};
+}forEach [
+	"police_hq_1",
+	"police_hq_2",
+	"cop_spawn_3",
+	"cop_spawn_4",
+	"cop_spawn_5"
+];
+if(!_arrestEnabled) then {_Btn6 ctrlEnable false;};
+	
