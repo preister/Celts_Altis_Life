@@ -2823,12 +2823,12 @@
 			<Portuguese>Você só pode ter uma casa!</Portuguese>
 		</Key>
 		<Key ID="STR_House_NotEnough">
-			<Original>You do not have enough money!</Original>
-			<English>You do not have enough money!</English>
-			<German>Du hast nicht genug Geld!</German>
-			<French>Vous n'avez pas assez d'argent!</French>
-			<Italian>Non hai fondi a sufficienza!</Italian>
-			<Portuguese>Você não tem todo esse dinheiro!</Portuguese>
+			<Original>You do not have enough money!\n\nAmount Lacking: $%1</Original>
+			<English>You do not have enough money!\n\nAmount Lacking: $%1</English>
+			<German>Du hast nicht genug Geld!\n\nFehlender Betrag: $%1</German>
+			<French>Vous n'avez pas assez d'argent!\n\nArgent Manquant: $%1</French>
+			<Italian>Non hai fondi a sufficienza!\n\nTi mancano: €%1</Italian>
+			<Portuguese>Você não tem todo esse dinheiro!\n\nFaltam: R$%1</Portuguese>
 		</Key>
 		<Key ID="STR_House_BuyMSG">
 			<Original>This house is available for &lt;t color='#8cff9b'&gt;$%1&lt;/t&gt;&lt;br/&gt;It supports up to %2 storage containers</Original>
