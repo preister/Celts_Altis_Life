@@ -46,6 +46,11 @@ __CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persis
 __CONST__(life_gangUpgradeBase,10000); //MASDASDASD
 __CONST__(life_gangUpgradeMultipler,2.5); //BLAH
 
+//jail related stuff
+__CONST__(life_defaultBail,100000); //if the crime cant be determined this is the default bail
+__CONST__(life_defaultJailTime,10*60); //if the crime cant be determined this is the default jail time
+__CONST__(life_jailRespawnPunishment,18*60); //if somebody respawns to try to avoid jail time this is how much time they'll have to spend in jail for it, -1 is max time
+
 //Uniform price (0),Hat Price (1),Glasses Price (2),Vest Price (3),Backpack Price (4)
 life_clothing_purchase = [-1,-1,-1,-1,-1];
 /*
@@ -261,6 +266,24 @@ crimes_list = [
 	"483", //Drug Trafficking
 	"459" //Burglary
 ];
+
+/*
+	Jail time base on bounty
+	first the time you want the person to stay in jail in minutes or per 60 seconds ;) 
+	second element is the bounty value which is the maximum amount at which you get the time from the first field
+	fe. [5*60,99999] means the player goes to jail for 5 minutes if his bounty is below 10.000 
+	For the longest possible time spend in jail just don't set a bounty at all and leave it as a single field.
+	
+	this is also a test to try out if backing configuration values which are user friendly at mission start (at which they wont change anymore)
+	into a format which is easier to handle in a sqf script.
+*/
+jailtime_array = [
+	[5*60, 99999],
+	[15*60, 499999],
+	[30*60, 999999],
+	[45*60]
+] call life_fnc_jailMeCalc;
+__CONST__(jailtime_array,jailtime_array);
 
 /*
 	Sell / buy arrays
