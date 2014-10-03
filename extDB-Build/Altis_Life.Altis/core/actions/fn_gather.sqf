@@ -7,7 +7,7 @@
 */
 private["_gather","_itemWeight","_diff","_itemName","_batchSize","_resourceZones","_resourceCfg", "_zone", "_x", "_valRequiredItem", "_requiredItem", "_zoneSize", "_varItem", "_valItem"];
 //Action is in use, exit before we do anything to prevent spamming. 
-if(life_action_inUse) exitWith { hint "Don't spam the button!"; }; 
+if(life_action_inUse) exitWith {}; 
 //we have a heavy loop ahead so we want to prevent people from spamming
 life_action_inUse = true;
 
@@ -30,7 +30,7 @@ _zone = "";
 } forEach resource_list;
 
 if(_zone == "") exitWith {
-	hint localize "STR_NOTF_notNearResource";
+	//hint localize "STR_NOTF_notNearResource";
 	life_action_inUse = false;
 };
 
