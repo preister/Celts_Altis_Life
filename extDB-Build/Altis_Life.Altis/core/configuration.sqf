@@ -46,6 +46,9 @@ __CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persis
 __CONST__(life_gangUpgradeBase,10000); //MASDASDASD
 __CONST__(life_gangUpgradeMultipler,2.5); //BLAH
 
+//Federal Reserve related stuff
+__CONST__(life_fedres_min_cops_num, 3); //sets the minimum amount of cops which need to be online to rob the federal reserve
+
 //Uniform price (0),Hat Price (1),Glasses Price (2),Vest Price (3),Backpack Price (4)
 life_clothing_purchase = [-1,-1,-1,-1,-1];
 /*
