@@ -7,10 +7,20 @@
 */
 private["_ret","_bad","_time","_bail","_esc","_countDown"];
 _ret = [_this,0,[],[[]]] call BIS_fnc_param;
-_bad = [_this,1,false,[false]] call BIS_fnc_param;
-if(_bad) then { _time = time + 1100; } else { _time = time + (15 * 60); };
-
-if(count _ret > 0) then { life_bail_amount = (_ret select 3); } else { life_bail_amount = 1500; _time = time + (10 * 60); };
+_bad = [_this,1,false,[false]] call BIS_fnc_param; //if somebody was a bady and respawned during jail time.
+_time = -1; //we initiallize it clearly to an unusual number to show that well check it later again
+if(_bad) then { _time = time + __GETC__(life_jailRespawnPunishment); };
+//somebody got put into jail without committing a crime?
+if(count _ret > 0) then { life_bail_amount = (_ret select 3); } else { life_bail_amount = __GETC__(life_defaultBail); _time = time + __GETC__(life_defaultJailTime); };
+//if the setting of time has not been covered by the special cases we go through the array
+if(_time == -1) then {
+	{
+		//warning check fn_jailMeCalc.sqf for why this works! the list is sorted!
+		if(life_bail_amount < _x select 1) exitWith {_time = _x select 0};
+	}forEach __GETC__(jailtime_array) select 0;
+};
+//... still? OK we must have a really bad guy, getting out the max jail time hammer
+if(_time == -1) then { _time = __GETC__(jailtime_array) select 1; };
 _esc = false;
 _bail = false;
 
