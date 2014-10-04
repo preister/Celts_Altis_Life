@@ -103,7 +103,7 @@ switch (_shop) do
 			["B_MRAP_01_F",30000]];
 		};
 		
-	};
+	};	
 	
 	case "civ_air":
 	{
