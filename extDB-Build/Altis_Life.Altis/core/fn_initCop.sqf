@@ -33,7 +33,7 @@ waitUntil{isNull (findDisplay 38500)}; //Wait for the spawn selection to be done
  while {true} do
  {
   waitUntil {uniform player == "U_Rangemaster"};
-  player setObjectTextureGlobal [0,"textures\police_uniform_co.paa"];
+  player setObjectTextureGlobal [0,"textures\police_uniform_co.jpg"];
   waitUntil {uniform player != "U_Rangemaster"};
  };
 };
