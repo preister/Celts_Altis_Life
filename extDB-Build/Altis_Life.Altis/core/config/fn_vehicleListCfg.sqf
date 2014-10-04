@@ -97,6 +97,12 @@ switch (_shop) do
 			_return set[count _return,
 			["C_Hatchback_01_sport_F",20000]];
 		};
+		if(__GETC__(life_coplevel) > 5) then
+		{
+			_return set[count _return,
+			["B_MRAP_01_F",30000]];
+		};
+		
 	};
 	
 	case "civ_air":
@@ -127,8 +133,6 @@ switch (_shop) do
 		{
 			_return set[count _return,
 			["B_Heli_Transport_01_F",200000]];
-			_return set[count _return,
-			["B_MRAP_01_hmg_F",750000]];
 		};
 	};
 	
