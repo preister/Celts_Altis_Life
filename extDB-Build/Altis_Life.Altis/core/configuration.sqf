@@ -231,7 +231,7 @@ resource_list = [
 	The crimes will show in the order they are below on the charge suspect list
 */
 crimes_list = [
-	"101", //Evading Arrest
+	"123", //Evading Arrest
 	"102", //Possession of an illegal weapon
 	"103", //Possession of an illegal vehicle
 	"104", //Threatening an officer
