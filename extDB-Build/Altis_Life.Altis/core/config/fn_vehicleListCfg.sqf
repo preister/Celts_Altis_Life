@@ -77,13 +77,7 @@ switch (_shop) do
 			["B_Heli_Light_01_F",325000],
 			["O_Heli_Light_02_unarmed_F",750000],
 			["I_Heli_Transport_02_F",1200000]
-		];
-		
-		if(license_civ_rebel) then
-		{
-			_return set[count _return,
-			["B_G_Offroad_01_armed_F",750000]];
-		};
+		];		
 	};
 	
 	case "cop_car":
