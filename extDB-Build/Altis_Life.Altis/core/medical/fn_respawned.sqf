@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	File: fn_respawned.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -22,29 +23,39 @@ player setVariable["name",nil,TRUE];
 player setVariable["Reviving",nil,TRUE];
 
 //Load gear for a 'new life'
-switch(playerSide) do
-{
-	//cops keep their gear
-	case west: {
-		_handle = [] spawn life_fnc_loadGear;
+if(!(playerSide in life_death_save_gear)) then {
+	switch(playerSide) do
+	{
+		//cops keep their gear
+		case west: {
+			_handle = [] spawn life_fnc_copLoadout;
+			life_carryWeight = 0;
+		};
+		case civilian: {
+			_handle = [] spawn life_fnc_civLoadout;
+			life_carryWeight = 0;
+		};
+		case independent: {
+			_handle = [] spawn life_fnc_medicLoadout;
+			life_carryWeight = 0;
+		};
+		waitUntil {scriptDone _handle};
 	};
-	case civilian: {
-		_handle = [] spawn life_fnc_civLoadout;
-		life_carryWeight = 0;
-	};
-	case independent: {
-		_handle = [] spawn life_fnc_medicLoadout;
-		life_carryWeight = 0;
-	};
-	waitUntil {scriptDone _handle};
+}
+else {
+	[] spawn life_fnc_loadGear;
 };
-
 //Cleanup of weapon containers near the body & hide it.
 if(!isNull life_corpse) then {
 	private["_containers"];
 	life_corpse setVariable["Revive",TRUE,TRUE];
-	_containers = nearestObjects[life_corpse,["WeaponHolderSimulated"],5];
-	{deleteVehicle _x;} foreach _containers; //Delete the containers.
+	//only if people keep their gear we get rid of the weapon so it doesn't get duplicated
+	// otherwise the weapons stays on the ground for anybody to pick up, if the player respawns
+	// then wait for the revive the weapon is still at the same spot.
+	if(!(playerSide in life_death_save_gear)) then {
+		_containers = nearestObjects[life_corpse,["WeaponHolderSimulated"],5];
+		{deleteVehicle _x;} forEach _containers; //Delete the containers.
+	};
 	hideBody life_corpse;
 };
 

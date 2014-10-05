@@ -157,6 +157,7 @@ class Life_Client_Core
 		class vehicleWeightCfg {};
 		class houseConfig {};
 		class crimesCfg {};
+		class debugConfiguration {};
 		
 		//Clothing Store Configs
 		class clothing_cop {};

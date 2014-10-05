@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	File: fn_onPlayerKilled.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -89,11 +90,13 @@ if(!isNull _killer && {_killer != _unit}) then {
 	life_removeWanted = true;
 };
 
-//cops dont drop stuff
-if(playerSide != west) then {
+//drop gear for all sides that don't keep their items after death
+if(!(playerSide in life_death_save_gear)) then {
 	_handle = [_unit] spawn life_fnc_dropItems;
 	waitUntil {scriptDone _handle};
 	life_carryWeight = 0;
+	//and save all the changes we made
+	[] call life_fnc_saveGear;
 };
 
 //dropping the cash

@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	File: fn_onPlayerRespawn.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -10,10 +11,12 @@ _unit = _this select 0;
 _corpse = _this select 1;
 life_corpse = _corpse;
 
-//Comment this code out if you want them to keep the weapon on the ground.
-private["_containers"];
-_containers = nearestObjects[getPosATL _corpse,["WeaponHolderSimulated"],5]; //Fetch list of containers (Simulated = weapons)
-{deleteVehicle _x;} foreach _containers; //Delete the containers.
+//Only if the player doesn't keep the gear we remove the weapon (so we don't duplicate it)
+if(!(playerSide in life_death_save_gear)) then {
+	private["_containers"];
+	_containers = nearestObjects[getPosATL _corpse,["WeaponHolderSimulated"],5]; //Fetch list of containers (Simulated = weapons)
+	{deleteVehicle _x;} forEach _containers; //Delete the containers.
+};
 
 //Set some vars on our new body.
 _unit setVariable["restrained",FALSE,TRUE];
@@ -21,8 +24,7 @@ _unit setVariable["Escorting",FALSE,TRUE];
 _unit setVariable["transporting",FALSE,TRUE]; //Again why the fuck am I setting this? Can anyone tell me?
 _unit setVariable["steam64id",(getPlayerUID player),true]; //Reset the UID.
 _unit setVariable["realname",profileName,true]; //Reset the players name.
-//Load our gear as a cop in case something horrible happens
-if(playerSide == west) then {
+if(playerSide in life_death_save_gear) then {
 	[] spawn life_fnc_loadGear;
 };
 

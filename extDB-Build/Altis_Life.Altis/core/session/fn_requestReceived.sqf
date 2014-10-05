@@ -36,6 +36,9 @@ if(count (_this select 6) > 0) then {
 };
 
 life_gear = _this select 8;
+if(__GETC__(life_debug_logServerGear)) then {
+	diag_log format["DEBUGLOG: Received Gear from server: %1", life_gear];
+};
 [] call life_fnc_loadGear;
 
 //Parse side specific information.

@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
     File: fn_loadGear.sqf
     Author: Bryan "Tonic" Boardwine
@@ -13,20 +14,24 @@ if(count _itemArray == 0) then {
 	_itemArray = life_gear;
 };
 
+if (__GETC__(life_debug_logLifeGear)) then {
+	diag_log format["DEBUGLOG: loading gear: %1", life_gear];
+};
+
 waitUntil {!(isNull (findDisplay 46))};
 
 _handle = [] spawn life_fnc_stripDownPlayer;
 waitUntil {scriptDone _handle};
 
+private ["_uniform","_vest","_backpack","_goggles","_headgear","_gear","_primary","_handgun",
+	"_uniformItems","_backpackItems","_vestItems","_primaryItems","_handgunItems","_yItems",
+	"_secondary","_uniformMags","_backpackMags","_vestMags"
+];
 /////////////////////////////////////////////////////////////////////////////////////////
 // THE ORDER OF THIS LIST IS VERY IMPORTANT, KEEP IN SYNC WITH SAVE GEAR AT ALL TIMES!
 // If adding new items ALWAYS add them to the end of the list otherwise you need to clear
 // the gear of all players in the db to prevent failures
 /////////////////////////////////////////////////////////////////////////////////////////
-private ["_uniform","_vest","_backpack","_goggles","_headgear","_gear","_primary","_handgun",
-	"_uniformItems","_backpackItems","_vestItems","_primaryItems","_handgunItems","_yItems",
-	"_secondary","_uniformMags","_backpackMags","_vestMags"
-];
 _uniform = [_itemArray,0,"",[""]] call BIS_fnc_param;
 _vest = [_itemArray,1,"",[""]] call BIS_fnc_param;
 _backpack = [_itemArray,2,"",[""]] call BIS_fnc_param;
@@ -74,10 +79,8 @@ if(_backpack != "") then {_handle = [_backpack,true,false,false,false] spawn lif
 private["_currentMaxWeight", "_item"];
 _currentMaxWeight = life_maxWeight;
 life_maxWeight = 100;
-{
-    _item = [_x,1] call life_fnc_varHandle;
-    [true,_item,1] call life_fnc_handleInv;
-} foreach (_yItems);
+{[true,_x,1] call life_fnc_handleInv;} forEach (_yItems);
+//and set it back to our original weight
 life_maxWeight = _currentMaxWeight;
 
 if(playerSide == independent && {uniform player == "U_Rangemaster"}) then {

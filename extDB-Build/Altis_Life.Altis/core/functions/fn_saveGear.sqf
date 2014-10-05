@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
     File: fn_saveGear.sqf
     Author: Bryan "Tonic" Boardwine
@@ -21,8 +22,8 @@ _backpack = backpack player;
 _goggles = goggles player;
 _headgear = headgear player;
 _gear = assignedITems player; //like Compass or GPS
-_primary = [];
-_handgun = [];
+_primary = "";
+_handgun = "";
 _uniformItems = [];
 _backpackItems = [];
 _vestItems = [];
@@ -137,4 +138,6 @@ life_gear = [
 	_secondary
 ];
 
-
+if (__GETC__(life_debug_logLifeGear)) then {
+	diag_log format["DEBUGLOG: Saving gear: %1", life_gear];
+};
