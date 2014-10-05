@@ -20,7 +20,8 @@ while {true} do
 	if(count (crew (_vehicle)) == 0) then {_vehicle setVariable["siren",false,true]};
 	if(!alive _vehicle) exitWith {};
 	if(isNull _vehicle) exitWith {};
-	_vehicle say3D "SirenLong";
-	sleep 4.7;
+	_vehicle say3D "med_siren";
+	sleep 3.2;
 	if(!(_vehicle getVariable "siren")) exitWith {};
 };
+	
