@@ -49,13 +49,8 @@ else {
 if(!isNull life_corpse) then {
 	private["_containers"];
 	life_corpse setVariable["Revive",TRUE,TRUE];
-	//only if people keep their gear we get rid of the weapon so it doesn't get duplicated
-	// otherwise the weapons stays on the ground for anybody to pick up, if the player respawns
-	// then wait for the revive the weapon is still at the same spot.
-	if(!(playerSide in life_death_save_gear)) then {
-		_containers = nearestObjects[life_corpse,["WeaponHolderSimulated"],5];
-		{deleteVehicle _x;} forEach _containers; //Delete the containers.
-	};
+	_containers = nearestObjects[life_corpse,["WeaponHolderSimulated"],5];
+	{deleteVehicle _x;} forEach _containers; //Delete the containers.
 	hideBody life_corpse;
 };
 
