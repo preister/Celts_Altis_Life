@@ -24,7 +24,7 @@ life_bail_paid = false;
 life_impound_inuse = false;
 life_action_inUse = false;
 life_spikestrip = ObjNull;
-life_respawn_timer = 0.5; //Scaled in minutes
+life_respawn_timer = 1; //Scaled in minutes
 life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
@@ -96,7 +96,7 @@ switch (playerSide) do
 	case civilian: 
 	{
 		life_atmcash = 50000; //Starting Bank Money
-		life_paycheck = 350; //Paycheck Amount
+		life_paycheck = 420; //Paycheck Amount
 	};
 	
 	case independent: {
