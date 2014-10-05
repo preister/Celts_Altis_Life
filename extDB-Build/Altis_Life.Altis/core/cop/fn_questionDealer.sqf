@@ -11,12 +11,13 @@ if(count _sellers == 0) exitWith {hint localize "STR_Cop_DealerQuestion"}; //No 
 life_action_inUse = true;
 _names = "";
 {
-	if(_x select 2 > 150000) then
+	if(_x select 1 > 150000) then
 	{
 		_val = round((_x select 2) / 16);
 	};
-	[[_x select 0,_x select 1,"483",_val],"life_fnc_wantedAdd",false,false] spawn life_fnc_MP;
-	_names = _names + format["%1<br/>",_x select 1];
+	_seller = _x select 0;
+	[_seller, "483"] call life_fnc_chargeCrime;
+	_names = _names + format["%1<br/>",_seller getVariable["realname", name _seller]];
 } foreach _sellers;
 
 hint parseText format[(localize "STR_Cop_DealerMSG")+ "<br/><br/>%1",_names];

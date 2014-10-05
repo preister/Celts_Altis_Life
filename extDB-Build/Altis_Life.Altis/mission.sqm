@@ -4468,7 +4468,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=982;
+		items=986;
 		class Item0
 		{
 			position[]={8065.1616,35.674362,24985.314};
@@ -14467,6 +14467,46 @@ class Mission
 			skill=0.60000002;
 			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
 		};
+		class Item982
+		{
+			position[]={14200.031,19.810989,16250.604};
+			azimut=-296.38489;
+			id=1241;
+			side="EMPTY";
+			vehicle="Land_LampHalogen_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item983
+		{
+			position[]={14154.979,19.532587,16281.379};
+			azimut=-227.09998;
+			id=1242;
+			side="EMPTY";
+			vehicle="Land_LampHalogen_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item984
+		{
+			position[]={3659.7898,10.448549,13094.925};
+			azimut=-296.63409;
+			id=1243;
+			side="EMPTY";
+			vehicle="Land_LampHalogen_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item985
+		{
+			position[]={3654.3987,10.196737,13139.037};
+			azimut=3;
+			id=1244;
+			side="EMPTY";
+			vehicle="Land_Billboard_F";
+			skill=0.60000002;
+			init="this allowDamage false; this setObjectTexture [0, ""images\celtslife.jpg""]";
+		};
 	};
 	class Markers
 	{
@@ -14761,7 +14801,7 @@ class Mission
 		};
 		class Item38
 		{
-			position[]={3647.5676,10.223967,13123.611};
+			position[]={3656.2729,10.296274,13126.466};
 			name="civ_car_1";
 			type="Empty";
 			angle=222.94595;
@@ -15266,7 +15306,7 @@ class Mission
 		};
 		class Item101
 		{
-			position[]={14166.416,19.370966,16293.32};
+			position[]={14169.169,19.460381,16291.354};
 			name="cop_air_2";
 			type="Empty";
 			angle=131.20648;

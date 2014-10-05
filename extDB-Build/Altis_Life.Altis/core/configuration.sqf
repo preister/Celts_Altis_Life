@@ -46,6 +46,9 @@ __CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persis
 __CONST__(life_gangUpgradeBase,10000); //MASDASDASD
 __CONST__(life_gangUpgradeMultipler,2.5); //BLAH
 
+//Federal Reserve related stuff
+__CONST__(life_fedres_min_cops_num, 3); //sets the minimum amount of cops which need to be online to rob the federal reserve
+
 //Uniform price (0),Hat Price (1),Glasses Price (2),Vest Price (3),Backpack Price (4)
 life_clothing_purchase = [-1,-1,-1,-1,-1];
 /*
@@ -205,8 +208,7 @@ life_dp_points = ["dp_1","dp_2","dp_3","dp_4","dp_5","dp_6","dp_7","dp_8","dp_9"
 life_illegal_items = [["heroinu",1200],["heroinp",2500],["cocaine",1500],["cocainep",3500],["cannabis",200],["marijuana",2000],["turtle",3000],["blastingcharge",10000],["boltcutter",500],["methu",650],["methp",6500]];
 
 /*
-	Resources list
-	
+	Resources list, see fn_resourceCfg.sqf for the configuration for each resource
 	to remove the ability to gather a specific resource just comment it out on the list (all zones will be deactivated)
 */
 resource_list = [
@@ -224,6 +226,43 @@ resource_list = [
     "diamond",
     "oilu",
 	"rock"
+];
+
+/*
+	crimes code list, see fn_crimesCfg.sqf for the configuration for each resource
+	to remove the ability to charge somebody for a specific crime just comment it out here
+	The crimes will show in the order they are below on the charge suspect list
+*/
+crimes_list = [
+	"123", //Evading Arrest
+	"102", //Possession of an illegal weapon
+	"103", //Possession of an illegal vehicle
+	"104", //Threatening an officer
+	"105", //Bank Robbery
+	"106", //Possession of explosives
+	"107", //Disobeying an Officer
+	"108", //Assault
+	"108P", //Assault on Police
+	"109", //Disturbing the peace
+	"110", //Trespassing
+	"111", //Driving without headlights
+	"112", //Driving without a license
+	"187V", //Vehicular Manslaughter
+	"187A", //Attempted Murder
+	"187", //Manslaughter
+	"901", //Escaping Jail
+	"215", //Attempted Auto Theft
+	"213", //Use of illegal explosives
+	"211", //Robbery
+	"207", //Kidnapping
+	"207A", //Attempted Kidnapping
+	"487", //Grand Theft
+	"488", //Petty Theft
+	"480", //Hit and run
+    "481", //Drug Possession
+    "482", //Intent to distribute
+	"483", //Drug Trafficking
+	"459" //Burglary
 ];
 
 /*

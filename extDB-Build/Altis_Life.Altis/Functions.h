@@ -156,6 +156,7 @@ class Life_Client_Core
 		class weaponShopCfg {};
 		class vehicleWeightCfg {};
 		class houseConfig {};
+		class crimesCfg {};
 		
 		//Clothing Store Configs
 		class clothing_cop {};
@@ -187,6 +188,7 @@ class Life_Client_Core
 		class updateViewDistance {};
 		class settingsMenu {};
 		class settingsInit {};
+		class charge {};
 	};
 	
 	class Functions
@@ -230,6 +232,7 @@ class Life_Client_Core
 		class saveGear {};
 		class loadGear {};
 		class stripDownPlayer {};
+		class chargeCrime {};
 	};
 	
 	class Network
