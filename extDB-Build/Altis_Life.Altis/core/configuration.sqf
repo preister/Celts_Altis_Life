@@ -46,6 +46,9 @@ __CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persis
 __CONST__(life_gangUpgradeBase,10000); //MASDASDASD
 __CONST__(life_gangUpgradeMultipler,2.5); //BLAH
 
+//Federal Reserve related stuff
+__CONST__(life_fedres_min_cops_num, 3); //sets the minimum amount of cops which need to be online to rob the federal reserve
+
 //Uniform price (0),Hat Price (1),Glasses Price (2),Vest Price (3),Backpack Price (4)
 life_clothing_purchase = [-1,-1,-1,-1,-1];
 /*
@@ -231,7 +234,7 @@ resource_list = [
 	The crimes will show in the order they are below on the charge suspect list
 */
 crimes_list = [
-	"101", //Evading Arrest
+	"123", //Evading Arrest
 	"102", //Possession of an illegal weapon
 	"103", //Possession of an illegal vehicle
 	"104", //Threatening an officer
