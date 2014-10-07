@@ -79,7 +79,10 @@ if(_backpack != "") then {_handle = [_backpack,true,false,false,false] spawn lif
 private["_currentMaxWeight", "_item"];
 _currentMaxWeight = life_maxWeight;
 life_maxWeight = 100;
-{[true,_x,1] call life_fnc_handleInv;} forEach (_yItems);
+{
+	_item = [_x,1] call life_fnc_varHandle;
+	[true,_item,1] call life_fnc_handleInv;
+} forEach (_yItems);
 //and set it back to our original weight
 life_maxWeight = _currentMaxWeight;
 
