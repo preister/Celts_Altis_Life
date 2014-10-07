@@ -101,7 +101,9 @@ switch (_shop) do
 		_return =
 		[
 			["B_Heli_Light_01_F",253000],
-			["O_Heli_Light_02_unarmed_F",750000]
+			["I_Heli_light_03_unarmed_F",550000],
+			["O_Heli_Light_02_unarmed_F",750000],
+			["I_Heli_Transport_02_F",1700000]
 		];
 	};
 	

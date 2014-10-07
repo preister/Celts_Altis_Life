@@ -30,6 +30,7 @@ switch (_className) do
 	case "O_MRAP_02_F": {60};
 	case "I_MRAP_03_F": {58};
 	case "B_Heli_Light_01_F": {90};
+	case "I_Heli_light_03_unarmed_F": {160};
 	case "O_Heli_Light_02_unarmed_F": {210};
 	case "I_Heli_Transport_02_F": {375};
 	case "C_Rubberboat": {45};

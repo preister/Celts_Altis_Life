@@ -23,6 +23,16 @@ switch (_vehicle) do
 		];
 	};
 	
+	case "I_Heli_light_03_unarmed_F":
+	{
+		_path = "\A3\Air_F_EPB\Heli_Light_03\data\";
+		_ret =
+		[
+			[_path + "Heli_Light_03_base_INDP_CO.paa","civ"],
+			[_path + "Heli_Light_03_base_CO.paa","civ"]
+		];
+	};
+	
 	case "C_Hatchback_01_sport_F":
 	{
 		_path = "\a3\soft_f_gamma\Hatchback_01\data\";
