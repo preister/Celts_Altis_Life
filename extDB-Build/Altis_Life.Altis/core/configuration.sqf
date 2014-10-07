@@ -35,6 +35,9 @@ life_death_save_gear = [west,independent]; //any side mentioned in this array ke
 __CONST__(life_save_civ,TRUE); //Save weapons for civs?
 __CONST__(life_save_yinv,TRUE); //Save Y-Inventory for players?
 
+//Persistent weapons
+__CONST__(life_gun_despawn_delay,0); //time in seconds guns should persist on the ground after a player has respawned
+
 //Revive constant variables.
 __CONST__(life_revive_cops,TRUE); //Set to false if you don't want cops to be able to revive downed players.
 __CONST__(life_revive_fee,5000); //Fee for players to pay when revived.
@@ -58,7 +61,7 @@ life_clothing_purchase = [-1,-1,-1,-1,-1];
 *****************************
 */
 life_maxWeight = 50; //Identifies the max carrying weight (gets adjusted throughout game when wearing different types of clothing).
-life_maxWeightT = 24; //Static variable representing the players max carrying weight on start.
+life_maxWeightT = 50; //Static variable representing the players max carrying weight on start.
 life_carryWeight = 0; //Represents the players current inventory weight (MUST START AT 0).
 
 /*

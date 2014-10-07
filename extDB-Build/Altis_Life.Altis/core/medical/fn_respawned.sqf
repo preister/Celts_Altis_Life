@@ -24,36 +24,23 @@ player setVariable["Reviving",nil,TRUE];
 
 //Load gear for a 'new life'
 if(!(playerSide in life_death_save_gear)) then {
-	switch(playerSide) do
-	{
-		//cops keep their gear
-		case west: {
-			_handle = [] spawn life_fnc_copLoadout;
-			life_carryWeight = 0;
-		};
-		case civilian: {
-			_handle = [] spawn life_fnc_civLoadout;
-			life_carryWeight = 0;
-		};
-		case independent: {
-			_handle = [] spawn life_fnc_medicLoadout;
-			life_carryWeight = 0;
-		};
-		waitUntil {scriptDone _handle};
-	};
-}
-else {
-	[] spawn life_fnc_loadGear;
+	//full reset we remove all the gear so we don't carry anything either
+	life_gear = [];
 };
+[] spawn life_fnc_loadGear;
 //Cleanup of weapon containers near the body & hide it.
 if(!isNull life_corpse) then {
 	private["_containers"];
 	life_corpse setVariable["Revive",TRUE,TRUE];
+	//we spawn a process which removes the 
 	_containers = nearestObjects[life_corpse,["WeaponHolderSimulated"],5];
-	{deleteVehicle _x;} forEach _containers; //Delete the containers.
+	//spawn of parallel tasks to remove the weapons however its configured by the admin
+	[_containers] spawn {
+		sleep life_gun_despawn_delay;
+		{deleteVehicle _x;} forEach _this;
+	};
 	hideBody life_corpse;
 };
-
 //Destroy our camera...
 life_deathCamera cameraEffect ["TERMINATE","BACK"];
 camDestroy life_deathCamera;

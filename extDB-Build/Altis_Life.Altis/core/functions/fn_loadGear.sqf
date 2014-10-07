@@ -7,12 +7,14 @@
     Description:
     Loads saved player gear, if you want to limit anything for balancing do it in the save operation!
 */
-private["_itemArray","_handle", "_currentMaxWeight"];
+private["_handle", "_currentMaxWeight"];
 //we either get the items from the calling function or just use life_gear as default.
-_itemArray = [_this,0,[],[[]]] call BIS_fnc_param;
-if(count _itemArray == 0) then {
-	_itemArray = life_gear;
-};
+if(count life_gear == 0) then {
+	//oh hello welcome new life/spawn
+	life_gear = [playerSide] call life_fn_defaultLoadouts;
+	//lets store this directly in the db to not allow any fuckery
+	[] call SOCK_fnc_updateRequest;
+}
 
 if (__GETC__(life_debug_logLifeGear)) then {
 	diag_log format["DEBUGLOG: loading gear: %1", life_gear];
@@ -32,24 +34,24 @@ private ["_uniform","_vest","_backpack","_goggles","_headgear","_gear","_primary
 // If adding new items ALWAYS add them to the end of the list otherwise you need to clear
 // the gear of all players in the db to prevent failures
 /////////////////////////////////////////////////////////////////////////////////////////
-_uniform = [_itemArray,0,"",[""]] call BIS_fnc_param;
-_vest = [_itemArray,1,"",[""]] call BIS_fnc_param;
-_backpack = [_itemArray,2,"",[""]] call BIS_fnc_param;
-_goggles = [_itemArray,3,"",[""]] call BIS_fnc_param;
-_headgear = [_itemArray,4,"",[""]] call BIS_fnc_param;
-_gear = [_itemArray,5,[],[[]]] call BIS_fnc_param;
-_primary = [_itemArray,6,"",[""]] call BIS_fnc_param;
-_handgun = [_itemArray,7,"",[""]] call BIS_fnc_param;
-_uniformItems = [_itemArray,8,[],[[]]] call BIS_fnc_param;
-_uniformMags = [_itemArray,9,[],[[]]] call BIS_fnc_param; //UNUSED
-_backpackItems = [_itemArray,10,[],[[]]] call BIS_fnc_param;
-_backpackMags = [_itemArray,11,[],[[]]] call BIS_fnc_param; //UNUSED
-_vestItems = [_itemArray,12,[],[[]]] call BIS_fnc_param;
-_vestMags = [_itemArray,13,[],[[]]] call BIS_fnc_param; //UNUSED
-_primaryItems = [_itemArray,14,[],[[]]] call BIS_fnc_param;
-_handgunItems = [_itemArray,15,[],[[]]] call BIS_fnc_param;
-_yItems = [_itemArray,16,[],[[]]] call BIS_fnc_param;
-_secondary = [_itemArray,17,[],[[]]] call BIS_fnc_param;
+_uniform = [life_gear,0,"",[""]] call BIS_fnc_param;
+_vest = [life_gear,1,"",[""]] call BIS_fnc_param;
+_backpack = [life_gear,2,"",[""]] call BIS_fnc_param;
+_goggles = [life_gear,3,"",[""]] call BIS_fnc_param;
+_headgear = [life_gear,4,"",[""]] call BIS_fnc_param;
+_gear = [life_gear,5,[],[[]]] call BIS_fnc_param;
+_primary = [life_gear,6,"",[""]] call BIS_fnc_param;
+_handgun = [life_gear,7,"",[""]] call BIS_fnc_param;
+_uniformItems = [life_gear,8,[],[[]]] call BIS_fnc_param;
+_uniformMags = [life_gear,9,[],[[]]] call BIS_fnc_param; //UNUSED
+_backpackItems = [life_gear,10,[],[[]]] call BIS_fnc_param;
+_backpackMags = [life_gear,11,[],[[]]] call BIS_fnc_param; //UNUSED
+_vestItems = [life_gear,12,[],[[]]] call BIS_fnc_param;
+_vestMags = [life_gear,13,[],[[]]] call BIS_fnc_param; //UNUSED
+_primaryItems = [life_gear,14,[],[[]]] call BIS_fnc_param;
+_handgunItems = [life_gear,15,[],[[]]] call BIS_fnc_param;
+_yItems = [life_gear,16,[],[[]]] call BIS_fnc_param;
+_secondary = [life_gear,17,[],[[]]] call BIS_fnc_param;
 
 
 if(_primary != "") then {_handle = [_primary,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
@@ -77,6 +79,8 @@ if(_backpack != "") then {_handle = [_backpack,true,false,false,false] spawn lif
 {player addItemToBackpack _x;} foreach (_backpackItems);
 //and add the yitems up to the absolute maximum weight of 100
 private["_currentMaxWeight", "_item"];
+//reset the carry weight to 0, we are afterall just loading the yItems in
+life_carryWeight = 0;
 _currentMaxWeight = life_maxWeight;
 life_maxWeight = 100;
 {
@@ -86,6 +90,19 @@ life_maxWeight = 100;
 //and set it back to our original weight
 life_maxWeight = _currentMaxWeight;
 
-if(playerSide == independent && {uniform player == "U_Rangemaster"}) then {
-	_handle = [[player,0,"textures\medic_uniform.jpg"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
+//make sure that all the rangemaster shirts gets skinned again correctly
+if(uniform player == "U_Rangemaster") then {
+	private["_texture"];
+	_texture = "";
+	switch(playerSide) do {
+		case independent: {
+			_texture = "textures\medic_uniform.jpg";
+		};
+		case west: {
+			_texture = "textures\police_uniform_co.paa";
+		};
+	};
+	if _texture != "" then {
+		_handle = [[player,0,],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
+	};
 };
