@@ -126,6 +126,19 @@ class CfgFunctions
 			class updateGang {};
 		};
 	};
+	
+	class VEH_System
+	{
+		tag = "VEH";
+		class Vehicles
+		{
+			file = "\life_server\Functions\Vehicles";
+			class spawnVehicle {};
+			class fetchVehicle {};
+			class storeVehicle {};
+			class dbVehicle {};
+		};
+	};
 };
 
 class CfgVehicles
