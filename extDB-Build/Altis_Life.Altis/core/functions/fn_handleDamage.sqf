@@ -27,7 +27,7 @@ if(!isNull _source) then {
 			if(side _source == west && playerSide != west) then {
 				private["_distance","_isVehicle","_isQuad"];
 				_distance = if(_projectile == "B_556x45_dual") then {100} else {35};
-				_isVehicle = if(vehicle player != player) then { if(typeOf(vehicle player) != "B_Heli_Light_01_F" || typeOf(vehicle player) != "O_Heli_Light_02_unarmed_F" || typeOf(vehicle player) != "I_Heli_Transport_02_F") then {true} else {false}} else {false};
+				_isVehicle = if(vehicle player != player) then { if(typeOf(vehicle player) != "B_Heli_Light_01_F" || typeOf(vehicle player) != "I_Heli_light_03_unarmed_F" || typeOf(vehicle player) != "O_Heli_Light_02_unarmed_F" || typeOf(vehicle player) != "I_Heli_Transport_02_F") then {true} else {false}} else {false};
 				_isQuad = if(_isVehicle) then {if(typeOf (vehicle player) == "B_Quadbike_01_F") then {true} else {false}} else {false};
 				
 				_damage = false;
