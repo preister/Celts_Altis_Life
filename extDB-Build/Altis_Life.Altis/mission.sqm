@@ -2959,7 +2959,7 @@ class Mission
 					side="CIV";
 					vehicle="C_man_1";
 					skill=0.60000002;
-					init="this enableSimulation false; this allowDamage false; this addAction[""Process Sand"",life_fnc_processAction,""sand"",0,false,false,"""",' life_inv_sand > 0 && !life_is_processing']; this addAction[format[""%1 ($%2)"",[""license_civ_sand""] call life_fnc_varToStr,[([""sand""] call life_fnc_licensePrice)] call life_fnc_numberText],life_fnc_buyLicense,""sand"",0,false,false,"""",' !license_civ_sand && playerSide == civilian '];";
+					init="this enableSimulation false; this allowDamage false; this addAction[""Process Platinum"",life_fnc_processAction,""platinum"",0,false,false,"""",' life_inv_platinumu > 0 && !life_is_processing']; this addAction[format[""%1 ($%2)"",[""license_civ_platinum""] call life_fnc_varToStr,[([""platinum""] call life_fnc_licensePrice)] call life_fnc_numberText],life_fnc_buyLicense,""platinum"",0,false,false,"""",' !license_civ_platinum && playerSide == civilian '];";
 				};
 				class Item71
 				{
