@@ -46,9 +46,4 @@
 			[_x,0,_texture] spawn life_fnc_setTexture;
 		};
 	};
-	_index = _x getVariable "life_VEH_color";
-	if(!isNil "_index") then
-	{
-		[_x,_index] spawn life_fnc_colorVehicle;
-	};
 } foreach (playableUnits);
