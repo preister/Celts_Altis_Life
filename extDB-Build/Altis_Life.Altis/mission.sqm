@@ -2937,7 +2937,8 @@ class Mission
 					side="CIV";
 					vehicle="C_man_1";
 					skill=0.60000002;
-					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; ";
+					text="Athira_Jewellers";
+					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; this addAction[""Rob the Jewellers"",life_fnc_robJewellers];";
 				};
 				class Item69
 				{
@@ -4481,7 +4482,7 @@ class Mission
 					vehicle="C_man_1";
 					leader=1;
 					skill=0.60000002;
-					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; ";
+					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; this addAction[""Rob the Jewellers"",life_fnc_robJewellers];";
 				};
 			};
 		};
@@ -4501,7 +4502,7 @@ class Mission
 					vehicle="C_man_1";
 					leader=1;
 					skill=0.60000002;
-					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; ";
+					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; this addAction[""Rob the Jewellers"",life_fnc_robJewellers];";
 				};
 			};
 		};
@@ -4522,7 +4523,8 @@ class Mission
 					vehicle="C_man_1";
 					leader=1;
 					skill=0.60000002;
-					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; ";
+					text="Kavala_Jewellers";
+					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; this addAction[""Rob the Jewellers"",life_fnc_robJewellers];";
 				};
 			};
 		};

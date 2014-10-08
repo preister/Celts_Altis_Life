@@ -116,6 +116,7 @@ class Life_Client_Core
 		class robShops {}; //Rob Gas Station & Shops Script
 		class surrender {}; //surrender action
 		class gather {};
+		class robJewellers {}; //rob jewellers
 	};
 	
 	class Housing
