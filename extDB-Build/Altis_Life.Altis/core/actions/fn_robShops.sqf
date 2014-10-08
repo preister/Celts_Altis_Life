@@ -25,8 +25,8 @@ if (_kassa == 0) exitWith { hint "There is no cash in the register!" };
 
 _rip = true;
 _kassa = 3000 + round(random 12000);
-_shop removeAction _action;
-_shop switchMove "AmovPercMstpSsurWnonDnon";
+//remove the ability to rob this shop again for x seconds for all civilians
+[[_shop,_action,300],"life_fnc_shopRobbed",civilian,false] spawn life_fnc_MP;
 _chance = random(100);
 if(_chance >= 85) then { hint "The cashier hit the silent alarm, police has been alerted!"; [[1,format["ALARM! - Gasstation: %1 is being robbed!", _shop]],"life_fnc_broadcast",west,false] spawn life_fnc_MP; };
  
@@ -68,6 +68,3 @@ if(_rip) then
 	[[1,format["NEWS: Gasstation: %1 was just robbed for a total of $%2", _shop, [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",civilian,false] spawn life_fnc_MP;
 	[_robber, "211"] call life_fnc_chargeCrime;
 };
-sleep 300;
-_action = _shop addAction["Rob the Gas Station",life_fnc_robShops];
-_shop switchMove "";

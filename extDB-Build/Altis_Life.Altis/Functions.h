@@ -235,6 +235,8 @@ class Life_Client_Core
 		class loadGear {};
 		class stripDownPlayer {};
 		class chargeCrime {};
+		class shopRobbed {};
+		class jewellersRobbed {};
 	};
 	
 	class Network
