@@ -26,7 +26,7 @@ if (_kassa == 0) exitWith { hint "There is no cash in the register!" };
 _rip = true;
 _kassa = 30000 + round(random 45000);
 //remove the ability to rob this shop again for x seconds for all civilians
-[[_shop,_action,300],"life_fnc_jewellersRobbed",civilian,false] spawn life_fnc_MP;
+[[_shop,_action,900],"life_fnc_jewellersRobbed",civilian,false] spawn life_fnc_MP;
 hint "The cashier hit the alarm, police has been alerted!"; [[1,format["ALARM! - %1 is being robbed!", _shop]],"life_fnc_broadcast",west,false] spawn life_fnc_MP; 
  
 //Setup our progress bar.
