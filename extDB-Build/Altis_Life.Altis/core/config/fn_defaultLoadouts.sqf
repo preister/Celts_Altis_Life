@@ -47,7 +47,7 @@ switch(playerSide) do
 		_uniform = _clothes select (floor(random (count _clothes)));
 	};
 	case independent: {
-		_uniformItems = ["FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit"];
+		_uniformItems = ["FirstAidKit","FirstAidKit"];
 	};
 };
 

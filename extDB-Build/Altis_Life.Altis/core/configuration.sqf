@@ -29,7 +29,7 @@ life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
 life_removeWanted = false;
-life_death_save_gear = [west,independent]; //any side mentioned in this array keep their gear when respawning (cant be a __CONST__ due to onPlayerKilled eventHandler)
+life_death_save_gear = [west]; //any side mentioned in this array keep their gear when respawning (cant be a __CONST__ due to onPlayerKilled eventHandler)
 
 //Persistent Saving
 __CONST__(life_save_civ,TRUE); //Save weapons for civs?
