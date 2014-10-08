@@ -11,10 +11,8 @@ private["_handle", "_currentMaxWeight"];
 //we either get the items from the calling function or just use life_gear as default.
 if(count life_gear == 0) then {
 	//oh hello welcome new life/spawn
-	life_gear = [playerSide] call life_fn_defaultLoadouts;
-	//lets store this directly in the db to not allow any fuckery
-	[] call SOCK_fnc_updateRequest;
-}
+	life_gear = [playerSide] call life_fnc_defaultLoadouts;
+};
 
 if (__GETC__(life_debug_logLifeGear)) then {
 	diag_log format["DEBUGLOG: loading gear: %1", life_gear];
@@ -102,7 +100,7 @@ if(uniform player == "U_Rangemaster") then {
 			_texture = "textures\police_uniform_co.paa";
 		};
 	};
-	if _texture != "" then {
-		_handle = [[player,0,],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
+	if(_texture != "") then {
+		_handle = [[player,0,_texture],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
 	};
 };

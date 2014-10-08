@@ -44,7 +44,7 @@ switch(playerSide) do
 		private["_clothes"];
 		//civs get randomly a uniform assigned from this array
 	    _clothes = ["U_C_Poloshirt_blue","U_C_Poloshirt_burgundy","U_C_Poloshirt_stripped","U_C_Poloshirt_tricolour","U_C_Poloshirt_salmon","U_C_Poloshirt_redwhite","U_C_Commoner1_1"];
-		_uniform = "U_Rangemaster" = _clothes select (floor(random (count _clothes)));
+		_uniform = _clothes select (floor(random (count _clothes)));
 	};
 	case independent: {
 		_uniformItems = ["FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit"];
