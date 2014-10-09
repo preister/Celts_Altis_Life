@@ -3,7 +3,7 @@
 		idd=-1;
 		movingEnable=0;
 	  	fadein=0;
-		duration = 99999999999999999999999999999999999999999999;
+		duration = 3.4028235e38; //The largest real positive number that can be entered via script: https://community.bistudio.com/wiki/Number
 	  	fadeout=0;
 		name="playerHUD";
 		onLoad="uiNamespace setVariable ['playerHUD',_this select 0]";

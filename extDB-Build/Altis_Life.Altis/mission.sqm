@@ -2884,8 +2884,8 @@ class Mission
 				};
 				class Item64
 				{
-					position[]={15407.198,4.3893604,15881.009};
-					azimut=-201.90871;
+					position[]={15312.938,4.2142372,15872.449};
+					azimut=180;
 					special="NONE";
 					id=161;
 					side="CIV";
@@ -3311,7 +3311,7 @@ class Mission
 					side="WEST";
 					vehicle="B_RangeMaster_F";
 					skill=0.60000002;
-					init="removeAllWeapons this; this enableSimulation false; this allowDamage false; this addAction[""Pay Bail"",life_fnc_postBail,"""",0,false,false,"""",' isNil ""life_canpay_bail"" && life_is_arrested '];";
+					init="removeAllWeapons this; this enableSimulation false; this allowDamage false; this addAction[""Pay Bail"",life_fnc_postBail,"""",0,false,false,"""",' isNil ""life_canpay_bail"" && life_is_arrested ']; this addAction[""Medical Assistance"",life_fnc_healHospital]; this addAction[""Jail Shop"",life_fnc_virt_menu,""jail""]; this addAction[""<t color='#ADFF2F'>ATM</t>"",life_fnc_atmMenu,"""",0,FALSE,FALSE,"""",' vehicle player == player && player distance _target < 4 '];";
 				};
 				class Item102
 				{
@@ -4468,7 +4468,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=987;
+		items=991;
 		class Item0
 		{
 			position[]={8065.1616,35.674362,24985.314};
@@ -7802,10 +7802,10 @@ class Mission
 		class Item331
 		{
 			position[]={16885.662,20.479286,12646.807};
-			azimut=106.50967;
+			azimut=106.51;
 			id=590;
 			side="EMPTY";
-			vehicle="Land_Atm_02_F";
+			vehicle="Land_Billboard_F";
 			skill=0.60000002;
 			init="this enableSimulation false; this allowDamage false; this addAction[""<t color='#ADFF2F'>ATM</t>"",life_fnc_atmMenu,"""",0,FALSE,FALSE,"""",' vehicle player == player && player distance _target < 4 ']; this addAction[""Banking Insurance ($1,000)"",{if(life_atmcash > 1000) then {life_has_insurance = true; life_atmcash = life_atmcash - 1000};},"""",0,false,false,"""",'!life_has_insurance'];";
 		};
@@ -14514,13 +14514,54 @@ class Mission
 		};
 		class Item986
 		{
-			position[]={15431.774,4.4251418,15869.753};
+			position[]={15330.558,4,15845.338};
 			azimut=-296.38489;
 			id=1245;
 			side="EMPTY";
 			vehicle="Land_LampHalogen_F";
 			skill=0.60000002;
 			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item987
+		{
+			position[]={14610.896,17.91,16785.16};
+			azimut=315;
+			offsetY=5;
+			id=1246;
+			side="EMPTY";
+			vehicle="Land_Billboard_F";
+			skill=0.60000002;
+			init="this allowDamage false; this setObjectTexture [0, ""images\celtslife.jpg""]";
+		};
+		class Item988
+		{
+			position[]={14060.516,25.985607,18748.004};
+			azimut=122;
+			id=1247;
+			side="EMPTY";
+			vehicle="Land_Billboard_F";
+			skill=0.60000002;
+			init="this allowDamage false; this setObjectTexture [0, ""images\celtslife.jpg""]";
+		};
+		class Item989
+		{
+			position[]={17002.158,16.653633,12819.21};
+			azimut=130;
+			id=1248;
+			side="EMPTY";
+			vehicle="Land_Billboard_F";
+			skill=0.60000002;
+			init="this allowDamage false; this setObjectTexture [0, ""images\celtslife.jpg""]";
+		};
+		class Item990
+		{
+			position[]={25806.957,21.41123,21430.059};
+			azimut=225;
+			id=1249;
+			side="EMPTY";
+			vehicle="Land_Billboard_F";
+			skill=0.60000002;
+			init="this allowDamage false; this setObjectTexture [0, ""images\celtslife.jpg""]";
 		};
 	};
 	class Markers
@@ -14776,7 +14817,7 @@ class Mission
 		};
 		class Item33
 		{
-			position[]={13928.122,24.577969,22310.945};
+			position[]={18488.898,25.067333,14290.52};
 			name="diamond_1";
 			text="Diamond Mine";
 			type="mil_triangle";
@@ -15241,7 +15282,7 @@ class Mission
 		};
 		class Item90
 		{
-			position[]={15405.688,4.3743896,15886.575};
+			position[]={15314.678,4.1735244,15875.447};
 			name="dimond_1";
 			text="Diamond Processing";
 			type="mil_triangle";
@@ -15502,7 +15543,7 @@ class Mission
 		};
 		class Item124
 		{
-			position[]={15829.127,40.654057,18168.279};
+			position[]={15743.504,39.002522,19024.635};
 			name="cocaine_1";
 			text="Cocaine Field";
 			type="mil_dot";
@@ -15510,7 +15551,7 @@ class Mission
 		};
 		class Item125
 		{
-			position[]={15831.746,40.974438,18172.646};
+			position[]={15746.123,39.002739,19029.002};
 			name="coke_area";
 			markerType="ELLIPSE";
 			type="Empty";
