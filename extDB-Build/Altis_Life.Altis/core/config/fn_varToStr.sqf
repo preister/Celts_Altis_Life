@@ -40,10 +40,10 @@ switch (_var) do
 	case "life_inv_ironore": {(localize "STR_Item_IronOre")};
 	case "life_inv_ironr": {(localize "STR_Item_IronIngot")};
 	case "life_inv_copperr": {(localize "STR_Item_CopperIngot")};
-	case "life_inv_sand": {(localize "STR_Item_Sand")};
+	case "life_inv_platinumu": {"Unprocessed Platinum"};
 	case "life_inv_salt": {(localize "STR_Item_Salt")};
 	case "life_inv_saltr": {(localize "STR_Item_SaltR")};
-	case "life_inv_glass": {(localize "STR_Item_Glass")};
+	case "life_inv_platinump": {"Pure Platinum"};
 	case "life_inv_diamond": {(localize "STR_Item_DiamondU")};
 	case "life_inv_diamondr": {(localize "STR_Item_DiamondC")};
 	case "life_inv_tbacon": {(localize "STR_Item_TBacon")};
@@ -83,7 +83,7 @@ switch (_var) do
 	case "license_civ_diamond": {(localize "STR_License_Diamond")};
 	case "license_civ_copper": {(localize "STR_License_Copper")};
 	case "license_civ_iron": {(localize "STR_License_Iron")};
-	case "license_civ_sand": {(localize "STR_License_Sand")};
+	case "license_civ_platinum": {"Platinum Processing"};
 	case "license_civ_salt": {(localize "STR_License_Salt")};
 	case "license_civ_coke": {(localize "STR_License_Cocaine")};
 	case "license_civ_marijuana": {(localize "STR_License_Marijuana")};
