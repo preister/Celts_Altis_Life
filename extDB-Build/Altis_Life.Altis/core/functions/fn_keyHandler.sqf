@@ -44,6 +44,16 @@ if(count (actionKeys "User10") != 0 && {(inputAction "User10" > 0)}) exitWith {
 	true;
 };
 
+//before we start doing anything lets make sure the player is not actually in a vehicle which is fatal when starting an animation
+_nonVehicleActions = [
+	57, //jumping
+	35, //holster weapon ... have crashed a heli doing this
+	19, //restrain & rob
+	34, //Surrender - get out of the vehicle first
+	24, //zipties
+];
+if ((_code in _nonVehicleActions) && (vehicle player != player)) then { hint "Unable to start animation while in a vehicle.";};
+
 switch (_code) do
 {
 	//Space key for Jumping
@@ -223,24 +233,27 @@ switch (_code) do
 	};
 	
 	//Shift+O Zipties ( Civilians can restrain )
-case 24:
-{
-  if(_shift) then {_handled = true;};
-			if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 
-			&& !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && (cursorTarget getVariable "surrender" || animationState cursorTarget == "Incapacitated") && speed cursorTarget < 1) then
-  {
-   if([false,"zipties",1] call life_fnc_handleInv) then
-    {
-    [] call life_fnc_restrainAction;
-    hint "You restrained him, use your interactionmenu for more options";
-   }
-   else
-   {
-    hint "You have no zipties!";
-				};
+	case 24:
+	{
+		if(_shift) then {_handled = true;};
+		if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" 
+			&& (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 
+			&& !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") 
+			&& (cursorTarget getVariable "surrender" || animationState cursorTarget == "Incapacitated") 
+			&& speed cursorTarget < 1) then 
+		{
+			if([false,"zipties",1] call life_fnc_handleInv) then
+			{
+				[] call life_fnc_restrainAction;
+				hint "You restrained him, use your interactionmenu for more options";
+			}
+			else
+			{
+				hint "You have no zipties!";
 			};
 		};
-		
+	};
+	
 	//U Key
 	case 22:
 	{
