@@ -4,6 +4,8 @@
 	
 	Description:
 	Master configuration for color strings depending on their index location.
+	
+	FOR BACKWARDS COMPATIBILITY REASONS ONLY WE KEEP THIS AROUND!
 */
 private["_vehicle","_color","_index"];
 _vehicle = [_this,0,"",[""]] call BIS_fnc_param;
@@ -23,7 +25,7 @@ switch (_vehicle) do
 			case 4: {_color = "Dark Red";};
 			case 5: {_color = "Blue / White"};
 			case 6: {_color = "Black"};
-			case 7: {_color = "Black"};
+			case 7: {_color = "Cop"};
 			case 8: {_color = "Taxi"};
 			case 9: {_color = "Medic"};
 		};
@@ -105,7 +107,7 @@ switch (_vehicle) do
 		switch (_index) do
 		{
 			case 0: {_color = "Brown"};
-			case 1: {_color = "Digi Desert"};
+			case 1: {_color = "Rebel Desert"};
 			case 2: {_color = "Black"};
 			case 3: {_color = "Blue"};
 			case 4: {_color = "Red"};
@@ -201,8 +203,8 @@ switch (_vehicle) do
 		switch (_index) do
 		{
 			case 0: {_color = "Rebel"};
-			case 0: {_color = "Ion"};
-			case 1: {_color = "Dahoman"};
+			case 1: {_color = "Black"};
+			case 2: {_color = "Dahoman"};
 		};
 	};
 	

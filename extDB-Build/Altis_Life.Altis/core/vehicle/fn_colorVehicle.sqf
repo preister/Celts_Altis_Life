@@ -7,7 +7,7 @@
 */
 private["_vehicle","_index","_texture","_texture2","_texture3"];
 _vehicle = [_this,0,Objnull,[Objnull]] call BIS_fnc_param;
-_index = [_this,1,-1,[0]] call BIS_fnc_param;
+_color = [_this,1,"",[""]] call BIS_fnc_param;
 if(isNull _vehicle OR !alive _vehicle OR _index == -1) exitWith {};
 //Does the vehicle already have random styles? Halt till it's set.
 
@@ -24,18 +24,18 @@ if(local _vehicle) then {
 };
 
 //Fetch texture from our present array.
-_texture = [(typeOf _vehicle)] call life_fnc_vehicleColorCfg;
+_texture = [(typeOf _vehicle),_color] call life_fnc_vehicleColorCfg;
 if(isNil "_texture") exitWith {};
 if(count _texture == 0) exitWith {};
-if(count (_texture select _index) > 2) then {_texture2 = (_texture select _index) select 2;};
-if(count (_texture select _index) > 3) then {_texture3 = (_texture select _index) select 3;};
-_texture = _texture select _index;
+if(count _texture > 2) then {_texture2 = _texture select 1;};
+if(count _texture > 3) then {_texture3 = _texture select 2;};
+_texture = _texture select _texture;
 if(typeName _texture == "ARRAY") then { _texture = _texture select 0;};
 
 //Local to us? Set it's color.
 if(local _vehicle) then
 {
-	_vehicle setVariable["Life_VEH_color",_index,true];
+	_vehicle setVariable["Life_VEH_color",_color,true];
 };
 
 waitUntil{!isNil {_vehicle getVariable "Life_VEH_color"}};
@@ -52,7 +52,8 @@ if(!isNil "_texture3") then
 
 if(typeOf _vehicle == "C_Offroad_01_F") then
 {
-	if(_index < 5) then
+	//no idea what this special handling is for TODO figure out
+	if(_color in ["Black", "Cop", "Taxi", "Medic"]) then
 	{
 		_vehicle setObjectTexture[1,_texture];
 	};
