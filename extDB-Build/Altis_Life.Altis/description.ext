@@ -129,13 +129,20 @@ class CfgSounds
 		
 	};
 	
-		class med_siren
+	class med_siren
 	{
 		name = "med_siren";
 		sound[] = {"sounds\med_siren.ogg", 1, 1};
 		titles[] = {};
 		
 	};
+	
+	class shop_alarm
+	{
+		name = "shop_alarm";
+		sound[] = {"\sounds\shopalarm.ogg", 1.0, 1};
+		titles[] = {};
+  };
 };
 
 class CfgDebriefing
