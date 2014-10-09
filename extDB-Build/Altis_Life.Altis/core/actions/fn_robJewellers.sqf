@@ -27,7 +27,7 @@ _rip = true;
 _kassa = 30000 + round(random 45000);
 //remove the ability to rob this shop again for x seconds for all civilians
 [[_shop,_action,900],"life_fnc_jewellersRobbed",civilian,false] spawn life_fnc_MP;
-[[_shop],"life_fnc_bankalarmsound",nil,true] spawn life_fnc_MP;
+[[_shop],"life_fnc_shopalarmsound",nil,true] spawn life_fnc_MP;
 [[1,format["ALARM! - %1 is being robbed!", _shop]],"life_fnc_broadcast",west,false] spawn life_fnc_MP; 
 
  
