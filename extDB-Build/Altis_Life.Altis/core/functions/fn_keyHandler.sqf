@@ -260,7 +260,7 @@ case 24:
 						_veh setVariable[format["bis_disabled_Door_%1",_door],1,true];
 						_veh animate [format["door_%1_rot",_door],0];
 						systemChat localize "STR_House_Door_Lock";
-						player say3D "car_lock";
+						player say3D "unlock";
 					} else {
 						_veh setVariable[format["bis_disabled_Door_%1",_door],0,true];
 						_veh animate [format["door_%1_rot",_door],1];
@@ -278,7 +278,7 @@ case 24:
 							[[_veh,0],"life_fnc_lockVehicle",_veh,false] spawn life_fnc_MP;
 						};
 						systemChat localize "STR_MISC_VehUnlock";
-						player say3D "unlock";
+						player say3D "car_lock";
 					} else {
 						if(local _veh) then {
 							_veh lock 2;
