@@ -19,6 +19,7 @@ switch(_vehicleName): {
 		_buyPrice = 5000; // * 1.5 - currently still done in buy vehicle;
 		_rentPrice = 5000; //not yet working buy price is still rental price * 1.5
 		_retivalPrice = 2500; //how much does it cost to get the vehicle out of the garage aka fetch it from the DB
+		_sellPrice = 6500;
 	};
 	case "med_offroad": {
 		_className = "C_Offroad_01_F"; //the base model so to say
@@ -28,6 +29,7 @@ switch(_vehicleName): {
 		_buyPrice = 10000; // * 1.5 - currently still done in buy vehicle;
 		_rentPrice = 10000; //not yet working buy price is still rental price * 1.5
 		_retivalPrice = 2500; //how much does it cost to get the vehicle out of the garage aka fetch it from the DB
+		_sellPrice = 6500;
 	};
 	case "civ_offroad": {
 		_className = "C_Offroad_01_F"; //the base model so to say
@@ -36,16 +38,17 @@ switch(_vehicleName): {
 		_yItemTrunkWeight = 65; // how many yItems fit into this vehicle
 		_buyPrice = 12500; // * 1.5 - currently still done in buy vehicle;
 		_rentPrice = 12500; //not yet working buy price is still rental price * 1.5
-		_retivalPrice = 2500; //how much does it cost to get the vehicle out of the garage aka fetch it from the DB
+		_retivalPrice = 10000; //how much does it cost to get the vehicle out of the garage aka fetch it from the DB
+		_sellPrice = 6500;
 	};
 	case "civ_hummingbird": {
 		_className = "B_Heli_Light_01_F"; //the base model so to say
 		_colors = ["Black","Civ Blue","Civ Red","Blueline","Elliptical","Furious","Jeans Blue","Speedy Redline","Sunset","Vrana","Waves Blue"];
 		_settingsFunction = "life_fnc_civ_hummingbird"; //this takes care of the specific animation etc details (in prep for some more advanced functionality)
-		_yItemTrunkWeight = 65; // how many yItems fit into this vehicle
+		_yItemTrunkWeight = 90; // how many yItems fit into this vehicle
 		_buyPrice = 253000; // * 1.5 - currently still done in buy vehicle;
 		_rentPrice = 253000; //not yet working buy price is still rental price * 1.5
-		_retivalPrice = 2500; //how much does it cost to get the vehicle out of the garage aka fetch it from the DB
+		_retivalPrice = 57000; //how much does it cost to get the vehicle out of the garage aka fetch it from the DB
 	};
 	case "civ_littlebird_benches": {};
 	case "civ_orca": {};
