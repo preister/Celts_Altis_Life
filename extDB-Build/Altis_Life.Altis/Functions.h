@@ -375,6 +375,7 @@ class Life_Client_Core
 		class storageBox {};
 		class weed {};
 		class moonshine {};
+		class bankalarmsound {};
 	};
 	
 	class Dialog_Controls
