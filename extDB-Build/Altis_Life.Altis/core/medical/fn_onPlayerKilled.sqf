@@ -103,6 +103,17 @@ else {
 	private["_containers"];
 	_containers = nearestObjects[_unit,["WeaponHolderSimulated"],5];
 	{deleteVehicle _x;} forEach _containers; //Delete the containers.
+	//to avoid duplication of items after respawning we remove as much as possible - gona worry about duplicating clothing later
+	removeallweapons _unit;
+	removeallassigneditems _unit;
+	clearmagazinecargo _unit;
+	//including the yItems so we dont double them
+	{
+		_item = _x;
+		_value = missionNamespace getVariable _item;
+		//and now that we are done with that we can remove the item from the player inventory
+		if(_value > 0) then {[false,_var,_value] call life_fnc_handleInv;};
+	} foreach (life_inv_items);
 };
 
 //dropping the cash
