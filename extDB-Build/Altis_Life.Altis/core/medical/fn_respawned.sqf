@@ -34,10 +34,11 @@ if(!isNull life_corpse) then {
 	life_corpse setVariable["Revive",TRUE,TRUE];
 	//we spawn a process which removes the 
 	_containers = nearestObjects[life_corpse,["WeaponHolderSimulated"],5];
-	//spawn of parallel tasks to remove the weapons however its configured by the admin
-	[_containers] spawn {
-		sleep life_gun_despawn_delay;
-		{deleteVehicle _x;} forEach _this;
+	//spawn of parallel tasks to remove the weapons however its configured by the server admin
+	//the constant needs to be injected to make it work nicely
+	[_containers, __GETC__(life_gun_despawn_delay)] spawn {
+		sleep (_this select 1);
+		{deleteVehicle _x;} forEach (_this select 0);
 	};
 	hideBody life_corpse;
 };
