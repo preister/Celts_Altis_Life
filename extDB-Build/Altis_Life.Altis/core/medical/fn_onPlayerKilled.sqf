@@ -101,7 +101,7 @@ else {
 	//if people keep their gear we just remove it now so nobody can steal it while they are down
 	// this action isnt saved so when they respawn they just load the old stuff
 	private["_containers"];
-	_containers = nearestObjects[_unit,["WeaponHolderSimulated"],5];
+	_containers = nearestObjects[getPosATL _unit,["WeaponHolderSimulated"],5];
 	{deleteVehicle _x;} forEach _containers; //Delete the containers.
 	//to avoid duplication of items after respawning we remove as much as possible - gona worry about duplicating clothing later
 	removeallweapons _unit;
