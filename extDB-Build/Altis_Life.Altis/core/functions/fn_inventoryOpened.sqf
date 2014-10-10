@@ -12,7 +12,7 @@ _container = _this select 1;
 //if the character is dead and we save the gear for its side nobody can loot it (so we don't dublicate items)
 if((_container isKindOf "Man") && !(alive _container) && (side _container in life_death_save_gear))) exitWith {
 	[] spawn {
-		waitUntil {!isNull (findDisplay 602)};
+		waitUntil {!isNull (findDisplay 602);};
 		closeDialog 0;
 	};
 };
