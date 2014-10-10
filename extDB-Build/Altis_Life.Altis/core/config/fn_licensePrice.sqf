@@ -29,7 +29,7 @@ switch (_type) do
 	case "diamond": {35000};
 	case "salt": {12000};
 	case "cocaine": {30000};
-	case "sand": {14500};
+	case "platinum": {45000};
 	case "iron": {9500};
 	case "copper": {8000};
 	case "cement": {6500};

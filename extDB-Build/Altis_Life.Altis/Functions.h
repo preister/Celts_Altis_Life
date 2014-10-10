@@ -115,6 +115,7 @@ class Life_Client_Core
 		class robShops {}; //Rob Gas Station & Shops Script
 		class surrender {}; //surrender action
 		class gather {};
+		class robJewellers {}; //rob jewellers
 	};
 	
 	class Housing
@@ -233,6 +234,8 @@ class Life_Client_Core
 		class loadGear {};
 		class stripDownPlayer {};
 		class chargeCrime {};
+		class shopRobbed {};
+		class jewellersRobbed {};
 	};
 	
 	class Network
@@ -369,6 +372,7 @@ class Life_Client_Core
 		class storageBox {};
 		class weed {};
 		class moonshine {};
+		class shopalarmsound {};
 	};
 	
 	class Dialog_Controls
