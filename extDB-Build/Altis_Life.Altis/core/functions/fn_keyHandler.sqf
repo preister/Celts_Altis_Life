@@ -35,8 +35,23 @@ if(count (actionKeys "User10") != 0 && {(inputAction "User10" > 0)}) exitWith {
 	if(!life_action_inUse) then {
 		//before we spawn the action we make sure no further actions can be spawned
 		life_action_inUse = true;
-		[] spawn 
-		{
+		//spawn a fail save in case something goes badly wrong - we keep at least some functions working
+		[] spawn {
+			private ["_timer"];
+			_timer = 3*60; //timer after which you want to declare any life_action_inUse invalid - be careful this can create some strange behaviour if too short
+			while (_timer) do {
+				sleep 1;
+				_timer = _timer - 1;
+				if !(life_action_inUse) exitWith {}; //all fine the life action finished
+			};
+			//if we actually ran the time down and life_action_inUse is still true things went really badly
+			if (life_action_inUse) then { 
+				life_action_inUse = false;
+				diag_log "Warning: actionKey was hogging life_action_inUse and the fail save activated - if you see this please inform the server admin!";
+			};
+		};
+		//now that the fail save is in place we can kick of the heavy actionKeyHandler in such a way that it doesn't block the player from doing anything else
+		[] spawn {
 			[] call life_fnc_actionKeyHandler;
 			life_action_inUse = false;
 		};

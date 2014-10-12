@@ -31,15 +31,18 @@ if(_curTarget isKindOf "House_F" && {player distance _curTarget < 12} OR ((neare
 if(dialog) exitWith {}; //Don't bother when a dialog is open.
 if(vehicle player != player) exitWith {}; //He's in a vehicle, cancel!
 
-//Temp fail safe. ToDo: Check if this is really necessary
-[] spawn {
-	sleep 3*60; //upping the time to 3 minutes - this should be a fail save afterall and not a trip wire ;)
-	life_action_inUse = false;
-};
-
 //Check if it's a dead body. Are we a Medi Or a Cop (configured to revive players) And do we have a Medikit in our inventory?
-if(_curTarget isKindOf "Man" && {!alive _curTarget} && ({playerSide == independent} || (playerSide == west && {(call life_revive_cops)})) && {"Medikit" in (items player)}) exitWith { [_curTarget] call life_fnc_revivePlayer; }; //Ok lets do this
-
+if(_curTarget isKindOf "Man" && {!alive _curTarget}) exitWith {
+	if ({playerSide == independent} || (playerSide == west && {(call life_revive_cops)})) then {
+		if ("Medikit" in (items player)) then {
+			[_curTarget] call life_fnc_revivePlayer;
+		} else {
+			hint "A Medikit is required to provide EMS.";
+		};
+	} else {
+		hint "You do not have the necessary qualifications to provide EMS.";
+	};
+};
 
 //If target is a player then check if we can use the cop menu.
 if(isPlayer _curTarget && _curTarget isKindOf "Man") then {
@@ -62,29 +65,31 @@ if(isPlayer _curTarget && _curTarget isKindOf "Man") then {
 		if(!dialog && (player distance _curTarget < ((boundingBox _curTarget select 1) select 0) + 2)) exitWith {
 			[_curTarget] call life_fnc_vInteractionMenu;
 		};
-	} 
-	else {
+	} else {
 		//Is it a animal type?
+		private ["_handle"];
+		_handle = objNull;
 		if((typeOf _curTarget) in _animalTypes) then {
 			if(((typeOf _curTarget) == "Turtle_F") && !(alive _curTarget)) then {
-				exitWith { [_curTarget] call life_fnc_catchTurtle; };
-			} 
-			else {
-				exitWith { [_curTarget] call life_fnc_catchFish; };
+				_handle = [_curTarget] spawn life_fnc_catchTurtle;
+			} else {
+				_handle = [_curTarget] spawn life_fnc_catchFish;
 			};
-		} 
-		else {
+		} else {
 			//OK, it wasn't a vehicle so let's see what else it could be?
 			if((typeOf _curTarget) in _miscItems) then {
-				exitWith { [_curTarget] call life_fnc_pickupItem; }; //OK, it was a misc item (food,water,etc).
-			} 
-			else {
+				_handle = [_curTarget] spawn life_fnc_pickupItem; //OK, it was a misc item (food,water,etc).
+			} else {
 				//It wasn't a misc item so is it money?
-				if((typeOf _curTarget) == _money && {!(_curTarget getVariable["inUse",false])}) exitWith {
+				if((typeOf _curTarget) == _money && {!(_curTarget getVariable["inUse",false])}) then {
 					_curTarget setVariable["inUse",TRUE,TRUE];
-					[_curTarget] call life_fnc_pickupMoney;
+					_handle = [_curTarget] spawn life_fnc_pickupMoney;
 				};
 			};
+		};
+		//lets wait until anything we might have spawned is done
+		if !(isNull _handle) then {
+			waitUntil{scriptDone _handle};
 		};
 	};
 };
