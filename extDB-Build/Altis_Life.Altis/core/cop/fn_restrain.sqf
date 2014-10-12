@@ -5,12 +5,11 @@
 	Description:
 	Retrains the client.
 */
-private["_cop","_player"];
+private["_cop"];
 _cop = [_this,0,Objnull,[Objnull]] call BIS_fnc_param;
-_player = player;
 if(isNull _cop) exitWith {};
 
-//Monitor excessive restrainment
+//Monitor excessive restrainment - aka nobody can be restrained longer than 5 minutes
 [] spawn
 {
 	private["_time"];
@@ -26,13 +25,23 @@ if(isNull _cop) exitWith {};
 			player setVariable["transporting",false,true];
 			detach player;
 			titleText[localize "STR_Cop_ExcessiveRestrain","PLAIN"];
+			//no matter what happens we remove the event again
+			player removeEventHandler ["Fired", 0]
 		};
 	};
 };
 
 if((player getVariable["surrender",FALSE])) then { player setVariable["surrender",FALSE,TRUE]; player switchMove ""; };
 titleText[format[localize "STR_Cop_Retrained",_cop getVariable["realname",name _cop]],"PLAIN"];
-				
+
+//remove the ability to throw grenades etc for the restrained unit
+// source: http://www.altisliferpg.com/topic/2241-how-to-add-safenofire-zones-using-eventhandler-function/
+player addEventHandler ["Fired", {
+	deleteVehicle (_this select 6);
+	titleText ["You are restrained dummy!", "PLAIN", 3];
+}];
+
+//this loop runs until the player gets unrestrained or dies	
 while {player getVariable "restrained"} do
 {
 	if(vehicle player == player) then {
@@ -47,12 +56,10 @@ while {player getVariable "restrained"} do
 		player setVariable ["restrained",false,true];
 		player setVariable ["Escorting",false,true];
 		player setVariable ["transporting",false,true];
-		detach _player;
 	};
 	
 	if(!alive _cop) exitWith {
 		player setVariable ["Escorting",false,true];
-		detach player;
 	};
 	
 	if(vehicle player != player) then
@@ -61,13 +68,13 @@ while {player getVariable "restrained"} do
 		if(driver (vehicle player) == player) then {player action["eject",vehicle player];};
 	};
 };
-
+//no matter what happens we remove the event again
+player removeEventHandler ["Fired", 0]
 //disableUserInput false;
-		
+
+//if the player is still alive we switch the animation, otherwise its a bit useless.
 if(alive player) then
 {
 	player switchMove "AmovPercMstpSlowWrflDnon_SaluteIn";
-	player setVariable ["Escorting",false,true];
-	player setVariable ["transporting",false,true];
-	detach player;
 };
+detach player;
