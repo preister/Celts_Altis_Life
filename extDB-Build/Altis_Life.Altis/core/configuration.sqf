@@ -259,7 +259,6 @@ crimes_list = [
 	"207A", //Attempted Kidnapping
 	"487", //Grand Theft
 	"488", //Petty Theft
-	"488A", //Attempted Petty Theft
 	"480", //Hit and run
     "481", //Drug Possession
     "482", //Intent to distribute
