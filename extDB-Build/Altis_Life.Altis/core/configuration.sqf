@@ -254,10 +254,12 @@ crimes_list = [
 	"215", //Attempted Auto Theft
 	"213", //Use of illegal explosives
 	"211", //Robbery
+	"211A", //Attempted Robbery
 	"207", //Kidnapping
 	"207A", //Attempted Kidnapping
 	"487", //Grand Theft
 	"488", //Petty Theft
+	"488A", //Attempted Petty Theft
 	"480", //Hit and run
     "481", //Drug Possession
     "482", //Intent to distribute

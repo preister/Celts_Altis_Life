@@ -54,7 +54,13 @@ if(_rip) then
 		if!(alive _robber) exitWith {};
 	};
 	if!(alive _robber) exitWith { _rip = false; };
-	if(_robber distance _shop > 3.5) exitWith { _shop switchMove ""; hint "You need to stay within 3m to Rob registry! - Now the registry is locked."; 5 cutText ["","PLAIN"]; _rip = false; };
+	if(_robber distance _shop > 3.5) exitWith { 
+		_shop switchMove ""; 
+		hint "You need to stay within 3m to Rob registry! - Now the registry is locked."; 
+		5 cutText ["","PLAIN"]; 
+		_rip = false;
+		[_robber, "211A"] call life_fnc_chargeCrime;
+	};
 	5 cutText ["","PLAIN"];
 
 	titleText[format["You have stolen $%1, now get away before the cops arrive!",[_kassa] call life_fnc_numberText],"PLAIN"];
