@@ -33,11 +33,11 @@ if(life_action_inUse) exitWith {
 if(count (actionKeys "User10") != 0 && {(inputAction "User10" > 0)}) exitWith {
 	//Interaction key (default is Left Windows, can be mapped via Controls -> Custom -> User Action 10)
 	if(!life_action_inUse) then {
+		//before we spawn the action we make sure no further actions can be spawned
+		life_action_inUse = true;
 		[] spawn 
 		{
-			private["_handle"];
-			_handle = [] spawn life_fnc_actionKeyHandler;
-			waitUntil {scriptDone _handle};
+			[] call life_fnc_actionKeyHandler;
 			life_action_inUse = false;
 		};
 	};
@@ -99,11 +99,10 @@ switch (_code) do
 	case _interactionKey:
 	{
 		if(!life_action_inUse) then {
+		    life_action_inUse = true;
 			[] spawn 
 			{
-				private["_handle"];
-				_handle = [] spawn life_fnc_actionKeyHandler;
-				waitUntil {scriptDone _handle};
+				[] call life_fnc_actionKeyHandler;
 				life_action_inUse = false;
 			};
 		};
