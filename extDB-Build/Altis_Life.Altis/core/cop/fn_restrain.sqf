@@ -69,7 +69,7 @@ while {player getVariable "restrained"} do
 	};
 };
 //no matter what happens we remove the event again
-player removeEventHandler ["Fired", 0]
+player removeEventHandler ["Fired", 0];
 //disableUserInput false;
 
 //if the player is still alive we switch the animation, otherwise its a bit useless.

@@ -50,7 +50,7 @@ _nonVehicleActions = [
 	35, //holster weapon ... have crashed a heli doing this
 	19, //restrain & rob
 	34, //Surrender - get out of the vehicle first
-	24, //zipties
+	24 //zipties
 ];
 if ((_code in _nonVehicleActions) && (vehicle player != player)) then { hint "Unable to start animation while in a vehicle.";};
 

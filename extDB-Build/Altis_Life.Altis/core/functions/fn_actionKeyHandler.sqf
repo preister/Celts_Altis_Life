@@ -66,11 +66,11 @@ if(isPlayer _curTarget && _curTarget isKindOf "Man") then {
 	else {
 		//Is it a animal type?
 		if((typeOf _curTarget) in _animalTypes) then {
-			if((typeOf _curTarget) == "Turtle_F" && !alive _curTarget) then {
-				exitWith {[_curTarget] call life_fnc_catchTurtle;};
+			if(((typeOf _curTarget) == "Turtle_F") && !(alive _curTarget)) then {
+				exitWith { [_curTarget] call life_fnc_catchTurtle; };
 			} 
 			else {
-				exitWith {[_curTarget] call life_fnc_catchFish;};
+				exitWith { [_curTarget] call life_fnc_catchFish; };
 			};
 		} 
 		else {
