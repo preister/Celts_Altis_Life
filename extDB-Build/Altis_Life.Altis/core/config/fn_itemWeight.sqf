@@ -39,10 +39,10 @@ switch (_item) do
 	case "ironore": {5};
 	case "copper_r": {3};
 	case "iron_r": {3};
-	case "sand": {3};
+	case "platinumu": {6};
 	case "salt": {3};
 	case "salt_r": {1};
-	case "glass": {1};
+	case "platinump": {3};
 	case "diamond": {4};
 	case "diamondc": {2};
 	case "cocaine": {6};

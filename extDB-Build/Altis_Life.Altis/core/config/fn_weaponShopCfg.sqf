@@ -140,7 +140,7 @@ switch(_shop) do
 						["30Rnd_556x45_Stanag",nil,300],
 						["arifle_Katiba_F",nil,30000],
 						["30Rnd_65x39_caseless_green",nil,275],
-						["30Rnd_65x39_caseless_green_mag_Tracer"],nil,325],
+						["30Rnd_65x39_caseless_green_mag_Tracer",nil,325],
 						["srifle_DMR_01_F",nil,50000],
 						["10Rnd_762x51_Mag",nil,500],
 						["arifle_MXC_F",nil,30000],

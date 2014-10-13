@@ -14,8 +14,8 @@ _dataPlayer = lbData([2405, lbCurSel 2405]);
 _dataCrime = lbCurSel 2406;
 _dataCrime = call compile format["%1", _dataCrime];
 _dataPlayer = call compile format["%1", _dataPlayer];
-//if none or only one of the fields was selected we cant to nothing
-if ("" == _dataPlayer || 0 == _dataCrime) exitWith{};
+//if no player is selected we can do nothing
+if (isNull "_dataPlayer" || "" == _dataPlayer) exitWith{};
 _codeCrime = crimes_list select _dataCrime;
 _infoCrime = [_codeCrime] call life_fnc_crimesCfg;
 _unitPlayer = "";

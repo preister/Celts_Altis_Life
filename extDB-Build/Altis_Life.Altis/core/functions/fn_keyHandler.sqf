@@ -216,7 +216,7 @@ switch (_code) do
 					[[_veh],"life_fnc_copSiren",nil,true] spawn life_fnc_MP;
 				} else {
 					//I do not have a custom sound for this and I really don't want to go digging for one, when you have a sound uncomment this and change medicSiren.sqf in the medical folder.
-					//[[_veh],"life_fnc_medicSiren",nil,true] spawn life_fnc_MP;
+					[[_veh],"life_fnc_medicSiren",nil,true] spawn life_fnc_MP;
 				};
 			};
 		};
@@ -226,7 +226,8 @@ switch (_code) do
 case 24:
 {
   if(_shift) then {_handled = true;};
-  if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget in [civilian,independent]) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && (cursorTarget getVariable "surrender") && speed cursorTarget < 1) then
+			if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 
+			&& !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && (cursorTarget getVariable "surrender" || animationState cursorTarget == "Incapacitated") && speed cursorTarget < 1) then
   {
    if([false,"zipties",1] call life_fnc_handleInv) then
     {
