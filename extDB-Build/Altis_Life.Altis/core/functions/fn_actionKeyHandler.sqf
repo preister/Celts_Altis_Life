@@ -9,7 +9,6 @@
 */
 private["_curTarget","_isWater"];
 _curTarget = cursorTarget;
-if(life_action_inUse) exitWith {}; //This is just a last check, we should never get to this point
 if(life_interrupted) exitWith {life_interrupted = false;};
 //we set life action in use as soon as possible.
 _isWater = surfaceIsWater (getPosASL player);
