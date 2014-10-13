@@ -38,7 +38,7 @@ titleText[format[localize "STR_Cop_Retrained",_cop getVariable["realname",name _
 // source: http://www.altisliferpg.com/topic/2241-how-to-add-safenofire-zones-using-eventhandler-function/
 player addEventHandler ["Fired", {
 	deleteVehicle (_this select 6);
-	titleText ["You are restrained dummy!", "PLAIN", 3];
+	hint "You can't do that you are restrained dummy!";
 }];
 
 //this loop runs until the player gets unrestrained or dies	
