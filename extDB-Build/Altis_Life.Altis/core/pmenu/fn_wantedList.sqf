@@ -32,7 +32,7 @@ _ctrl = getControl(2400,2405);
 lbClear _ctrl;
 {
 	//only civilians and medics can be charged with a crime currently
-	if(alive _x && (side _x in [civilian,independent])) then
+	if(alive _x && !(side _x == west)) then
 	{
 		_ctrl lbAdd format["%1",_x getVariable["realname",name _x]];
 		_ctrl lbSetData [(lbSize _ctrl)-1,str(_x)];
