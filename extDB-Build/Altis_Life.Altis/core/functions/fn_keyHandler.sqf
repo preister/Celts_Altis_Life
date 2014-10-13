@@ -227,7 +227,7 @@ case 24:
 {
   if(_shift) then {_handled = true;};
 			if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 
-			&& !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && (cursorTarget getVariable "surrender" or cursorTarget getVariable "Incapacitated") && speed cursorTarget < 1) then
+			&& !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && (cursorTarget getVariable "surrender" || animationState cursorTarget == "Incapacitated") && speed cursorTarget < 1) then
   {
    if([false,"zipties",1] call life_fnc_handleInv) then
     {

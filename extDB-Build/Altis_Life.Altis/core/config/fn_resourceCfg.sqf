@@ -66,11 +66,11 @@ switch(_resource) do {
 		_zoneSize = 120;
 	};
 	
-	case ("sand") : {
-		_batchSize = 5;
+	case ("platinumu") : {
+		_batchSize = 1;
 		_requiredItem = "pickaxe";
-		_resourceZones = ["sand_1"];
-		_zoneSize = 75;
+		_resourceZones = ["plat_1"];
+		_zoneSize = 65;
 	};
 	
 	case ("diamond") : {
