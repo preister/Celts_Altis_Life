@@ -13,6 +13,8 @@ _projectile = _this select 6;
 if (_unit getVariable "restrained") exitWith {
 	deleteVehicle (_projectile);
 	hint "You can't do that you are restrained dummy!";
+	//but we are nice and put the grenade back into your inventory
+	
 };
 
 if(_ammoType == "GrenadeHand_stone") then {
