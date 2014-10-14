@@ -5,8 +5,15 @@
 	Handles various different ammo types being fired.
 */
 private["_ammoType","_projectile"];
+_unit = _this select 0;
 _ammoType = _this select 4; 
 _projectile = _this select 6;
+
+//if the unit is restrained it can not fire or throw stuff
+if (_unit getVariable "restrained") exitWith {
+	deleteVehicle (_projectile);
+	hint "You can't do that you are restrained dummy!";
+};
 
 if(_ammoType == "GrenadeHand_stone") then {
 	_projectile spawn {

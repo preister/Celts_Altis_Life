@@ -16,7 +16,7 @@ if(isNull _cop) exitWith {};
 	while {true} do
 	{
 		_time = time;
-		waitUntil {(time - _time) > (5 * 60)};
+		waitUntil {(time - _time) > (15 * 60)};
 		
 		if(!(player getVariable["restrained",FALSE])) exitWith {};
 		if(!([west,getPos player,30] call life_fnc_nearUnits) && (player getVariable["restrained",FALSE]) && vehicle player == player) exitWith {
@@ -25,21 +25,12 @@ if(isNull _cop) exitWith {};
 			player setVariable["transporting",false,true];
 			detach player;
 			titleText[localize "STR_Cop_ExcessiveRestrain","PLAIN"];
-			//no matter what happens we remove the event again
-			player removeEventHandler ["Fired", 0]
 		};
 	};
 };
 
 if((player getVariable["surrender",FALSE])) then { player setVariable["surrender",FALSE,TRUE]; player switchMove ""; };
 titleText[format[localize "STR_Cop_Retrained",_cop getVariable["realname",name _cop]],"PLAIN"];
-
-//remove the ability to throw grenades etc for the restrained unit
-// source: http://www.altisliferpg.com/topic/2241-how-to-add-safenofire-zones-using-eventhandler-function/
-player addEventHandler ["Fired", {
-	deleteVehicle (_this select 6);
-	hint "You can't do that you are restrained dummy!";
-}];
 
 //this loop runs until the player gets unrestrained or dies	
 while {player getVariable "restrained"} do
@@ -68,8 +59,7 @@ while {player getVariable "restrained"} do
 		if(driver (vehicle player) == player) then {player action["eject",vehicle player];};
 	};
 };
-//no matter what happens we remove the event again
-player removeEventHandler ["Fired", 0];
+
 //disableUserInput false;
 
 //if the player is still alive we switch the animation, otherwise its a bit useless.
