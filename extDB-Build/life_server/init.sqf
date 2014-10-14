@@ -4,41 +4,53 @@ DB_Async_ExtraLock = false;
 life_server_isReady = false;
 publicVariable "life_server_isReady";
 
-//__CONST__(LIFE_SCHEMA_NAME,"'arma3life'");//CHANGE THIS IF YOUR DATABASE IS NOT CALLED ARMA3LIFE KEEP THE ' '
-
 [] execVM "\life_server\functions.sqf";
 [] execVM "\life_server\eventhandlers.sqf";
 
 //I am aiming to confuse people including myself, ignore the ui checks it's because I test locally.
-extDBversion = "extDB" callExtension "9:VERSION";
+
+_extDB = false;
+
+//Only need to setup extDB once.
 if(isNil {uiNamespace getVariable "life_sql_id"}) then {
 	life_sql_id = round(random(9999));
 	__CONST__(life_sql_id,life_sql_id);
 	uiNamespace setVariable ["life_sql_id",life_sql_id];
 	
-	//Only need to setup extDB once.
-	//  If mission is reloaded, will tell clients extDB is not loaded.
-	//     Todo: Is it possible first client is loaded before this PV is sent ?
-	if(extDBversion == "") exitWith {life_server_extDB_notLoaded = true; publicVariable "life_server_extDB_notLoaded";};
+	//extDB Version
+	_result = "extDB" callExtension "9:VERSION";
+	diag_log format ["extDB: Version: %1", _result];
+	if(_result == "") exitWith {};
+	if ((parseNumber _result) < 14) exitWith {diag_log "Error: extDB version 14 or Higher Required";};
+
 	//Initialize the database
-	"extDB" callExtension "9:DATABASE:Database2";
-	
-	//Temp check to see if DB_RAW_V2 is implemented, eventually will be reverted when DB_RAW is removed from extDB, this is here to keep compatibility.
-	if(parseNumber(extDBversion) > 13) then {
-		"extDB" callExtension format["9:ADD:DB_RAW_V2:%1",(call life_sql_id)];
-	} else {
-		"extDB" callExtension format["9:ADD:DB_RAW:%1",(call life_sql_id)];
-	};
+	_result = "extDB" callExtension "9:DATABASE:Database2";
+	if(_result != "[1]") exitWith {diag_log "extDB: Error with Database Connection";};
+	_result = "extDB" callExtension format["9:ADD:DB_RAW_V2:%1",(call life_sql_id)];
+	if(_result != "[1]") exitWith {diag_log "extDB: Error with Database Connection";};
 	"extDB" callExtension "9:LOCK";
+	_extDB = true;
+	diag_log "extDB: Connected to Database";
 } else {
 	life_sql_id = uiNamespace getVariable "life_sql_id";
 	__CONST__(life_sql_id,life_sql_id);
+	_extDB = true;
+	diag_log "extDB: Still Connected to Database";
+};
+
+//Broadbase PV to Clients, to warn about extDB Error.
+//	exitWith to stop trying to run rest of Server Code
+if (!_extDB) exitWith {
+	life_server_extDB_notLoaded = true;
+	publicVariable "life_server_extDB_notLoaded";
+	diag_log "extDB: Error checked extDB/logs for more info";
 };
 
 //Run procedures for SQL cleanup on mission start.
 ["CALL resetLifeVehicles",1] spawn DB_fnc_asyncCall;
 ["CALL deleteDeadVehicles",1] spawn DB_fnc_asyncCall;
 ["CALL deleteOldHouses",1] spawn DB_fnc_asyncCall;
+["CALL deleteOldGangs",1] spawn DB_fnc_asyncCall; //Maybe delete old gangs
 
 life_adminlevel = 0;
 life_medicLevel = 0;
@@ -59,6 +71,7 @@ fed_bank setVariable["safe",(count playableUnits),true];
 
 //General cleanup for clients disconnecting.
 _onDisconnect = ["SERV_onClientDisconnect","onPlayerDisconnected",{[_uid,_id,_name] call TON_fnc_clientDisconnect}] call BIS_fnc_addStackedEventHandler;
+//_onDisconnect = addMissionEventHandler ["HandleDisconnect",{[_uid,_id,_name,_unit] call TON_fnc_clientDisconnect}]; //Colin's Merge
 
 [] spawn TON_fnc_cleanup;
 life_gang_list = [];
