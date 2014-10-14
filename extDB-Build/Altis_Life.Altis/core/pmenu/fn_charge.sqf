@@ -15,7 +15,7 @@ _dataCrime = lbCurSel 2406;
 _dataCrime = call compile format["%1", _dataCrime];
 _unitNamePlayer = call compile format["%1", _unitNamePlayer];
 //if no player is selected we can do nothing
-if ("" == _unitNamePlayer) exitWith{};
+if(isNull _unitNamePlayer) exitWith {};
 _codeCrime = crimes_list select _dataCrime;
 _infoCrime = [_codeCrime] call life_fnc_crimesCfg;
 _unitPlayer = objNull;
