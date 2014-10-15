@@ -13,8 +13,10 @@ _jailtime_array = [_this,0,[],[[]]] call BIS_fnc_param;
 _sortedJailTimeArray = [];
 _maxJailTime = 0;
 {
-	//make sure we have 2 fields
-	if (count _x == 2) then {
+	if([str(_x)] call life_fnc_isnumeric) then { 
+		_maxJailTime = _x; 
+	} else {
+		//this whole thing is rather complicated and if the configuration is off we'll break hard here
 		_jailTime = _x select 0;
 		_upToBounty = _x select 1;
 		//we need an initial field to start with
@@ -32,13 +34,10 @@ _maxJailTime = 0;
 				if(_i == 0) exitWith {_sortedJailTimeArray set [0,[_jailTime,_upToBounty]]};
 			};
 		};
-	}
-	else {
-		_maxJailTime = _x; //in case somebody created a empty field etc it will just break here
 	};
 }forEach _jailtime_array;
 //in case no max value was set we take the largest time tin the array
-if(_maxJailTime == 0) then {
+if(((count _sortedJailTimeArray) != 0) && _maxJailTime == 0) then {
 	_maxJailTime = (_sortedJailTimeArrays select (count _sortedJailTimeArrays -1)) select 0;
 };
 //lets return this nicely so we can bake it into a static and don't need to worry about this any more
