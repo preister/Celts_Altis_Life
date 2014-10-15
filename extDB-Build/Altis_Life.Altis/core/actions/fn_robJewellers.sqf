@@ -1,9 +1,9 @@
 /*
-file: fn_robShops.sqf
+file: fn_robJewellers.sqf
 Author: MrKraken
 Made from MrKrakens bare-bones shop robbing tutorial on www.altisliferpg.com forums
 Description:
-Executes the rob shob action!
+Executes the rob jewellers action!
 Idea developed by PEpwnzya v1.0
 */
 private["_robber","_shop","_kassa","_ui","_progress","_pgText","_cP","_rip","_pos"];
@@ -11,8 +11,8 @@ _shop = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param; //The object that has th
 _robber = [_this,1,ObjNull,[ObjNull]] call BIS_fnc_param; //Can you guess? Alright, it's the player, or the "caller". The object is 0, the person activating the object is 1
 _action = [_this,2] call BIS_fnc_param;//Action name
 
-if(side _robber != civilian) exitWith { hint "You can not rob this station!" };
-if(_robber distance _shop > 5) exitWith { hint "You need to be within 5m of the cashier to rob him!" };
+if(side _robber != civilian) exitWith { hint "You can not rob this jewellers!" };
+if(_robber distance _shop > 5) exitWith { hint "You need to be within 5m of the jeweller to rob him!" };
 
 if (_rip) exitWith { hint "Robbery already in progress!" };
 if (vehicle player != _robber) exitWith { hint "Get out of your vehicle!" };
@@ -22,11 +22,12 @@ if (currentWeapon _robber == "") exitWith { hint "HaHa, you do not threaten me! 
 if (_kassa == 0) exitWith { hint "There is no cash in the register!" };
 
 _rip = true;
-_kassa = 3000 + round(random 12000);
+_kassa = 30000 + round(random 45000);
 //remove the ability to rob this shop again for x seconds for all civilians
-[[_shop,_action,300],"life_fnc_shopRobbed",civilian,false] spawn life_fnc_MP;
-_chance = random(100);
-if(_chance >= 85) then { hint "The cashier hit the silent alarm, police has been alerted!"; [[1,format["ALARM! - Gasstation: %1 is being robbed!", _shop]],"life_fnc_broadcast",west,false] spawn life_fnc_MP; };
+[[_shop,_action,900],"life_fnc_jewellersRobbed",civilian,false] spawn life_fnc_MP;
+[[_shop],"life_fnc_shopalarmsound",nil,true] spawn life_fnc_MP;
+[[1,format["ALARM! - %1 is being robbed!", _shop]],"life_fnc_broadcast",west,false] spawn life_fnc_MP; 
+
  
 //Setup our progress bar.
 disableSerialization;
@@ -42,7 +43,7 @@ if(_rip) then
 {
 	while{true} do
 	{
-		sleep 0.85;
+		sleep 1.8;
 		_cP = _cP + 0.01;
 		_progress progressSetPosition _cP;
 		_pgText ctrlSetText format["Robbery in Progress, stay close (3m) (%1%2)...",round(_cP * 100),"%"];
@@ -54,7 +55,7 @@ if(_rip) then
 	if!(alive _robber) exitWith { _rip = false; };
 	if(_robber distance _shop > 3.5) exitWith { 
 		_shop switchMove ""; 
-		hint "You need to stay within 3m to Rob registry! - Now the registry is locked."; 
+		hint "You need to stay within 3m to rob the jewellers! - Now the registry is locked."; 
 		5 cutText ["","PLAIN"]; 
 		_rip = false;
 		[_robber, "211A"] call life_fnc_chargeCrime;
@@ -63,12 +64,12 @@ if(_rip) then
 
 	titleText[format["You have stolen $%1, now get away before the cops arrive!",[_kassa] call life_fnc_numberText],"PLAIN"];
 	life_cash = life_cash + _kassa;
-	[[1,format["911 - Gasstation: %1 was just robbed by %2 for a total of $%3", _shop, _robber getVariable["realname",name _robber], [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",west,false] spawn life_fnc_MP;
+	[[1,format["911 - %1 was just robbed by %2 for a total of $%3", _shop, _robber getVariable["realname",name _robber], [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",west,false] spawn life_fnc_MP;
 	_rip = false;
 	life_use_atm = false;
 	sleep (10);
 	life_use_atm = true;
 	if!(alive _robber) exitWith {};
-	[[1,format["NEWS: Gasstation: %1 was just robbed for a total of $%2", _shop, [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",civilian,false] spawn life_fnc_MP;
+	[[1,format["NEWS: %1 was just robbed for a total of $%2", _shop, [_kassa] call life_fnc_numberText]],"life_fnc_broadcast",civilian,false] spawn life_fnc_MP;
 	[_robber, "211"] call life_fnc_chargeCrime;
 };

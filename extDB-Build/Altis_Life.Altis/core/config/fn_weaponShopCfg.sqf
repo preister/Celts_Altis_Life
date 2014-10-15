@@ -62,7 +62,11 @@ switch(_shop) do
 						["FirstAidKit",nil,150],
 						["Medikit",nil,500],
 						["NVGoggles",nil,1200],
-						["B_FieldPack_ocamo",nil,3000]
+						["B_FieldPack_oucamo",nil,3000],
+						["Chemlight_red",nil,300],
+						["Chemlight_yellow",nil,300],
+						["Chemlight_green",nil,300],
+						["Chemlight_blue",nil,300]
 					]
 				];
 			};
@@ -136,13 +140,17 @@ switch(_shop) do
 						["30Rnd_556x45_Stanag",nil,300],
 						["arifle_Katiba_F",nil,30000],
 						["30Rnd_65x39_caseless_green",nil,275],
+						["30Rnd_65x39_caseless_green_mag_Tracer",nil,325],
 						["srifle_DMR_01_F",nil,50000],
 						["10Rnd_762x51_Mag",nil,500],
 						["arifle_MXC_F",nil,30000],
 						["30Rnd_65x39_caseless_mag",nil,100],
 						["arifle_SDAR_F",nil,20000],
 						["20Rnd_556x45_UW_mag",nil,125],
-						["optic_ACO_grn",nil,3500],
+						["SMG_01_F",nil,20000],
+						["30Rnd_45ACP_Mag_SMG_01",nil,125],
+						["optic_ACO_grn_smg",nil,950],
+						["optic_ACO_grn",nil,1500],
 						["srifle_LRR_SOS_F",nil,200000],
 						["7Rnd_408_Mag",nil,10000],
 						["optic_Holosight",nil,3600],
@@ -152,6 +160,7 @@ switch(_shop) do
 				        ["ItemGPS",nil,100],
 				        ["ToolKit",nil,5000],
 				        ["FirstAidKit",nil,150],
+						["Medikit",nil,3000],
 				        ["NVGoggles",nil,2000]
 					]
 				];
@@ -195,15 +204,20 @@ switch(_shop) do
 				["Hideout Armament",
 					[
 						["hgun_Rook40_F",nil,1500],
+						["16Rnd_9x21_Mag",nil,25],
 						["hgun_Pistol_heavy_02_F",nil,2500],
+						["6Rnd_45ACP_Cylinder",nil,50],
 						["hgun_ACPC2_F",nil,4500],
+						["9Rnd_45ACP_Mag",nil,45],
 						["hgun_PDW2000_F",nil,9500],
+						["hgun_PDW2000_Holo_snds_F",nil,15000],
+						["SMG_02_F",nil,12000],
+						["30Rnd_9x21_Mag",nil,75],
+						["SMG_01_F",nil,18500],
+						["30Rnd_45ACP_Mag_SMG_01",nil,125],
 						["optic_ACO_grn_smg",nil,950],
 						["V_Rangemaster_belt",nil,1900],
-						["16Rnd_9x21_Mag",nil,25],
-						["9Rnd_45ACP_Mag",nil,45],
-						["6Rnd_45ACP_Cylinder",nil,50],
-						["30Rnd_9x21_Mag",nil,75]
+						["V_BandollierB_khk",nil,2500]
 					]
 				];
 			};
@@ -218,11 +232,7 @@ switch(_shop) do
 				["ItemGPS",nil,100],
 				["ToolKit",nil,5000],
 				["FirstAidKit",nil,150],
-				["NVGoggles",nil,2000],
-				["Chemlight_red",nil,300],
-				["Chemlight_yellow",nil,300],
-				["Chemlight_green",nil,300],
-				["Chemlight_blue",nil,300]
+				["NVGoggles",nil,2000]				
 			]
 		];
 	};

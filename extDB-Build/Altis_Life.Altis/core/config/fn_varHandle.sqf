@@ -46,8 +46,8 @@ switch (_mode) do
 			case "copper_r": {"life_inv_copperr"};
 			case "salt": {"life_inv_salt"};
 			case "salt_r": {"life_inv_saltr"};
-			case "sand": {"life_inv_sand"};
-			case "glass": {"life_inv_glass"};
+			case "platinumu": {"life_inv_platinumu"};
+			case "platinump": {"life_inv_platinump"};
 			case "tbacon": {"life_inv_tbacon"};
 			case "lockpick": {"life_inv_lockpick"};
 			case "redgull": {"life_inv_redgull"};
@@ -105,9 +105,9 @@ switch (_mode) do
 			case "life_inv_ironore": {"ironore"};
 			case "life_inv_ironr": {"iron_r"};
 			case "life_inv_copperr": {"copper_r"};
-			case "life_inv_sand": {"sand"};
+			case "life_inv_platinumu": {"platinumu"};
 			case "life_inv_salt": {"salt"};
-			case "life_inv_glass": {"glass"};
+			case "life_inv_platinump": {"platinump"};
 			case "life_inv_redgull": {"redgull"};
 			case "life_inv_lockpick": {"lockpick"};
 			case "life_inv_tbacon": {"tbacon"};

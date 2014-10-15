@@ -5,7 +5,7 @@
 	Description:
 	Starts the initial process of jailing.
 */
-private["_bad","_unit"];
+private["_bad","_unit","_nameItem","_varItem","_valItem"];
 _unit = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 hint format["%1", _unit];
 if(isNull _unit) exitWith {}; //Dafuq?
@@ -33,13 +33,15 @@ if(player distance (getMarkerPos "jail_marker") > 40) then
 };
 
 [1] call life_fnc_removeLicenses;
-if(life_inv_heroinu > 0) then {[false,"heroinu",life_inv_heroinu] call life_fnc_handleInv;};
-if(life_inv_heroinp > 0) then {[false,"heroinp",life_inv_heroinp] call life_fnc_handleInv;};
-if(life_inv_coke > 0) then {[false,"cocaine",life_inv_coke] call life_fnc_handleInv;};
-if(life_inv_cokep > 0) then {[false,"cocainep",life_inv_cokep] call life_fnc_handleInv;};
-if(life_inv_turtle > 0) then {[false,"turtle",life_inv_turtle] call life_fnc_handleInv;};
-if(life_inv_cannabis > 0) then {[false,"cannabis",life_inv_cannabis] call life_fnc_handleInv;};
-if(life_inv_marijuana > 0) then {[false,"marijuana",life_inv_marijuana] call life_fnc_handleInv;};
+//Remove all illegal items out of the players inventory
+{
+	_nameItem = _x select 0;
+	_varItem = [_nameItem,0] call life_fnc_varHandle;
+	_valItem = missionNamespace getVariable _varItem;
+	if(_valItem > 0) then {
+		[false, _nameItem, _valItem] call life_fnc_handleInv;
+	};
+}forEach life_illegal_items;
 life_is_arrested = true;
 
 removeAllWeapons player;

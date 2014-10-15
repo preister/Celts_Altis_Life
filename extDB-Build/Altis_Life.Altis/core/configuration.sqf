@@ -24,7 +24,7 @@ life_bail_paid = false;
 life_impound_inuse = false;
 life_action_inUse = false;
 life_spikestrip = ObjNull;
-life_respawn_timer = 0.5; //Scaled in minutes
+life_respawn_timer = 1; //Scaled in minutes
 life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
@@ -45,6 +45,9 @@ __CONST__(life_houseLimit,6); //Maximum amount of houses a player can buy (TODO:
 __CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persistent so keep it high to avoid 345345345 gangs).
 __CONST__(life_gangUpgradeBase,10000); //MASDASDASD
 __CONST__(life_gangUpgradeMultipler,2.5); //BLAH
+
+//Federal Reserve related stuff
+__CONST__(life_fedres_min_cops_num, 3); //sets the minimum amount of cops which need to be online to rob the federal reserve
 
 //Uniform price (0),Hat Price (1),Glasses Price (2),Vest Price (3),Backpack Price (4)
 life_clothing_purchase = [-1,-1,-1,-1,-1];
@@ -93,7 +96,7 @@ switch (playerSide) do
 	case civilian: 
 	{
 		life_atmcash = 50000; //Starting Bank Money
-		life_paycheck = 350; //Paycheck Amount
+		life_paycheck = 420; //Paycheck Amount
 	};
 	
 	case independent: {
@@ -137,10 +140,10 @@ life_inv_items =
 	"life_inv_ironore",
 	"life_inv_ironr",
 	"life_inv_copperr",
-	"life_inv_sand",
+	"life_inv_platinumu",
 	"life_inv_salt",
 	"life_inv_saltr",
-	"life_inv_glass",
+	"life_inv_platinump",
 	"life_inv_tbacon",
 	"life_inv_lockpick",
 	"life_inv_redgull",
@@ -188,7 +191,7 @@ life_licenses =
 	["license_civ_diamond","civ"],
 	["license_civ_copper","civ"],
 	["license_civ_iron","civ"],
-	["license_civ_sand","civ"],
+	["license_civ_platinum","civ"],
 	["license_civ_salt","civ"],
 	["license_civ_cement","civ"],
 	["license_med_air","med"],
@@ -219,7 +222,7 @@ resource_list = [
 	"copperore",
 	"ironore",
 	"salt",
-	"sand",
+	"platinumu",
     "diamond",
     "oilu",
 	"rock"
@@ -228,14 +231,30 @@ resource_list = [
 /*
 	crimes code list, see fn_crimesCfg.sqf for the configuration for each resource
 	to remove the ability to charge somebody for a specific crime just comment it out here
+	The crimes will show in the order they are below on the charge suspect list
 */
 crimes_list = [
+	"101", //Evading Arrest
+	"102", //Possession of an illegal weapon
+	"103", //Possession of an illegal vehicle
+	"104", //Threatening an officer
+	"105", //Bank Robbery
+	"106", //Possession of explosives
+	"107", //Disobeying an Officer
+	"108", //Assault
+	"108P", //Assault on Police
+	"109", //Disturbing the peace
+	"110", //Trespassing
+	"111", //Driving without headlights
+	"112", //Driving without a license
 	"187V", //Vehicular Manslaughter
+	"187A", //Attempted Murder
 	"187", //Manslaughter
 	"901", //Escaping Jail
 	"215", //Attempted Auto Theft
 	"213", //Use of illegal explosives
 	"211", //Robbery
+	"211A", //Attempted Robbery
 	"207", //Kidnapping
 	"207A", //Attempted Kidnapping
 	"487", //Grand Theft
@@ -281,7 +300,7 @@ sell_array =
 	["iron_r",3200],
 	["copper_r",1500],
 	["salt_r",1650],
-	["glass",1450],
+	["platinump",6250],
 	["fuelF",500],
 	["spikeStrip",1200],
 	["cement",1950],

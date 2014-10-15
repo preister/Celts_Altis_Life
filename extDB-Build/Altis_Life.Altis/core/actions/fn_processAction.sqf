@@ -19,7 +19,7 @@ _itemInfo = switch (_type) do
 	case "heroin": {["heroinu","heroinp",1750,(localize "STR_Process_Heroin")];};
 	case "copper": {["copperore","copper_r",750,(localize "STR_Process_Copper")];};
 	case "iron": {["ironore","iron_r",1120,(localize "STR_Process_Iron")];};
-	case "sand": {["sand","glass",650,(localize "STR_Process_Sand")];};
+	case "platinum": {["platinumu","platinump",4000,"Processing Platinum"]};
 	case "salt": {["salt","salt_r",450,(localize "STR_Process_Salt")];};
 	case "cocaine": {["cocaine","cocainep",1500,(localize "STR_Process_Cocaine")];};
 	case "marijuana": {["cannabis","marijuana",500,(localize "STR_Process_Marijuana")];};

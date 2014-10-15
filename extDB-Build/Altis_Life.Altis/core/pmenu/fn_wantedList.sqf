@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	Copyright © 2013 Bryan "Tonic" Boardwine, All rights reserved
 	See http://armafiles.info/life/list.txt for servers that are permitted to use this code.
@@ -26,7 +27,20 @@ _units = [];
 	};
 } foreach _info;
 
-//ok lets fill the dropdown box with the available crimes
+//lets add all civs to the crime list
+_ctrl = getControl(2400,2405);
+lbClear _ctrl;
+{
+	//only civilians and medics can be charged with a crime currently
+	if(alive _x && !(side _x == west)) then
+	{
+		_ctrl lbAdd format["%1",_x getVariable["realname",name _x]];
+		_ctrl lbSetData [(lbSize _ctrl)-1,str(_x)];
+	};
+} forEach playableUnits;
+
+
+//fill the dropdown box with the available crimes
 _ctrl = getControl(2400,2406);
 lbClear _ctrl;
 _crimesList = crimes_list;

@@ -81,35 +81,33 @@ class life_wanted_menu {
 			idc = -1;
 			text = "$STR_Global_Close";
 			onButtonClick = "closeDialog 0;";
-			x = -0.06 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
-			y = 0.8 - (1 / 25);
-			w = (6.25 / 40);
-			h = (1 / 25);
+			x = 0.1;
+			y = 0.76;
+			w = 0.15;
+			h = 0.04;
 		};
 		
 		class PardonButtonKey : Life_RscButtonMenu {
 			idc = 2404;
 			text = "$STR_Wanted_Pardon";
 			onButtonClick = "[] call life_fnc_pardon; closeDialog 0;";
-			x = 0.1 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
-			y = 0.8 - (1 / 25);
-			w = (6.25 / 40);
-			h = (1 / 25);
+			x = 0.46;
+			y = 0.76;
+			w = 0.15;
+			h = 0.04;
 		};
 		
-		//place 2 dropdown menus below the wanted list, first one fore players 2nd for the crime
-		//we just use the full player list for now and tell the cop later that you cant arrest a cop or a medic
 		class PlayerList : Life_RscCombo 
 		{
 			idc = 2405;
-			x = 0.12; y = 0.2;
+			x = 0.12; y = 0.68;
 			w = 0.2; h = 0.03;
 		};
 		
 		class CrimesList : Life_RscCombo
 		{
 			idc = 2406;
-			x = 0.12; y = 0.17;
+			x = 0.12; y = 0.72;
 			w = 0.2; h = 0.03;
 		};
 		
@@ -117,10 +115,10 @@ class life_wanted_menu {
 			idc = 2407;
 			text = "Charge Crime";
 			onButtonClick = "[] call life_fnc_charge; closeDialog 0;";
-			x = 0.2 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
-			y = 0.8 - (1 / 25);
-			w = (6.25 / 40);
-			h = (1 / 25);
+			x = 0.28;
+			y = 0.76;
+			w = 0.15;
+			h = 0.04;
 		};
 	};
 };

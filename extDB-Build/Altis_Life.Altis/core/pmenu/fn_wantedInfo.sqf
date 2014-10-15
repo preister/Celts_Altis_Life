@@ -5,7 +5,7 @@
 	Description:
 	Pulls back information about the wanted criminal.
 */
-private["_display","_list","_crimes","_bounty","_mylist"];
+private["_display","_list","_data","_crimes","_bounty","_mylist","_crimeInfo","_crime"];
 disableSerialization;
 
 _display = findDisplay 2400;
@@ -26,7 +26,8 @@ _bounty = _data select 3;
 	if(!(_crime in _mylist)) then
 	{
 		_mylist set[count _mylist,_crime];
-		_list lbAdd format["%1 count(s) of %2",{_x == _crime} count _crimes,_crime];
+		_crimeInfo = [_crime] call life_fnc_crimesCfg;
+		_list lbAdd format["%1 count(s) of %2 - %3",{_x == _crime} count _crimes,_crime, _crimeInfo select 0];
 	};
 } foreach _crimes;
 
