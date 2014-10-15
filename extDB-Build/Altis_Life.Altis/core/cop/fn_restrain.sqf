@@ -5,19 +5,18 @@
 	Description:
 	Retrains the client.
 */
-private["_cop","_player"];
+private["_cop"];
 _cop = [_this,0,Objnull,[Objnull]] call BIS_fnc_param;
-_player = player;
 if(isNull _cop) exitWith {};
 
-//Monitor excessive restrainment
+//Monitor excessive restrainment - aka nobody can be restrained longer than 5 minutes
 [] spawn
 {
 	private["_time"];
 	while {true} do
 	{
 		_time = time;
-		waitUntil {(time - _time) > (5 * 60)};
+		waitUntil {(time - _time) > (15 * 60)};
 		
 		if(!(player getVariable["restrained",FALSE])) exitWith {};
 		if(!([west,getPos player,30] call life_fnc_nearUnits) && (player getVariable["restrained",FALSE]) && vehicle player == player) exitWith {
@@ -32,7 +31,8 @@ if(isNull _cop) exitWith {};
 
 if((player getVariable["surrender",FALSE])) then { player setVariable["surrender",FALSE,TRUE]; player switchMove ""; };
 titleText[format[localize "STR_Cop_Retrained",_cop getVariable["realname",name _cop]],"PLAIN"];
-				
+
+//this loop runs until the player gets unrestrained or dies	
 while {player getVariable "restrained"} do
 {
 	if(vehicle player == player) then {
@@ -47,12 +47,10 @@ while {player getVariable "restrained"} do
 		player setVariable ["restrained",false,true];
 		player setVariable ["Escorting",false,true];
 		player setVariable ["transporting",false,true];
-		detach _player;
 	};
 	
 	if(!alive _cop) exitWith {
 		player setVariable ["Escorting",false,true];
-		detach player;
 	};
 	
 	if(vehicle player != player) then
@@ -63,11 +61,10 @@ while {player getVariable "restrained"} do
 };
 
 //disableUserInput false;
-		
+
+//if the player is still alive we switch the animation, otherwise its a bit useless.
 if(alive player) then
 {
 	player switchMove "AmovPercMstpSlowWrflDnon_SaluteIn";
-	player setVariable ["Escorting",false,true];
-	player setVariable ["transporting",false,true];
-	detach player;
 };
+detach player;
