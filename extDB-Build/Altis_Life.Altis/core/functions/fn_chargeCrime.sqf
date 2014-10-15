@@ -13,8 +13,8 @@ _crimeCode = [_this,1,"",[""]] call BIS_fnc_param;
 if!(_crimeCode in crimes_list) exitWith {};
 
 _crimeInfo = [_crimeCode] call life_fnc_crimesCfg;
-
-[[getPlayerUID _perpetrator,_perpetrator getVariable["realname",name _perpetrator],[_crimeCode, _crimeInfo select 1]],"life_fnc_wantedAdd",false,false] spawn life_fnc_MP;
+//name - uid - [ code, bounty ]
+[[_perpetrator getVariable["realname",name _perpetrator],getPlayerUID _perpetrator,[_crimeCode, _crimeInfo select 1]],"life_fnc_wantedAdd",false,false] spawn life_fnc_MP;
 
 //and lets let the player know he or she is a bady and why
 [[2,format["You are wanted for %1", _crimeInfo select 0]],"life_fnc_broadcast",_perpetrator,false] spawn life_fnc_MP;
