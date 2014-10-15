@@ -42,6 +42,10 @@ switch(_crime) do {
 		_description = "Robbery";
 		_ticket = 15000;
 	};
+	case ("211A") : {
+		_description = "Attempted Robbery";
+		_ticket = 15000;
+	};
 	case ("207") : {
 		_description = "Kidnapping";
 		_ticket = 40000;
@@ -82,7 +86,7 @@ switch(_crime) do {
 		_description = "Attempted murder";
 		_ticket = 40000;
 	};
-	case ("123") : {
+	case ("101") :{
 		_description = "Evading Arrest";
 		_ticket = 20000;
 	};

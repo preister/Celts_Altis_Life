@@ -33,16 +33,41 @@ if(life_action_inUse) exitWith {
 if(count (actionKeys "User10") != 0 && {(inputAction "User10" > 0)}) exitWith {
 	//Interaction key (default is Left Windows, can be mapped via Controls -> Custom -> User Action 10)
 	if(!life_action_inUse) then {
-		[] spawn 
-		{
-			private["_handle"];
-			_handle = [] spawn life_fnc_actionKeyHandler;
-			waitUntil {scriptDone _handle};
+		//before we spawn the action we make sure no further actions can be spawned
+		life_action_inUse = true;
+		//spawn a fail save in case something goes badly wrong - we keep at least some functions working
+		[] spawn {
+			private ["_timer"];
+			_timer = 3*60; //timer after which you want to declare any life_action_inUse invalid - be careful this can create some strange behaviour if too short
+			while (_timer) do {
+				sleep 1;
+				_timer = _timer - 1;
+				if !(life_action_inUse) exitWith {}; //all fine the life action finished
+			};
+			//if we actually ran the time down and life_action_inUse is still true things went really badly
+			if (life_action_inUse) then { 
+				life_action_inUse = false;
+				diag_log "Warning: actionKey was hogging life_action_inUse and the fail save activated - if you see this please inform the server admin!";
+			};
+		};
+		//now that the fail save is in place we can kick of the heavy actionKeyHandler in such a way that it doesn't block the player from doing anything else
+		[] spawn {
+			[] call life_fnc_actionKeyHandler;
 			life_action_inUse = false;
 		};
 	};
 	true;
 };
+
+//before we start doing anything lets make sure the player is not actually in a vehicle which is fatal when starting an animation
+_nonVehicleActions = [
+	57, //jumping
+	35, //holster weapon ... have crashed a heli doing this
+	19, //restrain & rob
+	34, //Surrender - get out of the vehicle first
+	24 //zipties
+];
+if ((_code in _nonVehicleActions) && (vehicle player != player)) then { hint "Unable to start animation while in a vehicle.";};
 
 switch (_code) do
 {
@@ -89,11 +114,10 @@ switch (_code) do
 	case _interactionKey:
 	{
 		if(!life_action_inUse) then {
+		    life_action_inUse = true;
 			[] spawn 
 			{
-				private["_handle"];
-				_handle = [] spawn life_fnc_actionKeyHandler;
-				waitUntil {scriptDone _handle};
+				[] call life_fnc_actionKeyHandler;
 				life_action_inUse = false;
 			};
 		};
@@ -103,7 +127,7 @@ switch (_code) do
 	case 19:
 	{
 		if(_shift) then {_handled = true;};
-		if(_shift && playerSide == west && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget == civilian) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
+		if(_shift && playerSide == west && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && ((side cursorTarget) in [civilian,independent]) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
 		{
 			[] call life_fnc_restrainAction;
 		};
@@ -223,24 +247,27 @@ switch (_code) do
 	};
 	
 	//Shift+O Zipties ( Civilians can restrain )
-case 24:
-{
-  if(_shift) then {_handled = true;};
-			if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 
-			&& !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && (cursorTarget getVariable "surrender" || animationState cursorTarget == "Incapacitated") && speed cursorTarget < 1) then
-  {
-   if([false,"zipties",1] call life_fnc_handleInv) then
-    {
-    [] call life_fnc_restrainAction;
-    hint "You restrained him, use your interactionmenu for more options";
-   }
-   else
-   {
-    hint "You have no zipties!";
-				};
+	case 24:
+	{
+		if(_shift) then {_handled = true;};
+		if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" 
+			&& (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 
+			&& !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") 
+			&& (cursorTarget getVariable "surrender" || animationState cursorTarget == "Incapacitated") 
+			&& speed cursorTarget < 1) then 
+		{
+			if([false,"zipties",1] call life_fnc_handleInv) then
+			{
+				[] call life_fnc_restrainAction;
+				hint "You restrained him, use your interactionmenu for more options";
+			}
+			else
+			{
+				hint "You have no zipties!";
 			};
 		};
-		
+	};
+	
 	//U Key
 	case 22:
 	{
@@ -260,7 +287,7 @@ case 24:
 						_veh setVariable[format["bis_disabled_Door_%1",_door],1,true];
 						_veh animate [format["door_%1_rot",_door],0];
 						systemChat localize "STR_House_Door_Lock";
-						player say3D "car_lock";
+						player say3D "unlock";
 					} else {
 						_veh setVariable[format["bis_disabled_Door_%1",_door],0,true];
 						_veh animate [format["door_%1_rot",_door],1];
@@ -278,7 +305,7 @@ case 24:
 							[[_veh,0],"life_fnc_lockVehicle",_veh,false] spawn life_fnc_MP;
 						};
 						systemChat localize "STR_MISC_VehUnlock";
-						player say3D "unlock";
+						player say3D "car_lock";
 					} else {
 						if(local _veh) then {
 							_veh lock 2;
@@ -286,7 +313,7 @@ case 24:
 							[[_veh,2],"life_fnc_lockVehicle",_veh,false] spawn life_fnc_MP;
 						};	
 						systemChat localize "STR_MISC_VehLock";
-						player say3D "unlock";
+						player say3D "car_lock";
 					};
 				};
 			};
