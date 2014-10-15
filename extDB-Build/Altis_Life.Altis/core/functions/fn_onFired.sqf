@@ -16,7 +16,7 @@ if (_unit getVariable "restrained") exitWith {
 	hint "You can't do that you are restrained dummy!";
 	//but we are nice and put the grenade back into your inventory
 	// (just force adding it to the uniform might not be the nicest way of doing this)
-	_unit addItemToUniform _ammoType;
+	[_ammoType,true] spawn life_fnc_handleItem;
 };
 
 if(_ammoType == "GrenadeHand_stone") then {
