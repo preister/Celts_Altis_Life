@@ -14,7 +14,7 @@ extDBversion = "extDB" callExtension "9:VERSION";
 if(isNil {uiNamespace getVariable "life_sql_id"}) then {
 	life_sql_id = round(random(9999));
 	__CONST__(life_sql_id,life_sql_id);
-	uiNamespace setVariable ["life_sql_id",life_sql_id];
+	uiNamespace setVariable ["life_sql_id",(call life_sql_id)];
 	
 	//Only need to setup extDB once.
 	//  If mission is reloaded, will tell clients extDB is not loaded.
@@ -30,10 +30,12 @@ if(isNil {uiNamespace getVariable "life_sql_id"}) then {
 		"extDB" callExtension format["9:ADD:DB_RAW:%1",(call life_sql_id)];
 	};
 	"extDB" callExtension "9:LOCK";
-} else {
-	life_sql_id = uiNamespace getVariable "life_sql_id";
-	__CONST__(life_sql_id,life_sql_id);
 };
+//this should be totally unnecessary, life_sql_id is already a global constant and only access as a global constant afterwards
+//} else {
+//	life_sql_id = uiNamespace getVariable "life_sql_id";
+//	__CONST__(life_sql_id,life_sql_id);
+//};
 
 //Run procedures for SQL cleanup on mission start.
 ["CALL resetLifeVehicles",1] spawn DB_fnc_asyncCall;
