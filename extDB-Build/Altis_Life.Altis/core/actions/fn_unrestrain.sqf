@@ -8,6 +8,5 @@ if(isNull _unit OR !(_unit getVariable["restrained",FALSE])) exitWith {}; //Erro
 _unit setVariable["restrained",FALSE,TRUE];
 _unit setVariable["Escorting",FALSE,TRUE];
 _unit setVariable["transporting",FALSE,TRUE];
-detach _unit;
 
 [[0,"STR_NOTF_Unrestrain",true,[_unit getVariable["realname",name _unit], profileName]],"life_fnc_broadcast",west,FALSE] call life_fnc_MP;
