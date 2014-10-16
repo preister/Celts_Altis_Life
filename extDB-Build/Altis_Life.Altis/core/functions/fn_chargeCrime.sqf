@@ -17,3 +17,6 @@ _crimeInfo = [_crimeCode] call life_fnc_crimesCfg;
 
 //and lets let the player know he or she is a bady and why
 [[2,format["You are wanted for %1", _crimeInfo select 0]],"life_fnc_broadcast",_perpetrator,false] spawn life_fnc_MP;
+//and we update the players crime_bounty so we can display it nicely on the ui without causing any unnecessary network traffic
+// (Just as an improvement, it would be possible to do this directly instead of the broadcast message to the player ... not sure yet which way is better)
+[[(_crimeInfo select 1)],"life_fnc_updatePlayerBounty",_perpetrator,false] spawn life_fnc_MP;
