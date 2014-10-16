@@ -13,7 +13,9 @@ _jailtime_array = [_this,0,[],[[]]] call BIS_fnc_param;
 _sortedJailTimeArray = [];
 _maxJailTime = 0;
 {
-	if([str(_x)] call life_fnc_isnumeric) then { 
+	//http://killzonekid.com/arma-scripting-tutorials-variables-part-3/
+	//SCALAR are numbers
+	if("SCALAR" == typeName _x) then { 
 		_maxJailTime = _x; 
 	} else {
 		//this whole thing is rather complicated and if the configuration is off we'll break hard here
