@@ -31,12 +31,16 @@ _health ctrlCommit 0;
 if !(playerSide == west) then {
 	//Update Crime
 	private["_format"];
-	_format = "";
+	_format = "0k";
 	_crime ctrlSetPosition [safeZoneX+safeZoneW-0.090,safeZoneY+safeZoneH-0.400];
-	if (life_player_bounty > 99999) then {
-		_format = format["%1kk", (life_player_bounty / 1000000)];
-	} else {
-		_format = format["%1k", (life_player_bounty / 1000)];
+	//lets avoid dividing 0
+	if (life_player_bounty != 0) then {
+		diag_log format["DEBUG: updating crime UI to %1", life_player_bounty];
+		if (life_player_bounty > 99999) then {
+			_format = format["%1kk", (life_player_bounty / 1000000)];
+		} else {
+			_format = format["%1k", (life_player_bounty / 1000)];
+		};
 	};
 	_crime ctrlSetText _format;
 	_crime ctrlCommit 0;
