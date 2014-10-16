@@ -35,7 +35,6 @@ if !(playerSide == west) then {
 	_crime ctrlSetPosition [safeZoneX+safeZoneW-0.090,safeZoneY+safeZoneH-0.400];
 	//lets avoid dividing 0
 	if (life_player_bounty != 0) then {
-		diag_log format["DEBUG: updating crime UI to %1", life_player_bounty];
 		if (life_player_bounty > 99999) then {
 			_format = format["%1kk", (life_player_bounty / 1000000)];
 		} else {
