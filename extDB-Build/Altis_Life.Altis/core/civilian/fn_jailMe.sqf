@@ -13,15 +13,14 @@ _time = -1; //we initiallize it clearly to an unusual number to show that well c
 if(_bad) then { _time = time + __GETC__(life_jailRespawnPunishment); };
 //somebody got put into jail without committing a crime?
 if(count _ret > 0) then { life_bail_amount = (_ret select 3); } else { life_bail_amount = __GETC__(life_defaultBail); _time = time + __GETC__(life_defaultJailTime); };
-//if the setting of time has not been covered by the special cases we go through the array
+//JailTime based on bail amount
 if(_time == -1) then {
-	{
-		//warning check fn_jailMeCalc.sqf for why this works! the list is sorted!
-		if(life_bail_amount < _x select 1) exitWith {_time = _x select 0};
-	}forEach __GETC__(jailtime_array) select 0;
+	//max jail time
+	_time = 45*60;
+	if(life_bail_amount < 1000000) exitWith{_time = 30*60;};
+	if(life_bail_amount < 500000) exitWith{_time = 15*60;};
+	if(life_bail_amount < 100000) exitWith{_time = 5*60;};
 };
-//... still? OK we must have a really bad guy, getting out the max jail time hammer
-if(_time == -1) then { _time = __GETC__(jailtime_array) select 1; };
 _esc = false;
 _bail = false;
 

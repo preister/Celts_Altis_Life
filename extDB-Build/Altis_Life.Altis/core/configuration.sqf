@@ -275,24 +275,6 @@ crimes_list = [
 ];
 
 /*
-	Jail time base on bounty
-	first the time you want the person to stay in jail in minutes or per 60 seconds ;) 
-	second element is the bounty value which is the maximum amount at which you get the time from the first field
-	fe. [5*60,99999] means the player goes to jail for 5 minutes if his bounty is below 10.000 
-	For the longest possible time spend in jail just don't set a bounty at all and leave it as a single field.
-	
-	this is also a test to try out if backing configuration values which are user friendly at mission start (at which they wont change anymore)
-	into a format which is easier to handle in a sqf script.
-*/
-jailtime_array = [
-	[5*60, 99999],
-	[15*60, 499999],
-	[30*60, 999999],
-	[45*60]
-] call life_fnc_jailMeCalc;
-__CONST__(jailtime_array,jailtime_array);
-
-/*
 	Sell / buy arrays
 */
 sell_array = 
