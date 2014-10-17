@@ -65,6 +65,7 @@ switch (true) do
 	{
 		life_is_arrested = false;
 		life_bail_paid = false;
+		life_bail_amount = 0;
 		hint localize "STR_Jail_Paid";
 		serv_wanted_remove = [player];
 		player setPos (getMarkerPos "jail_release");
@@ -84,6 +85,7 @@ switch (true) do
 	case (alive player && !_esc && !_bail) :
 	{
 		life_is_arrested = false;
+		life_bail_amount = 0;
 		hint localize "STR_Jail_Released";
 		[[getPlayerUID player],"life_fnc_wantedRemove",false,false] spawn life_fnc_MP;
 		player setPos (getMarkerPos "jail_release");
