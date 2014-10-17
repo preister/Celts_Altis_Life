@@ -15,12 +15,13 @@ if(isNil {uiNamespace getVariable "life_sql_id"}) then {
 	life_sql_id = round(random(9999));
 	uiNamespace setVariable ["life_sql_id",life_sql_id];
 	__CONST__(life_sql_id,life_sql_id);
-	uiNamespace setVariable ["life_sql_id",(call life_sql_id)];
 	
 	//Only need to setup extDB once.
 	//  If mission is reloaded, will tell clients extDB is not loaded.
 	//     Todo: Is it possible first client is loaded before this PV is sent ?
 	if(extDBversion == "") exitWith {life_server_extDB_notLoaded = true; publicVariable "life_server_extDB_notLoaded";};
+	uiNamespace setVariable ["extDBversion",extDBversion];
+	
 	//Initialize the database
 	"extDB" callExtension "9:DATABASE:Database2";
 	
@@ -38,6 +39,7 @@ if(isNil {uiNamespace getVariable "life_sql_id"}) then {
 	// the limbo state of the client where the UI is still around. ... at least that is what I think happens XD
 	life_sql_id = uiNamespace getVariable "life_sql_id";
 	__CONST__(life_sql_id,life_sql_id);
+	extDBversion = uiNamespace getVariable "extDBversion";
 };
 
 //Run procedures for SQL cleanup on mission start.
