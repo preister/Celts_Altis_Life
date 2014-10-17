@@ -16,10 +16,10 @@ if(count _ret > 0) then { life_bail_amount = (_ret select 3); } else { life_bail
 //JailTime based on bail amount
 if(_time == -1) then {
 	//max jail time
-	_time = 45*60;
-	if(life_bail_amount < 1000000) exitWith{_time = 30*60;};
-	if(life_bail_amount < 500000) exitWith{_time = 15*60;};
-	if(life_bail_amount < 100000) exitWith{_time = 5*60;};
+	_time = time + 45*60;
+	if(life_bail_amount < 1000000) then (_time = time + 30*60;);
+	if(life_bail_amount < 500000) then (_time = time + 15*60;);
+	if(life_bail_amount < 100000) then (_time = time + 5*60;);
 };
 _esc = false;
 _bail = false;
