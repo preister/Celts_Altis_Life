@@ -8,7 +8,8 @@
 	Will also become a standalone system which is why it's setup like this.
 */
 private["_binConfigPatches","_cfgPatches","_endM"];
-if(isServer && !hasInterface) exitWith {}; //Server doesn't need to know.
+if(isServer) exitWith {}; //Server doesn't need to know.
+//if(isServer && !hasInterface) exitWith {}; // !hasInterface prevents running it locally in the client.
 #define __CONST__(var1,var2) var1 = compileFinal (if(typeName var2 == "STRING") then {var2} else {str(var2)})
 #define __GETC__(var) (call var)
 
