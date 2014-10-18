@@ -50,6 +50,13 @@ __CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persis
 __CONST__(life_gangUpgradeBase,10000); //MASDASDASD
 __CONST__(life_gangUpgradeMultipler,2.5); //BLAH
 
+//jail related stuff
+__CONST__(life_defaultBail,100000); //if the crime cant be determined this is the default bail
+life_defaultJailTime = 10*60;
+__CONST__(life_defaultJailTime,life_defaultJailTime); //if the crime cant be determined this is the default jail time
+life_jailRespawnPunishment = 18*60;
+__CONST__(life_jailRespawnPunishment,life_jailRespawnPunishment); //if somebody respawns to try to avoid jail time this is how much time they'll have to spend in jail for it, -1 is max time
+
 //Federal Reserve related stuff
 __CONST__(life_fedres_min_cops_num, 3); //sets the minimum amount of cops which need to be online to rob the federal reserve
 
@@ -79,6 +86,7 @@ life_delivery_in_progress = false;
 life_action_in_use = false;
 life_thirst = 100;
 life_hunger = 100;
+life_player_bounty = 0;
 __CONST__(life_paycheck_period,5); //Five minutes
 life_cash = 0;
 __CONST__(life_impound_car,350);

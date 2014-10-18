@@ -236,6 +236,7 @@ class Life_Client_Core
 		class chargeCrime {};
 		class shopRobbed {};
 		class jewellersRobbed {};
+		class updatePlayerBounty {};
 	};
 	
 	class Network
