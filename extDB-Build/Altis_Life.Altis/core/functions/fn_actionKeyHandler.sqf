@@ -31,8 +31,8 @@ if(dialog) exitWith {}; //Don't bother when a dialog is open.
 if(vehicle player != player) exitWith {}; //He's in a vehicle, cancel!
 
 //Check if it's a dead body. Are we a Medi Or a Cop (configured to revive players) And do we have a Medikit in our inventory?
-if(_curTarget isKindOf "Man" && {!alive _curTarget}) exitWith {
-	if ({playerSide == independent} || (playerSide == west && {(call life_revive_cops)})) then {
+if(_curTarget isKindOf "Man" && !(alive _curTarget)) exitWith {
+	if ((playerSide == independent) || (playerSide == west && __GETC__(life_revive_cops))) then {
 		if ("Medikit" in (items player)) then {
 			[_curTarget] call life_fnc_revivePlayer;
 		} else {
