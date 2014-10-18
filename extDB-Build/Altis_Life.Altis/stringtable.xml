@@ -1232,6 +1232,10 @@
 			<Italian>Vendi Oggetto</Italian>
 			<Portuguese>Vender Item</Portuguese>
 		</Key>
+		<Key ID="STR_VS_SellAllItem">
+			<Original>Sell All</Original>
+			<English>Sell All</English>
+		</Key>
 	</Package>
 	<Package name="Spawn_Menu">
 		<Key ID="STR_Spawn_Title">
