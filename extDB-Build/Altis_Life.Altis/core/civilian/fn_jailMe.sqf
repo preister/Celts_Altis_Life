@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	File: fn_jailMe.sqf
 	Author Bryan "Tonic" Boardwine
@@ -7,10 +8,19 @@
 */
 private["_ret","_bad","_time","_bail","_esc","_countDown"];
 _ret = [_this,0,[],[[]]] call BIS_fnc_param;
-_bad = [_this,1,false,[false]] call BIS_fnc_param;
-if(_bad) then { _time = time + 1100; } else { _time = time + (15 * 60); };
-
-if(count _ret > 0) then { life_bail_amount = (_ret select 3); } else { life_bail_amount = 1500; _time = time + (10 * 60); };
+_bad = [_this,1,false,[false]] call BIS_fnc_param; //if somebody was a bady and respawned during jail time.
+_time = -1; //we initiallize it clearly to an unusual number to show that well check it later again
+if(_bad) then { _time = time + __GETC__(life_jailRespawnPunishment); };
+//somebody got put into jail without committing a crime?
+if(count _ret > 0) then { life_bail_amount = (_ret select 3); } else { life_bail_amount = __GETC__(life_defaultBail); _time = time + __GETC__(life_defaultJailTime); };
+//JailTime based on bail amount
+if(_time == -1) then {
+	//max jail time
+	_time = time + 45*60;
+	if(life_bail_amount < 1000000) then {_time = time + 30*60;};
+	if(life_bail_amount < 500000) then {_time = time + 15*60;};
+	if(life_bail_amount < 100000) then {_time = time + 5*60;};
+};
 _esc = false;
 _bail = false;
 
@@ -55,6 +65,8 @@ switch (true) do
 	{
 		life_is_arrested = false;
 		life_bail_paid = false;
+		life_bail_amount = 0;
+		[] call life_fnc_hudUpdate;
 		hint localize "STR_Jail_Paid";
 		serv_wanted_remove = [player];
 		player setPos (getMarkerPos "jail_release");
@@ -74,6 +86,8 @@ switch (true) do
 	case (alive player && !_esc && !_bail) :
 	{
 		life_is_arrested = false;
+		life_bail_amount = 0;
+		[] call life_fnc_hudUpdate;
 		hint localize "STR_Jail_Released";
 		[[getPlayerUID player],"life_fnc_wantedRemove",false,false] spawn life_fnc_MP;
 		player setPos (getMarkerPos "jail_release");

@@ -13,13 +13,15 @@ publicVariable "life_server_isReady";
 extDBversion = "extDB" callExtension "9:VERSION";
 if(isNil {uiNamespace getVariable "life_sql_id"}) then {
 	life_sql_id = round(random(9999));
+	uiNamespace setVariable ["life_sql_id",life_sql_id];
 	__CONST__(life_sql_id,life_sql_id);
-	uiNamespace setVariable ["life_sql_id",(call life_sql_id)];
 	
 	//Only need to setup extDB once.
 	//  If mission is reloaded, will tell clients extDB is not loaded.
 	//     Todo: Is it possible first client is loaded before this PV is sent ?
 	if(extDBversion == "") exitWith {life_server_extDB_notLoaded = true; publicVariable "life_server_extDB_notLoaded";};
+	uiNamespace setVariable ["extDBversion",extDBversion];
+	
 	//Initialize the database
 	"extDB" callExtension "9:DATABASE:Database2";
 	
@@ -30,12 +32,15 @@ if(isNil {uiNamespace getVariable "life_sql_id"}) then {
 		"extDB" callExtension format["9:ADD:DB_RAW:%1",(call life_sql_id)];
 	};
 	"extDB" callExtension "9:LOCK";
+} else {
+	//OK I figured out what this is for, if you are running the mission locally (just the client with mods) the mod of course only gets loaded
+	// ones, if you cancel change some code and load the Altis_Life mission again we need to be able to grab the SQL ID again - otherwise its 
+	// missing all together. On a dedicated server this is not really an issue, it always receives a full restart every time and doesn't enter
+	// the limbo state of the client where the UI is still around. ... at least that is what I think happens XD
+	life_sql_id = uiNamespace getVariable "life_sql_id";
+	__CONST__(life_sql_id,life_sql_id);
+	extDBversion = uiNamespace getVariable "extDBversion";
 };
-//this should be totally unnecessary, life_sql_id is already a global constant and only access as a global constant afterwards
-//} else {
-//	life_sql_id = uiNamespace getVariable "life_sql_id";
-//	__CONST__(life_sql_id,life_sql_id);
-//};
 
 //Run procedures for SQL cleanup on mission start.
 ["CALL resetLifeVehicles",1] spawn DB_fnc_asyncCall;
