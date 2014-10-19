@@ -34,7 +34,6 @@ if(([false,_type,_amount] call life_fnc_handleInv)) then
 	[] call life_fnc_virt_update;
 };
 
-//ToDo: needs a rework, this should be handled like others
 if(life_shop_type == "heroin") then
 {
 	private["_array","_ind","_val"];
@@ -44,14 +43,15 @@ if(life_shop_type == "heroin") then
 	{
 		_val = (_array select _ind) select 2;
 		_val = _val + _price;
-		_array set[_ind,[player,_val]];
+		_array set[_ind,[getPlayerUID player,profileName,_val]];
 		life_shop_npc setVariable["sellers",_array,true];
 	}
 		else
 	{
-		_array set[count _array,[player,_price]];
+		_array set[count _array,[getPlayerUID player,profileName,_price]];
 		life_shop_npc setVariable["sellers",_array,true];
 	};
 };
 
 [0] call SOCK_fnc_updatePartial;
+[3] call SOCK_fnc_updatePartial;
