@@ -7,8 +7,9 @@
 	Master action key handler, handles requests for picking up various items and
 	interacting with other players (Cops = Cop Menu for unrestrain,escort,stop escort, arrest (if near cop hq), etc).
 */
-private["_curTarget","_isWater"];
+private["_curTarget","_isWater","_animalTypes"];
 _curTarget = cursorTarget;
+_animalTypes = ["Salema_F","Ornate_random_F","Mackerel_F","Tuna_F","Mullet_F","CatShark_F","Turtle_F"];
 if(life_interrupted) exitWith {life_interrupted = false;};
 //we set life action in use as soon as possible.
 _isWater = surfaceIsWater (getPosASL player);
@@ -30,8 +31,8 @@ if(_curTarget isKindOf "House_F" && {player distance _curTarget < 12} OR ((neare
 if(dialog) exitWith {}; //Don't bother when a dialog is open.
 if(vehicle player != player) exitWith {}; //He's in a vehicle, cancel!
 
-//Check if it's a dead body. Are we a Medi Or a Cop (configured to revive players) And do we have a Medikit in our inventory?
-if(_curTarget isKindOf "Man" && !(alive _curTarget)) exitWith {
+//Check if it's a dead body - and not a animal. Are we a Medi Or a Cop (configured to revive players) And do we have a Medikit in our inventory?
+if(_curTarget isKindOf "Man" && !((typeOf _curTarget) in _animalTypes) && !(alive _curTarget)) exitWith {
 	if ((playerSide == independent) || (playerSide == west && __GETC__(life_revive_cops))) then {
 		if ("Medikit" in (items player)) then {
 			[_curTarget] call life_fnc_revivePlayer;
@@ -56,7 +57,6 @@ if(isPlayer _curTarget && _curTarget isKindOf "Man") then {
 	private["_isVehicle","_miscItems","_money"];
 	_isVehicle = if((_curTarget isKindOf "landVehicle") OR (_curTarget isKindOf "Ship") OR (_curTarget isKindOf "Air")) then {true} else {false};
 	_miscItems = ["Land_BottlePlastic_V1_F","Land_TacticalBacon_F","Land_Can_V3_F","Land_CanisterFuel_F","Land_Suitcase_F"];
-	_animalTypes = ["Salema_F","Ornate_random_F","Mackerel_F","Tuna_F","Mullet_F","CatShark_F","Turtle_F"];
 	_money = "Land_Money_F";
 	
 	//It's a vehicle! open the vehicle interaction key!
