@@ -82,8 +82,7 @@ life_carryWeight = 0;
 _currentMaxWeight = life_maxWeight;
 life_maxWeight = 100;
 {
-	_item = [_x,1] call life_fnc_varHandle;
-	[true,_item,1] call life_fnc_handleInv;
+	[true,_x,1] call life_fnc_handleInv;
 } forEach (_yItems);
 //and set it back to our original weight
 life_maxWeight = _currentMaxWeight;
