@@ -11,7 +11,7 @@ _container = _this select 1;
 
 //if the character is dead and we save the gear for its side nobody can loot it (so we don't dublicate items)
 // this is a precaution, people which keep their gear should have all yItems removed by this point.
-if((_container isKindOf "Man") && !(alive _container) && (side _container in life_death_save_gear))) exitWith {
+if(((_container isKindOf "Man") && !(alive _container) && (side _container in life_death_save_gear))) exitWith {
 	hint "Sorry player is locked down, no looting.";
 	[] spawn {
 		waitUntil {!isNull (findDisplay 602)};

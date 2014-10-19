@@ -35,36 +35,36 @@ _secondary = [];
 _primaryMag = "";
 _handgunMag = "";
 _secondaryMag = "";
-if(playerSide == west || playerSide == civilian && {(call life_save_civ)}) then {
-    _primary = primaryWeapon player;
-	if(_primary != "") then
+
+_primary = primaryWeapon player;
+if(_primary != "") then
+{
+	_primaryItems = primaryWeaponItems player;
+	if(count (primaryWeaponMagazine player) > 0) then
 	{
-		_primaryItems = primaryWeaponItems player;
-		if((count (primaryWeaponMagazine player) > 0) && (alive player)) then
-		{
-			_primaryMag = ((primaryWeaponMagazine player) select 0);
-		};
+		_primaryMag = ((primaryWeaponMagazine player) select 0);
 	};
-    _handgun = handgunWeapon player;
-	if(_handgun != "") then
-	{
-		_handgunItems = handgunItems player;
-		if((count (handgunMagazine player) > 0) && (alive player)) then
-		{
-			_handgunMag = ((handgunMagazine player) select 0);
-		};
-	};
-	//secondary seems to be broken?
-	//_secondary = secondaryWeapon player;
-	//if(_secondary != "") then
-	//{
-	//	//secondaries don't have additional items it seems
-	//	if((count (secondaryWeaponMagazineplayer player) > 0) && (alive player)) then
-	//	{
-	//		_secondaryMag = ((secondaryWeaponMagazineplayer player) select 0);
-	//	};
-	//};
 };
+_handgun = handgunWeapon player;
+if(_handgun != "") then
+{
+	_handgunItems = handgunItems player;
+	if(count (handgunMagazine player) > 0) then
+	{
+		_handgunMag = ((handgunMagazine player) select 0);
+	};
+};
+//secondary seems to be broken?
+//_secondary = secondaryWeapon player;
+//if(_secondary != "") then
+//{
+//	//secondaries don't have additional items it seems
+//	if((count (secondaryWeaponMagazineplayer player) > 0) && (alive player)) then
+//	{
+//		_secondaryMag = ((secondaryWeaponMagazineplayer player) select 0);
+//	};
+//};
+
 //take care of carried items, and especially before we store any additional items in them
 if(_uniform != "") then {_uniformItems = uniformItems player;};
 if(_backpack != "") then {_backpackItems = backpackItems player;};
@@ -93,6 +93,7 @@ _handled = false;
 		};
 	};
 } forEach[_primaryMag,_handgunMag,_secondaryMag];
+diag_log 
 //we dont need to run through this long thing if save yItems is deactivated
 if(call life_save_yinv) then {
 	{
