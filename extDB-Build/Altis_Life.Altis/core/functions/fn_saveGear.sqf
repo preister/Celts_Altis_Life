@@ -94,7 +94,6 @@ _handled = false;
 		};
 	};
 } forEach[_primaryMag,_handgunMag,_secondaryMag];
-diag_log 
 //we dont need to run through this long thing if save yItems is deactivated
 if(__GETC__(life_save_yinv)) then {
 	{
