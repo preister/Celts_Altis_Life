@@ -49,7 +49,7 @@ _cfg = if(isNil {_this select 1}) then
 }
 	else
 {
-	_this select 1
+	[_this,1,"",[""]] call BIS_fnc_param;
 };
 
 //Final Check
