@@ -109,10 +109,10 @@ else {
 	clearmagazinecargo _unit;
 	//including the yItems so we dont double them
 	{
-		_item = _x;
-		_value = missionNamespace getVariable _item;
+		_item = [_x,1] call life_fnc_varHandle;
+		_value = missionNamespace getVariable _x;
 		//and now that we are done with that we can remove the item from the player inventory
-		if(_value > 0) then {[false,_var,_value] call life_fnc_handleInv;};
+		if(_value > 0) then {[false,_item,_value] call life_fnc_handleInv;};
 	} foreach (life_inv_items);
 };
 
