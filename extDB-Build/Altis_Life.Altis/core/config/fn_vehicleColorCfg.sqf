@@ -18,8 +18,8 @@ switch (_vehicle) do
 		_ret =
 		[
 			["textures\Texture_Mohawk_0_Hull.jpg","reb","textures\Texture_Mohawk_1_Fin_Door.jpg","textures\Texture_Mohawk_2_Fuselage.jpg"],
-			[_path + "heli_transport_02_1_ion_co.paa","civ",_path + "heli_transport_02_2_ion_co.paa",_path + "heli_transport_02_3_ion_co.paa"],
-			[_path + "heli_transport_02_1_dahoman_co.paa","civ",_path + "heli_transport_02_2_dahoman_co.paa",_path + "heli_transport_02_3_dahoman_co.paa"]
+			[_path + "heli_transport_02_1_ion_co.paa","reb",_path + "heli_transport_02_2_ion_co.paa",_path + "heli_transport_02_3_ion_co.paa"],
+			[_path + "heli_transport_02_1_dahoman_co.paa","reb",_path + "heli_transport_02_2_dahoman_co.paa",_path + "heli_transport_02_3_dahoman_co.paa"]
 		];
 	};
 	
@@ -28,8 +28,8 @@ switch (_vehicle) do
 		_path = "\A3\Air_F_EPB\Heli_Light_03\data\";
 		_ret =
 		[
-			[_path + "Heli_Light_03_base_INDP_CO.paa","civ"],
-			[_path + "Heli_Light_03_base_CO.paa","civ"]
+			[_path + "Heli_Light_03_base_INDP_CO.paa","reb"],
+			[_path + "Heli_Light_03_base_CO.paa","reb"]
 		];
 	};
 	
@@ -149,7 +149,6 @@ switch (_vehicle) do
 			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_digital_co.paa","reb"],
 			["textures\heli_med.jpg","med"],
 			["textures\celtscopter.jpg","cop"],
-			["textures\Heli_light01_ext_sno_co.jpg","civ"],
 			["textures\heli_light01_ext_n54528_co.jpg","civ"],
 			["textures\heli_light01_ext_n16062_co.jpg","civ"],
 			["textures\heli_light01_ext_Redbull_co.jpg","civ"]
