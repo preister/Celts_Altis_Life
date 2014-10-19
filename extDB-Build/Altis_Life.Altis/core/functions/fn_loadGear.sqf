@@ -82,20 +82,3 @@ life_maxWeight = 100;
 } forEach (_yItems);
 //and set it back to our original weight
 life_maxWeight = _currentMaxWeight;
-
-//make sure that all the rangemaster shirts gets skinned again correctly
-if(uniform player == "U_Rangemaster") then {
-	private["_texture"];
-	_texture = "";
-	switch(playerSide) do {
-		case independent: {
-			_texture = "textures\medic_uniform.jpg";
-		};
-		case west: {
-			_texture = "textures\police_uniform_co.paa";
-		};
-	};
-	if(_texture != "") then {
-		_handle = [[player,0,_texture],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
-	};
-};
