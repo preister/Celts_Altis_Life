@@ -7,10 +7,13 @@
     Description:
     Loads saved player gear, if you want to limit anything for balancing do it in the save operation!
 */
-private["_handle", "_currentMaxWeight"];
+private["_uniform","_vest","_backpack","_goggles","_headgear","_gear","_primary","_handgun",
+	"_uniformItems","_backpackItems","_vestItems","_primaryItems","_handgunItems","_yItems",
+	"_secondary","_uniformMags","_backpackMags","_vestMags","_handle", "_currentMaxWeight"
+];
 //we either get the items from the calling function or just use life_gear as default.
-if(count life_gear == 0) then {
-	//oh hello welcome new life/spawn
+if(0 == (count life_gear)) then {
+	//oh hello welcome new life
 	life_gear = [playerSide] call life_fnc_defaultLoadouts;
 };
 
@@ -20,13 +23,7 @@ if (__GETC__(life_debug_logLifeGear)) then {
 
 waitUntil {!(isNull (findDisplay 46))};
 
-_handle = [] spawn life_fnc_stripDownPlayer;
-waitUntil {scriptDone _handle};
-
-private ["_uniform","_vest","_backpack","_goggles","_headgear","_gear","_primary","_handgun",
-	"_uniformItems","_backpackItems","_vestItems","_primaryItems","_handgunItems","_yItems",
-	"_secondary","_uniformMags","_backpackMags","_vestMags"
-];
+[] call life_fnc_stripDownPlayer;
 /////////////////////////////////////////////////////////////////////////////////////////
 // THE ORDER OF THIS LIST IS VERY IMPORTANT, KEEP IN SYNC WITH SAVE GEAR AT ALL TIMES!
 // If adding new items ALWAYS add them to the end of the list otherwise you need to clear
@@ -52,14 +49,13 @@ _yItems = [life_gear,16,[],[[]]] call BIS_fnc_param;
 _secondary = [life_gear,17,[],[[]]] call BIS_fnc_param;
 
 
-if(_primary != "") then {_handle = [_primary,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
-if(_handgun != "") then {_handle = [_handgun,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
-if(_goggles != "") then {_handle = [_goggles,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
-if(_headgear != "") then {_handle = [_headgear,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
-if(_uniform != "") then {_handle = [_uniform,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
-if(_vest != "") then {_handle = [_vest,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
-if(_backpack != "") then {_handle = [_backpack,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
-{_handle = [_x,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};} foreach _gear;
+//loads all the gear and items listed in the forEach Array (_gear itself is already an array so it just gets added)
+{
+	if (_x != "") then {
+		[_x,true,false,false,false] call life_fnc_handleItem; 
+	};
+}forEach[_primary, _handgun, _goggles, _headgear, _uniform, _vest, _backpack] + _gear;
+
 {
     if (_x != "") then {
         player addPrimaryWeaponItem _x;

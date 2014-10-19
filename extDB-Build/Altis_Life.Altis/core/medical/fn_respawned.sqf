@@ -22,15 +22,12 @@ player setVariable["Revive",nil,TRUE];
 player setVariable["name",nil,TRUE];
 player setVariable["Reviving",nil,TRUE];
 
-diag_log "Player has respawned.";
-
 //Load gear for a 'new life'
 if !(playerSide in life_death_save_gear) then {
 	//full reset we remove all the gear so we don't carry anything either
 	life_gear = [];
-	diag_log "Player has has been stripped of all gear.";
 };
-[] spawn life_fnc_loadGear;
+[] call life_fnc_loadGear;
 //Cleanup of weapon containers near the body & hide it.
 if(!isNull life_corpse) then {
 	private["_containers"];
