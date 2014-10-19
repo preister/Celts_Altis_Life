@@ -17,6 +17,24 @@ private["_uniform","_vest","_backpack","_goggles","_headgear","_gear","_primary"
 
 //in output array order
 _uniform = uniform player;
+//until I find a better way of doing this we need to make sure the rangemaster uniform gets reskinned correctly hear as well as in LoadGear
+// fe if somebody picks up a uniform we want it directly reskinned and not when we finally load Gear again.
+// JUST TO MAKE THIS CLEAR THIS NEEDS CLEANING UP BEFORE WE ADD ANY MORE CLOTHING OR GEAR SKINS!
+if(_uniform == "U_Rangemaster") then {
+	private["_texture"];
+	_texture = "";
+	switch(playerSide) do {
+		case independent: {
+			_texture = "textures\medic_uniform.jpg";
+		};
+		case west: {
+			_texture = "textures\police_uniform_co.paa";
+		};
+	};
+	if(_texture != "") then {
+		_handle = [[player,0,_texture],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
+	};
+};
 _vest = vest player;
 _backpack = backpack player;
 _goggles = goggles player;
