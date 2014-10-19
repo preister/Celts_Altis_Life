@@ -69,7 +69,7 @@ switch (_filter) do
 	{
 		_ret =
 		[
-			["B_Bergen_bl","Cop Bergen",500],
+			["B_Bergen_blk",nil,500],
 			["B_AssaultPack_blk",nil,500],
 			["B_FieldPack_blk",nil,500],
 			["B_OutdoorPack_blk",nil,500]			
