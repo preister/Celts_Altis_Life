@@ -120,7 +120,7 @@ switch (_vehicleClassName) do {
 		_path2 = "\a3\air_f\Heli_Light_01\Data\";
 		_path3 = "\a3\air_f\Heli_Light_01\Data\Skins\";
 		_ret = switch (_color) do {
-			case "Sheriff":			{ _path1 + "heli_light_01_ext_sheriff_co.paa"; };
+			//case "Sheriff":			{ _path1 + "heli_light_01_ext_sheriff_co.paa"; };
 			case "Black":			{ _path2 + "heli_light_01_ext_ion_co.paa"; };
 			case "Civ Blue":		{ _path2 + "heli_light_01_ext_blue_co.paa"; };
 			case "Civ Red":			{ _path2 + "heli_light_01_ext_co.paa"; };
