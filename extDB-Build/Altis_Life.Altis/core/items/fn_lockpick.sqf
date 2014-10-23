@@ -78,7 +78,7 @@ if(!_isVehicle) then {
 		[player, "487"] call life_fnc_chargeCrime;
 	} else {
 		[player, "215"] call life_fnc_chargeCrime;
-		[[0,format[localize "STR_ISTR_Lock_FailedNOTF",profileName]],"life_fnc_broadcast",west,false] spawn life_fnc_MP;
+		[[0,"STR_ISTR_Lock_FailedNOTF",true,[profileName]],"life_fnc_broadcast",west,false] spawn life_fnc_MP;
 		titleText[localize "STR_ISTR_Lock_Failed","PLAIN"];
 	};
 };

@@ -12,3 +12,4 @@ if(isNull _unit OR {_unit != life_ticket_unit}) exitWith {}; //NO
 if(isNull _cop OR {_cop != player}) exitWith {}; //Double NO
 
 life_atmcash = life_atmcash + _value;
+hint format["%1 paid the ticket ($%2).",name _unit,_value];

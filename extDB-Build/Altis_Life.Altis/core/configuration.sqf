@@ -33,7 +33,6 @@ life_removeWanted = false;
 //Persistent Saving
 __CONST__(life_save_civ,TRUE); //Save weapons for civs?
 __CONST__(life_save_yinv,TRUE); //Save Y-Inventory for players?
-__CONST__(life_only_rentable,[]); //List of names of vehicles which can only be rented.
 
 //Revive constant variables.
 __CONST__(life_revive_cops,TRUE); //Set to false if you don't want cops to be able to revive downed players.
@@ -46,6 +45,13 @@ __CONST__(life_houseLimit,6); //Maximum amount of houses a player can buy (TODO:
 __CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persistent so keep it high to avoid 345345345 gangs).
 __CONST__(life_gangUpgradeBase,10000); //MASDASDASD
 __CONST__(life_gangUpgradeMultipler,2.5); //BLAH
+
+//jail related stuff
+__CONST__(life_defaultBail,100000); //if the crime cant be determined this is the default bail
+life_defaultJailTime = 10*60;
+__CONST__(life_defaultJailTime,life_defaultJailTime); //if the crime cant be determined this is the default jail time
+life_jailRespawnPunishment = 18*60;
+__CONST__(life_jailRespawnPunishment,life_jailRespawnPunishment); //if somebody respawns to try to avoid jail time this is how much time they'll have to spend in jail for it, -1 is max time
 
 //Federal Reserve related stuff
 __CONST__(life_fedres_min_cops_num, 3); //sets the minimum amount of cops which need to be online to rob the federal reserve
@@ -76,6 +82,7 @@ life_delivery_in_progress = false;
 life_action_in_use = false;
 life_thirst = 100;
 life_hunger = 100;
+life_player_bounty = 0;
 __CONST__(life_paycheck_period,5); //Five minutes
 life_cash = 0;
 __CONST__(life_impound_car,350);
@@ -408,6 +415,7 @@ life_garage_prices =
 	["B_Truck_01_box_F", 15000],
 	["O_MRAP_02_F",15000],
 	["B_Heli_Light_01_F",10000],
+	["I_Heli_light_03_unarmed_F",12000],
 	["O_Heli_Light_02_unarmed_F",15000],
 	["C_Rubberboat",400],
 	["C_Boat_Civil_01_F",4500],
@@ -439,6 +447,7 @@ life_garage_sell =
 	["B_Truck_01_box_F", 150000],
 	["O_MRAP_02_F",65000],
 	["B_Heli_Light_01_F",57000],
+	["I_Heli_light_03_unarmed_F",68000],
 	["O_Heli_Light_02_unarmed_F",72500],
 	["C_Rubberboat",950],
 	["C_Boat_Civil_01_F",6800],

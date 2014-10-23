@@ -16,7 +16,7 @@ if(life_blacklisted) exitWith
 	sleep 30;
 };
 
-if(!(str(player) in ["cop_1","cop_2","cop_3","cop_4"])) then {
+if(!(str(player) in [])) then {
 	if((__GETC__(life_coplevel) == 0) && (__GETC__(life_adminlevel) == 0)) then {
 		["NotWhitelisted",false,true] call BIS_fnc_endMission;
 		sleep 35;
@@ -33,7 +33,7 @@ waitUntil{isNull (findDisplay 38500)}; //Wait for the spawn selection to be done
  while {true} do
  {
   waitUntil {uniform player == "U_Rangemaster"};
-  player setObjectTextureGlobal [0,"textures\police_uniform_co.paa"];
+  player setObjectTextureGlobal [0,"textures\police_uniform_co.jpg"];
   waitUntil {uniform player != "U_Rangemaster"};
  };
 };

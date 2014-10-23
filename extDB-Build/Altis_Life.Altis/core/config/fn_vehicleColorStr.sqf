@@ -4,8 +4,6 @@
 	
 	Description:
 	Master configuration for color strings depending on their index location.
-	
-	FOR BACKWARDS COMPATIBILITY REASONS ONLY WE KEEP THIS AROUND!
 */
 private["_vehicle","_color","_index"];
 _vehicle = [_this,0,"",[""]] call BIS_fnc_param;
@@ -25,7 +23,7 @@ switch (_vehicle) do
 			case 4: {_color = "Dark Red";};
 			case 5: {_color = "Blue / White"};
 			case 6: {_color = "Black"};
-			case 7: {_color = "Cop"};
+			case 7: {_color = "Black"};
 			case 8: {_color = "Taxi"};
 			case 9: {_color = "Medic"};
 		};
@@ -107,7 +105,7 @@ switch (_vehicle) do
 		switch (_index) do
 		{
 			case 0: {_color = "Brown"};
-			case 1: {_color = "Rebel Desert"};
+			case 1: {_color = "Digi Desert"};
 			case 2: {_color = "Black"};
 			case 3: {_color = "Blue"};
 			case 4: {_color = "Red"};
@@ -138,7 +136,18 @@ switch (_vehicle) do
 			case 13: {_color = "Rebel Digital"};
 			case 14: {_color = "EMS White"};
 			case 15: {_color = "CeltS Chopper"};
-			
+			case 16: {_color = "Classic (Red)"};
+			case 17: {_color = "Classic (White & Blue)"};
+			case 18: {_color = "Redbull"};
+		};
+	};
+	
+	case "I_Heli_light_03_unarmed_F":
+	{
+		switch (_index) do
+		{
+			case 0: {_color = "Rebel"};
+			case 1: {_color = "Nato Green"};
 		};
 	};
 	
@@ -169,7 +178,8 @@ switch (_vehicle) do
 		switch (_index) do
 		{
 			case 0: {_color = "Orange"};
-			case 1: {_color = "Black"};
+			case 1: {_color = "420"};
+			case 2: {_color = "Black"};
 		};
 	};
 	
@@ -203,8 +213,8 @@ switch (_vehicle) do
 		switch (_index) do
 		{
 			case 0: {_color = "Rebel"};
-			case 1: {_color = "Black"};
-			case 2: {_color = "Dahoman"};
+			case 1: {_color = "Ion (Civ)"};
+			case 2: {_color = "Dahoman (Civ)"};
 		};
 	};
 	

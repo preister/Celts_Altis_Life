@@ -103,6 +103,8 @@ class CfgFunctions
 			class chopShopSell {};
 			class clientDisconnect {};
 			class cleanupRequest {};
+			class setObjVar {};
+			class keyManagement {};
 		};
 		
 		class Housing
@@ -124,19 +126,6 @@ class CfgFunctions
 			class queryPlayerGang {};
 			class removeGang {};
 			class updateGang {};
-		};
-	};
-	
-	class VEH_System
-	{
-		tag = "VEH";
-		class Vehicles
-		{
-			file = "\life_server\Functions\Vehicles";
-			class spawnVehicle {};
-			class fetchVehicle {};
-			class storeVehicle {};
-			class dbVehicle {};
 		};
 	};
 };
