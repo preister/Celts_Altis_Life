@@ -1,5 +1,5 @@
 /*
-	File: fn_clothing_reb.sqf
+	File: fn_clothing_press.sqf
 	Author: Bryan "Tonic" Boardwine
 	
 	Description:
@@ -18,14 +18,7 @@ switch (_filter) do
 	case 0:
 	{
 		[
-			["U_IG_Guerilla1_1",nil,5000],
-			["U_I_G_Story_Protagonist_F",nil,7500],
-			["U_I_G_resistanceLeader_F",nil,11500],
-			["U_O_SpecopsUniform_ocamo",nil,17500],
-			["U_O_PilotCoveralls",nil,15610],
-			["U_IG_leader","Guerilla Leader",15340],
-			["U_O_GhillieSuit",nil,50000],
-			["U_O_Wetsuit",nil,20000]
+			["U_C_Journalist",nil,5000]
 		];
 	};
 	
@@ -33,18 +26,7 @@ switch (_filter) do
 	case 1:
 	{
 		[
-			["H_ShemagOpen_tan",nil,850],
-			["H_Shemag_olive",nil,850],
-			["H_ShemagOpen_khk",nil,800],
-			["H_HelmetO_ocamo",nil,2500],
-			["H_HelmetB_camo",nil,2500],
-			["H_MilCap_oucamo",nil,1200],
-			["H_Bandanna_camo",nil,650],
-			["H_Watchcap_blk",nil,650],
-			["H_Watchcap_khk",nil,650],
-			["H_Watchcap_camo",nil,650],
-			["H_Watchcap_sgg",nil,650],
-			["H_Hat_camo",nil,650]					
+			["H_Cap_press",nil,850]
 		];
 	};
 	
@@ -68,9 +50,7 @@ switch (_filter) do
 	case 3:
 	{
 		[
-			["V_TacVest_khk",nil,12500],
-			["V_BandollierB_cbr",nil,4500],
-			["V_HarnessO_brn",nil,7500]
+			["V_Press_F",nil,4500]
 		];
 	};
 	
