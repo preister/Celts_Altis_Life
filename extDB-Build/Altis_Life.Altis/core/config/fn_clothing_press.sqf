@@ -1,16 +1,16 @@
 /*
 	File: fn_clothing_press.sqf
 	Author: Bryan "Tonic" Boardwine
-	
+	Edited by Dubbz261
 	Description:
-	Master configuration file for Reb shop.
+	Master configuration file for Press shop.
 */
 private["_filter"];
 _filter = [_this,0,0,[0]] call BIS_fnc_param;
 //Classname, Custom Display name (use nil for Cfg->DisplayName, price
 
 //Shop Title Name
-ctrlSetText[3103,"Mohammed's Jihadi Shop"];
+ctrlSetText[3103,"Freelance Press Shop"];
 
 switch (_filter) do
 {
@@ -47,7 +47,7 @@ switch (_filter) do
 	};
 	
 	//Vest
-	case 3:
+	case 3:x 	
 	{
 		[
 			["V_Press_F",nil,4500]
