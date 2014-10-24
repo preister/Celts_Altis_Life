@@ -295,7 +295,7 @@ sell_array =
 	["coffee",5],
 	["turtlesoup",1000],
 	["donuts",60],
-	["marijuana",2350],
+	["marijuana",3200],
 	["tbacon",25],
 	["lockpick",75],
 	["pickaxe",750],
