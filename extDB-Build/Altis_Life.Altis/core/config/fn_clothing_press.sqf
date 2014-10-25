@@ -58,14 +58,7 @@ switch (_filter) do
 	case 4:
 	{
 		[
-			["B_AssaultPack_cbr",nil,2500],
-			["B_Kitbag_mcamo",nil,4500],
-			["B_TacticalPack_oli",nil,3500],
-			["B_FieldPack_ocamo",nil,3000],
-			["B_Bergen_sgg",nil,4500],
-			["B_Kitbag_cbr",nil,4500],
-			["B_Carryall_oli",nil,5000],
-			["B_Carryall_khk",nil,5000]
+			["B_FieldPack_oucamo",nil,3000]
 		];
 	};
 };
