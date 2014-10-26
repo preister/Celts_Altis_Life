@@ -223,7 +223,7 @@ if(_bool) then
 											_texture = "textures\medic_uniform.jpg";
 										};
 										case west: {
-											_texture = "textures\police_uniform_co.paa";
+											_texture = "textures\police_uniform_co.jpg";
 										};
 									};
 									if(_texture != "") then {
