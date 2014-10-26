@@ -40,7 +40,7 @@ if (_itemsToStore_float < _itemsToStore) then
 	_itemsToStore = _itemsToStore - 1;
 };
 //if there are no items to store we are done here
-if (_itemsToStore < 1) exitWith {hint "The vehicle is already full!";};
+if ((_itemsToStore == -1) OR (_itemsToStore == 0)) exitWith {hint "The vehicle is already full!";};
 _itemsStored = 0;
 //while there is still a item of this type in the player inventory we need to continue
 while{ (_itemsStored < _itemsToStore) } do
@@ -60,12 +60,10 @@ while{ (_itemsStored < _itemsToStore) } do
 		};
 		
 		_itemsStored = _itemsStored + 1;
-	}
-		else
-	{
-		//if no item is left in the inventory then thats how many we could take
-		_itemsToStore = _itemsStored;	
 	};
 };
-life_trunk_vehicle setVariable["Trunk",[_inv,(_veh_data select 1) + (_itemWeight * _itemsStored)],true];
-[life_trunk_vehicle] call life_fnc_vehInventory;
+//adding an additional layer of checking - yeah I know that's bad style but ... :(
+if (0 != _itemsStored) then {
+	life_trunk_vehicle setVariable["Trunk",[_inv,(_veh_data select 1) + (_itemWeight * _itemsStored)],true];
+	[life_trunk_vehicle] call life_fnc_vehInventory;
+};
