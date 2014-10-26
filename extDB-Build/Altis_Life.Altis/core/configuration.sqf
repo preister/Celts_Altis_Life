@@ -259,6 +259,7 @@ crimes_list = [
 	"110", //Trespassing
 	"111", //Driving without headlights
 	"112", //Driving without a license
+	"113", //Dangerous Driving
 	"187V", //Vehicular Manslaughter
 	"187A", //Attempted Murder
 	"187", //Manslaughter
@@ -299,7 +300,7 @@ sell_array =
 	["coffee",5],
 	["turtlesoup",1000],
 	["donuts",60],
-	["marijuana",2350],
+	["marijuana",3200],
 	["tbacon",25],
 	["lockpick",75],
 	["pickaxe",750],
@@ -320,7 +321,7 @@ sell_array =
 	["zipties",2],
 	["methu",650],
 	["methp",6500],
-	["moonshine",500]
+	["moonshine",1000]
 ];
 __CONST__(sell_array,sell_array);
 
@@ -352,7 +353,7 @@ buy_array =
 	["storagesmall",75000],
 	["storagebig",150000],
 	["zipties",5],
-	["moonshine",1000]
+	["moonshine",1500]
 ];
 __CONST__(buy_array,buy_array);
 

@@ -39,7 +39,7 @@ switch(_shop) do
 						["muzzle_snds_L",nil,650],
 						["FirstAidKit",nil,150],
 						["Medikit",nil,1000],
-						["NVGoggles",nil,2000],
+						["NVGoggles_OPFOR",nil,2000],
 						["16Rnd_9x21_Mag",nil,50],
 						["20Rnd_556x45_UW_mag","Taser Rifle Magazine",125]
 					]
@@ -83,11 +83,15 @@ switch(_shop) do
 			{
 				["Altis Patrol Officer Shop",
 					[
-						["SMG_02_F","Stun Gun",30000],
-						["30Rnd_9x21_Mag","Rubber bullets",150],
-						["muzzle_snds_L",nil,650],
+						//["SMG_02_F","Stun Gun",30000],
+						//["30Rnd_9x21_Mag","Rubber bullets",150],
+						//["muzzle_snds_L",nil,650],
+						["arifle_Katiba_C_F",nil,20000],
+						["30Rnd_65x39_caseless_green",nil,150],
 						["acc_flashlight",nil,750],
+						["optic_ACO_grn_smg",nil,950],
 						["optic_Aco_smg",nil,1200],
+						["optic_Hamr",nil,2500],
 						["HandGrenade_Stone","Flashbang",2500]
 					]
 				];
@@ -100,22 +104,29 @@ switch(_shop) do
 		switch(true) do
 		{
 			case (playerSide != west): {"You are not a cop!"};
-			case (__GETC__(life_coplevel) < 3): {"You are not at a sergeant rank!"};
+			case (__GETC__(life_coplevel) < 5): {"You are not a member of SWAT!"};
 			default
 			{
-				["Altis Sergeant Officer Shop",
+				["Altis SWAT Shop",
 					[
-						["SMG_02_F","Stun Gun",30000],
-						["30Rnd_9x21_Mag","Rubber bullets",150],
-						["muzzle_snds_L",nil,650],
-						["arifle_Katiba_C_F",nil,35000],
-						["30Rnd_65x39_caseless_green",nil,250],
-						["HandGrenade_Stone","Flashbang",2500],
-						["MineDetector",nil,1000],
-						["acc_flashlight",nil,750],
+						//["SMG_02_F","Stun Gun",30000],
+						//["30Rnd_9x21_Mag","Rubber bullets",150],
+						//["muzzle_snds_L",nil,650],
+						["arifle_Katiba_C_F",nil,20000],
+						["arifle_Katiba_GL_F",nil,30000],
+						["30Rnd_65x39_caseless_green",nil,150],
+						["UGL_FlareWhite_F",nil,150],
+						["1Rnd_SmokeBlue_Grenade_shell",nil,150],
+						["srifle_GM6_SOS_F",nil,35000],
+						["5Rnd_127x108_APDS_Mag",nil,300],						
+						["acc_flashlight",nil,750],					
+						["optic_ACO_grn_smg",nil,950],
 						["optic_Aco_smg",nil,1200],
 						["optic_Hamr",nil,2500],
-						["acc_pointer_IR",nil,1500]
+						["optic_Nightstalker",nil,2500],
+						["acc_pointer_IR",nil,1500],
+						["HandGrenade_Stone","Flashbang",2500],
+						["MineDetector",nil,1000]
 					]
 				];
 			};
@@ -161,7 +172,9 @@ switch(_shop) do
 				        ["ToolKit",nil,5000],
 				        ["FirstAidKit",nil,150],
 						["Medikit",nil,3000],
-				        ["NVGoggles",nil,2000]
+				        ["NVGoggles_INDEP",nil,2000],
+						["Rangefinder",nil,2500],
+						["optic_NVS",nil,2500]
 					]
 				];
 			};
@@ -210,14 +223,15 @@ switch(_shop) do
 						["hgun_ACPC2_F",nil,4500],
 						["9Rnd_45ACP_Mag",nil,45],
 						["hgun_PDW2000_F",nil,9500],
-						["hgun_PDW2000_Holo_snds_F",nil,15000],
 						["SMG_02_F",nil,12000],
 						["30Rnd_9x21_Mag",nil,75],
 						["SMG_01_F",nil,18500],
 						["30Rnd_45ACP_Mag_SMG_01",nil,125],
 						["optic_ACO_grn_smg",nil,950],
 						["V_Rangemaster_belt",nil,1900],
-						["V_BandollierB_khk",nil,2500]
+						["V_BandollierB_khk",nil,2500],
+						["NVGoggles",nil,2000],
+						["U_NikosBody",nil,2000]
 					]
 				];
 			};

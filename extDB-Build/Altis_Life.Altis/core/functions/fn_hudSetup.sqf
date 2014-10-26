@@ -15,7 +15,12 @@ _version = _display displayCtrl 1000;
 _version ctrlSetText format["BETA: 0.%1.%2",(productVersion select 2),(productVersion select 3)];
 
 //if we are a cop we dont want to see the crime symbol
-if(playerSide == west) then {ctrlShow[23525,false];};
+if(playerSide == west) then {
+	ctrlShow[23525,false];
+} else {
+	//ok lets fetch the bounty if there is one
+	[[getPlayerUID player,"bountyCheck",["0", 0], true],"life_fnc_wantedAdd",false,false] spawn life_fnc_MP;
+};
 
 [] call life_fnc_hudUpdate;
 

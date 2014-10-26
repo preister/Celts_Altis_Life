@@ -35,6 +35,7 @@ switch(_resource) do {
 	};
 	
 	case  ("cannabis") : {
+		_batchSize = 2;
 		_resourceZones = ["weed_1"];
 	};
 	
@@ -43,7 +44,7 @@ switch(_resource) do {
 	};
 	
 	case  ("corn") : {
-		_batchSize = 5;
+		_batchSize = 3;
 		_resourceZones = ["corn_1"];
 	};
 	
