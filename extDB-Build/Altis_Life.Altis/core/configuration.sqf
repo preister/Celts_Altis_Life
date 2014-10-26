@@ -255,6 +255,7 @@ crimes_list = [
 	"110", //Trespassing
 	"111", //Driving without headlights
 	"112", //Driving without a license
+	"113", //Dangerous Driving
 	"187V", //Vehicular Manslaughter
 	"187A", //Attempted Murder
 	"187", //Manslaughter

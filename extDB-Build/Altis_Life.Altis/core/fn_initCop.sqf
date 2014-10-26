@@ -47,13 +47,3 @@ waitUntil{isNull (findDisplay 38500)}; //Wait for the spawn selection to be done
   waitUntil {uniform player != "H_MilCap_mcamo"};
  };
 };
-
-[] spawn     //Vest
-{
- while {true} do
- {
-  waitUntil {uniform player == "Vest_V_PlateCarrier2_rgr"};
-  player setObjectTextureGlobal [0,"textures\V_PlateCarrier2_rgr"];
-  waitUntil {uniform player != "Vest_V_PlateCarrier2_rgr"};
- };
-};
