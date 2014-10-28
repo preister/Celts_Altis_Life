@@ -138,6 +138,10 @@ switch(_crime) do {
 		_description = "Driving without a license";
 		_ticket = 1000;
 	};
+	case ("113") : {
+		_description = "Dangerous driving";
+		_ticket = 5000;
+	};
 };
 
 [_description,_ticket];

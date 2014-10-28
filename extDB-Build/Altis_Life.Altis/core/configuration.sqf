@@ -29,10 +29,14 @@ life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
 life_removeWanted = false;
+life_death_save_gear = [west]; //any side mentioned in this array keep their gear when respawning (cant be a __CONST__ due to onPlayerKilled eventHandler)
 
 //Persistent Saving
 __CONST__(life_save_civ,TRUE); //Save weapons for civs?
 __CONST__(life_save_yinv,TRUE); //Save Y-Inventory for players?
+
+//Persistent weapons
+__CONST__(life_gun_despawn_delay,0); //time in seconds guns should persist on the ground after a player has respawned
 
 //Revive constant variables.
 __CONST__(life_revive_cops,TRUE); //Set to false if you don't want cops to be able to revive downed players.
@@ -46,6 +50,13 @@ __CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persis
 __CONST__(life_gangUpgradeBase,10000); //MASDASDASD
 __CONST__(life_gangUpgradeMultipler,2.5); //BLAH
 
+//jail related stuff
+__CONST__(life_defaultBail,100000); //if the crime cant be determined this is the default bail
+life_defaultJailTime = 10*60;
+__CONST__(life_defaultJailTime,life_defaultJailTime); //if the crime cant be determined this is the default jail time
+life_jailRespawnPunishment = 18*60;
+__CONST__(life_jailRespawnPunishment,life_jailRespawnPunishment); //if somebody respawns to try to avoid jail time this is how much time they'll have to spend in jail for it, -1 is max time
+
 //Federal Reserve related stuff
 __CONST__(life_fedres_min_cops_num, 3); //sets the minimum amount of cops which need to be online to rob the federal reserve
 
@@ -57,7 +68,7 @@ life_clothing_purchase = [-1,-1,-1,-1,-1];
 *****************************
 */
 life_maxWeight = 50; //Identifies the max carrying weight (gets adjusted throughout game when wearing different types of clothing).
-life_maxWeightT = 24; //Static variable representing the players max carrying weight on start.
+life_maxWeightT = 50; //Static variable representing the players max carrying weight on start.
 life_carryWeight = 0; //Represents the players current inventory weight (MUST START AT 0).
 
 /*
@@ -75,6 +86,7 @@ life_delivery_in_progress = false;
 life_action_in_use = false;
 life_thirst = 100;
 life_hunger = 100;
+life_player_bounty = 0;
 __CONST__(life_paycheck_period,5); //Five minutes
 life_cash = 0;
 __CONST__(life_impound_car,350);
@@ -247,6 +259,7 @@ crimes_list = [
 	"110", //Trespassing
 	"111", //Driving without headlights
 	"112", //Driving without a license
+	"113", //Dangerous Driving
 	"187V", //Vehicular Manslaughter
 	"187A", //Attempted Murder
 	"187", //Manslaughter
@@ -287,7 +300,7 @@ sell_array =
 	["coffee",5],
 	["turtlesoup",1000],
 	["donuts",60],
-	["marijuana",2350],
+	["marijuana",3200],
 	["tbacon",25],
 	["lockpick",75],
 	["pickaxe",750],
@@ -308,7 +321,7 @@ sell_array =
 	["zipties",2],
 	["methu",650],
 	["methp",6500],
-	["moonshine",500]
+	["moonshine",1000]
 ];
 __CONST__(sell_array,sell_array);
 
@@ -340,7 +353,7 @@ buy_array =
 	["storagesmall",75000],
 	["storagebig",150000],
 	["zipties",5],
-	["moonshine",1000]
+	["moonshine",1500]
 ];
 __CONST__(buy_array,buy_array);
 
@@ -407,6 +420,7 @@ life_garage_prices =
 	["B_Truck_01_box_F", 15000],
 	["O_MRAP_02_F",15000],
 	["B_Heli_Light_01_F",10000],
+	["I_Heli_light_03_unarmed_F",12000],
 	["O_Heli_Light_02_unarmed_F",15000],
 	["C_Rubberboat",400],
 	["C_Boat_Civil_01_F",4500],
@@ -438,6 +452,7 @@ life_garage_sell =
 	["B_Truck_01_box_F", 150000],
 	["O_MRAP_02_F",65000],
 	["B_Heli_Light_01_F",57000],
+	["I_Heli_light_03_unarmed_F",68000],
 	["O_Heli_Light_02_unarmed_F",72500],
 	["C_Rubberboat",950],
 	["C_Boat_Civil_01_F",6800],
@@ -450,3 +465,8 @@ life_garage_sell =
 	["B_G_Offroad_01_armed_F",600000]
 ];
 __CONST__(life_garage_sell,life_garage_sell);
+
+/*
+	Debug Variables
+*/
+[] call life_fnc_debugConfiguration;

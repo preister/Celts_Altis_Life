@@ -37,4 +37,5 @@ switch (_type) do
 	case "home": {100000};
 	case "meth": {50000};
 	case "moonshine": {15000};
+	case "press": {100000};
 };

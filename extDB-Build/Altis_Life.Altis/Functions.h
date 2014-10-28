@@ -67,7 +67,6 @@ class Life_Client_Core
 		class requestMedic {};
 		class medicRequest {};
 		class deathScreen {};
-		class medicLoadout {};
 		class medicSirenLights {};
 		class medicLights {};
 		class medicSiren {};
@@ -158,6 +157,8 @@ class Life_Client_Core
 		class vehicleWeightCfg {};
 		class houseConfig {};
 		class crimesCfg {};
+		class defaultLoadouts {};
+		class debugConfiguration {};
 		
 		//Clothing Store Configs
 		class clothing_cop {};
@@ -218,8 +219,6 @@ class Life_Client_Core
 		class nearUnits {};
 		class actionKeyHandler {};
 		class playerCount {};
-		class fetchDeadGear {};
-		class loadDeadGear {};
 		class isnumeric {};
 		class escInterupt {};
 		class onTakeItem {};
@@ -237,6 +236,7 @@ class Life_Client_Core
 		class chargeCrime {};
 		class shopRobbed {};
 		class jewellersRobbed {};
+		class updatePlayerBounty {};
 	};
 	
 	class Network
@@ -266,7 +266,6 @@ class Life_Client_Core
 		class robPerson {};
 		class removeLicenses {};
 		class demoChargeTimer {};
-		class civLoadout {};
 		class handleDowned {};
 		class civInteractionMenu {};
 	};
@@ -313,7 +312,6 @@ class Life_Client_Core
 		class repairDoor {};
 		class doorAnimate {};
 		class fedCamDisplay {};
-		class copLoadout {};
 		class ticketPaid {};
 		class seizeObjects {};
 		class seizePlayerWeapon {};

@@ -9,6 +9,16 @@ if(count _this == 1) exitWith {false};
 _unit = _this select 0;
 _container = _this select 1;
 
+//if the character is dead and we save the gear for its side nobody can loot it (so we don't dublicate items)
+// this is a precaution, people which keep their gear should have all yItems removed by this point.
+if(((_container isKindOf "Man") && !(alive _container) && (side _container in life_death_save_gear))) exitWith {
+	hint "Sorry player is locked down, no looting.";
+	[] spawn {
+		waitUntil {!isNull (findDisplay 602)};
+		closeDialog 0;
+	};
+};
+
 _isPack = getNumber(configFile >> "CfgVehicles" >> (typeOf _container) >> "isBackpack");
 if(_isPack == 1) then {
 	hint localize "STR_MISC_Backpack";

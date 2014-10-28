@@ -7,8 +7,7 @@
 */
 private["_medic","_dir"];
 _medic = [_this,0,"Unknown Medic",[""]] call BIS_fnc_param;
-_oldGear = [life_corpse] call life_fnc_fetchDeadGear;
-[_oldGear] spawn life_fnc_loadDeadGear;
+[] spawn life_fnc_loadGear;
 life_corpse setVariable["realname",nil,true]; //Should correct the double name sinking into the ground.
 [[life_corpse],"life_fnc_corpse",nil,FALSE] spawn life_fnc_MP;
 _dir = getDir life_corpse;
@@ -29,7 +28,7 @@ if(life_atmcash > (call life_revive_fee)) then {
 if (uniform player == "U_Rangemaster") then {
 	switch(playerSide) do {
 		case independent: {[[player,0,"textures\medic_uniform.jpg"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;};
-		case west: {[[player,0,"textures\police_uniform_co.paa"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;};
+		case west: {[[player,0,"textures\police_uniform_co.jpg"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;};
 	};
 };
 
