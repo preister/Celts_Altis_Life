@@ -12,6 +12,11 @@ _num = [_this,2,0,[0]] call BIS_fnc_param; //Number of items to add or remove.
 if(_item == "" OR _num == 0) exitWith {false};
 
 _var = [_item,0] call life_fnc_varHandle;
+//in case this was actually already a variable name we need to fix that situation.
+if(typeName _var == "BOOL") then {
+	_var = _item;
+	_item = [_item,1] call life_fnc_varHandle;
+};
 if(_math) then
 {
 	_diff = [_item,_num,life_carryWeight,life_maxWeight] call life_fnc_calWeightDiff;

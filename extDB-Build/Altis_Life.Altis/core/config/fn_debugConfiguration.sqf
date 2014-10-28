@@ -7,5 +7,5 @@
 ****** Item Storage & Loading *****
 ***********************************
 */
-__CONST__(life_debug_logLifeGear,TRUE); //log the item array that gets saved and loaded
-__CONST__(life_debug_logServerGear,TRUE); //log the item array that gets send and received from the server
+__CONST__(life_debug_logLifeGear,FALSE); //log the item array that gets saved and loaded
+__CONST__(life_debug_logServerGear,FALSE); //log the item array that gets send and received from the server
