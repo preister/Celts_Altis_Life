@@ -252,3 +252,6 @@ class CfgNotifications
 		priority = 5;
 	};
 };
+
+// delete the following line when the lxOPS is no more used
+#include "LxOPS\lxOPS_dlg.hpp"
