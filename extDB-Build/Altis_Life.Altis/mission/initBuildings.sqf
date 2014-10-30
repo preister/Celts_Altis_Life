@@ -1,4 +1,4 @@
-//#include "siteA.sqf"
+#include "testA.sqf"
 
 /*
  Do your own base you can add as many scripts like this

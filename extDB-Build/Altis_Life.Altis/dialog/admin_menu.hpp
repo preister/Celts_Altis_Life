@@ -59,7 +59,17 @@ class life_admin_menu {
 			w = 0.35;
 			h = 0.6;
 		};
-
+		
+		class GIDButtonKey : Life_RscButtonMenu {
+			idc = -1;
+			text = "Start GID";
+			onButtonClick = "closeDialog 0; [] execVM ""LxOPS\lxOPS.sqf"";";
+			x = -0.06 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+			y = 0.89;
+			w = (6.25 / 40);
+			h = (1 / 25);
+		};
+		
 		class CloseButtonKey : Life_RscButtonMenu {
 			idc = -1;
 			text = "$STR_Global_Close";
