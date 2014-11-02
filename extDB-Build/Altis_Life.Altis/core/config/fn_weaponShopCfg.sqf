@@ -171,7 +171,6 @@ switch(_shop) do
 				        ["ItemGPS",nil,100],
 				        ["ToolKit",nil,5000],
 				        ["FirstAidKit",nil,150],
-						["Medikit",nil,3000],
 				        ["NVGoggles_INDEP",nil,2000],
 						["Rangefinder",nil,2500],
 						["optic_NVS",nil,2500]

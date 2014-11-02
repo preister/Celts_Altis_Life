@@ -4446,6 +4446,7 @@ class Mission
 					vehicle="C_man_1";
 					leader=1;
 					skill=0.60000002;
+					text="Sofia_Jewellers";
 					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; this addAction[""Rob the Jewellers"",life_fnc_robJewellers];";
 				};
 			};
@@ -4466,6 +4467,7 @@ class Mission
 					vehicle="C_man_1";
 					leader=1;
 					skill=0.60000002;
+					text="Pyrgos_Jewellers";
 					init="this allowDamage false; this enableSimulation false; this addAction[""Jewellers"",life_fnc_virt_menu,""jewellers""]; this addAction[""Rob the Jewellers"",life_fnc_robJewellers];";
 				};
 			};
@@ -19165,7 +19167,7 @@ class Mission
 		};
 		class Item261
 		{
-			position[]={17090.477,14.686295,12692.007};
+			position[]={17089.24,14.700579,12681.49};
 			name="gun_store_1_3_1";
 			text="Gun Store";
 			type="loc_Bunker";
