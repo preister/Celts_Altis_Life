@@ -147,6 +147,18 @@ switch (_shop) do
 			["B_SDV_01_F",100000]
 		];
 	};
+	
+	case "toy_shop":
+	{
+		if(__GETC__(life_adminlevel) > 1) then
+		{
+		_return set[count _return,
+		["O_Plane_CAS_02_F",1000],
+		["O_Heli_Attack_02_black_F",1000],
+		["B_Quadbike_01_F",2500]
+		];
+		};
+	};
 };
 
 _return;
