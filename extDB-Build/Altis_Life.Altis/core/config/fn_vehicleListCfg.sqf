@@ -156,7 +156,15 @@ switch (_shop) do
 			[
 				["O_Plane_CAS_02_F",1000],
 				["O_Heli_Attack_02_black_F",1000],
-				["B_Quadbike_01_F",2500]
+				["O_Heli_Light_02_v2_F",1000],
+				["O_Heli_Transport_04_F",1000],
+				["O_Heli_Transport_04_ammo_F",1000],
+				["O_Heli_Transport_04_bench_F",1000],
+				["O_Heli_Transport_04_box_F",1000],
+				["O_Heli_Transport_04_covered_F",1000],
+				["O_Heli_Transport_04_fuel_F",1000],
+				["O_Heli_Transport_04_medevac_F",1000],
+				["O_Heli_Transport_04_repair_F",1000]
 			];
 		};
 	};
