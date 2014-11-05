@@ -374,7 +374,7 @@ class Mission
 					skill=0.60000002;
 					text="cop_3";
 					init="removeBackpack this; removeAllWeapons this;";
-					description="WhiteListed - Cop 3";
+					description="Public Slot - Cop 3";
 				};
 				class Item16
 				{

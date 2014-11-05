@@ -164,7 +164,9 @@ switch (_shop) do
 				["O_Heli_Transport_04_covered_F",1000],
 				["O_Heli_Transport_04_fuel_F",1000],
 				["O_Heli_Transport_04_medevac_F",1000],
-				["O_Heli_Transport_04_repair_F",1000]
+				["O_Heli_Transport_04_repair_F",1000],
+				["B_Heli_Transport_03_F",1000],
+				["B_Heli_Transport_03_unarmed_F",1000]
 			];
 		};
 	};
