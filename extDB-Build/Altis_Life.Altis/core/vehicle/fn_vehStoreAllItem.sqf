@@ -46,21 +46,18 @@ _itemsStored = 0;
 while{ (_itemsStored < _itemsToStore) } do
 {
 	//only take an item if there is actually one left in the player inventory and there is actually space for another item
-	if ([false,_ctrl,1] call life_fnc_handleInv) then 
+	if !([false,_ctrl,1] call life_fnc_handleInv) exitWith {}; 
+	_index = [_ctrl,_inv] call TON_fnc_index;
+	if(_index == -1) then
 	{
-		_index = [_ctrl,_inv] call TON_fnc_index;
-		if(_index == -1) then
-		{
-			_inv set[count _inv,[_ctrl, 1]];
-		}
-			else
-		{
-			_val = _inv select _index select 1;
-			_inv set[_index,[_ctrl,_val + 1]];
-		};
-		
-		_itemsStored = _itemsStored + 1;
+		_inv set[count _inv,[_ctrl, 1]];
+	}
+		else
+	{
+		_val = _inv select _index select 1;
+		_inv set[_index,[_ctrl,_val + 1]];
 	};
+	_itemsStored = _itemsStored + 1;
 };
 //adding an additional layer of checking - yeah I know that's bad style but ... :(
 if (0 != _itemsStored) then {
