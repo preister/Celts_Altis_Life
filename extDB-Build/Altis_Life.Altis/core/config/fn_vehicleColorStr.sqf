@@ -146,7 +146,7 @@ switch (_vehicle) do
 		switch (_index) do
 		{
 			case 0: {_color = "Digi Green"};
-			case 1: {_color = "Rebel Digital"};
+			case 1: {_color = "Urban Camo"};
 			case 2: {_color = "EMS White"};
 			case 3: {_color = "CeltS Chopper"};
 		};
