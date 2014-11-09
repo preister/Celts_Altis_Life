@@ -20,17 +20,25 @@ switch (_filter) do
 	case 0:
 	{
 		_ret = [
-			["U_Rangemaster","Cop Uniform",25]
+			["U_Rangemaster","Cop Uniform",25],
+			["U_Marshal","Cop Uniform2",25]
 		];
 	};
 	
 	//Hats
 	case 1:
 	{
+		_ret = [
+			["H_Cap_police",nil,50]
+		];
 		if(__GETC__(life_coplevel) > 2) then
 		{
 			_ret set[count _ret,["H_Beret_blk_POLICE",nil,100]];
 			_ret set[count _ret,["H_Beret_02",nil,100]];
+		};
+		if(__GETC__(life_coplevel) > 5) then
+		{
+			_ret set[count _ret,["G_Balaclava_blk",nil,200]];
 		};
 	};
 	
