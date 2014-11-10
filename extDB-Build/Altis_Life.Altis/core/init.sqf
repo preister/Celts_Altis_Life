@@ -100,7 +100,9 @@ life_fnc_garageRefund = compileFinal
 	if(_unit != player) exitWith {};
 	life_atmcash = life_atmcash + _price;
 ";
+player enableFatigue false;
 
 [] execVM "core\init_survival.sqf";
 
 __CONST__(life_paycheck,life_paycheck); //Make the paycheck static.
+

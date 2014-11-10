@@ -116,6 +116,7 @@ class Life_Client_Core
 		class surrender {}; //surrender action
 		class gather {};
 		class robJewellers {}; //rob jewellers
+		class blackjack {};
 	};
 	
 	class Housing

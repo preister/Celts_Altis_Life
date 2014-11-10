@@ -24,6 +24,7 @@ _unit setVariable["Escorting",FALSE,TRUE];
 _unit setVariable["transporting",FALSE,TRUE]; //Again why the fuck am I setting this? Can anyone tell me?
 _unit setVariable["steam64id",(getPlayerUID player),true]; //Reset the UID.
 _unit setVariable["realname",profileName,true]; //Reset the players name.
+_unit enableFatigue false;	
 if(playerSide in life_death_save_gear) then {
 	[] spawn life_fnc_loadGear;
 };
