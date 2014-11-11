@@ -53,7 +53,7 @@ if(!isNull _source) then {
 		if(_projectile in ["B_9x21_Ball"] && _curWep in ["SMG_02_F"]) then {
 			if((side _source == west && playerSide != west)) then {
 				//only if the player is at or below 20% health do we down him or her
-				if (20 < round((1 - (damage player)) * 100)) then {
+				if (20 > round((1 - (damage player)) * 100)) then {
 					private["_isVehicle","_isQuad"];
 					_isVehicle = if(vehicle player != player) then {true} else {false};
 					_isQuad = if(_isVehicle) then {if(typeOf(vehicle player) == "B_Quadbike_01_F") then {true} else {false}} else {false};
