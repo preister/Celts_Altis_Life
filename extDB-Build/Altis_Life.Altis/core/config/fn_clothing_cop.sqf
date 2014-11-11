@@ -36,10 +36,6 @@ switch (_filter) do
 			_ret set[count _ret,["H_Beret_blk_POLICE",nil,100]];
 			_ret set[count _ret,["H_Beret_02",nil,100]];
 		};
-		if(__GETC__(life_coplevel) > 5) then
-		{
-			_ret set[count _ret,["G_Balaclava_blk",nil,200]];
-		};
 	};
 	
 	//Glasses
@@ -58,6 +54,10 @@ switch (_filter) do
 			["G_Lowprofile",nil,30],
 			["G_Combat",nil,55]
 		];
+		if(__GETC__(life_coplevel) > 5) then
+		{
+			_ret set[count _ret,["G_Balaclava_blk",nil,200]];
+		};
 	};
 	
 	//Vest
@@ -70,6 +70,10 @@ switch (_filter) do
 		{
 			_ret set[count _ret,["V_TacVest_blk_POLICE",nil,1500]];
 		};
+		if(__GETC__(life_coplevel) > 5) then
+		{
+			_ret set[count _ret,["V_PlateCarrier1_blk",nil,2500]];
+		};
 	};
 	
 	//Backpacks
@@ -77,7 +81,8 @@ switch (_filter) do
 	{
 		_ret =
 		[
-			["B_Carryall_oucamo",nil,500]
+			["B_Carryall_oucamo",nil,500],
+			["B_AssaultPack_blk",nil,250]
 		];
 	};
 };
