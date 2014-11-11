@@ -28,6 +28,6 @@ switch (_shop) do
 	case "jail": {["Jail Shop",["water","apple"]]};
 	case "blueking": {["Blue King",["blueburger","cola"]]};
 	case "gyros": {["Gyros",["gyros","cola"]]};
-	case "redburger": {["Red Burger",["Redburger","cola"]]};
+	case "redburger": {["Red Burger",["redburger","cola"]]};
 	case "newsstand": {["News Stand",["twix","kitkat","crisps","cola"]]};
 };
