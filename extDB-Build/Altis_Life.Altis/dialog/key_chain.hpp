@@ -71,7 +71,7 @@ class Life_key_management {
 			idc = -1;
 			text = "$STR_Keys_DropKey";
 			onButtonClick = "[] call life_fnc_keyDrop";
-			x = 0.1 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+			x = 0.7 - (6.25 / 40);
 			y = 0.8 - (1 / 25);
 			w = (6.25 / 40);
 			h = (1 / 25);
