@@ -46,4 +46,17 @@
 			[_x,0,_texture] spawn life_fnc_setTexture;
 		};
 	};
+	if(uniform _x == "U_B_CombatUniform_mcam") then {
+		private["_texture"];
+		_texture = "";
+		switch(side _x) do {
+			case west: {
+				_texture = "textures\swat_shirt.paa";
+			};
+		};
+		if(_texture != "") then {
+			//we only need to run this on this particular client, everybody else knows already about it
+			[_x,0,_texture] spawn life_fnc_setTexture;
+		};
+	};
 } foreach (playableUnits);

@@ -35,6 +35,18 @@ if(_uniform == "U_Rangemaster") then {
 		_handle = [[player,0,_texture],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
 	};
 };
+if(_uniform == "U_B_CombatUniform_mcam") then {
+	private["_texture"];
+	_texture = "";
+	switch(playerSide) do {
+		case west: {
+			_texture = "textures\swat_shirt.paa";
+		};
+	};
+	if(_texture != "") then {
+		_handle = [[player,0,_texture],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
+	};
+};
 _vest = vest player;
 _backpack = backpack player;
 _goggles = goggles player;

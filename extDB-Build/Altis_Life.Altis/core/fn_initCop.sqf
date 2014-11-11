@@ -37,13 +37,3 @@ waitUntil{isNull (findDisplay 38500)}; //Wait for the spawn selection to be done
   waitUntil {uniform player != "U_Rangemaster"};
  };
 };
-
-[] spawn     //Hat
-{
- while {true} do
- {
-  waitUntil {uniform player == "H_MilCap_mcamo"};
-  player setObjectTextureGlobal [0,"textures\police_cap_co.paa"];
-  waitUntil {uniform player != "H_MilCap_mcamo"};
- };
-};

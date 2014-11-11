@@ -21,8 +21,11 @@ switch (_filter) do
 	{
 		_ret = [
 			["U_Rangemaster","Cop Uniform",25],
-			["U_Marshal","Cop Uniform2",25]
 		];
+		if(__GETC__(life_coplevel) > 5) then
+		{
+			_ret set[count _ret,["U_B_CombatUniform_mcam","SWAT uniform",200]];
+		};
 	};
 	
 	//Hats

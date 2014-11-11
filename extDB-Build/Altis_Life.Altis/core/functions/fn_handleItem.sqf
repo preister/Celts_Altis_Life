@@ -230,6 +230,18 @@ if(_bool) then
 										_handle = [[player,0,_texture],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
 									};
 								};
+								if(uniform player == "U_B_CombatUniform_mcam") then {
+									private["_texture"];
+									_texture = "";
+									switch(playerSide) do {
+										case west: {
+											_texture = "textures\swat_shirt.paa";
+										};
+									};
+									if(_texture != "") then {
+										_handle = [[player,0,_texture],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
+									};
+								};
 							};
 						};
 					};

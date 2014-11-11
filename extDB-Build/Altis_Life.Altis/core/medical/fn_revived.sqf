@@ -32,6 +32,13 @@ if (uniform player == "U_Rangemaster") then {
 	};
 };
 
+//SWAT uniform re-skin
+if (uniform player == "U_B_CombatUniform_mcam") then {
+	switch(playerSide) do {
+		case west: {[[player,0,"textures\swat_shirt.paa"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;};
+	};
+};
+
 //Bring me back to life.
 player setDir _dir;
 player setPosASL (visiblePositionASL life_corpse);
