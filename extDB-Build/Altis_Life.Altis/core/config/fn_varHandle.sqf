@@ -67,9 +67,16 @@ switch (_mode) do
 			case "storagebig": {"life_inv_storagebig"};
 			case "zipties": {"life_inv_zipties"};
 			case "methu": {"life_inv_methu"};
-			case "methp": {"life_inv_methp"};   // into case 0 field 
+			case "methp": {"life_inv_methp"};  
 			case "corn": {"life_inv_corn"};
 			case "moonshine": {"life_inv_moonshine"};
+			case "blueburger": {"life_inv_blueburger"};
+			case "redburger": {"life_inv_redburger"};
+			case "gyros": {"life_inv_gyros"};
+			case "twix": {"life_inv_twix"};
+			case "kitkat": {"life_inv_kitkat"};
+			case "crisps": {"life_inv_crisps"};
+			case "cola": {"life_inv_cola"};
 		};
 	};
 	
@@ -131,6 +138,13 @@ switch (_mode) do
 			case "life_inv_methp": {"methp"}; // in the case 1 field 
 			case "life_inv_corn": {"corn"};
 			case "life_inv_moonshine": {"moonshine"};
+			case "life_inv_blueburger": {"blueburger"};
+			case "life_inv_redburger": {"redburger"};
+			case "life_inv_gyros": {"gyros"};
+			case "life_inv_kitkat": {"kitkat"};
+			case "life_inv_twix": {"twix"};
+			case "life_inv_crisps": {"crisps"};
+			case "life_inv_cola": {"cola"};
 		};
 	};
 };

@@ -177,6 +177,13 @@ life_inv_items =
 	"life_inv_methu",
 	"life_inv_methp",
 	"life_inv_corn",
+	"life_inv_blueburger",
+	"life_inv_gyros",
+	"life_inv_redburger",
+	"life_inv_twix",
+	"life_inv_kitkat",
+	"life_inv_crisps",
+	"life_inv_cola",
 	"life_inv_moonshine"
 ];
 
@@ -328,6 +335,9 @@ __CONST__(sell_array,sell_array);
 buy_array = 
 [
 	["apple",65],
+	["twix",65],
+	["kitkat",65],
+	["crisps",65],
 	["rabbit",75],
 	["salema",55],
 	["ornate",50],
@@ -340,7 +350,11 @@ buy_array =
 	["turtlesoup",2500],
 	["donuts",120],
 	["coffee",10],
+	["cola",10],
 	["tbacon",75],
+	["blueburger",75],
+	["redburger",75],
+	["gyros",150],
 	["lockpick",150],
 	["pickaxe",1200],
 	["redgull",750],
