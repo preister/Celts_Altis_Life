@@ -133,7 +133,7 @@ switch (_mode) do
 			case "life_inv_defusekit": {"defusekit"};
 			case "life_inv_storagesmall": {"storagesmall"};
 			case "life_inv_storagebig": {"storagebig"};
-			case "life_inv_zipties": {"zipties"};
+			case "life_inv_zipties": {"zipties"};	
 			case "life_inv_methu": {"methu"};
 			case "life_inv_methp": {"methp"}; // in the case 1 field 
 			case "life_inv_corn": {"corn"};
