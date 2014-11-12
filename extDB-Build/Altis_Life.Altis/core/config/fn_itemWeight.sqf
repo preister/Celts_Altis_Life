@@ -61,5 +61,6 @@ switch (_item) do
 	case "methp": {3};
 	case "corn": {2};
 	case "moonshine": {1};
+	case "speedbomb": {10};
 	default {1};
 };

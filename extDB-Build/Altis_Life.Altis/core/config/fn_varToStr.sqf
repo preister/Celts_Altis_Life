@@ -73,6 +73,7 @@ switch (_var) do
 	case "life_inv_twix": {"Twix"};
 	case "life_inv_crisps": {"Crisps"};
 	case "life_inv_cola": {"Cola"};
+	case "life_inv_speedbomb": {"Speed Bomb"};
 	
 	//License Block
 	case "license_civ_driver": {(localize "STR_License_Driver")};

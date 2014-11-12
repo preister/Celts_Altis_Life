@@ -20,7 +20,7 @@ switch (_filter) do
 	case 0:
 	{
 		_ret = [
-			["U_Rangemaster","Cop Uniform",25],
+			["U_Rangemaster","Cop Uniform",25]
 		];
 		if(__GETC__(life_coplevel) > 5) then
 		{

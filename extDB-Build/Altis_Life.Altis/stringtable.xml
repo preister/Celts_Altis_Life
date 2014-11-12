@@ -5095,6 +5095,14 @@
 			<German>Aus dem Fahrzeug austeigen</German>
 			<French>Sortir du véhicule</French>
 		</Key>
+		<Key ID="STR_Item_SpeedBomb">
+			<Original>Speed Bomb</Original>
+			<English>Speed Bomb</English>
+			<German>Speed Bombe</German>
+			<French>Bombe de Vitesse</French>
+			<Italian>Translate</Italian>
+			<Portuguese>Translate</Portuguese>
+		</Key>
 	</Package>
 		
 </Project>
