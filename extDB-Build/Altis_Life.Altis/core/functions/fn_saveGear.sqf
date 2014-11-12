@@ -1,191 +1,174 @@
+#include <macro.h>
 /*
     File: fn_saveGear.sqf
     Author: Bryan "Tonic" Boardwine
     Full Gear/Y-Menu Save by Vampire
     Edited: Itsyuka
+	Edited: SrgFlip
     
     Description:
-    Saves the players gear for syncing to the database for persistence..
+    collect all the player gear in a nice list which we can afterwards store in the db
 */
-private["_return","_uItems","_bItems","_vItems","_pItems","_hItems","_yItems","_uMags","_vMags","_bMags","_pMag","_hMag","_uni","_ves","_bag","_handled"];
-_return = [];
-
-_return set[count _return,uniform player];
-_return set[count _return,vest player];
-_return set[count _return,backpack player];
-_return set[count _return,goggles player];
-_return set[count _return,headgear player];
-_return set[count _return,assignedITems player];
-if(playerSide == west || playerSide == civilian && {(call life_save_civ)}) then {
-    _return set[count _return,primaryWeapon player];
-    _return set[count _return,handgunWeapon player];
-} else {
-    _return set[count _return,[]];
-    _return set[count _return,[]];
-};
-
-_uItems = [];
-_uMags  = [];
-_bItems = [];
-_bMags  = [];
-_vItems = [];
-_vMags  = [];
-_pItems = [];
-_hItems = [];
-_yItems = [];
-_uni = [];
-_ves = [];
-_bag = [];
-
-if(uniform player != "") then
-{
-    {
-        if (_x in (magazines player)) then {
-            _uMags = _uMags + [_x];
-        } else {
-            _uItems = _uItems + [_x];
-        };
-    } forEach (uniformItems player);
-};
-
-if(backpack player != "") then
-{
-    {
-        if (_x in (magazines player)) then {
-            _bMags = _bMags + [_x];
-        } else {
-            _bItems = _bItems + [_x];
-        };
-    } forEach (backpackItems player);
-};
-
-if(vest player != "") then
-{
-    {
-        if (_x in (magazines player)) then {
-            _vMags = _vMags + [_x];
-        } else {
-            _vItems = _vItems + [_x];
-        };
-    } forEach (vestItems player);
-};
-
-if(count (primaryWeaponMagazine player) > 0 && alive player) then
-{
-    _pMag = ((primaryWeaponMagazine player) select 0);
-    if(_pMag != "") then
-    {
-        _uni = player canAddItemToUniform _pMag;
-        _ves = player canAddItemToVest _pMag;
-        _bag = player canAddItemToBackpack _pMag;
-        _handled = false;
-        if(_ves) then
-        {
-            _vMags = _vMags + [_pMag];
-            _handled = true;
-        };
-        if(_uni && !_handled) then
-        {
-            _uMags = _uMags + [_pMag];
-            _handled = true;
-        };
-        if(_bag && !_handled) then
-        {
-            _bMags = _bMags + [_pMag];
-            _handled = true;
-        };
-    };
-};
-
-if(count (handgunMagazine player) > 0 && alive player) then
-{
-    _hMag = ((handgunMagazine player) select 0);
-    if(_hMag != "") then
-    {
-        _uni = player canAddItemToUniform _hMag;
-        _ves = player canAddItemToVest _hMag;
-        _bag = player canAddItemToBackpack _hMag;
-        _handled = false;
-        if(_ves) then
-        {
-            _vMags = _vMags + [_hMag];
-            _handled = true;
-        };
-        if(_uni && !_handled) then
-        {
-            _uMags = _uMags + [_hMag];
-            _handled = true;
-        };
-        if(_bag && !_handled) then
-        {
-            _bMags = _bMags + [_hMag];
-            _handled = true;
-        };
-    };
-};
-
-if(count (primaryWeaponItems player) > 0) then
-{
-    {
-        _pItems = _pItems + [_x];
-    } forEach (primaryWeaponItems player);
-};
-
-if(count (handGunItems player) > 0) then
-{
-    {
-        _hItems = _hItems + [_x];
-    } forEach (handGunItems player);
-};
-
-{
-    _name = (_x select 0);
-    _val = (_x select 1);
-    if (_val > 0) then {
-        for "_i" from 1 to _val do {
-            _yItems = _yItems + [_name];
-        };
-    };
-} forEach [
-    ["life_inv_apple", life_inv_apple],
-    ["life_inv_rabbit", life_inv_rabbit],
-    ["life_inv_salema", life_inv_salema],
-    ["life_inv_ornate", life_inv_ornate],
-    ["life_inv_mackerel", life_inv_mackerel],
-    ["life_inv_tuna", life_inv_tuna],
-    ["life_inv_mullet", life_inv_mullet],
-    ["life_inv_catshark", life_inv_catshark],
-    ["life_inv_fishingpoles", life_inv_fishingpoles],
-    ["life_inv_water", life_inv_water],
-    ["life_inv_donuts", life_inv_donuts],
-    ["life_inv_turtlesoup", life_inv_turtlesoup],
-    ["life_inv_coffee", life_inv_coffee],
-    ["life_inv_fuelF", life_inv_fuelF],
-    ["life_inv_fuelE", life_inv_fuelE],
-    ["life_inv_pickaxe", life_inv_pickaxe],
-    ["life_inv_tbacon", life_inv_tbacon],
-    ["life_inv_lockpick", life_inv_lockpick],
-    ["life_inv_redgull", life_inv_redgull],
-    ["life_inv_peach", life_inv_peach],
-    ["life_inv_spikeStrip", life_inv_spikeStrip],
-    ["life_inv_defusekit", life_inv_defusekit],
-    ["life_inv_storagesmall", life_inv_storagesmall],
-    ["life_inv_storagebig", life_inv_storagebig],
-	["life_inv_zipties", life_inv_zipties]
+//private for the variables used in the entire file, other privates specify variables which are just used in subsections to keep it readable
+private["_uniform","_vest","_backpack","_goggles","_headgear","_gear","_primary","_handgun",
+	"_uniformItems","_backpackItems","_vestItems","_primaryItems","_handgunItems","_yItems",
+	"_secondary","_primaryMag","_handgunMag","_secondaryMag","_handled","_var","_val", "_name"
 ];
 
-_return set[count _return,_uItems];
-_return set[count _return,_uMags];
-_return set[count _return,_bItems];
-_return set[count _return,_bMags];
-_return set[count _return,_vItems];
-_return set[count _return,_vMags];
-_return set[count _return,_pItems];
-_return set[count _return,_hItems];
-if(call life_save_yinv) then {
-    _return set[count _return,_yItems];
-} else {
-    _return set[count _return,[]];
+//in output array order
+_uniform = uniform player;
+//until I find a better way of doing this we need to make sure the rangemaster uniform gets reskinned correctly hear as well as in handleItem
+// fe if somebody picks up a uniform we want it directly reskinned and not when we finally load Gear again.
+// JUST TO MAKE THIS CLEAR THIS NEEDS CLEANING UP BEFORE WE ADD ANY MORE CLOTHING OR GEAR SKINS!
+if(_uniform == "U_Rangemaster") then {
+	private["_texture"];
+	_texture = "";
+	switch(playerSide) do {
+		case independent: {
+			_texture = "textures\medic_uniform.jpg";
+		};
+		case west: {
+			_texture = "textures\police_uniform_co.jpg";
+		};
+	};
+	if(_texture != "") then {
+		_handle = [[player,0,_texture],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
+	};
+};
+if(_uniform == "U_B_CombatUniform_mcam") then {
+	private["_texture"];
+	_texture = "";
+	switch(playerSide) do {
+		case west: {
+			_texture = "textures\swat_shirt.paa";
+		};
+	};
+	if(_texture != "") then {
+		_handle = [[player,0,_texture],"life_fnc_setTexture",true,false] spawn life_fnc_MP;{scriptDone _handle};
+	};
+};
+_vest = vest player;
+_backpack = backpack player;
+_goggles = goggles player;
+_headgear = headgear player;
+_gear = assignedITems player; //like Compass or GPS
+_primary = "";
+_handgun = "";
+_uniformItems = [];
+_backpackItems = [];
+_vestItems = [];
+_primaryItems = [];
+_handgunItems = [];
+_yItems = [];
+_secondary = [];
+
+_primaryMag = "";
+_handgunMag = "";
+_secondaryMag = "";
+
+if ((playerSide == west) || __GETC__(life_save_civ)) then {
+	_primary = primaryWeapon player;
+	if(_primary != "") then
+	{
+		_primaryItems = primaryWeaponItems player;
+		if(count (primaryWeaponMagazine player) > 0) then
+		{
+			_primaryMag = ((primaryWeaponMagazine player) select 0);
+		};
+	};
+	_handgun = handgunWeapon player;
+	if(_handgun != "") then
+	{
+		_handgunItems = handgunItems player;
+		if(count (handgunMagazine player) > 0) then
+		{
+			_handgunMag = ((handgunMagazine player) select 0);
+		};
+	};
+	//secondary seems to be broken?
+	//_secondary = secondaryWeapon player;
+	//if(_secondary != "") then
+	//{
+	//	//secondaries don't have additional items it seems
+	//	if((count (secondaryWeaponMagazineplayer player) > 0) && (alive player)) then
+	//	{
+	//		_secondaryMag = ((secondaryWeaponMagazineplayer player) select 0);
+	//	};
+	//};
+};
+//take care of carried items, and especially before we store any additional items in them
+if(_uniform != "") then {_uniformItems = uniformItems player;};
+if(_backpack != "") then {_backpackItems = backpackItems player;};
+if(_vest != "") then {_vestItems = vestItems player;};
+
+//now add those magazines to the normal items wherever there is space, simple way for the player
+// to keep the mags and at the same time this means you cant just directly shoot after being fe. revived
+_handled = false;
+{
+	if(_x != "") then
+	{
+		if(player canAddItemToVest _x) then
+		{
+			_vestItems = _vestItems + [_x];
+			_handled = true;
+		};
+		if((player canAddItemToUniform _x) && !_handled) then
+		{
+			_uniformItems = _uniformItems + [_x];
+			_handled = true;
+		};
+		if((player canAddItemToBackpack _x) && !_handled) then
+		{
+			_backpackItems = _backpackItems + [_x];
+			_handled = true;
+		};
+	};
+} forEach[_primaryMag,_handgunMag,_secondaryMag];
+//we dont need to run through this long thing if save yItems is deactivated
+if(__GETC__(life_save_yinv)) then {
+	{
+		_var = _x;
+		_val = missionNamespace getVariable _var;
+		_name = [_var,1] call life_fnc_varHandle;
+		//check if the item is illegal - we only save legal stuff
+		{
+			_illegal = _x select 0;
+			if(_var == _illegal) exitWith {_val = 0};
+		} forEach life_illegal_items;
+		if (_val > 0) then {
+			for "_i" from 1 to _val do {
+				_yItems = _yItems + [_name];
+			};
+		};
+	} forEach life_inv_items;
 };
 
-life_gear = _return;
+/////////////////////////////////////////////////////////////////////////////////////////
+// THE ORDER OF THIS LIST IS VERY IMPORTANT, KEEP IN SYNC WITH LOAD GEAR AT ALL TIMES!
+// If adding new items ALWAYS add them to the end of the list otherwise you need to clear
+// the gear of all players in the db to prevent failures
+/////////////////////////////////////////////////////////////////////////////////////////
+life_gear = [
+	_uniform,
+	_vest,
+	_backpack,
+	_goggles,
+	_headgear,
+	_gear,
+	_primary,
+	_handgun,
+	_uniformItems,
+	[], //_uniformMags UNUSED
+	_backpackItems,
+	[], // _backpackMags UNUSED
+	_vestItems,
+	[], // _vestMags UNUSED
+	_primaryItems,
+	_handgunItems,
+	_yItems,
+	_secondary
+];
+
+if (__GETC__(life_debug_logLifeGear)) then {
+	diag_log format["DEBUGLOG: Saving gear: %1", life_gear];
+};

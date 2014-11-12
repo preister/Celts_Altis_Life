@@ -105,3 +105,22 @@
 		};
 	};
 };
+
+[] spawn
+{
+	private["_bp","_load","_cfg"];
+	while{true} do
+	{
+		waitUntil {backpack player != ""};
+		_bp = backpack player;
+		_cfg = getNumber(configFile >> "CfgVehicles" >> (backpack player) >> "maximumload");
+		_load = round(_cfg / 4);
+		life_maxWeight = life_maxWeightT + _load;
+		if(playerSide == west) then {(unitBackpack player) setObjectTextureGlobal [0,""];};
+		waitUntil {backpack player != _bp};
+		if(backpack player == "") then 
+		{
+			life_maxWeight = life_maxWeightT;
+		};
+	};
+};

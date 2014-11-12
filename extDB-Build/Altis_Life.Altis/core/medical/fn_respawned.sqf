@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	File: fn_respawned.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -22,32 +23,25 @@ player setVariable["name",nil,TRUE];
 player setVariable["Reviving",nil,TRUE];
 
 //Load gear for a 'new life'
-switch(playerSide) do
-{
-	//cops keep their gear
-	case west: {
-		_handle = [] spawn life_fnc_loadGear;
-	};
-	case civilian: {
-		_handle = [] spawn life_fnc_civLoadout;
-		life_carryWeight = 0;
-	};
-	case independent: {
-		_handle = [] spawn life_fnc_medicLoadout;
-		life_carryWeight = 0;
-	};
-	waitUntil {scriptDone _handle};
+if !(playerSide in life_death_save_gear) then {
+	//full reset we remove all the gear so we don't carry anything either
+	life_gear = [];
 };
-
+[] call life_fnc_loadGear;
 //Cleanup of weapon containers near the body & hide it.
 if(!isNull life_corpse) then {
 	private["_containers"];
 	life_corpse setVariable["Revive",TRUE,TRUE];
-	_containers = nearestObjects[life_corpse,["WeaponHolderSimulated"],5];
-	{deleteVehicle _x;} foreach _containers; //Delete the containers.
+	//we spawn a process which removes the 
+	_containers = nearestObjects[getPosATL life_corpse,["WeaponHolderSimulated"],5];
+	//spawn of parallel tasks to remove the weapons however its configured by the server admin
+	//the constant needs to be injected to make it work nicely
+	[_containers, __GETC__(life_gun_despawn_delay)] spawn {
+		sleep (_this select 1);
+		{deleteVehicle _x;} forEach (_this select 0);
+	};
 	hideBody life_corpse;
 };
-
 //Destroy our camera...
 life_deathCamera cameraEffect ["TERMINATE","BACK"];
 camDestroy life_deathCamera;

@@ -79,7 +79,7 @@ switch (true) do
 	{
 		life_is_arrested = false;
 		hint localize "STR_Jail_EscapeSelf";
-		[[0,format[localize "STR_Jail_EscapeNOTF",profileName]],"life_fnc_broadcast",nil,false] spawn life_fnc_MP;
+		[[0,"STR_Jail_EscapeNOTF",true,[profileName]],"life_fnc_broadcast",nil,false] spawn life_fnc_MP;
 		[player, "901"] call life_fnc_chargeCrime;
 		[5] call SOCK_fnc_updatePartial;
 	};

@@ -116,29 +116,39 @@ switch (_vehicle) do
 		};
 	};
 	
+		case "C_Heli_Light_01_civil_F":
+	{
+		switch (_index) do
+		{
+			case 0: {_color = "Black"};
+			case 1: {_color = "Civ Blue"};
+			case 2: {_color = "Civ Red"};
+			case 3: {_color = "Digi Green"};
+			case 4: {_color = "Blueline"};
+			case 5: {_color = "Elliptical"};
+			case 6: {_color = "Furious"};
+			case 7: {_color = "Jeans Blue"};
+			case 8: {_color = "Speedy Redline"};
+			case 9: {_color = "Sunset"};
+			case 10: {_color = "Vrana"};
+			case 11: {_color = "Waves Blue"};
+			case 12: {_color = "Rebel Digital"};
+			case 13: {_color = "EMS White"};
+			case 14: {_color = "CeltS Chopper"};
+			case 15: {_color = "Classic (Red)"};
+			case 16: {_color = "Classic (White & Blue)"};
+			case 17: {_color = "Redbull"};
+		};
+	};
+	
 	case "B_Heli_Light_01_F":
 	{
 		switch (_index) do
 		{
-			case 0: {_color = "Sheriff"};
-			case 1: {_color = "Black"};
-			case 2: {_color = "Civ Blue"};
-			case 3: {_color = "Civ Red"};
-			case 4: {_color = "Digi Green"};
-			case 5: {_color = "Blueline"};
-			case 6: {_color = "Elliptical"};
-			case 7: {_color = "Furious"};
-			case 8: {_color = "Jeans Blue"};
-			case 9: {_color = "Speedy Redline"};
-			case 10: {_color = "Sunset"};
-			case 11: {_color = "Vrana"};
-			case 12: {_color = "Waves Blue"};
-			case 13: {_color = "Rebel Digital"};
-			case 14: {_color = "EMS White"};
-			case 15: {_color = "CeltS Chopper"};
-			case 16: {_color = "Classic (Red)"};
-			case 17: {_color = "Classic (White & Blue)"};
-			case 18: {_color = "Redbull"};
+			case 0: {_color = "Digi Green"};
+			case 1: {_color = "Urban Camo"};
+			case 2: {_color = "EMS White"};
+			case 3: {_color = "CeltS Chopper"};
 		};
 	};
 	
@@ -147,7 +157,7 @@ switch (_vehicle) do
 		switch (_index) do
 		{
 			case 0: {_color = "Rebel"};
-			case 1: {_color = "Nato Green"};
+			//case 1: {_color = "Nato Green"};
 		};
 	};
 	
@@ -167,9 +177,7 @@ switch (_vehicle) do
 	{
 		switch (_index) do
 		{
-			case 0: {_color = "Regular"};
-			case 1: {_color = "Black"};
-			case 2: {_color = "SWAT"};
+			case 0: {_color = "SWAT"};
 		};
 	};
 	

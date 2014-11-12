@@ -133,7 +133,17 @@ switch (_vehicle) do
 	{
 		_ret = 
 		[
-			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_sheriff_co.paa","cop"],
+			["\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_indp_co.paa","reb"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_digital_co.paa","reb"],
+			["textures\heli_med.jpg","med"],
+			["textures\celtscopter.jpg","cop"]
+		];
+	};
+	
+	case "C_Heli_Light_01_civil_F":
+	{
+		_ret = 
+		[
 			["\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_ion_co.paa","fed"],
 			["\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_blue_co.paa","civ"],
 			["\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_co.paa","civ"],
@@ -171,8 +181,6 @@ switch (_vehicle) do
 	{
 		_ret = 
 		[
-			["\A3\Soft_F\MRAP_01\Data\mrap_01_base_co.paa","cop"],
-			["#(argb,8,8,3)color(0.05,0.05,0.05,1)","cop"],
 			["textures\swat_hunter.jpg","cop","textures\hunter_back.jpg"]
 		];
 	};

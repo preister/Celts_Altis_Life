@@ -30,7 +30,7 @@ switch (_shop) do
 	
 	case "med_air_hs": {
 		_return = [
-			["B_Heli_Light_01_F",50000],
+			["C_Heli_Light_01_civil_F",50000],
 			["O_Heli_Light_02_unarmed_F",75000]
 		];
 	};
@@ -84,12 +84,12 @@ switch (_shop) do
 		["C_Offroad_01_F",5000]];
 		_return set[count _return,
 		["C_SUV_01_F",20000]];
-		if(__GETC__(life_coplevel) > 2) then
+		if(__GETC__(life_coplevel) > 1) then
 		{
 			_return set[count _return,
 			["C_Hatchback_01_sport_F",20000]];
 		};
-		if(__GETC__(life_coplevel) > 5) then
+		if(__GETC__(life_coplevel) > 4) then
 		{
 			_return set[count _return,
 			["B_MRAP_01_F",30000]];
@@ -101,7 +101,7 @@ switch (_shop) do
 	{
 		_return =
 		[
-			["B_Heli_Light_01_F",253000],
+			["C_Heli_Light_01_civil_F",225000],
 			["O_Heli_Light_02_unarmed_F",750000]
 		];
 	};
@@ -146,6 +146,29 @@ switch (_shop) do
 			["B_Boat_Armed_01_minigun_F",75000],
 			["B_SDV_01_F",100000]
 		];
+	};
+	
+	case "toy_shop":
+	{
+		if(__GETC__(life_adminlevel) > 1) then
+		{
+			_return = 
+			[
+				["O_Plane_CAS_02_F",1000],
+				["O_Heli_Attack_02_black_F",1000],
+				["O_Heli_Light_02_v2_F",1000],
+				["O_Heli_Transport_04_F",1000],
+				["O_Heli_Transport_04_ammo_F",1000],
+				["O_Heli_Transport_04_bench_F",1000],
+				["O_Heli_Transport_04_box_F",1000],
+				["O_Heli_Transport_04_covered_F",1000],
+				["O_Heli_Transport_04_fuel_F",1000],
+				["O_Heli_Transport_04_medevac_F",1000],
+				["O_Heli_Transport_04_repair_F",1000],
+				["B_Heli_Transport_03_F",1000],
+				["B_Heli_Transport_03_unarmed_F",1000]
+			];
+		};
 	};
 };
 

@@ -34,7 +34,9 @@ switch(_mode) do {
 	};
 	
 	case 3: {
-		[] call life_fnc_saveGear;
+		if(__GETC__(life_debug_logServerGear)) then {
+			diag_log format["DEBUGLOG: Sending Gear to server: %1", life_gear];
+		};
 		_packet set[2,life_gear];
 	};
 	

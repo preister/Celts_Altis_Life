@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	File: fn_onPlayerKilled.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -18,6 +19,7 @@ _unit setVariable["restrained",FALSE,TRUE];
 _unit setVariable["Escorting",FALSE,TRUE];
 _unit setVariable["transporting",FALSE,TRUE]; //Why the fuck do I have this? Is it used?
 _unit setVariable["steam64id",(getPlayerUID player),true]; //Set the UID.
+_unit enableFatigue false;
 
 //Setup our camera view
 life_deathCamera  = "CAMERA" camCreate (getPosATL _unit);
@@ -89,11 +91,30 @@ if(!isNull _killer && {_killer != _unit}) then {
 	life_removeWanted = true;
 };
 
-//cops dont drop stuff
-if(playerSide != west) then {
+//drop gear for all sides that don't keep their items after death
+if(!(playerSide in life_death_save_gear)) then {
 	_handle = [_unit] spawn life_fnc_dropItems;
 	waitUntil {scriptDone _handle};
-	life_carryWeight = 0;
+	//and save all the changes we made
+	[] call life_fnc_saveGear;
+}
+else {
+	//if people keep their gear we just remove it now so nobody can steal it while they are down
+	// this action isnt saved so when they respawn they just load the old stuff
+	private["_containers"];
+	_containers = nearestObjects[getPosATL _unit,["WeaponHolderSimulated"],5];
+	{deleteVehicle _x;} forEach _containers; //Delete the containers.
+	//to avoid duplication of items after respawning we remove as much as possible - gona worry about duplicating clothing later
+	removeallweapons _unit;
+	removeallassigneditems _unit;
+	clearmagazinecargo _unit;
+	//including the yItems so we dont double them
+	{
+		_item = [_x,1] call life_fnc_varHandle;
+		_value = missionNamespace getVariable _x;
+		//and now that we are done with that we can remove the item from the player inventory
+		if(_value > 0) then {[false,_item,_value] call life_fnc_handleInv;};
+	} foreach (life_inv_items);
 };
 
 //dropping the cash

@@ -191,7 +191,7 @@ switch (_code) do
 	{
 		//If cop run checks for turning lights on.
 		if(_shift && playerSide in [west,independent]) then {
-			if(vehicle player != player && (typeOf vehicle player) in ["C_Offroad_01_F","B_MRAP_01_F","C_SUV_01_F"]) then {
+			if(vehicle player != player && (typeOf vehicle player) in ["C_Offroad_01_F","B_MRAP_01_F","C_SUV_01_F","C_Hatchback_01_sport_F"]) then {
 				if(!isNil {vehicle player getVariable "lights"}) then {
 					if(playerSide == west) then {
 						[vehicle player] call life_fnc_sirenLights;

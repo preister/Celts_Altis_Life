@@ -29,10 +29,14 @@ life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
 life_removeWanted = false;
+life_death_save_gear = [west]; //any side mentioned in this array keep their gear when respawning (cant be a __CONST__ due to onPlayerKilled eventHandler)
 
 //Persistent Saving
 __CONST__(life_save_civ,TRUE); //Save weapons for civs?
 __CONST__(life_save_yinv,TRUE); //Save Y-Inventory for players?
+
+//Persistent weapons
+__CONST__(life_gun_despawn_delay,0); //time in seconds guns should persist on the ground after a player has respawned
 
 //Revive constant variables.
 __CONST__(life_revive_cops,TRUE); //Set to false if you don't want cops to be able to revive downed players.
@@ -64,7 +68,7 @@ life_clothing_purchase = [-1,-1,-1,-1,-1];
 *****************************
 */
 life_maxWeight = 50; //Identifies the max carrying weight (gets adjusted throughout game when wearing different types of clothing).
-life_maxWeightT = 24; //Static variable representing the players max carrying weight on start.
+life_maxWeightT = 50; //Static variable representing the players max carrying weight on start.
 life_carryWeight = 0; //Represents the players current inventory weight (MUST START AT 0).
 
 /*
@@ -98,17 +102,17 @@ switch (playerSide) do
 {
 	case west: 
 	{
-		life_atmcash = 50000; //Starting Bank Money
+		life_atmcash = 100000; //Starting Bank Money
 		life_paycheck = 1000; //Paycheck Amount
 	};
 	case civilian: 
 	{
-		life_atmcash = 50000; //Starting Bank Money
+		life_atmcash = 100000; //Starting Bank Money
 		life_paycheck = 420; //Paycheck Amount
 	};
 	
 	case independent: {
-		life_atmcash = 50000;
+		life_atmcash = 100000;
 		life_paycheck = 1000;
 	};
 };
@@ -173,6 +177,13 @@ life_inv_items =
 	"life_inv_methu",
 	"life_inv_methp",
 	"life_inv_corn",
+	"life_inv_blueburger",
+	"life_inv_gyros",
+	"life_inv_redburger",
+	"life_inv_twix",
+	"life_inv_kitkat",
+	"life_inv_crisps",
+	"life_inv_cola",
 	"life_inv_moonshine"
 ];
 
@@ -255,6 +266,7 @@ crimes_list = [
 	"110", //Trespassing
 	"111", //Driving without headlights
 	"112", //Driving without a license
+	"113", //Dangerous Driving
 	"187V", //Vehicular Manslaughter
 	"187A", //Attempted Murder
 	"187", //Manslaughter
@@ -323,6 +335,9 @@ __CONST__(sell_array,sell_array);
 buy_array = 
 [
 	["apple",65],
+	["twix",65],
+	["kitkat",65],
+	["crisps",65],
 	["rabbit",75],
 	["salema",55],
 	["ornate",50],
@@ -335,7 +350,11 @@ buy_array =
 	["turtlesoup",2500],
 	["donuts",120],
 	["coffee",10],
+	["cola",10],
 	["tbacon",75],
+	["blueburger",75],
+	["redburger",75],
+	["gyros",150],
 	["lockpick",150],
 	["pickaxe",1200],
 	["redgull",750],
@@ -399,24 +418,25 @@ __CONST__(life_weapon_shop_array,life_weapon_shop_array);
 
 life_garage_prices =
 [
-	["B_QuadBike_01_F",5],
-	["C_Hatchback_01_F",1500],
-	["C_Offroad_01_F", 2500],
-	["B_G_Offroad_01_F",3500],
+	["B_QuadBike_01_F",100],
+	["C_Hatchback_01_F",1200],
+	["C_Offroad_01_F", 1500],
+	["B_G_Offroad_01_F",1700],
 	["C_SUV_01_F",5250],
 	["C_Van_01_transport_F",5000],
 	["C_Hatchback_01_sport_F",2350],
 	["C_Van_01_fuel_F",3000],
-	["I_Heli_Transport_02_F",15000],
+	["I_Heli_Transport_02_F",12500],
 	["C_Van_01_box_F",5000],
 	["I_Truck_02_transport_F",7500],
 	["I_Truck_02_covered_F",8000],
 	["B_Truck_01_transport_F",12500],
-	["B_Truck_01_box_F", 15000],
+	["B_Truck_01_box_F", 10000],
 	["O_MRAP_02_F",15000],
-	["B_Heli_Light_01_F",10000],
-	["I_Heli_light_03_unarmed_F",12000],
-	["O_Heli_Light_02_unarmed_F",15000],
+	["C_Heli_Light_01_civil_F",5000],
+	["B_Heli_Light_01_F",7500],
+	["I_Heli_light_03_unarmed_F",9000],
+	["O_Heli_Light_02_unarmed_F",12000],
 	["C_Rubberboat",400],
 	["C_Boat_Civil_01_F",4500],
 	["B_Boat_Transport_01_F",450],
@@ -446,9 +466,10 @@ life_garage_sell =
 	["B_Truck_01_transport_F",135000],
 	["B_Truck_01_box_F", 150000],
 	["O_MRAP_02_F",65000],
-	["B_Heli_Light_01_F",57000],
-	["I_Heli_light_03_unarmed_F",68000],
-	["O_Heli_Light_02_unarmed_F",72500],
+	["C_Heli_Light_01_civil_F",55000],
+	["B_Heli_Light_01_F",63000],
+	["I_Heli_light_03_unarmed_F",78000],
+	["O_Heli_Light_02_unarmed_F",82500],
 	["C_Rubberboat",950],
 	["C_Boat_Civil_01_F",6800],
 	["B_Boat_Transport_01_F",850],
@@ -460,3 +481,8 @@ life_garage_sell =
 	["B_G_Offroad_01_armed_F",600000]
 ];
 __CONST__(life_garage_sell,life_garage_sell);
+
+/*
+	Debug Variables
+*/
+[] call life_fnc_debugConfiguration;

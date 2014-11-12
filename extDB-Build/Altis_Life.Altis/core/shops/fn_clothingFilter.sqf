@@ -45,7 +45,13 @@ if(count _clothes == 0) exitWith {};
 	_details = [_x select 0] call life_fnc_fetchCfgDetails;
 	if(isNil {_x select 1}) then
 	{
-		_list lbAdd format["%1",(getText(configFile >> (_details select 6) >> (_x select 0) >> "DisplayName"))];
+		if (0 == (count _details)) then {
+			//no details have been returned for this item :( lets just fall back to the class name and do a diag log
+			_list lbAdd format["%1", _x select 0];
+			diag_log format["WARNING: %1 does not have CfgDetails, please inform a server admin to set a name for it in the clothing shop configuration!"]
+		} else {
+			_list lbAdd format["%1",(getText(configFile >> (_details select 6) >> (_x select 0) >> "DisplayName"))];
+		};
 	}
 		else
 	{

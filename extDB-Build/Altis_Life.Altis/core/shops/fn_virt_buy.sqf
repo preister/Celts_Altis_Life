@@ -6,7 +6,7 @@
 	Description:
 	Buy a virtual item from the store.
 */
-private["_type","_price","_amount","_diff","_name","_hideout"];
+private["_type","_price","_amount","_diff","_name","_hideout","_isItemBuy"];
 if((lbCurSel 2401) == -1) exitWith {hint localize "STR_Shop_Virt_Nothing"};
 _type = lbData[2401,(lbCurSel 2401)];
 _price = lbValue[2401,(lbCurSel 2401)];
@@ -21,6 +21,7 @@ if((_price * _amount) > life_cash && {!isNil "_hideout" && {!isNil {grpPlayer ge
 
 _name = [([_type,0] call life_fnc_varHandle)] call life_fnc_varToStr;
 
+_isItemBuy = false;
 if(([true,_type,_amount] call life_fnc_handleInv)) then
 {
 	if(!isNil "_hideout" && {!isNil {grpPlayer getVariable "gang_bank"}} && {(grpPlayer getVariable "gang_bank") >= _price}) then {
@@ -40,16 +41,24 @@ if(([true,_type,_amount] call life_fnc_handleInv)) then
 			grpPlayer setVariable["gang_bank",_funds,true];
 			[[1,grpPlayer],"TON_fnc_updateGang",false,false] spawn life_fnc_MP;
 		} else {
+			// buy yItem at the gang market
 			if((_price * _amount) > life_cash) exitWith {[false,_type,_amount] call life_fnc_handleInv; hint localize "STR_NOTF_NotEnoughMoney";};
 			hint format[localize "STR_Shop_Virt_BoughtItem",_amount,_name,[(_price * _amount)] call life_fnc_numberText];
-			__SUB__(life_cash,_price);
+			__SUB__(life_cash,_price * _amount);
+			_isItemBuy = true;
 		};
 	} else {
+		// buy yItem at normal market
 		if((_price * _amount) > life_cash) exitWith {hint localize "STR_NOTF_NotEnoughMoney"; [false,_type,_amount] call life_fnc_handleInv;};
 		hint format[localize "STR_Shop_Virt_BoughtItem",_amount,_name,[(_price * _amount)] call life_fnc_numberText];
 		__SUB__(life_cash,(_price * _amount));
+		_isItemBuy = true;
 	};
 	[] call life_fnc_virt_update;
 };
-
-[0] call SOCK_fnc_updatePartial;
+if(_isItemBuy) then {
+	[] call life_fnc_saveGear;
+} else {
+	[0] call SOCK_fnc_updatePartial;
+	[3] call SOCK_fnc_updatePartial;
+};

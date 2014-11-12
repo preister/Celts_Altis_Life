@@ -66,6 +66,13 @@ switch (_var) do
 	case "life_inv_methp": {"Pure Meth"};
 	case "life_inv_corn": {"Corn"};
 	case "life_inv_moonshine": {"Moonshine"};
+	case "life_inv_blueburger": {"Blueburger"};
+	case "life_inv_redburger": {"Red Burger"};
+	case "life_inv_gyros": {"Gyros"};
+	case "life_inv_kitkat": {"KitKat"};
+	case "life_inv_twix": {"Twix"};
+	case "life_inv_crisps": {"Crisps"};
+	case "life_inv_cola": {"Cola"};
 	
 	//License Block
 	case "license_civ_driver": {(localize "STR_License_Driver")};

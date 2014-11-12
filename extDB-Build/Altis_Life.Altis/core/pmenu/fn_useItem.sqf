@@ -12,7 +12,7 @@ _item = lbData[2005,(lbCurSel 2005)];
 
 switch (true) do
 {
-	case (_item == "water" or _item == "coffee"):
+	case (_item == "water" or _item == "coffee" or _item == "cola"):
 	{
 		if(([false,_item,1] call life_fnc_handleInv)) then
 		{
@@ -77,7 +77,7 @@ switch (true) do
 		[] spawn life_fnc_lockpick;
 	};
 	
-	case (_item in ["apple","rabbit","salema","ornate","mackerel","tuna","mullet","catshark","turtle","turtlesoup","donuts","tbacon","peach"]):
+	case (_item in ["apple","rabbit","salema","ornate","mackerel","tuna","mullet","catshark","turtle","turtlesoup","donuts","tbacon","peach","kitkat","twix","crisps","gyros","redburger","blueburger"]):
 	{
 		[_item] call life_fnc_eatFood;
 	};
