@@ -4,14 +4,16 @@
 	Description:
 	Breaks the lock on a single door (Closet door to the player).
 */
-private["_building","_door","_doors","_cpRate","_title","_progressBar","_titleText","_cp","_ui"];
+private["_building","_door","_doors","_cpRate","_title","_progressBar","_titleText","_cp","_ui", "_distance"];
 _building = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 if(isNull _building) exitWith {};
 if(!(_building isKindOf "House_F")) exitWith {hint "You are not looking at a house door."};
 if((nearestObject [[16019.5,16952.9,0],"Land_Dome_Big_F"]) == _building OR (nearestObject [[16019.5,16952.9,0],"Land_Research_house_V1_F"]) == _building) then {
 	[[[1,2],"STR_ISTR_Bolt_AlertFed",true,[]],"life_fnc_broadcast",true,false] spawn life_fnc_MP;
+	_distance = 40;
 } else {
 	[[0,"STR_ISTR_Bolt_AlertHouse",true,[profileName]],"life_fnc_broadcast",true,false] spawn life_fnc_MP;
+	_distance = 5;
 };
 
 _doors = 1;
@@ -25,7 +27,7 @@ _door = 0;
 for "_i" from 1 to _doors do {
 	_selPos = _building selectionPosition format["Door_%1_trigger",_i];
 	_worldSpace = _building modelToWorld _selPos;
-		if(player distance _worldSpace < 5) exitWith {_door = _i;};
+	if(player distance _worldSpace < _distance) exitWith {_door = _i;};
 };
 if(_door == 0) exitWith {hint localize "STR_Cop_NotaDoor"}; //Not near a door to be broken into.
 if((_building getVariable[format["bis_disabled_Door_%1",_door],0]) == 0) exitWith {hint localize "STR_House_Raid_DoorUnlocked"};
