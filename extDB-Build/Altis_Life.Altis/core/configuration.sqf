@@ -284,7 +284,8 @@ crimes_list = [
     "481", //Drug Possession
     "482", //Intent to distribute
 	"483", //Drug Trafficking
-	"459" //Burglary
+	"459", //Burglary
+	"666" //Terrorism
 ];
 
 /*
