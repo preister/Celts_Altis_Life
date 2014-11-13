@@ -1,3 +1,11 @@
+//This is for the blackjack GUI
+#define GUI_GRID_X	(0)
+#define GUI_GRID_Y	(0)
+#define GUI_GRID_W	(0.025)
+#define GUI_GRID_H	(0.04)
+#define GUI_GRID_WAbs	(1)
+#define GUI_GRID_HAbs	(1)
+
 class Life_RscScrollBar
 {
 	color[] = {1,1,1,0.6};
