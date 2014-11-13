@@ -375,6 +375,7 @@ class Life_Client_Core
 		class weed {};
 		class moonshine {};
 		class shopalarmsound {};
+		class speedBomb {};
 	};
 	
 	class Dialog_Controls

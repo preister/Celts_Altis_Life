@@ -23,7 +23,6 @@ life_action_inUse = false;
 if(player distance _unit > 7) exitWith {titleText["You are not in range!","PLAIN"];};
  
 titleText["You have attached an armed speed bomb to this vehicle.","PLAIN"];
-life_experience = life_experience + 25; 
  
 [_unit] spawn
 {
