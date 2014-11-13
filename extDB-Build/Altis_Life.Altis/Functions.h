@@ -358,6 +358,10 @@ class Life_Client_Core
 		class chopShopMenu {};
 		class chopShopSelection {};
 		class chopShopSell {};
+		class blackjack {};
+		class BJbet {};
+		class BJhit {};
+		class BJstay {};
 	};
 	
 	class Items
