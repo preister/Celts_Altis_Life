@@ -5,9 +5,7 @@
         Coder: PapaBear
 */
 
-if(!dialog) then {
-	createDialog "BlackjackGUI";
-};
+createDialog "BlackjackGUI";
 disableSerialization;
 
 _display = findDisplay 5980;
