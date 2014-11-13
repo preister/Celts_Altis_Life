@@ -77,6 +77,7 @@ switch (_mode) do
 			case "kitkat": {"life_inv_kitkat"};
 			case "crisps": {"life_inv_crisps"};
 			case "cola": {"life_inv_cola"};
+			case "speedbomb": {"life_inv_speedbomb"};
 		};
 	};
 	
@@ -145,6 +146,7 @@ switch (_mode) do
 			case "life_inv_twix": {"twix"};
 			case "life_inv_crisps": {"crisps"};
 			case "life_inv_cola": {"cola"};
+			case "life_inv_speedbomb": {"speedbomb"};
 		};
 	};
 };

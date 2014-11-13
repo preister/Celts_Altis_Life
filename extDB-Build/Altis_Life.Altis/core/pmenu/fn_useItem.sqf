@@ -81,6 +81,11 @@ switch (true) do
 	{
 		[_item] call life_fnc_eatFood;
 	};
+		
+	case (_item == "speedbomb"):
+	{
+		[] spawn life_fnc_speedBomb;
+	};
 	
 	case (_item == "marijuana"):
 	{
@@ -100,7 +105,7 @@ switch (true) do
         [] spawn life_fnc_moonshine;
     };
 };
-	
+
 	default
 	{
 		hint localize "STR_ISTR_NotUsable";

@@ -184,6 +184,7 @@ life_inv_items =
 	"life_inv_kitkat",
 	"life_inv_crisps",
 	"life_inv_cola",
+	"life_inv_speedbomb",
 	"life_inv_moonshine"
 ];
 
@@ -328,6 +329,7 @@ sell_array =
 	["zipties",2],
 	["methu",650],
 	["methp",6500],
+	["speedbomb",400000],
 	["moonshine",1000]
 ];
 __CONST__(sell_array,sell_array);
@@ -367,6 +369,7 @@ buy_array =
 	["storagesmall",75000],
 	["storagebig",150000],
 	["zipties",5],
+	["speedbomb",500000],
 	["moonshine",1500]
 ];
 __CONST__(buy_array,buy_array);
