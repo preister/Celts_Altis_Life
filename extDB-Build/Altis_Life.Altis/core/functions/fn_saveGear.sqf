@@ -133,7 +133,7 @@ if(__GETC__(life_save_yinv)) then {
 		//check if the item is illegal - we only save legal stuff
 		{
 			_illegal = _x select 0;
-			if(_var == _illegal) exitWith {_val = 0};
+			if(_name == _illegal) exitWith {_val = 0};
 		} forEach life_illegal_items;
 		if (_val > 0) then {
 			for "_i" from 1 to _val do {
