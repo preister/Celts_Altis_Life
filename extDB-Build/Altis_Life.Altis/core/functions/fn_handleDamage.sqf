@@ -11,10 +11,10 @@ _part = _this select 1;
 _damage = _this select 2;
 _source = _this select 3;
 _projectile = _this select 4;
-
+TON_Debug = true;
 //Internal Debugging.
 if(!isNil "TON_Debug") then {
-	systemChat format["PART: %1 || DAMAGE: %2 || SOURCE: %3 || PROJECTILE: %4 || FRAME: %5",_part,_damage,_source,_projectile,diag_frameno];
+	diag_log format["PART: %1 || DAMAGE: %2 || SOURCE: %3 || PROJECTILE: %4 || FRAME: %5",_part,_damage,_source,_projectile,diag_frameno];
 };
 
 //Handle the tazer first (Top-Priority).
@@ -30,7 +30,7 @@ if(!isNull _source) then {
 				_isVehicle = if(vehicle player != player) then { if(typeOf(vehicle player) != "B_Heli_Light_01_F" || typeOf(vehicle player) != "I_Heli_light_03_unarmed_F" || typeOf(vehicle player) != "O_Heli_Light_02_unarmed_F" || typeOf(vehicle player) != "I_Heli_Transport_02_F") then {true} else {false}} else {false};
 				_isQuad = if(_isVehicle) then {if(typeOf (vehicle player) == "B_Quadbike_01_F") then {true} else {false}} else {false};
 				
-				_damage = false;
+				_damage = 0;
 				if(_unit distance _source < _distance) then {
 					if(!life_istazed && !(_unit getVariable["restrained",false])) then {
 						if(_isVehicle || _isQuad) then {
@@ -45,7 +45,7 @@ if(!isNull _source) then {
 			
 			//Temp fix for super tasers on cops.
 			if(playerSide == west && side _source == west) then {
-				_damage = false;
+				_damage = 0;
 			};
 		};
 		
@@ -53,17 +53,17 @@ if(!isNull _source) then {
 		if(_projectile in ["B_9x21_Ball"] && _curWep in ["SMG_02_F"]) then {
 			if((side _source == west && playerSide != west)) then {
 				//only if the player is at or below 20% health do we down him or her
-				if (20 > round((1 - ((damage player) - _damage)) * 100)) then {
+				if (20 > round((1 - ((damage player) + _damage)) * 100)) then {
 					private["_isVehicle","_isQuad"];
 					_isVehicle = if(vehicle player != player) then {true} else {false};
 					_isQuad = if(_isVehicle) then {if(typeOf(vehicle player) == "B_Quadbike_01_F") then {true} else {false}} else {false};
-					_damage = false;	
+					_damage = 0;	
 					[_unit,_source] spawn life_fnc_handleDowned;
 				};
 			};
 			
 			if(side _source == west && playerSide == west) then {
-				_damage = false;
+				_damage = 0;
 			};
 		};
 	};
