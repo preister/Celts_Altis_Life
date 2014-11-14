@@ -21,7 +21,7 @@ _door = 0;
 for "_i" from 1 to _doors do {
 	_selPos = _building selectionPosition format["Door_%1_trigger",_i];
 	_worldSpace = _building modelToWorld _selPos;
-	if(player distance _worldSpace < 0.5) exitWith {_door = _i;};
+	if(player distance _worldSpace < 1) exitWith {_door = _i;};
 };
 
 if(_door == 0) exitWith {hint localize "STR_Cop_NotaDoor"}; //Not near a door to be broken into.
