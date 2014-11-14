@@ -116,7 +116,6 @@ class Life_Client_Core
 		class surrender {}; //surrender action
 		class gather {};
 		class robJewellers {}; //rob jewellers
-		class blackjack {};
 	};
 	
 	class Housing
@@ -359,6 +358,10 @@ class Life_Client_Core
 		class chopShopMenu {};
 		class chopShopSelection {};
 		class chopShopSell {};
+		class blackjack {};
+		class BJbet {};
+		class BJhit {};
+		class BJstay {};
 	};
 	
 	class Items
