@@ -111,9 +111,9 @@ switch(_shop) do
 			{
 				["Altis SWAT Shop",
 					[
-						["SMG_02_F","Stun Gun",30000],
-						["30Rnd_9x21_Mag","Rubber bullets",150],
-						["muzzle_snds_L",nil,650],
+						//["SMG_02_F","Stun Gun",30000],
+						//["30Rnd_9x21_Mag","Rubber bullets",150],
+						//["muzzle_snds_L",nil,650],
 						["arifle_Katiba_C_F",nil,20000],
 						["arifle_Katiba_GL_F",nil,30000],
 						["30Rnd_65x39_caseless_green",nil,150],

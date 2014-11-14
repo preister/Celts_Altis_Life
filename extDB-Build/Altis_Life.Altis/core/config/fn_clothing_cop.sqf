@@ -67,15 +67,13 @@ switch (_filter) do
 	case 3:
 	{
 		_ret = [
-			["V_Rangemaster_belt",nil,800]
+			["V_Rangemaster_belt",nil,800],
+			["V_TacVest_blk_POLICE",nil,5000]
 		];
-		if(__GETC__(life_coplevel) > 2) then
-		{
-			_ret set[count _ret,["V_TacVest_blk_POLICE",nil,1500]];
-		};
+		
 		if(__GETC__(life_coplevel) > 5) then
 		{
-			_ret set[count _ret,["V_PlateCarrier1_blk",nil,2500]];
+			_ret set[count _ret,["V_PlateCarrier1_blk",nil,10000]];
 		};
 	};
 	
@@ -84,8 +82,8 @@ switch (_filter) do
 	{
 		_ret =
 		[
-			["B_Carryall_oucamo",nil,500],
-			["B_AssaultPack_blk",nil,250]
+			["B_Carryall_oucamo",nil,2000],
+			["B_AssaultPack_blk",nil,1000]
 		];
 	};
 };
