@@ -39,6 +39,10 @@ switch (_filter) do
 			_ret set[count _ret,["H_Beret_blk_POLICE",nil,100]];
 			_ret set[count _ret,["H_Beret_02",nil,100]];
 		};
+		if(__GETC__(life_coplevel) > 5) then
+		{
+			_ret set[count _ret,["H_HelmetB_plain_blk",nil,5000]];
+		};
 	};
 	
 	//Glasses
