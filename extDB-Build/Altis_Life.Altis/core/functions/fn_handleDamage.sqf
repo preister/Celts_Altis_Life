@@ -52,8 +52,10 @@ if(!isNull _source) then {
 		//rubber bullets
 		if(_projectile in ["B_9x21_Ball"] && _curWep in ["SMG_02_F"]) then {
 			if((side _source == west && playerSide != west)) then {
-				//only if the player is at or below 20% health do we down him or her
-				if (20 > round((1 - ((damage player) + _damage)) * 100)) then {
+				_futureHealth = (damage player) + _damage;
+				_helthPercentage = round((1 - _futureHealth) * 100);
+				//we down the player if: the damage is a killshot, the shot would kill the player or if the shot drops player health below 20%
+				if (_damage == 1 OR _futureHealth == 1 OR 20 > _helthPercentage) then {
 					private["_isVehicle","_isQuad"];
 					_isVehicle = if(vehicle player != player) then {true} else {false};
 					_isQuad = if(_isVehicle) then {if(typeOf(vehicle player) == "B_Quadbike_01_F") then {true} else {false}} else {false};
@@ -61,7 +63,7 @@ if(!isNull _source) then {
 					[_unit,_source] spawn life_fnc_handleDowned;
 				};
 			};
-			
+			//police cant hurt each other with rubber bullets
 			if(side _source == west && playerSide == west) then {
 				_damage = 0;
 			};

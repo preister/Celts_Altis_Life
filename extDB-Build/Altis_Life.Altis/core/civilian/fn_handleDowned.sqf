@@ -39,25 +39,13 @@ if(_shooter isKindOf "Man" && alive player) then
 		[[0,format["%1 was downed by rubber bullets.", name _unit, name _shooter]],"life_fnc_broadcast",true,false] spawn life_fnc_MP;
 		_unit attachTo [_obj,[0,0,0]];
 		disableUserInput true;
-		sleep 8;
-		if(!(player getVariable "restrained")) then {
-			[[player,"AinjPpneMstpSnonWrflDnon"],"life_fnc_animSync",true,false] spawn life_fnc_MP;
-			sleep 22;
-		};
-		// Check Restrain every 15 seconds for "disableUserInput"
-		// I´m sure, it can be done better. Haven´t find a better way until now.
-		if(!(player getVariable "restrained")) then {
-			sleep 15;
-		};
-		if(!(player getVariable "restrained")) then {
-			sleep 15;
-		};
-		if(!(player getVariable "restrained")) then {
-			sleep 15;
-		};
-		if(!(player getVariable "restrained")) then {
-			sleep 15;
-		};
+		[[player,"AinjPpneMstpSnonWrflDnon"],"life_fnc_animSync",true,false] spawn life_fnc_MP;
+		//check if the person gets restrained, the 2nd number is the time a person is downed currently 90seconds aka 1 min 30 seconds
+		for "_i" from 1 to 90  do {
+			if (player getVariable "restrained") exitWith {};
+			sleep 1;
+		}
+		//if the player is still not restrained we revert the downed animation, otherwise the restraining animation takes care of "cleanup"
 		if (!(player getVariable "restrained")) then {
 			[[player,"amovppnemstpsraswrfldnon"],"life_fnc_animSync",true,false] spawn life_fnc_MP;
 		};
