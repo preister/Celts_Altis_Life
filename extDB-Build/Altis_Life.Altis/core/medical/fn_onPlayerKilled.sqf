@@ -50,6 +50,36 @@ _unit spawn
 	_Timer ctrlSetText localize "STR_Medic_Respawn_2";
 };
 
+//drop gear for all sides that don't keep their items after death
+if(!(playerSide in life_death_save_gear)) then {
+	_handle = [_unit] spawn life_fnc_dropItems;
+	waitUntil {scriptDone _handle};
+	//and save all the changes we made
+	[] call life_fnc_saveGear;
+}
+else {
+	//if people keep their gear we just remove it now so nobody can steal it while they are down
+	// this action isnt saved so when they respawn they just load the old stuff
+	private["_containers"];
+	_containers = nearestObjects[getPosATL _unit,["WeaponHolderSimulated"],5];
+	{deleteVehicle _x;} forEach _containers; //Delete the containers.
+	//to avoid duplication of items after respawning we remove as much as possible - gona worry about duplicating clothing later
+	removeAllWeapons _unit;
+	removeAllAssignedItems _unit;
+	clearMagazineCargo _unit;
+	removeVest _unit;
+	removeUniform _unit;
+	removeBackpack _unit;
+	removeHeadgear _unit;
+	//including the yItems so we dont double them
+	{
+		_item = [_x,1] call life_fnc_varHandle;
+		_value = missionNamespace getVariable _x;
+		//and now that we are done with that we can remove the item from the player inventory
+		if(_value > 0) then {[false,_item,_value] call life_fnc_handleInv;};
+	} foreach (life_inv_items);
+};
+
 [] spawn life_fnc_deathScreen;
 
 //Create a thread to follow with some what precision view of the corpse.
@@ -89,35 +119,6 @@ if(side _killer == west && playerSide != west) then {
 
 if(!isNull _killer && {_killer != _unit}) then {
 	life_removeWanted = true;
-};
-
-//drop gear for all sides that don't keep their items after death
-if(!(playerSide in life_death_save_gear)) then {
-	_handle = [_unit] spawn life_fnc_dropItems;
-	waitUntil {scriptDone _handle};
-	//and save all the changes we made
-	[] call life_fnc_saveGear;
-}
-else {
-	//if people keep their gear we just remove it now so nobody can steal it while they are down
-	// this action isnt saved so when they respawn they just load the old stuff
-	private["_containers"];
-	_containers = nearestObjects[getPosATL _unit,["WeaponHolderSimulated"],5];
-	{deleteVehicle _x;} forEach _containers; //Delete the containers.
-	//to avoid duplication of items after respawning we remove as much as possible - gona worry about duplicating clothing later
-	removeAllWeapons _unit;
-	removeAllAssignedItems _unit;
-	clearMagazineCargo _unit;
-	removeVest _unit;
-	removeUniform _unit;
-	removeBackpack _unit;
-	//including the yItems so we dont double them
-	{
-		_item = [_x,1] call life_fnc_varHandle;
-		_value = missionNamespace getVariable _x;
-		//and now that we are done with that we can remove the item from the player inventory
-		if(_value > 0) then {[false,_item,_value] call life_fnc_handleInv;};
-	} foreach (life_inv_items);
 };
 
 //dropping the cash
