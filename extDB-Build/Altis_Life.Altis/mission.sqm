@@ -4906,7 +4906,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=1406;
+		items=1419;
 		class Item0
 		{
 			position[]={8065.1616,35.674362,24985.314};
@@ -13550,8 +13550,8 @@ class Mission
 		};
 		class Item845
 		{
-			position[]={8938.8672,66.495308,7511.0474};
-			azimut=-181.9622;
+			position[]={9007.4414,66.70108,7514.8896};
+			azimut=205;
 			id=1124;
 			side="EMPTY";
 			vehicle="Land_Cargo_Patrol_V1_F";
@@ -18290,8 +18290,8 @@ class Mission
 		};
 		class Item1309
 		{
-			position[]={9008.9102,66.861626,7511.394};
-			azimut=215;
+			position[]={8927.1719,66.125893,7505.6357};
+			azimut=269;
 			offsetY=-5.5;
 			id=1588;
 			side="EMPTY";
@@ -19277,6 +19277,134 @@ class Mission
 			vehicle="Land_BagFence_Short_F";
 			skill=0.60000002;
 			init="this enableSimulation true; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1406
+		{
+			position[]={8957.2422,65.439095,7540.9478};
+			azimut=197;
+			id=1685;
+			side="EMPTY";
+			vehicle="Land_Cargo_Patrol_V1_F";
+			skill=0.60000002;
+		};
+		class Item1407
+		{
+			position[]={15947.451,14.121055,16985.949};
+			azimut=90;
+			id=1686;
+			side="EMPTY";
+			vehicle="Land_Cargo_Patrol_V1_F";
+			skill=0.60000002;
+		};
+		class Item1408
+		{
+			position[]={16185.415,13.313745,17090.809};
+			azimut=285;
+			offsetY=-5.5;
+			id=1687;
+			side="EMPTY";
+			vehicle="Land_Cargo_Tower_V1_No1_F";
+			skill=0.60000002;
+			init="this enableSimulation true; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1409
+		{
+			position[]={16185.126,13.360496,17011.248};
+			azimut=270;
+			id=1688;
+			side="EMPTY";
+			vehicle="Land_Cargo_Patrol_V1_F";
+			skill=0.60000002;
+		};
+		class Item1410
+		{
+			position[]={16099.634,13.444283,16857.502};
+			offsetY=-5.5;
+			id=1689;
+			side="EMPTY";
+			vehicle="Land_Cargo_Tower_V1_No1_F";
+			skill=0.60000002;
+			init="this enableSimulation true; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1411
+		{
+			position[]={15962.248,14.104004,16961.775};
+			offsetY=-5.5;
+			id=1690;
+			side="EMPTY";
+			vehicle="Land_Cargo_Tower_V1_No1_F";
+			skill=0.60000002;
+			init="this enableSimulation true; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1412
+		{
+			position[]={9122.9307,83.940636,8316.2939};
+			azimut=10;
+			id=1691;
+			side="EMPTY";
+			vehicle="TargetBootcampHuman_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1413
+		{
+			position[]={9056.4395,82.477661,8312.8926};
+			azimut=10;
+			id=1692;
+			side="EMPTY";
+			vehicle="TargetBootcampHuman_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1414
+		{
+			position[]={9079.3242,78.003357,8268.042};
+			azimut=10;
+			id=1693;
+			side="EMPTY";
+			vehicle="TargetBootcampHuman_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1415
+		{
+			position[]={9153.8574,79.982208,8276.7031};
+			azimut=10;
+			id=1694;
+			side="EMPTY";
+			vehicle="TargetBootcampHuman_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1416
+		{
+			position[]={9190.6602,92.793663,8363.6182};
+			azimut=10;
+			id=1695;
+			side="EMPTY";
+			vehicle="TargetBootcampHuman_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1417
+		{
+			position[]={9144.8896,89.176437,8342.2773};
+			azimut=10;
+			id=1696;
+			side="EMPTY";
+			vehicle="TargetBootcampHuman_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
+		};
+		class Item1418
+		{
+			position[]={9090.458,85.997177,8329.2852};
+			azimut=10;
+			id=1697;
+			side="EMPTY";
+			vehicle="TargetBootcampHuman_F";
+			skill=0.60000002;
+			init=" this allowDamage false; this allowDamage false; this setVectorUp [0,0,1];";
 		};
 	};
 	class Markers
