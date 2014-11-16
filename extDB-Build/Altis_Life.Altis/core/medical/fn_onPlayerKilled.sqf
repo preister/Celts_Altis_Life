@@ -105,9 +105,12 @@ else {
 	_containers = nearestObjects[getPosATL _unit,["WeaponHolderSimulated"],5];
 	{deleteVehicle _x;} forEach _containers; //Delete the containers.
 	//to avoid duplication of items after respawning we remove as much as possible - gona worry about duplicating clothing later
-	removeallweapons _unit;
-	removeallassigneditems _unit;
-	clearmagazinecargo _unit;
+	removeAllWeapons _unit;
+	removeAllAssignedItems _unit;
+	clearMagazineCargo _unit;
+	removeVest _unit;
+	removeUniform _unit;
+	removeBackpack _unit;
 	//including the yItems so we dont double them
 	{
 		_item = [_x,1] call life_fnc_varHandle;
