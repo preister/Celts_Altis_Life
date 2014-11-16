@@ -20,6 +20,15 @@ if(playerSide == west) then {
 } else {
 	//ok lets fetch the bounty if there is one
 	[[getPlayerUID player,"bountyCheck",["0", 0], true],"life_fnc_wantedAdd",false,false] spawn life_fnc_MP;
+	//checks every minute if the player bounty has changed
+	[] spawn
+	{
+		while {true} do
+		{
+			[[player,false],"life_fnc_wantedFetch",false,false] spawn life_fnc_MP;
+			sleep 60; //to keep server strain down we only check every minute for an update
+		};
+	};
 };
 
 [] call life_fnc_hudUpdate;
@@ -33,21 +42,5 @@ if(playerSide == west) then {
 		_dam = damage player;
 		waitUntil {(damage player) != _dam};
 		[] call life_fnc_hudUpdate;
-	};
-};
-
-//checks every minute if the player bounty has changed
-[] spawn
-{
-	private ["_bounty"];
-	_bounty = 0;
-	while {true} do
-	{
-		life_player_bounty = ([[player,false],"life_fnc_wantedFetch",false,false] spawn life_fnc_MP) select 3;
-		sleep 60; //to keep server strain down we only check every minute for an update
-		if (life_player_bounty != _bounty) then {
-			[] call life_fnc_hudUpdate;
-			_bounty = life_player_bounty;
-		};
 	};
 };
