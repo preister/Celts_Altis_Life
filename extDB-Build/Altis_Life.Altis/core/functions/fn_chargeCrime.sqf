@@ -15,16 +15,5 @@ if!(_crimeCode in crimes_list) exitWith {};
 _crimeInfo = [_crimeCode] call life_fnc_crimesCfg;
 [[getPlayerUID _perpetrator,_perpetrator getVariable["realname",name _perpetrator],[_crimeCode, _crimeInfo select 1]],"life_fnc_wantedAdd",false,false] spawn life_fnc_MP;
 
-//we only need to send this over the wire if its not the player client doing it
 _message = format["You are wanted for %1", _crimeInfo select 0];
-_bountyAdd = _crimeInfo select 1;
-if (_perpetrator == player) then {
-	titleText[format["%1",_message],"PLAIN"];
-	[_bountyAdd] call life_fnc_updatePlayerBounty;
-} else {
-	//and lets let the player know he or she is a bady and why
-	[[2,_message],"life_fnc_broadcast",_perpetrator,false] spawn life_fnc_MP;
-	//and we update the players crime_bounty so we can display it nicely on the ui without causing any unnecessary network traffic
-	// (Just as an improvement, it would be possible to do this directly instead of the broadcast message to the player ... not sure yet which way is better)
-	[[_bountyAdd],"life_fnc_updatePlayerBounty",_perpetrator,false] spawn life_fnc_MP;
-};
+[[2,_message],"life_fnc_broadcast",_perpetrator,false] spawn life_fnc_MP;
