@@ -38,5 +38,5 @@ switch (_type) do
 	case "meth": {50000};
 	case "moonshine": {15000};
 	case "press": {100000};
-	case "advpilot" {500000};
+	case "advpilot": {500000};
 };
