@@ -50,10 +50,6 @@ while {player getVariable "restrained"} do
 		player setVariable ["transporting",false,true];
 	};
 	
-	if(!alive _cop) then {
-		player setVariable ["Escorting",false,true];
-	};
-	
 	if(vehicle player != player) then
 	{
 		//disableUserInput true;
