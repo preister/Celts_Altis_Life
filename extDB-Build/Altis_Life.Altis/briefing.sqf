@@ -34,7 +34,7 @@ player createDiarySubject ["controls","Controls"];
 		[
 			"Custom Change Log",
 				"
-					This section is meant for people doing their own edits to the mission, DO NOT REMOVE THE ABOVE.
+					The CeltS change log can be found on CeltSlife.co.uk
 				"
 		]
 	];
@@ -60,11 +60,7 @@ player createDiarySubject ["controls","Controls"];
 				"
 					If bombing (bombing can be intentionally exploding a vehicle), robbing, or killing occurs around these or in these areas it is punishable by ban.<br/><br/>
 					
-					Any vehicle spawn (shop or garage)<br/>
-					Any weapon shop<br/>
-					All Police HQs<br/>
-					Rebel Outposts<br/>
-					Donator Shops<br/><br/>
+					Rebel HQ<br/><br/>
 				"
 		]
 	];
@@ -90,11 +86,10 @@ player createDiarySubject ["controls","Controls"];
 				"
 				Items on this list may result in your removal from the server and/or ban, based on the admins discretion.<br/><br/>
 				
-				1. Civilians can be arrested for looking in cops' backpacks/vehicles. Constantly doing this will result in your removal from the server.<br/>
-				2. Civilians can be arrested for following cops in game in order to give away their position.<br/>
-				3. Civilians or Rebels who take up arms to kill cops in town or elsewhere for no RP reason will be considered RDMing. See RDMing section.<br/>
-				4. Following and or harassing cops for long periods of time will be considered griefing and/or spamming, and will result in your removal from the server.<br/>
-				5. Actively blocking cops from doing their duties can lead to your arrest. Constantly doing this will result in your removal from the server.<br/><br/>
+				1. Civilians can be arrested for following cops in game in order to give away their position.<br/>
+				2. Civilians or Rebels who take up arms to kill cops in town or elsewhere for no RP reason will be considered RDMing. See RDMing section.<br/>
+				3. Following and or harassing cops for long periods of time will be considered griefing and/or spamming, and will result in your removal from the server.<br/>
+				4. Actively blocking cops from doing their duties can lead to your arrest. Constantly doing this will result in your removal from the server.<br/><br/>
 				"
 		]
 	];
@@ -135,9 +130,8 @@ player createDiarySubject ["controls","Controls"];
 				2. Purposefully throwing yourself in front of vehicles in order to die/get hurt.<br/>
 				3. Ramming into other vehicles in order to cause an explosion.<br/>
 				4. Constantly trying to enter vehicles that do not belong to you in order to grief the vehicle owner, and not trying to RP.<br/>
-				5. Stealing a vehicle just to crash it or otherwise destroy it.<br/>
-				6. Purchasing multiple vehicles for the purpose of doing any of the above.<br/>
-				7. The only reason for shooting at a vehicle would be to disable it and/or fire warning shots in a role-play scenario.You are not to deliberately destroy enemies vehicles.<br/><br/>
+				5. Purchasing multiple vehicles for the purpose of doing any of the above.<br/>
+				6. The only reason for shooting at a vehicle would be to disable it and/or fire warning shots in a role-play scenario.You are not to deliberately destroy enemies vehicles.<br/><br/>
 				"
 		]
 	];
@@ -175,23 +169,6 @@ player createDiarySubject ["controls","Controls"];
 	];
 	player createDiaryRecord ["serverrules",
 		[
-			"New Life Rule", 
-				"
-				The New Life Rule applies to police and civilians.<br/><br/>
-				
-				Items on this list may result in your removal from the server and/or ban, based on the admins discretion.<br/><br/>
-
-				1. If you are killed you must wait 15 minutes before returning to the scene of your death.<br/>
-				2. If you die during roleplay your past crimes are forgotten, but you also cannot seek revenge.<br/>
-				3. If you are RDM'd, it is not a new life.<br/>
-				4. If you manually respawn, it is not a new life.<br/>
-				5. If you purposefully kill yourself to avoid roleplay, it is not a new life.<br/><br/>
-				"
-		]
-	];
-
-	player createDiaryRecord ["serverrules",
-		[
 			"Don't Be A Dick!", 
 				"
 				If an admin has to tell you that you are being a dick, you are doing dickish things.<br/>
@@ -219,11 +196,10 @@ player createDiarySubject ["controls","Controls"];
 				2. Helicopters flying over the Federal Reserve may be asked to leave and disabled if they refuse.<br/>
 				2. If the Federal Reserve is getting robbed, it is encouraged that all available officers move in to stop it.<br/>
 				3. Nearby officers should immediately head to the Federal Reserve to assist. Petty crimes can be dropped during a robbery.<br/>
-				4. Lethal force on bank robbers may be used if no other alternative is available. Every option to taze and arrest the person should be made first.<br/>
-				5. Police may not fire blindly into the building.<br/>
-				6. The police should evacuate the civilians from the building during a robbery.<br/>
-				7. Any civilian who actively makes an attempt to block the police from entering the building may be treated as an accomplice.<br/>
-				8. Supervisory officers may hire individuals or contract a group of people to work as security guards for the bank. See 'Contracting' section for more information.<br/><br/>
+				4. Lethal force on bank robbers may be used if no other alternative is available. Every option to stun and arrest the person should be made first.<br/>
+				5. The police should evacuate the civilians from the building during a robbery.<br/>
+				6. Any civilian who actively makes an attempt to block the police from entering the building may be treated as an accomplice.<br/>
+				7. Supervisory officers may hire individuals or contract a group of people to work as security guards for the bank. See 'Contracting' section for more information.<br/><br/>
 				"
 		]
 	];
@@ -231,17 +207,11 @@ player createDiarySubject ["controls","Controls"];
 		[
 			"Aviation",
 				"
-				1. No helicopter can land within city limits without authorization from the highest ranking officer online. (Exceptions being what is listed below.)<br/>
-				Kavala: The hospital helipad (037129) or docks (031128).<br/>
-				Athira: The sports field (138185) or behind the DMV (140188).<br/>
-				Pyrgos: The fields North/East of DMV (170127)<br/>
-				Sofia: Opposite the car shop (258214) or the fields Southeast of the garage (257212)<br/>
-				Small towns: An appropriate location may be chosen. This is to be judged by officers on a case by case basis.<br/><br/>
 				
-				2. Helicopters may not land on roads.<br/>
-				3. Police may temporarily forbid landing at  but it cannot remain closed for a long period of time.<br/>
-				4. Helicopters cannot fly below 150m over the city without authorization.<br/>
-				5. Helicopters cannot hover over the city. Cops may only hover over the city if there is an active police operation going on.<br/><br/>
+				1. Helicopters may not land on roads.<br/>
+				2. Police may temporarily forbid landing at  but it cannot remain closed for a long period of time.<br/>
+				3. Helicopters cannot fly below 150m over the city without authorization.<br/>
+				4. Helicopters cannot hover over the city. Cops may only hover over the city if there is an active police operation going on.<br/><br/>
 
 				"
 		]
@@ -287,11 +257,8 @@ player createDiarySubject ["controls","Controls"];
 				2. Ask the driver and any passengers if they have any weapons.<br/>
 				3. Ask the driver and any passengers to exit the vehicle. If they have weapons, do not immediately restrain them when they get out, tell them to lower their weapons and given them a reasonable amount of time to do so.<br/>
 				4. Ask them where they are headed to and from.<br/>
-				5. Ask if they will submit to a search.<br/>
-				6. If they allow a search, you may restrain them and search them.<br/>
-				7. If they do not submit to a search, you must let them go, unless there is probable cause.<br/>
-				8. After the search is done, you may allow them to re-enter their vehicle and drive away.<br/>
-				9. In case anything illegal is found, the person may be ticketed or arrested depending on the crime.<br/><br/>
+				5. After the search is done, you may allow them to re-enter their vehicle and drive away.<br/>
+				6. In case anything illegal is found, the person may be ticketed or arrested depending on the crime.<br/><br/>
 				"
 		]
 	];
@@ -306,7 +273,7 @@ player createDiarySubject ["controls","Controls"];
 				4. Any vehicle that hasn't moved in a significant amount of time may be impounded.<br/>
 				5. Impounding is an essential job for a cop, it helps keep the server clean and less laggy.<br/>
 				6. If in doubt, always search the vehicle and message the owner(s) before impounding.<br/>
-				7. Police speedboats or Hunter HMGs may be used to assist in apprehending criminals. The weapon should be used to disable vehicles, not to blow them up.<br/><br/>
+				7. Police speedboats may be used to assist in apprehending criminals. The weapon should be used to disable vehicles, not to blow them up.<br/><br/>
 				"
 		]
 	];
@@ -319,10 +286,7 @@ player createDiarySubject ["controls","Controls"];
 				
 				Inside major cities:<br/>
 				Small roads: 50km/h<br/>
-				Main roads: 65km/h<br/>
-				Outside major cities:<br/>
-				Small roads: 80km/h<br/>
-				Main roads: 110km/h<br/><br/>
+				Main roads: 65km/h<br/><br/>
 				"
 		]
 	];
@@ -333,10 +297,9 @@ player createDiarySubject ["controls","Controls"];
 				"
 				1. Officers may patrol major cities - Kavala, Athira, Pyrgos and Sofia.<br/>
 				2. Officers may stop by the car shop to make sure there are no cars that need to be impounded.<br/>
-				3. Officers may not stand around or loiter in the centre of town.<br/>
-				4. Officers may enter the town in a large number should a rebellious act occur. After the area is clear, they need to leave the town again.<br/>
-				5. Martial law may not be declared at any time.<br/>
-				6. The Police HQ buildings are illegal for civilians to enter without authorization, however it is NOT illegal for civilians to be nearby unless they are causing a nuisance.<br/><br/>
+				3. Officers may enter the town in a large number should a rebellious act occur. After the area is clear, they need to leave the town again.<br/>
+				4. Martial law may not be declared at any time.<br/>
+				5. The Police HQ buildings are illegal for civilians to enter without authorization, however it is NOT illegal for civilians to be nearby unless they are causing a nuisance.<br/><br/>
 				"
 		]
 	];
@@ -352,16 +315,16 @@ player createDiarySubject ["controls","Controls"];
 				3. If a civilian is wanted, you may arrest them. Do not kill them, unless the situation falls under the 'Use of Lethal Force' section.<br/><br/>
 
 
-				Ticketing a civilian is considered a warning for the civilian. If they break a law, but do not pose a threat to anyone, you may ticket a civilian.<br/><br/>
+				Ticketing a civilian is considered a warning for the civilian. If they break a law, you may ticket a civilian.<br/><br/>
 
-				1. Tickets must be a reasonable price.<br/>
-				2. Ticket prices should be based off of the crimes committed.<br/>
+				1. Ticket amounts are shown by pressing Y and accessing the 'Wanted' menu.<br/>
+				2. Officers may give up to a 50 percent discount on a ticket if the suspect is cooperative. This is done at the officers discretion.
 				3. Refusal to pay a legit ticket is grounds for arrest.<br/>
 				4. Giving a civilian and illegitimate ticket, such as $100k for speeding, etc., is not allowed and will result in your removal from the police department.<br/><br/>
 				
 				A complete list of all crimes and the appropriate punishments should be given to officers during training. If in doubt, or if you have not been trained, ask a higher ranking officer what to do.<br/><br/>
 				
-				The list is available at crime.sealteamsloth.com<br/><br/>
+				The list is available at CeltSlife.co.uk<br/><br/>
 				"
 		]
 	];
@@ -392,11 +355,9 @@ player createDiarySubject ["controls","Controls"];
 		[
 			"Use of Non-Lethal Force",
 				"
-				At this time the Taser (Silenced P07) is the only form of Non-Lethal Force.<br/><br/>
-
-				1. Taser should be used to incapacitate non complying civilians in order to restrain them.<br/>
-				2. Do not discharge your Taser unless you intend to incapacitate a civilian, randomly discharging your weapon will result in your suspension.<br/>
-				3. Only use your Taser in compliance with the laws and the rules, do NOT enforce your will on others.<br/><br/>
+				1. A taser or the stun gun should be used to incapacitate non complying civilians in order to restrain them.<br/>
+				2. Do not discharge your taser / stun gun unless you intend to incapacitate a civilian, randomly discharging your weapon will result in your suspension.<br/>
+				3. Only use your taser / stun gun in compliance with the laws and the rules, do NOT enforce your will on others.<br/><br/>
 				"
 		]
 	];
@@ -407,14 +368,11 @@ player createDiarySubject ["controls","Controls"];
 				"
 				Raiding is defined as a squad of police officers invading an area of high criminal activity in order to stop the criminals in illegal acts.<br/><br/>
 
-				1. In order to raid an area, the cops must have at least 4 officers involved, one of which must be a Sergeant or above.<br/>
-				2. All civilians in a raid area may be restrained and searched. If nothing illegal is found, you must let them go.<br/>
-				3. If illegals are found during a search, you may proceed to arrest or fine as usual.<br/>
-				5. Lethal force is only authorized as described under 'Use of Lethal Force'.<br/>
-				6. After the area is secure, the officers must leave the area.<br/>
-				7. An area cannot be raided again for 20 minutes after a previous raid.<br/>
-				8. If the raid is a failure (All officers die), the 20 minute timer still applies to those officers.<br/>
-				9. Backup may be called in, but it may not consist of fallen officers (see 'New Life Rule').<br/><br/>
+				1. All civilians in a raid area may be restrained and searched. If nothing illegal is found, you must let them go.<br/>
+				2. If illegals are found during a search, you may proceed to arrest or fine as usual.<br/>
+				3. Lethal force is only authorized as described under 'Use of Lethal Force'.<br/>
+				4. After the area is secure, the officers must leave the area.<br/>
+				5. Backup may be called in.
 
 				Camping is defined as the prolong stay of an officer in an area.<br/><br/>
 
@@ -433,16 +391,12 @@ player createDiarySubject ["controls","Controls"];
 
 				Police Chain of Command:<br/>
 				1. Chief<br/>
-				2. Deputy Chief<br/>
-				3. Superintendent<br/>
-				4. Captain<br/>
-				5. Lieutenant<br/>
-				6. Sergeant<br/>
-				7. Senior Patrol Officer<br/>
-				8. Patrol Officer<br/>
-				9. Cadet<br/><br/>
+				2. Lieutenant
+				3. Captain<br/>
+				4. Sergeant<br/>>
+				5. Patrol Officer<br/>
+				6. Cadet<br/><br/>
 
-				Cops in game who are not enrolled/accepted into the SPD are the lowest tier and have no say in police operations.<br/><br/>
 				"
 		]
 	];
@@ -452,7 +406,7 @@ player createDiarySubject ["controls","Controls"];
 			"Use of Lethal Force",
 				"
 				1. Use of Lethal force is only permitted for the protection of your life, another officers life, or a civilians life, if and only if non-lethal force would not be effective.<br/>
-				2. Discharging of a weapon when not under threat or not during training exercises is not allowed. Officers caught in violation of this rule will be removed from the server and suspended from the SPD.<br/>
+				2. Discharging of a weapon when not under threat is not allowed.<br/>
 				3. Failure to follow proper weapons discipline and procedure will get you removed from the server and suspended from the SPD.<br/><br/>
 				"
 		]
@@ -462,6 +416,7 @@ player createDiarySubject ["controls","Controls"];
 		[
 			"Teamspeak Rule",
 				"
+				Teamspeak IP: 91.227.221.73:9993<br/><br/>
 				1. All cops must be on Teamspeak 3 in a designated cop channel. Failure to be on Teamspeak during an admin check will result in your immediate dismissal from the server.<br/>
 				2. Please join Teamspeak BEFORE you spawn in as a cop, heck, join Teamspeak before you even join the server.<br/><br/>
 				"
@@ -493,7 +448,7 @@ player createDiarySubject ["controls","Controls"];
 				3. Gangs may hold and control gang areas. Other gangs may attack a controlling gang to compete for control of a gang area.<br/>
 				4. To declare war on another gang, the leader must announce it in global and all gang members of both gangs must be notified. For a more long term gang war, a declaration should be made on the forums.<br/>
 				5. Gangs may not kill unarmed civilians, unless said civilian is part of a rival gang and in your gangs controlled area.<br/>
-				6. Gangs may not kill civilians, unless they are under threat. Killing unarmed civilians because they do not comply is considered RDM, but you can injure/damage.<br/><br/>
+				6. Gangs may not kill civilians, unless they are under threat.<br/><br/>
 				"
 		]
 	];
@@ -504,9 +459,7 @@ player createDiarySubject ["controls","Controls"];
 				A civilian in control of the following prohibited vehicles is subject to the consequences defined in the unauthorized control of a prohibited vehicle law.<br/><br/>
 
 				1. Ifrit<br/>
-				2. Speedboat<br/>
-				3. Hunter<br/>
-				4. Police Offroad<br/>
+				2. Any police or EMT vehicle<br/><br/>
 				"
 		]
 	];
@@ -514,17 +467,7 @@ player createDiarySubject ["controls","Controls"];
 		[
 			"Illegal Weapons",
 				"
-				A civilian in possession of the following is subject to the consequences as defined in the illegal possession of a firearm law.<br/><br/>
-
-				1. MX Series<br/>
-				2. Katiba Series<br/>
-				3. TRG Series<br/>
-				4. Mk.20 Series<br/>
-				5. Mk.18 ABR<br/>
-				6. SDAR Rifle<br/>
-				7. Sting SMG<br/>
-				8. Silenced P07 (Taser)<br/>
-				9. Any explosives<br/><br/>
+				A civilian in possession of any weapons not purchasable at the civilian gun shop may be charged with possession of an illegal weapon. You may also be charged with the crime if you have any weapon without a gun licence.<br/><br/>
 				"
 		]
 	];
@@ -537,7 +480,9 @@ player createDiarySubject ["controls","Controls"];
 				2. Cocaine<br/>
 				3. Heroin<br/>
 				4. Cannabis<br/>
-				5. Marijuana<br/><br/>
+				5. Marijuana<br/>
+				6. Meth<br/>
+				7. Speed bomb<br/><br/>
 				"
 		]
 	];
@@ -550,14 +495,17 @@ player createDiarySubject ["controls","Controls"];
 			"",
 				"
 				Y: Open Player Menu<br/>
+				I: Open Gear Menu<br/>
 				U: Lock and unlock cars<br/>
 				F: Cop Siren (if cop)<br/>
 				T: Vehicle Trunk<br/>
 				Left Shift + R: Restrain (Cop Only)<br/>
-				Left Shift + G: Knock out / stun (Civ Only, used for robbing them)<br/>
-				Left Windows: Main Interaction key which is used for picking up items/money, gathering, interacting with cars (repair,etc) and for cops to interact with civilians. Can be rebound to a single key like H by pressing ESC->Configure->Controls->Custom->Use Action 10<br/>
+				Left Shift + O: Restrain (Civ only)<br/>
+				Left Shift + R: Knock out / stun (Civ Only, used for robbing them)<br/>
+				Left Shift + G: Surrender
+				Left Windows: Main Interaction key which is used for picking up items/money, gathering, mining, interacting with cars (repair,etc) and for cops to interact with civilians. Can be rebound to a single key like H by pressing ESC->Configure->Controls->Custom->Use Action 10<br/>
 				Left Shift + L: Activates cop siren lights (as a cop).<br/>
-				Left Shift + H: Holster's your pistol<br/>
+				Left Shift + H: Holsters your weapon<br/><br/>
 				"
 		]
 	];
