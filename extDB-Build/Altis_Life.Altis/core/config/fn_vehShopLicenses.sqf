@@ -31,6 +31,7 @@ switch (life_veh_shop select 0) do
 	case "press_clothes": {_ret = license_civ_press;};	
 	case "toy_shop": {_ret = license_civ_air;};
 	case "cop_ship": 
+	case "adv_civ_air": {_ret = license_civ_adv;};
 	{
 		if(_veh == "B_Boat_Armed_01_minigun_F") then
 		{
