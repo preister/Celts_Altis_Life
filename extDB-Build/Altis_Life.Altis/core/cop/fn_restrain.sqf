@@ -49,6 +49,10 @@ while {player getVariable "restrained"} do
 		player setVariable ["Escorting",false,true];
 		player setVariable ["transporting",false,true];
 	};
+
+	if(!alive _cop) exit {
+		player setVariable ["Escorting",false,true];
+	};
 	
 	if(vehicle player != player) then
 	{
