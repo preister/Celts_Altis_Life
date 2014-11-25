@@ -50,6 +50,16 @@ _unit spawn
 	_Timer ctrlSetText localize "STR_Medic_Respawn_2";
 };
 
+[] spawn life_fnc_deathScreen;
+
+//Create a thread to follow with some what precision view of the corpse.
+[_unit] spawn
+{
+	private["_unit"];
+	_unit = _this select 0;
+	waitUntil {if(speed _unit == 0) exitWith {true}; life_deathCamera camSetTarget _unit; life_deathCamera camSetRelPos [0,3.5,4.5]; life_deathCamera camCommit 0;};
+};
+
 //drop gear for all sides that don't keep their items after death
 if(!(playerSide in life_death_save_gear)) then {
 	_handle = [_unit] spawn life_fnc_dropItems;
@@ -78,16 +88,6 @@ else {
 		//and now that we are done with that we can remove the item from the player inventory
 		if(_value > 0) then {[false,_item,_value] call life_fnc_handleInv;};
 	} foreach (life_inv_items);
-};
-
-[] spawn life_fnc_deathScreen;
-
-//Create a thread to follow with some what precision view of the corpse.
-[_unit] spawn
-{
-	private["_unit"];
-	_unit = _this select 0;
-	waitUntil {if(speed _unit == 0) exitWith {true}; life_deathCamera camSetTarget _unit; life_deathCamera camSetRelPos [0,3.5,4.5]; life_deathCamera camCommit 0;};
 };
 
 //Make the killer wanted
