@@ -10,3 +10,4 @@ _unit attachTo [player,[0.1,1.1,0]];
 _unit setVariable["transporting",false,true];
 _unit setVariable["Escorting",true,true];
 player reveal _unit;
+[[player], "life_fnc_escort", _unit, false] spawn life_fnc_MP;

@@ -9,7 +9,7 @@ private["_cop"];
 _cop = [_this,0,Objnull,[Objnull]] call BIS_fnc_param;
 if(isNull _cop) exitWith {};
 
-//Monitor excessive restrainment - aka nobody can be restrained longer than 5 minutes
+//Monitor excessive restrainment - aka nobody can be restrained longer than 15 minutes
 [] spawn
 {
 	private["_time"];
@@ -23,6 +23,7 @@ if(isNull _cop) exitWith {};
 			player setVariable["restrained",FALSE,TRUE];
 			player setVariable["Escorting",FALSE,TRUE];
 			player setVariable["transporting",false,true];
+			player setVariable["ziptied",FALSE,TRUE];
 			detach player;
 			titleText[localize "STR_Cop_ExcessiveRestrain","PLAIN"];
 		};
@@ -47,10 +48,6 @@ while {player getVariable "restrained"} do
 		player setVariable ["restrained",false,true];
 		player setVariable ["Escorting",false,true];
 		player setVariable ["transporting",false,true];
-	};
-	
-	if(!alive _cop) exitWith {
-		player setVariable ["Escorting",false,true];
 	};
 	
 	if(vehicle player != player) then

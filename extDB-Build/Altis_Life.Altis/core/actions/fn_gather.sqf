@@ -52,7 +52,7 @@ _startpos = getPos player;
 _difftotal = 0;
 while {true} do {
 	sleep 5;
-	if(player distance _startpos > 0) exitWith { titleText[format["... gathering cancelled."],"PLAIN"]; };
+	if(player distance _startpos > 3) exitWith { titleText[format["... gathering cancelled."],"PLAIN"]; };
 	_diff = [_gather,_batchSize,life_carryWeight,life_maxWeight] call life_fnc_calWeightDiff;
 	if(_diff == 0) exitWith { titleText[format["... inventory full, gathered %2 %1(s) in total.", _itemName,_difftotal],"PLAIN"]; };
 	if(([true,_gather,_diff] call life_fnc_handleInv)) then

@@ -106,6 +106,15 @@ switch (_shop) do
 		];
 	};
 	
+	case "adv_civ_air":
+	{
+		_return =
+		[
+			["O_Heli_Transport_04_F",6250000],
+			["B_Heli_Transport_03_unarmed_F",7500000]
+		];
+	};
+	
 	case "cop_air":
 	{
 		_return set[count _return,

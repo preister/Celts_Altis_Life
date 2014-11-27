@@ -113,7 +113,7 @@ switch (playerSide) do
 	
 	case independent: {
 		life_atmcash = 100000;
-		life_paycheck = 1000;
+		life_paycheck = 2000;
 	};
 };
 
@@ -217,7 +217,8 @@ life_licenses =
 	["license_med_air","med"],
 	["license_civ_home","civ"],
 	["license_civ_meth","civ"],
-	["license_civ_moonshine","civ"]
+	["license_civ_moonshine","civ"],
+	["license_civ_adv","civ"] //advanced pilot licence
 ];
 
 //Setup License Variables
@@ -225,7 +226,7 @@ life_licenses =
 
 life_dp_points = ["dp_1","dp_2","dp_3","dp_4","dp_5","dp_6","dp_7","dp_8","dp_9","dp_10","dp_11","dp_12","dp_13","dp_14","dp_15","dp_15","dp_16","dp_17","dp_18","dp_19","dp_20","dp_21","dp_22","dp_23","dp_24","dp_25"];
 //[shortVar,reward]
-life_illegal_items = [["heroinu",1200],["heroinp",2500],["cocaine",1500],["cocainep",3500],["cannabis",200],["marijuana",2000],["turtle",3000],["blastingcharge",10000],["boltcutter",500],["methu",650],["methp",6500]];
+life_illegal_items = [["heroinu",3000],["heroinp",6000],["cocaine",1750],["cocainep",3500],["cannabis",1500],["marijuana",3000],["turtle",3000],["blastingcharge",10000],["boltcutter",500],["methu",3250],["methp",6500]];
 
 /*
 	Resources list, see fn_resourceCfg.sqf for the configuration for each resource
@@ -295,7 +296,7 @@ sell_array =
 [
 	["apple",50],
 	["heroinu",2500],
-	["heroinp",4000],
+	["heroinp",6000],
 	["salema",45],
 	["ornate",40],
 	["mackerel",175],
@@ -309,13 +310,13 @@ sell_array =
 	["coffee",5],
 	["turtlesoup",1000],
 	["donuts",60],
-	["marijuana",3200],
+	["marijuana",3000],
 	["tbacon",25],
 	["lockpick",75],
 	["pickaxe",750],
 	["redgull",200],
 	["peach",55],
-	["cocaine",3000],
+	["cocaine",5000],
 	["cocainep",5000],
 	["diamond",1500],
 	["diamondc",3000],

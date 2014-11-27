@@ -43,6 +43,7 @@ switch (_mode) do
 			case "meth": {_var = "license_civ_meth"};
 			case "moonshine": {_var = "license_civ_moonshine"};
 			case "press": {_var = "license_civ_press"};
+			case "advpilot": {_var = "license_civ_adv"}; //advanced pilot licence
 			default {_var = ""};
 		};
 	};
@@ -78,6 +79,7 @@ switch (_mode) do
 			case "license_civ_meth": {_var = "meth"};  // in the lower field
 			case "license_civ_moonshine": {_var = "moonshine"};
 			case "license_civ_press": {_var = "press"};
+			case "licence_civ_adv": {_var = "advpilot"};
 			default {_var = ""};
 		};
 	};
