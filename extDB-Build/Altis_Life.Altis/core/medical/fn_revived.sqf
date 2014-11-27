@@ -7,13 +7,7 @@
 */
 private["_medic","_dir"];
 _medic = [_this,0,"Unknown Medic",[""]] call BIS_fnc_param;
-//we only reload the gear for players who got their stuff despawned, everybody else should have what they need.
-if(playerSide in life_death_save_gear) then {
-	[] spawn life_fnc_loadGear;
-} else {
-	//otherwise we save the gear to make sure if anybody took something from the body its gone.
-	[] call life_fnc_saveGear;
-};
+[] spawn life_fnc_loadGear;
 life_corpse setVariable["realname",nil,true]; //Should correct the double name sinking into the ground.
 [[life_corpse],"life_fnc_corpse",nil,FALSE] spawn life_fnc_MP;
 _dir = getDir life_corpse;
