@@ -50,7 +50,7 @@ while {player getVariable "restrained"} do
 		player setVariable ["transporting",false,true];
 	};
 
-	if(!alive _cop) exit {
+	if(!alive _cop) exitWith {
 		player setVariable ["Escorting",false,true];
 	};
 	

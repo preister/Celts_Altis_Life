@@ -6,8 +6,8 @@
 	Description:
 	adds the transmitted value to the current bounty and triggers a hud update
 */
-private["_bountyToAdd"];
+private["_bounty"];
 _bounty = _this select 0;
-if !("SCALAR" == typeName _bountyToAdd) exitWith {};
+if !("SCALAR" == typeName _bounty) exitWith {};
 life_player_bounty = _bounty;
 [] call life_fnc_hudUpdate;
