@@ -36,7 +36,7 @@ if !(playerSide == west) then {
 	//lets avoid dividing 0
 	if (life_player_bounty != 0) then {
 		if (life_player_bounty > 999999) then {
-			_format = format["%1kk", (life_player_bounty / 100000)];
+			_format = format["%1kk", (life_player_bounty / 1000000)];
 		} else {
 			_format = format["%1k", (life_player_bounty / 1000)];
 		};

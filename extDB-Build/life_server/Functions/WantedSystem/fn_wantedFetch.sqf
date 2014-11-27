@@ -13,7 +13,7 @@ if(isNull _ret) exitWith {};
 _ret = owner _ret;
 _jailedUnits = [];
 {if(_x distance (getMarkerPos "jail_marker") < 120) then {_jailedUnits set[count _jailedUnits,getPlayerUID _x]}} count playableUnits;
-//_all is for the police wanted list, otherwise a player wants to know they bounty
+//_all is for the police wanted list, otherwise a player wants to know their own bounty - used to make sure the displayed bounty is correct.
 if _all then {
 	_list = [];
 	{
