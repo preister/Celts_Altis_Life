@@ -18,4 +18,3 @@ if(count _data == 0) exitWith {};
 
 _uid = _data select 1;
 [[_uid],"life_fnc_wantedPardon",false,false] spawn life_fnc_MP;
-[[0,true],"life_fnc_updatePlayerBounty",_uid,false] spawn life_fnc_MP;
