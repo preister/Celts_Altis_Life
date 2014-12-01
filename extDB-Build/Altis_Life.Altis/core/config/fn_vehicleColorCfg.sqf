@@ -18,8 +18,8 @@ switch (_vehicle) do
 		_ret =
 		[
 			["textures\Texture_Mohawk_0_Hull.jpg","reb","textures\Texture_Mohawk_1_Fin_Door.jpg","textures\Texture_Mohawk_2_Fuselage.jpg"],
-			[_path + "heli_transport_02_1_ion_co.paa","reb",_path + "heli_transport_02_2_ion_co.paa",_path + "heli_transport_02_3_ion_co.paa"],
-			[_path + "heli_transport_02_1_dahoman_co.paa","reb",_path + "heli_transport_02_2_dahoman_co.paa",_path + "heli_transport_02_3_dahoman_co.paa"]
+			[_path + "heli_transport_02_1_ion_co.paa","civ",_path + "heli_transport_02_2_ion_co.paa",_path + "heli_transport_02_3_ion_co.paa"],
+			[_path + "heli_transport_02_1_dahoman_co.paa","civ",_path + "heli_transport_02_2_dahoman_co.paa",_path + "heli_transport_02_3_dahoman_co.paa"]
 		];
 	};
 	

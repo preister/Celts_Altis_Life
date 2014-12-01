@@ -73,8 +73,7 @@ switch (_shop) do
 			["O_MRAP_02_F",150000],
 			["B_Heli_Light_01_F",325000],
 			["I_Heli_light_03_unarmed_F",550000],
-			["O_Heli_Light_02_unarmed_F",750000],
-			["I_Heli_Transport_02_F",1200000]
+			["O_Heli_Light_02_unarmed_F",750000]
 		];		
 	};
 	
@@ -110,6 +109,7 @@ switch (_shop) do
 	{
 		_return =
 		[
+			["I_Heli_Transport_02_F",2000000],
 			["O_Heli_Transport_04_F",6250000],
 			["B_Heli_Transport_03_unarmed_F",7500000]
 		];
