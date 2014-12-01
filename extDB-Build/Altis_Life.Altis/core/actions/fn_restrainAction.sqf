@@ -9,7 +9,7 @@ private["_unit"];
 _unit = cursorTarget;
 if(isNull _unit) exitWith {}; //Not valid
 if((player distance _unit > 3)) exitWith {};
-if((_unit getVariable "restrained")) exitWith { hint "Player is already restrained."; };
+if((_unit getVariable ["restrained", false])) exitWith { hint "Player is already restrained."; };
 //nobody can restrain themselves 
 if(player == _unit) exitWith {};
 //cops cant restrain each other

@@ -48,6 +48,7 @@ while {player getVariable "restrained"} do
 		player setVariable ["restrained",false,true];
 		player setVariable ["Escorting",false,true];
 		player setVariable ["transporting",false,true];
+		player setVariable ["ziptied",false,true];
 	};
 	
 	if(vehicle player != player) then
