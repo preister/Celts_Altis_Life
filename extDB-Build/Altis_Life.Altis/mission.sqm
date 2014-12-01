@@ -32947,7 +32947,7 @@ class Mission
 		};
 		class Item264
 		{
-			position[]={14344.929,18.773779,16324.943};
+			position[]={14343.692,18.923399,16319.065};
 			name="adv_air";
 			type="Empty";
 			angle=185;
