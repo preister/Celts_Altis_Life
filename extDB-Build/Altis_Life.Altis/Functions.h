@@ -237,6 +237,7 @@ class Life_Client_Core
 		class shopRobbed {};
 		class jewellersRobbed {};
 		class updatePlayerBounty {};
+		class captureLocation {};
 	};
 	
 	class Network
