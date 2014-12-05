@@ -120,16 +120,5 @@ client_session_list = [];
 
 [] spawn TON_fnc_initHouses;
 
-//Lockup the dome and casino (srg I'll know I'm probably going about this all wrong but just wanna try :P)
-private["_dome","_rsb","_casino"];
-_dome = nearestObject [[16019.5,16952.9,0],"Land_Dome_Big_F"];
-_rsb = nearestObject [[16019.5,16952.9,0],"Land_Research_house_V1_F"];
-_casino = nearestObject [[16733.254,13591.961,0],"Land_Offices_01_V1_F"];
-
-for "_i" from 1 to 3 do {_dome setVariable[format["bis_disabled_Door_%1",_i],1,true]; _dome animate [format["Door_%1_rot",_i],0];};
-_rsb setVariable["bis_disabled_Door_1",1,true];
-_rsb allowDamage false;
-_dome allowDamage false;
-_casino setVariable["bis_disabled_Door_1",1,true];
 life_server_isReady = true;
 publicVariable "life_server_isReady";

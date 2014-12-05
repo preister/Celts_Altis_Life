@@ -5,8 +5,11 @@
 	Starts the initialization of the server.
 */
 if(!(_this select 0)) exitWith {}; //Not server
+//initialize the data backend
 [] call compile PreprocessFileLineNumbers "\life_server\init.sqf";
 master_group attachTo[bank_obj,[0,0,0]];
+//load missions - we might want to move this into the life_server at a later date when things are more stable, developing is a lot easier if stuff is in the mission.
+[] call life_fnc_initMissions;
 
 onMapSingleClick "if(_alt) then {vehicle player setPos _pos};";
 

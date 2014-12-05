@@ -410,5 +410,8 @@ class Life_Client_Core
 	{
 		file = "core\missions";
 		class captureLocation {};
+		class initMissions {};
+		class initFederalReserve {};
+		class initCassino {};
 	};
 };
