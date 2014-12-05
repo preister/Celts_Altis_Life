@@ -237,7 +237,6 @@ class Life_Client_Core
 		class shopRobbed {};
 		class jewellersRobbed {};
 		class updatePlayerBounty {};
-		class captureLocation {};
 	};
 	
 	class Network
@@ -405,5 +404,11 @@ class Life_Client_Core
 		class safeFix {};
 		class vehicleGarage {};
 		class gangDeposit {};
+	};
+	
+	class Missions
+	{
+		file = "core\missions";
+		class captureLocation {};
 	};
 };
