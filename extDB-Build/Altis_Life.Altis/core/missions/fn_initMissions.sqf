@@ -11,6 +11,6 @@
 
 // spawns (first so we get those running before calls will block everything up)
 [] spawn life_fnc_initFederalReserve;
-[] spawn life_fnc_initCasino;
+//[] spawn life_fnc_initCasino;
 
 // calls
