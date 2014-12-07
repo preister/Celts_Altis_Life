@@ -27,6 +27,7 @@ if(playerSide == west) then {
 			[[player,false],"life_fnc_wantedFetch",false,false] spawn life_fnc_MP;
 			//this is just a secondary check to update a players bounty, if a player
 			//is charged with a crime the hud gets updated straight away
+			diag_log "Debug: wanted fetch";
 			sleep 60;
 		};
 	};
@@ -43,5 +44,30 @@ if(playerSide == west) then {
 		_dam = damage player;
 		waitUntil {(damage player) != _dam};
 		[] call life_fnc_hudUpdate;
+	};
+};
+
+//contentiously check player count per side
+[] spawn
+{
+	private ["_cops", "_medics", "_civs"];
+	while {true} do
+	{
+		_cops = 0;
+		_medics = 0;
+		_civs = 0;
+		{
+			switch (side _x) do {
+				case west: {_cops = _cops + 1};
+				case independent: {_medics = _medics + 1};
+				case civilian: {_civs = _civs + _civs};
+			};
+		} forEach playableUnits;
+		life_count_cops = _cops;
+		life_count_medics = _medics;
+		life_count_civs = _civs;
+		diag_log format["Debug: Player count ... cops = %1, medics = %2, civs = %3", life_count_cops, life_count_medics, life_count_civs];
+		//update this every 10 seconds
+		sleep 10;
 	};
 };
