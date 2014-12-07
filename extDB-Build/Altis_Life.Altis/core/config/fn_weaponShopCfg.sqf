@@ -65,8 +65,7 @@ switch(_shop) do
 						["B_FieldPack_oucamo",nil,3000],
 						["Chemlight_red",nil,300],
 						["Chemlight_yellow",nil,300],
-						["Chemlight_green",nil,300],
-						["Chemlight_blue",nil,300]
+						["Chemlight_green",nil,300]
 					]
 				];
 			};
@@ -94,6 +93,7 @@ switch(_shop) do
 						["optic_ACO_grn_smg",nil,950],
 						["optic_Aco_smg",nil,1200],
 						["optic_Hamr",nil,2500],
+						["Chemlight_blue",nil,300],
 						["HandGrenade_Stone","Flashbang",2500]
 					]
 				];
@@ -131,6 +131,8 @@ switch(_shop) do
 						["optic_tws_mg",nil,3000],
 						["acc_pointer_IR",nil,1500],
 						["HandGrenade_Stone","Flashbang",2500],
+						["Rangefinder",nil,2500],
+						["Chemlight_blue",nil,300],
 						["MineDetector",nil,1000]
 					]
 				];
@@ -166,10 +168,10 @@ switch(_shop) do
 						["20Rnd_556x45_UW_mag",nil,125],
 						["SMG_01_F",nil,20000],
 						["30Rnd_45ACP_Mag_SMG_01",nil,125],
+						["srifle_LRR_SOS_F",nil,100000],
+						["7Rnd_408_Mag",nil,5000],
 						["optic_ACO_grn_smg",nil,950],
 						["optic_ACO_grn",nil,1500],
-						["srifle_LRR_SOS_F",nil,200000],
-						["7Rnd_408_Mag",nil,10000],
 						["optic_Holosight",nil,3600],
 						["optic_Hamr",nil,7500],
 						["30Rnd_9x21_Mag",nil,200],
@@ -224,6 +226,8 @@ switch(_shop) do
 						["hgun_Rook40_F",nil,1500],
 						["16Rnd_9x21_Mag",nil,25],
 						["hgun_Pistol_heavy_02_F",nil,2500],
+						["hgun_Pistol_heavy_01_MRD_F",nil,3500],
+						["hgun_Pistol_heavy_02_Yorris_F",nil,3500],
 						["6Rnd_45ACP_Cylinder",nil,50],
 						["hgun_ACPC2_F",nil,4500],
 						["9Rnd_45ACP_Mag",nil,45],

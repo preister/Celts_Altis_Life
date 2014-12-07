@@ -1,5 +1,7 @@
 @echo off
-SET PBOPATH=Altis_Life.Altis.pbo
-SET SOURCEDIR=extDB-Build\Altis_Life.Altis\
+SET PBOPATH=..\Altis_Life.Altis.pbo
+SET SOURCEDIR=Altis_Life.Altis
 IF EXIST %PBOPATH% (DEL %PBOPATH%)
-tools\MakePbo\MakePbo.exe -L %SOURCEDIR% %PBOPATH%
+PUSHD extDB-Build
+..\tools\MakePbo\MakePbo.exe -L %SOURCEDIR% %PBOPATH%
+POPD
