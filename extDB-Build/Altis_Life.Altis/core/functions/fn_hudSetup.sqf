@@ -27,7 +27,6 @@ if(playerSide == west) then {
 			[[player,false],"life_fnc_wantedFetch",false,false] spawn life_fnc_MP;
 			//this is just a secondary check to update a players bounty, if a player
 			//is charged with a crime the hud gets updated straight away
-			diag_log "Debug: wanted fetch";
 			sleep 60;
 		};
 	};
@@ -66,7 +65,6 @@ if(playerSide == west) then {
 		life_count_cops = _cops;
 		life_count_medics = _medics;
 		life_count_civs = _civs;
-		diag_log format["Debug: Player count ... cops = %1, medics = %2, civs = %3", life_count_cops, life_count_medics, life_count_civs];
 		//update this every 10 seconds
 		sleep 10;
 	};
