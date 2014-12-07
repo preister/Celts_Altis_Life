@@ -25,3 +25,4 @@
 #include "settings.h"
 #include "federalReserve.h"
 #include "blackjack.hpp"
+#include "slot_machine.hpp"
