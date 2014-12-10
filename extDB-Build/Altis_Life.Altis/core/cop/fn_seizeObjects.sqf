@@ -15,5 +15,5 @@ do
 	sleep 0.056;
 };
 
-titleText[format["Requizado %1 objetos de la cercania.", _destroyed],"PLAIN"];
-[[51, player, format["Requizado %1 objetos de la cercania.", _destroyed]],"STS_fnc_logIt",false,false] spawn life_fnc_MP;
+titleText[format["The items were seized.", _destroyed],"PLAIN"];
+[[51, player, format["The items were seized.", _destroyed]],"STS_fnc_logIt",false,false] spawn life_fnc_MP;
