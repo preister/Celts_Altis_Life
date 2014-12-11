@@ -64,7 +64,7 @@ systemChat format["Loading game server info...", _rscLayer];
 		_message = "";
 		//conditions under which we want to see the info Bar, currently we hide the info if the player is dead
 		if (alive player) then {
-			_message = format["FPS: %1 \nGRID: %2 \nASL: %3m \nCops: %4 \nCivs: %5 \nMedics: %6", 
+			_message = format["FPS: %1 \nGRID: %2 \nAlt.: %3m \nCops: %4 \nCivs: %5 \nMedics: %6", 
 				round diag_fps, // %1
 				mapGridPosition player, // %2
 				round ((getPosASL player) select 2), // %3
