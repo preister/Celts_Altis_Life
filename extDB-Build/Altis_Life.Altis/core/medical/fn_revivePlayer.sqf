@@ -12,7 +12,7 @@ if(isNull _target) exitWith {}; //DAFUQ?@!%$!R?EFFD?TGSF?HBS?DHBFNFD?YHDGN?D?FJH
 _revivable = _target getVariable["Revive",FALSE];
 if(_revivable) exitWith {};
 if(_target getVariable ["Reviving",ObjNull] == player) exitWith {hint localize "STR_Medic_AlreadyReviving";};
-if(side player != independent) AND (life_count_medics != 0) exitWith {hint "A medic is online please call him or her for help.";};
+if((side player != independent) AND (life_count_medics != 0)) exitWith {hint "A medic is online please call him or her for help.";};
 if(player distance _target > 5) exitWith {}; //Not close enough.
 
 //Fetch their name so we can shout it.
