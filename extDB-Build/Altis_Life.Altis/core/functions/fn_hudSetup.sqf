@@ -46,26 +46,33 @@ if(playerSide == west) then {
 	};
 };
 
-//contentiously check player count per side
+//creating the rsc Layer used in the info bar
+_rscLayer = "infoBar" call BIS_fnc_rscLayer;
+_rscLayer cutRsc["infoBar","PLAIN"];
+systemChat format["Loading game server info...", _rscLayer];
+
+//status bar and setting some general variables for gameplay based on player count (fe. see https://github.com/preister/Celts_Altis_Life/issues/117)
 [] spawn
 {
-	private ["_cops", "_medics", "_civs"];
+	private ["_message"];
+	sleep 5;
 	while {true} do
 	{
-		_cops = 0;
-		_medics = 0;
-		_civs = 0;
-		{
-			switch (side _x) do {
-				case west: {_cops = _cops + 1};
-				case independent: {_medics = _medics + 1};
-				case civilian: {_civs = _civs + _civs};
-			};
-		} forEach playableUnits;
-		life_count_cops = _cops;
-		life_count_medics = _medics;
-		life_count_civs = _civs;
-		//update this every 10 seconds
-		sleep 10;
+		life_count_cops = (west countSide playableUnits);
+		life_count_medics = (independent countSide playableUnits);
+		life_count_civs = (civilian countSide playableUnits);
+		_message = "";
+		//conditions under which we want to see the info Bar, currently we hide the info if the player is dead
+		if (alive player) then {
+			_message = format["FPS: %1 \nGRIDREF: %2 \nCops: %3 \nCivs: %4 \nMedics: %5", 
+				round diag_fps, // %1
+				mapGridPosition player, // %2
+				life_count_cops, // %3
+				life_count_civs, // %4
+				life_count_medics // %5
+			];
+		};
+		((uiNamespace getVariable "infoBar")displayCtrl 1000)ctrlSetText _message;
+		sleep 1;
 	};
 };
