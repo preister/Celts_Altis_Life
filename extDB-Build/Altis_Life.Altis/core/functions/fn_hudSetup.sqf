@@ -64,12 +64,13 @@ systemChat format["Loading game server info...", _rscLayer];
 		_message = "";
 		//conditions under which we want to see the info Bar, currently we hide the info if the player is dead
 		if (alive player) then {
-			_message = format["FPS: %1 \nGRIDREF: %2 \nCops: %3 \nCivs: %4 \nMedics: %5", 
+			_message = format["FPS: %1 \nGRID: %2 \nASL: %3m \nCops: %4 \nCivs: %5 \nMedics: %6", 
 				round diag_fps, // %1
 				mapGridPosition player, // %2
-				life_count_cops, // %3
-				life_count_civs, // %4
-				life_count_medics // %5
+				round ((getPosASL player) select 2), // %3
+				life_count_cops, // %4
+				life_count_civs, // %5
+				life_count_medics // %6
 			];
 		};
 		((uiNamespace getVariable "infoBar")displayCtrl 1000)ctrlSetText _message;
