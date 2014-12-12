@@ -7,7 +7,6 @@
 	adds the transmitted value to the current bounty and triggers a hud update
 */
 private["_bounty"];
-_bounty = _this select 0;
-if !("SCALAR" == typeName _bounty) exitWith {};
+_bounty = [_this,0,0,[0]] call BIS_fnc_param;
 life_player_bounty = _bounty;
 [] call life_fnc_hudUpdate;

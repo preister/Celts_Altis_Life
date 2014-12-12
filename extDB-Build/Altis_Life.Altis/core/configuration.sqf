@@ -25,11 +25,16 @@ life_impound_inuse = false;
 life_action_inUse = false;
 life_spikestrip = ObjNull;
 life_respawn_timer = 1; //Scaled in minutes
+life_respawn_timer_long = 5; //respawn timer when a medic is online
 life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
 life_removeWanted = false;
 life_death_save_gear = [west]; //any side mentioned in this array keep their gear when respawning (cant be a __CONST__ due to onPlayerKilled eventHandler)
+//player count variables
+life_count_cops = 0;
+life_count_medics = 0;
+life_count_civs = 0;
 
 //Persistent Saving
 __CONST__(life_save_civ,TRUE); //Save weapons for civs?

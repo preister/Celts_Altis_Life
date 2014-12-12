@@ -37,12 +37,16 @@ life_deathCamera camCommit 0;
 //Create a thread for something?
 _unit spawn
 {
-	private["_maxTime","_RespawnBtn","_Timer"];
+	private["_maxTime","_RespawnBtn","_Timer","_respawn_timer"];
 	disableSerialization;
+	//figure out how long a player has to wait before the respawn button is enabled
+	_respawn_timer = life_respawn_timer;
+	//medics keep the short respawn timer for now
+	if ((playerSide != independent) AND (life_count_medics != 0)) then {_respawn_timer = life_respawn_timer_long;};
 	_RespawnBtn = ((findDisplay 7300) displayCtrl 7302);
 	_Timer = ((findDisplay 7300) displayCtrl 7301);
 	
-	_maxTime = time + (life_respawn_timer * 60);
+	_maxTime = time + (_respawn_timer * 60);
 	_RespawnBtn ctrlEnable false;
 	waitUntil {_Timer ctrlSetText format[localize "STR_Medic_Respawn",[(_maxTime - time),"MM:SS.MS"] call BIS_fnc_secondsToString]; 
 	round(_maxTime - time) <= 0 OR isNull _this};
