@@ -105,6 +105,7 @@ class CfgFunctions
 			class cleanupRequest {};
 			class setObjVar {};
 			class keyManagement {};
+			class vehicleIsDead {}; //part of seizing vehicle process
 		};
 		
 		class Housing

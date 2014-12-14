@@ -11,8 +11,9 @@
 #define Btn4 37453
 #define Btn5 37454
 #define Btn6 37455
+#define Btn7 37456
 #define Title 37401
-private["_display","_curTarget","_Btn1","_Btn2","_Btn3","_Btn4","_Btn5","_Btn6"];
+private["_display","_curTarget","_Btn1","_Btn2","_Btn3","_Btn4","_Btn5","_Btn6","_Btn7"];
 if(!dialog) then {
 	createDialog "vInteraction_Menu";
 };
@@ -28,6 +29,7 @@ _Btn3 = _display displayCtrl Btn3;
 _Btn4 = _display displayCtrl Btn4;
 _Btn5 = _display displayCtrl Btn5;
 _Btn6 = _display displayCtrl Btn6;
+_Btn7 = _display displayCtrl Btn7;
 life_vInact_curTarget = _curTarget;
 
 //Set Repair Action
@@ -50,6 +52,14 @@ if(playerSide == west) then {
 	_Btn5 ctrlSetText localize "STR_vInAct_Impound";
 	_Btn5 buttonSetAction "[life_vInact_curTarget] spawn life_fnc_impoundAction;";
 	
+	_Btn7 ctrlShow true;
+	_Btn7 ctrlEnable true;
+	_Btn7 ctrlSetText "SEIZE VEHICLE";
+	_Btn7 buttonSetAction "[life_vInact_curTarget] spawn life_fnc_copCrush;";
+	} else {
+		_Btn7 ctrlShow false;
+	};
+	
 	if(_curTarget isKindOf "Ship") then {
 		_Btn6 ctrlSetText localize "STR_vInAct_PushBoat";
 		_Btn6 buttonSetAction "[] spawn life_fnc_pushObject; closeDialog 0;";
@@ -64,7 +74,6 @@ if(playerSide == west) then {
 			_Btn6 buttonSetAction "life_vInact_curTarget setPos [getPos life_vInact_curTarget select 0, getPos life_vInact_curTarget select 1, (getPos life_vInact_curTarget select 2)+0.5]; closeDialog 0;";
 			if(count crew _curTarget == 0 && {canMove _curTarget}) then { _Btn6 ctrlEnable false;} else {_Btn6 ctrlEnable true;};
 		};
-	};
 	
 } else {
 	
@@ -99,4 +108,5 @@ if(playerSide == west) then {
 	_Btn4 ctrlShow false;
 	_Btn5 ctrlShow false;
 	_Btn6 ctrlShow false;
+	
 };
