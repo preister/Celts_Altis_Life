@@ -56,9 +56,6 @@ if(playerSide == west) then {
 	_Btn7 ctrlEnable true;
 	_Btn7 ctrlSetText "SEIZE VEHICLE";
 	_Btn7 buttonSetAction "[life_vInact_curTarget] spawn life_fnc_copCrush;";
-	} else {
-		_Btn7 ctrlShow false;
-	};
 	
 	if(_curTarget isKindOf "Ship") then {
 		_Btn6 ctrlSetText localize "STR_vInAct_PushBoat";
@@ -74,6 +71,7 @@ if(playerSide == west) then {
 			_Btn6 buttonSetAction "life_vInact_curTarget setPos [getPos life_vInact_curTarget select 0, getPos life_vInact_curTarget select 1, (getPos life_vInact_curTarget select 2)+0.5]; closeDialog 0;";
 			if(count crew _curTarget == 0 && {canMove _curTarget}) then { _Btn6 ctrlEnable false;} else {_Btn6 ctrlEnable true;};
 		};
+	};
 	
 } else {
 	
@@ -108,5 +106,6 @@ if(playerSide == west) then {
 	_Btn4 ctrlShow false;
 	_Btn5 ctrlShow false;
 	_Btn6 ctrlShow false;
+	_Btn7 ctrlShow false;
 	
 };

@@ -64,6 +64,8 @@ _unit spawn
 	waitUntil {if(speed _unit == 0) exitWith {true}; life_deathCamera camSetTarget _unit; life_deathCamera camSetRelPos [0,3.5,4.5]; life_deathCamera camCommit 0;};
 };
 
+ if (vehicle player != player) then {player action ["Eject",vehicle player];};
+
 //drop gear for all sides that don't keep their items after death
 if(!(playerSide in life_death_save_gear)) then {
 	_handle = [_unit] spawn life_fnc_dropItems;
