@@ -1,5 +1,5 @@
 class Life_atm_management {
-	idd = 2700;
+	idd = 3300;
 	name= "life_atm_menu";
 	movingEnable = false;
 	enableSimulation = true;
@@ -28,7 +28,7 @@ class Life_atm_management {
 
 		class CashTitle : Life_RscStructuredText
 		{
-			idc = 2701;
+			idc = 3301;
 			text = "";
 			
 			x = 0.39;
@@ -73,20 +73,19 @@ class Life_atm_management {
 			h = (1 / 25);
 		};
 		
-		class moneyEdit : Life_RscEdit {
+		class moneyEdit : Life_RscEdit 
+		{
+			idc = 3302;
 		
-		idc = 2702;
-		
-		text = "1";
-		sizeEx = 0.030;
-		x = 0.4; y = 0.41;
-		w = 0.2; h = 0.03;
-		
+			text = "1";
+			sizeEx = 0.030;
+			x = 0.4; y = 0.41;
+			w = 0.2; h = 0.03;
 		};
 		
 		class PlayerList : Life_RscCombo 
 		{
-			idc = 2703;
+			idc = 3303;
 			
 			x = 0.4; y = 0.58;
 			w = 0.2; h = 0.03;
@@ -107,7 +106,7 @@ class Life_atm_management {
 		
 		class GangDeposit : TransferButton
 		{
-			idc = 2705;
+			idc = 3305;
 			text = "$STR_pInAct_DepositToGang";
 			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
 			onButtonClick = "[] call life_fnc_gangDeposit";
