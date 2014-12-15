@@ -21,7 +21,8 @@ switch (_side) do
 			["cop_spawn_1","Kavala HQ","\a3\ui_f\data\map\MapControl\watertower_ca.paa"],
 			["cop_spawn_2","Pyrgos HQ","\a3\ui_f\data\map\MapControl\fuelstation_ca.paa"],
 			["cop_spawn_3","Athira HQ","\a3\ui_f\data\map\GroupIcons\badge_rotate_0_gs.paa"],
-			["cop_spawn_5","Border Patrol","\a3\ui_f\data\map\GroupIcons\badge_rotate_0_gs.paa"]
+			["cop_spawn_5","Border Patrol","\a3\ui_f\data\map\GroupIcons\badge_rotate_0_gs.paa"],
+			["cop_jail","Altis Corrections","\a3\ui_f\data\map\GroupIcons\badge_rotate_0_gs.paa"]
 		];
 		
 		if(license_cop_cg) then
