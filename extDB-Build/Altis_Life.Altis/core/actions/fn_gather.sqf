@@ -1,7 +1,7 @@
 /*
 	File: fn_gather.sqf
 	Author: Bryan "Tonic" Boardwine
-	
+	Edited by SrgFlip
 	Description:
 	Main functionality for gathering. - rewritten to work with a more user friendly configuration, as well as allowing easily to configure necessary items like pickaxe
 */

@@ -20,7 +20,7 @@ class Life_atm_management {
 			x = 0.35;
 			y = 0.2 + (11 / 250);
 			w = 0.3;
-			h = 0.6 - (22 / 250);
+			h =  0.699 - (22 / 250);
 		};
 	};
 	
@@ -34,7 +34,7 @@ class Life_atm_management {
 			x = 0.39;
 			y = 0.26;
 			w = 0.3;
-			h = 0.14;
+			h = 0.2;
 		};
 		
 		class Title : Life_RscTitle {
@@ -100,7 +100,7 @@ class Life_atm_management {
 			
 			x = 0.432;
 			y = 0.63;
-			w = (5.30 / 40);
+			w = (6 / 40);
 			h = (1 / 25);
 		};
 		
@@ -110,7 +110,17 @@ class Life_atm_management {
 			text = "$STR_pInAct_DepositToGang";
 			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
 			onButtonClick = "[] call life_fnc_gangDeposit";
-			y = .7; x = 0.365;
+			y = .69; x = 0.365;
+			w = 0.275;
+		};
+		
+		class GangWithdraw : TransferButton
+		{
+			idc = 2706;
+			text = "WITHDRAW FROM GANG";
+			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
+			onButtonClick = "[] call life_fnc_gangWithdraw";
+			y = .74; x = 0.365;
 			w = 0.275;
 		};
 		
@@ -119,7 +129,7 @@ class Life_atm_management {
 			text = "$STR_Global_Close";
 			onButtonClick = "closeDialog 0;";
 			x = 0.35;
-			y = 0.8 - (1 / 25);
+			y = 0.84 - (1 / 25);
 			w = (6.25 / 40);
 			h = (1 / 25);
 		};
