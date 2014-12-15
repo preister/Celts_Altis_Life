@@ -2,7 +2,7 @@
 	COPY PASTE TIME
 */
 private["_val"];
-_val = parseNumber(ctrlText 2702);
+_val = parseNumber(ctrlText 3302);
 if(_val > 999999) exitWith {hint localize "STR_ATM_WithdrawMax";};
 if(_val < 0) exitwith {};
 if(!([str(_val)] call life_fnc_isnumeric)) exitWith {hint localize "STR_ATM_notnumeric"};

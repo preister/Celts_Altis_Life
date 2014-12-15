@@ -6,10 +6,10 @@
 	Figure it out again.
 */
 private["_val","_unit","_tax"];
-_val = parseNumber(ctrlText 2702);
-_unit = call compile format["%1",(lbData[2703,(lbCurSel 2703)])];
+_val = parseNumber(ctrlText 3302);
+_unit = call compile format["%1",(lbData[3303,(lbCurSel 3303)])];
 if(isNull _unit) exitWith {};
-if((lbCurSel 2703) == -1) exitWith {hint localize "STR_ATM_NoneSelected"};
+if((lbCurSel 3303) == -1) exitWith {hint localize "STR_ATM_NoneSelected"};
 if(isNil "_unit") exitWith {hint localize "STR_ATM_DoesntExist"};
 if(_val > 999999) exitWith {hint localize "STR_ATM_TransferMax";};
 if(_val < 0) exitwith {};
