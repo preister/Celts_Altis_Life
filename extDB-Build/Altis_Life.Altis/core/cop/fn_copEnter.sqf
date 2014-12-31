@@ -11,25 +11,25 @@ _position = _this select 3;
 
 switch (_position) do
 {
-	case "driver":
+	case "Driver":
 	{
 		cursorTarget lock false;
 		player action ["getInDriver", cursorTarget];
 		cursorTarget lock true;
 	};
-	case "passenger":
+	case "Passenger":
 	{
 		cursorTarget lock false;
 		player action ["getInCargo", cursorTarget];
 		cursorTarget lock true;
 	};
-	case "gunner":
+	case "Gunner":
 	{
 		cursorTarget lock false;
 		player action ["getIngunner", cursorTarget];
 		cursorTarget lock true;
 	};
-	case "exit":
+	case "Exit":
 	{
 		_veh = vehicle player;
 		_veh lock false;
